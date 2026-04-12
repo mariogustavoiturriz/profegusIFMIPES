@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 3 · El límite de la geometría · IPESfa 2026</title>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  :root {
+    --nav:#1B3A6B; --med:#2E6DA4; --cl:#D6E4F0; --pale:#EDF4FB;
+    --grn:#1A6B3A; --gcl:#DFF0E9; --amb:#C85C00; --acl:#FFF3E0;
+    --vio:#4A1A7B; --vcl:#EDE7F6; --slate:#3A4F6A; --red:#D9534F;
+    --gris:#F3F6F9; --bd:#C5D2DC; --txt:#4A5E70; --neg:#1A2C3A; --bco:#FFFFFF;
+    --r:8px; --sh:0 2px 8px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med)}
+  .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+  .top-r{font-size:11px;opacity:.65;text-align:right}
+
+  .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--med)}
+  .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+  .subbar-title{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+  .subbar-title span{font-weight:400;color:var(--cl)}
+
+  .hero{background:linear-gradient(135deg,var(--slate) 0%,var(--nav) 100%);color:#fff;padding:28px 28px 20px}
+  .hero h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}
+  .hero-sub{font-size:13px;opacity:.82;margin-bottom:0}
+
+  .tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;overflow-x:auto;padding:0 16px}
+  .tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 16px;white-space:nowrap;transition:all .15s;margin-bottom:-2px;letter-spacing:.2px}
+  .tab-btn:hover:not(.locked){color:var(--med)}
+  .tab-btn.active{color:var(--nav);border-bottom-color:var(--nav)}
+  
+  .tab-btn.locked {opacity: 0.4; cursor: not-allowed; background: #fafafa;}
+  .tab-btn.locked::after {content: " 🔒"; font-size: 11px;}
+
+  .wrap{margin:0 auto;padding:24px 28px 60px;width:100%}
+  .pane{display:none; animation: fadeIn 0.3s ease;}
+  .pane.on{display:block}
+  @keyframes fadeIn { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
+
+  .clase-banner{border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+  .clase-banner-top{display:flex;align-items:stretch;min-height:60px}
+  .cb-num{background:var(--nav);color:#fff;font-size:28px;font-weight:900;width:66px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .cb-info{background:var(--slate);flex:1;padding:14px 18px}
+  .cb-info h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:3px}
+  .cb-info p{font-size:12px;color:var(--cl);margin:0}
+  .cb-obj{background:var(--pale);padding:12px 18px;border-top:1px solid var(--bd)}
+  .cb-obj p{font-size:13px;color:var(--nav);line-height:1.55}
+
+  .sec{margin-bottom:22px}
+  .sec-label{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .sec-label span{background:var(--nav);color:#fff;border-radius:20px;padding:2px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+  .sec-label hr{flex:1;border:none;border-top:2px solid var(--bd)}
+
+  .act-box{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .act-head{background:var(--nav);padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .act-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
+  .act-body{padding:16px 20px}
+  .act-body p{font-size:13.5px;line-height:1.7;margin-bottom:10px}
+
+  .lect{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .lect-head{background:var(--pale);padding:11px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
+  .lect-head h3{font-size:14px;font-weight:700;color:var(--nav);margin:0}
+  .lect-body{padding:16px 20px}
+  .lect-body p{font-size:13.5px;line-height:1.75;margin-bottom:11px;color:var(--neg)}
+  .lect-body h5{font-size:13px;font-weight:700;color:var(--nav);margin:16px 0 7px;border-left:3px solid var(--med);padding-left:8px}
+
+  .step{background:var(--gris);border-radius:6px;padding:11px 15px;margin-bottom:9px;border-left:3px solid var(--med)}
+  .step strong{display:block;font-size:13px;color:var(--nav);margin-bottom:4px}
+  
+  .note{border-radius:var(--r);padding:12px 16px;font-size:13.5px;margin:12px 0;display:flex;gap:10px;align-items:flex-start}
+  .ni{font-size:18px;flex-shrink:0;margin-top:2px}
+  .nb{background:var(--pale);border-left:4px solid var(--med)}
+  .ng{background:var(--gcl);border-left:4px solid var(--grn)}
+  .na{background:var(--acl);border-left:4px solid var(--amb)}
+  .nv{background:var(--vcl);border-left:4px solid var(--vio)}
+
+  .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:16px}
+  .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
+
+  /* -- SIMULADOR ARQUIMEDES -- */
+  .sim-wrap { background: #fff; border: 1px solid var(--bd); border-radius: var(--r); overflow: hidden; margin: 15px 0; }
+  .sim-header { background: var(--slate); color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; }
+  .sim-body { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+  .canvas-container { position: relative; width: 100%; max-width: 350px; aspect-ratio: 1/1; background: #f8fafc; border-radius: 8px; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); border: 1px dashed var(--bd); overflow: hidden; }
+  canvas { width: 100%; height: 100%; display: block; }
+  .controls { width: 100%; max-width: 400px; background: var(--gris); padding: 15px; border-radius: 8px; border: 1px solid var(--bd); }
+  .slider-row { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+  input[type=range] { flex: 1; accent-color: var(--nav); }
+  .math-display { font-family: monospace; font-size: 15px; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 4px; text-align: center; }
+  .math-display span.red { color: var(--red); font-weight: bold; }
+  .math-display span.blue { color: var(--med); font-weight: bold; }
+
+  .film-card{background:var(--bco);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+  .film-head{background:var(--acl);padding:11px 18px;border-bottom:1px solid var(--bd)}
+  .film-head h3{font-size:13.5px;font-weight:700;color:var(--amb);margin:0}
+  .film-body{padding:16px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+
+  .bitacora{background:var(--vcl);border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
+  .bitacora h3{color:var(--nav);font-size:15px;margin-bottom:8px}
+  .bita-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
+
+  .locked-pane { text-align: center; padding: 60px 20px; color: var(--txt); }
+  .locked-pane h2 { font-size: 20px; color: var(--slate); margin-bottom: 10px; }
+  .locked-icon { font-size: 40px; opacity: 0.5; margin-bottom: 15px; }
+
+  @media(max-width:600px){
+    .top{flex-direction:column;padding:10px 14px}
+    .wrap{padding:14px 10px 40px}
+    .cb-num{width:52px;font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div>
+    <strong>Historia y Fundamentos de la Matemática</strong>
+    <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+  </div>
+  <div class="top-r">Ciclo Lectivo 2026</div>
+</div>
+
+<div class="subbar">
+  <p class="subbar-pre">Semana 3 · 13 al 15 de abril</p>
+  <p class="subbar-title">El genio mecánico <span>— Arquímedes y los límites de la geometría</span></p>
+</div>
+
+<div class="hero">
+  <h1>El fin de la pureza: descubriendo con la física</h1>
+  <p class="hero-sub">Euclides construyó un castillo inmaculado con regla y compás. Pero el mundo real tiene curvas, áreas y volúmenes imposibles. Esta semana analizamos al genio que cruzó la línea.</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('inicio',this)" id="btn-inicio">Inicio</button>
+  <button class="tab-btn" onclick="showTab('c5',this)" id="btn-c5">Clase 5 · Lunes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c6">Clase 6 · Martes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c7">Clase 7 · Miércoles</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════ INICIO ══════════════════ -->
+<div id="pane-inicio" class="pane on">
+  <div class="act-box">
+    <div class="act-head" style="background:var(--slate)">
+      <h3 style="color:#fff;font-size:16px">🔍 En esta semana</h3>
+    </div>
+    <div class="act-body">
+      <p style="font-size:15px;font-weight:600;color:var(--nav);line-height:1.5">El problema de la escuela de Platón: el horror al infinito.</p>
+      <p style="margin-top:10px;line-height:1.7">La semana pasada vimos cómo Euclides "blindó" la geometría usando axiomas y postulados. El rigor griego dictaba que solo se podía trabajar con lo finito y lo construible (regla y compás). Pero había un elefante en la habitación: el compás permitía <em>dibujar</em> curvas perfectas, pero la geometría griega solo sabía calcular áreas cortando figuras en triángulos y rectángulos (usando la regla recta). <strong>¿Cómo calculamos el área exacta de una curva si las herramientas rectas no pueden "cuadrarla"?</strong> ¿Cómo calculamos el volumen de una esfera?</p>
+      
+      <div class="note na">
+        <span class="ni">⚔️</span>
+        <div>
+          <strong style="display:block;margin-bottom:4px;color:var(--amb)">El Asedio de Siracusa y las dos caras de la Matemática</strong>
+          <span style="font-size:13.5px;line-height:1.6">La figura central de esta semana es <strong>Arquímedes</strong> (287–212 a.C.). Mientras Alejandría era el centro de la matemática "pura", Arquímedes vivía en Siracusa (Sicilia). Él diseñó máquinas de guerra brutales (catapultas de precisión y la temible "garra") para defender su ciudad del asedio romano. Aunque la cultura popular suele atribuirle el uso de "espejos ustorios" para incendiar barcos, las fuentes más antiguas y confiables sobre el asedio (Polibio y Plutarco) no los mencionan, por lo que la historiografía moderna lo considera una leyenda medieval. A pesar de su genio como ingeniero, Arquímedes consideraba que la mecánica era un oficio "villano y servil". Exigió que en su tumba no pusieran un arma, sino un cilindro circunscrito a una esfera: su mayor triunfo en matemática pura. <span class="ref">(Boyer, 1986, pp. 119–120; Rey Pastor y Babini, 2000, p. 106)</span></span>
+        </div>
+      </div>
+
+      <figure style="margin: 18px 0; text-align: center;">
+        <img src="https://matematicasentumundo.es/ARTE/TA3.jpg" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+        <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Representación de la tumba de Arquímedes, decorada según su deseo con un cilindro circunscrito a una esfera.</figcaption>
+      </figure>
+
+      <p style="margin-top:12px;line-height:1.7">Esta contradicción entre el matemático que usaba la física para resolver problemas y el filósofo que sentía vergüenza de ello es el eje central de esta unidad. Arquímedes llegó al umbral del <strong>Cálculo Integral</strong> casi dos milenios antes que Newton, pero la cultura matemática griega no le permitió cruzar esa puerta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 5 · LUNES ══════════════════ -->
+<div id="pane-c5" class="pane">
+
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num">5</div>
+      <div class="cb-info">
+        <h2>Arquímedes y el "secreto" del Método</h2>
+        <p>Lunes 13/4</p>
+      </div>
+    </div>
+    <div class="cb-obj">
+      <p><strong>Objetivo:</strong> Analizar la tensión entre el contexto de descubrimiento (heurística física) y el contexto de justificación (demostración geométrica) a través del Método de Arquímedes, y diseñar estrategias didácticas basadas en este enfoque.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>📖 Lectura Base</span><hr></div>
+
+    <div class="lect">
+      <div class="lect-head">
+        <h3>El Palimpsesto: El libro escondido por 1000 años</h3>
+        <span>Epistemología</span>
+      </div>
+      <div class="lect-body">
+        <p>Durante siglos, los matemáticos se preguntaron cómo hizo Arquímedes para calcular áreas y volúmenes curvos de forma tan perfecta. Sus textos publicados eran demostraciones magistrales usando el <strong>Método de Exhaución</strong> (creado por Eudoxo), que consistía en meter figuras dentro de otras hasta "agotar" el espacio. Pero estas demostraciones eran un dolor de cabeza larguísimo y servían para <em>probar</em> resultados, no para <em>descubrirlos</em>.</p>
+        
+        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrió un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <img src="https://img.asmedia.epimg.net/resizer/v2/5SOBW4GSJJFZ7J7E77Z7HBPT3I.jpg?auth=ab86c030671d9f686b0d99388d03369e6c3de9db4c8d7d9693c39f91c77bc4d0&width=1472&height=1104&smart=true" alt="" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Detalle del Palimpsesto de Arquímedes. El texto matemático original (horizontal) asoma por debajo de las oraciones litúrgicas medievales (verticales).</figcaption>
+        </figure>
+
+        <div class="note nb">
+          <span class="ni">⚖️</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La mecánica mental</strong>
+            <span style="font-size:13.5px;line-height:1.6">En <em>El Método</em>, Arquímedes confiesa su secreto: para descubrir la fórmula del volumen de la esfera, él no usó geometría. Imaginó la esfera cortada en infinitas rebanadas (como fetas de salame) y usó la <strong>Ley de la Palanca</strong> de la física para "pesarlas" en una balanza imaginaria contra un cono y un cilindro. Como sabía el centro de gravedad del cilindro, pudo deducir el de la esfera. <span class="ref">(Kline, 1992, Vol. 1, p. 147)</span></span>
+          </div>
+        </div>
+
+        <h5>La censura del infinito</h5>
+        <p>¿Por qué Arquímedes ocultó este método en sus publicaciones oficiales? Porque el rigor griego consideraba que mezclar "mecánica" (física, peso) con "geometría" (ideas puras) era una herejía lógica. Además, cortar un objeto en "infinitas" partes rompía el tabú griego del infinito actual. Arquímedes usaba la física en privado para <em>descubrir</em> (heurística), pero luego construía la larguísima demostración por exhaución geométrica para <em>justificar</em> ante el mundo matemático (validación).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>⚙️ Herramientas de época: calculá como Arquímedes</span><hr></div>
+
+    <div class="act-box" style="border:2px solid var(--grn)">
+      <div class="act-head" style="background:var(--grn)">
+        <h3>Antes de usar el simulador: un cálculo a mano con regla y compás</h3>
+      </div>
+      <div class="act-body">
+        <p>Antes de mover el deslizador digital, vamos a hacer lo que hizo Arquímedes: calcular los límites de π <strong>a mano, sin calculadora</strong>, con el hexágono. Este es el primer paso de la cadena de 96 lados que él completó.</p>
+
+        <div class="note nb" style="margin-bottom:14px">
+          <span class="ni">🧭</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La herramienta del período: regla y compás</strong>
+            <span style="font-size:13px;line-height:1.6">Los matemáticos griegos no tenían calculadoras, fórmulas algebraicas ni notación decimal. Trabajaban con regla, compás y propiedades geométricas. Cuando necesitaban estimar una longitud, tenían que construirla físicamente y compararla con segmentos conocidos. Esta actividad reproduce exactamente esa forma de trabajar.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <strong>Paso 1 — Construir el hexágono en GeoGebra (o en papel con compás)</strong>
+          <p>Dibujá un círculo de radio $r = 1$. Inscribí un hexágono regular adentro. Observá que cada lado del hexágono mide exactamente <strong>1</strong> (igual al radio). Esto no es coincidencia: es una propiedad del hexágono regular. ¿Por qué ocurre? (Pista: el hexágono se puede descomponer en seis triángulos equiláteros con vértice en el centro.)</p>
+        </div>
+
+        <div class="step">
+          <strong>Paso 2 — Primera cota: π > 3 (sin ninguna raíz cuadrada)</strong>
+          <p>El hexágono inscrito tiene perímetro $P_{interno} = 6 \times 1 = 6$. La circunferencia de radio 1 mide $2\pi$. Como el polígono interior es más chico que el círculo:</p>
+          <p style="text-align:center; font-size:15px; font-weight:bold; color:var(--grn); margin:10px 0">$6 < 2\pi \quad \Rightarrow \quad \pi > 3$</p>
+        </div>
+
+        <div class="step">
+          <strong>Paso 3 — Segunda cota: π &lt; 2√3 (acá aparece la dificultad)</strong>
+          <p>Ahora circunscribí el hexágono por fuera del círculo. Cada lado del hexágono externo mide $\frac{2}{\sqrt{3}}$. El perímetro externo es $\frac{12}{\sqrt{3}} = 4\sqrt{3}$. Como el círculo es más chico que el polígono exterior:</p>
+          <p style="text-align:center; font-size:15px; font-weight:bold; color:var(--red); margin:10px 0">$2\pi < 4\sqrt{3} \quad \Rightarrow \quad \pi < 2\sqrt{3}$</p>
+          <p>Ahora necesitamos estimar $\sqrt{3}$ <strong>sin calculadora</strong>. ¿Cómo? Verificá a mano: ¿$1.7^2$ es mayor o menor que 3? ¿Y $1.8^2$? Eso da $1.7 < \sqrt{3} < 1.8$, y por lo tanto $3.4 < 2\sqrt{3} < 3.6$.</p>
+          <p>Resultado con el hexágono: $\mathbf{3 < \pi < 3.46}$</p>
+        </div>
+
+        <div class="note na" style="margin-bottom:14px">
+          <span class="ni">⚠️</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Anacronismo a la vista: ¿Así escribía Arquímedes?</strong>
+            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que ustedes experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
+          </div>
+        </div>
+
+        <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+          <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">💬 La pregunta que explica todo</strong>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Para pasar al polígono de 12 lados, Arquímedes necesitaba calcular $\sqrt{2-\sqrt{3}}$. Para 24 lados: $\sqrt{2-\sqrt{2+\sqrt{3}}}$. Y así sucesivamente, con raíces anidadas cada vez más complicadas, <strong>todas a mano, con fracciones exactas</strong>. Eso es lo que hizo hasta n=96.</p>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8;margin-top:8px;font-style:italic"><strong>Ahora sí:</strong> mové el deslizador del simulador que sigue. Pero cada posición que avanzás representa horas de cálculo aritmético para un griego. ¿Cambia algo la forma en que lo mirás?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>🖥️ Laboratorio Visual</span><hr></div>
+
+    <div class="act-box" style="border: 2px solid var(--med);">
+      <div class="act-head" style="background:var(--med)">
+        <h3>Acorralando a $\pi$: El Método de Exhaución</h3>
+      </div>
+      <div class="act-body">
+        <p>Arquímedes no podía medir el círculo directamente, así que inscribió un polígono adentro (más chico) y circunscribió otro afuera (más grande). El círculo es el "sandwich" entre los dos.</p>
+        
+        <div class="sim-wrap">
+          <div class="sim-header">
+            <span>Simulador de Polígonos de Arquímedes</span>
+          </div>
+          <div class="sim-body">
+            <div class="canvas-container">
+              <canvas id="piCanvas"></canvas>
+            </div>
+            
+            <div class="controls">
+              <div class="slider-row">
+                <label for="sides" style="font-size:13px; font-weight:bold; min-width:130px">Lados del Polígono ($n$):</label>
+                <input type="range" id="sides" min="3" max="96" step="1" value="3">
+                <span id="sides-val" style="font-weight:bold; color:var(--nav); width:30px; text-align:right">3</span>
+              </div>
+              
+              <div class="math-display">
+                <span class="blue">Pol. Interno</span> &lt; &nbsp; $\pi$ &nbsp; &lt; <span class="red">Pol. Externo</span><br>
+                <span class="blue" id="val-inner">2.5981</span> &lt; <span style="font-weight:bold; color:#000">3.1416</span> &lt; <span class="red" id="val-outer">5.1962</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--slate); color:white; border-radius:var(--r); padding:16px; margin-top:14px">
+            <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">🎯 Foco del Debate Epistemológico</strong>
+            <p style="font-size:13px; line-height:1.6">Mové el deslizador hasta $n = 96$. Usando nuestra notación moderna, decimos que Arquímedes acorraló el valor demostrando que: <br>
+            $3 \frac{10}{71} < \pi < 3 \frac{1}{7}$ (es decir, entre 3.1408 y 3.1428).</p>
+            
+            <div style="background:rgba(255,255,255,0.1); padding:12px; border-radius:6px; margin:12px 0; border-left:3px solid var(--amb)">
+                <strong style="display:block; font-size:13px; color:var(--amb); margin-bottom:4px">⚠️ Segundo Anacronismo: Él no conocía el número "π"</strong>
+                <p style="font-size:12.5px; line-height:1.5; color:#E6F7F8">Arquímedes jamás usó el símbolo $\pi$ (fue inventado por el galés William Jones en 1706). Para los griegos, no era un "número irracional con decimales", sino una <strong>proporción geométrica</strong> entre dos líneas. En su obra original <em>Sobre la medida del círculo</em> (Proposición 3), él redactó su conclusión final con estas palabras exactas:</p>
+                <p style="font-size:12.5px; line-height:1.5; color:#fff; font-style:italic; margin-top:8px; padding-left:10px; border-left:2px solid rgba(255,255,255,0.3)">"La circunferencia de todo círculo es triple del diámetro y lo excede en menos de un séptimo del diámetro y en más de diez setenta y un avos." <span class="ref" style="color:var(--cl); font-style:normal">(Arquímedes, c. 250 a.C., citado en Boyer, 1986, p. 126)</span></p>
+
+                <figure style="margin: 16px 0 8px 0; text-align: center;">
+                  <img src="image_76a9e9.jpg" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.4); display: inline-block;">
+                  <figcaption style="font-size: 11px; color: var(--cl); margin-top: 8px; font-style: italic;">Página de una edición latina de "Sobre la medida del círculo" (Circuli Dimensio). Observen que Arquímedes no usaba fórmulas; todo el razonamiento se desarrollaba en puro texto y proporciones geométricas.</figcaption>
+                </figure>
+            </div>
+            
+            <p style="font-size:13px; line-height:1.6; margin-top:10px; font-style:italic"><strong>Debate en clase:</strong> ¿Por qué se detuvo en 96 lados? Si seguimos aumentando $n$ hacia el infinito, ¿los polígonos <em>se convierten</em> en el círculo? Para los griegos la respuesta es <strong>NO</strong>. Para ellos, un polígono de infinitos lados era una aberración lógica. Esta es la barrera que impidió que Grecia inventara el Cálculo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFUNDIZACIÓN: EL MÉTODO DE EXHAUCIÓN -->
+  <div class="sec">
+    <div class="sec-label"><span>📖 Profundización Teórica</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--vcl); border-color:var(--vio)">
+        <h3 style="color:var(--vio)">¿Qué era exactamente el Método de Exhaución?</h3>
+        <span>Historia Pura</span>
+      </div>
+      <div class="lect-body">
+        <p>Mencionamos varias veces que Arquímedes usaba el <strong>Método de Exhaución</strong> (o "agotamiento") para validar sus descubrimientos físicos, pero ¿cómo funcionaba este blindaje lógico ideado originalmente por Eudoxo?</p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Archimedes_parabola.svg/512px-Archimedes_parabola.svg.png" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block; background: #fff; padding: 10px;">
+          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">La cuadratura de la parábola: Arquímedes "agota" el área rellenándola con triángulos cada vez más chicos, sin llegar nunca al infinito.</figcaption>
+        </figure>
+
+        <p>Los griegos le tenían terror al concepto de <em>infinito actual</em>. No podían decir "si sumo infinitos triángulos, obtengo el área exacta de la curva", porque para ellos el infinito no era un destino al que se pudiera llegar. Para esquivar este problema, inventaron un truco magistral basado en la <strong>doble reducción al absurdo</strong>.</p>
+        
+        <div class="note nv" style="margin:14px 0">
+          <span class="ni">🧠</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--vio)">La trampa lógica perfecta</strong>
+            <span style="font-size:13px;line-height:1.6">En lugar de demostrar que el área del polígono <em>es igual</em> al círculo (o a la parábola) en el infinito, Arquímedes demostraba dos cosas por separado usando un <strong>oponente imaginario</strong> (una figura retórica muy típica en los debates filosóficos griegos):<br>
+            1. Si el oponente afirma que el área real es <strong>mayor</strong> que la fórmula, Arquímedes inscribe un polígono tan ajustado que demuestra que eso es matemáticamente falso (llega a una contradicción).<br>
+            2. Si el oponente afirma que el área es <strong>menor</strong>, circunscribe un polígono por afuera que demuestra que también es falso.<br>
+            Si el área no puede ser mayor, y tampoco puede ser menor... <strong>por obligación lógica, tiene que ser exactamente igual</strong>. <span class="ref">(Boyer, 1986, pp. 121-122)</span></span>
+          </div>
+        </div>
+        <p>Este método era inatacable, riguroso y perfecto. Su único defecto era que resultaba pesadísimo de redactar y no servía para <em>inventar</em> o <em>descubrir</em> fórmulas nuevas, solo para legalizar las que Arquímedes ya había adivinado jugando con su física de poleas y balanzas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFLEXIÓN DOCENTE: TALLER DE DISEÑO -->
+  <div class="sec">
+    <div class="sec-label"><span>🛠️ Taller de Transposición Didáctica</span><hr></div>
+    <div class="bitacora" style="background: var(--pale); border-color: var(--med);">
+      <h3 style="color:var(--nav); font-size:16px; font-weight:bold; margin-bottom:8px">Diseñando el "Borrador" del Círculo</h3>
+      <p style="font-size:13.5px; margin-bottom:12px; line-height:1.6; color:var(--neg)">
+        Arquímedes ocultó su "Método" mecánico porque no era formal. En las aulas de hoy solemos hacer lo mismo: mostramos la fórmula terminada del área del círculo ($A = \pi \cdot r^2$) y escondemos el "borrador", el proceso físico o intuitivo que le dio origen.
+      </p>
+      
+      <div class="bita-consigna" style="border-left-color: var(--med); margin-bottom: 16px;">
+        <strong style="color:var(--nav)">Consigna de trabajo:</strong><br>
+        Van a trabajar juntos para diseñar una <strong>micro-secuencia didáctica exploratoria</strong>. El objetivo es que las y los estudiantes de 2.° o 3.° año de secundaria "descubran" la fórmula del área del círculo manipulando las formas, tal como Arquímedes manipulaba pesos en su balanza.<br><br>
+        <em>Pista metodológica:</em> Piensen en la clásica demostración física de cortar un círculo de papel en "porciones de pizza" y reorganizarlas para formar una figura conocida (como un paralelogramo o un rectángulo).<br>
+        
+        <div style="background:rgba(0,0,0,0.04); border-radius:6px; padding:12px; margin-top:10px;">
+          <span class="ref" style="display:block; color:var(--txt)">
+            <strong>* ¿No recuerdan esta estrategia visual?</strong> El truco consiste en que las y los estudiantes noten que la base de la nueva figura formada es la mitad del perímetro del círculo ($\pi \cdot r$) y su altura es el radio ($r$). Pueden ver ejemplos rigurosos de esta transposición en los siguientes enlaces verificados:<br><br>
+            ▶ <a href="https://www.youtube.com/watch?v=X3WJ3uD5PAo" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Animación visual paso a paso (YouTube)</a><br>
+            ▶ <a href="https://www.geogebra.org/m/mefnavxx" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Simulador oficial del GeoGebra Content Team</a><br>
+            ▶ <a href="https://www.gaussianos.com/demostracion-sin-palabras-de-la-formula-para-calcular-el-area-de-un-circulo/" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Demostración gráfica en el portal matemático Gaussianos</a>
+          </span>
+        </div>
+      </div>
+
+      <div style="background:#fff; border: 1px solid var(--bd); border-radius: 6px; padding: 14px;">
+        <strong style="font-size:14px; color:var(--grn); display:flex; align-items:center; gap:6px;">
+          <span>🎯</span> ¿Qué esperamos como producción al final de la clase?
+        </strong>
+        <p style="font-size:13px; margin-top:8px; color:var(--txt);">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito (en papel o digital) que detalle la planificación de la actividad, conteniendo obligatoriamente:</p>
+        <ul style="font-size:13px; margin-top:8px; margin-left:20px; line-height:1.6; list-style-type:disc; color:var(--neg)">
+          <li><strong>Materiales:</strong> Qué necesitan exactamente las y los estudiantes (ej. compás, tijeras, cartulina o un archivo específico de GeoGebra).</li>
+          <li><strong>Consigna inicial:</strong> Cómo le presentan el desafío a las y los estudiantes sin "spoilear" la fórmula.</li>
+          <li><strong>Intervención Docente (CRÍTICO):</strong> Escriban las 3 o 4 <em>"preguntas guía"</em> que harían ustedes, como profesores, mientras las y los estudiantes rearman las porciones. El objetivo es que los propios estudiantes deduzcan (mirando la figura) que la base de ese nuevo paralelogramo mide $\pi \cdot r$ (la mitad del perímetro) y que su altura es $r$.</li>
+        </ul>
+      </div>
+
+      <div class="srcs" style="margin-top:20px; background:rgba(255,255,255,0.8); border-color:var(--med)">
+        <h5 style="color:var(--med)">Fuentes bibliográficas de la clase:</h5>
+        <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza Editorial, Cap. 8.</p>
+        <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 45–51.</p>
+        <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza, pp. 145–150.</p>
+        <p>Rey Pastor, J. y Babini, J. (2000). <em>Historia de la matemática</em>, Vol. 1. Barcelona: Gedisa, pp. 110–115.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÍNTESIS DE LA CLASE 5: MARCO TEÓRICO -->
+  <div class="sec">
+    <div class="sec-label"><span>💭 Síntesis de la Clase</span><hr></div>
+    <div class="act-box">
+      <div class="act-head" style="background:var(--slate)">
+        <h3 style="color:#fff;font-size:16px">📋 El puente entre Arquímedes y la Didáctica</h3>
+      </div>
+      <div class="act-body">
+        <p style="font-size:14px; margin-bottom:14px; color:var(--nav); font-weight:600;">Lo que hizo Arquímedes al ocultar su "método mecánico" no es una simple anécdota histórica; es el mismo mecanismo que rige la enseñanza de la matemática hoy. Veamos qué nos dicen los grandes referentes de la didáctica:</p>
+        
+        <div style="background:var(--slate);border-radius:6px;padding:16px 20px; margin-bottom:12px;">
+          <strong style="display:block; font-size:14.5px; color:var(--amb); margin-bottom:6px">1. Yves Chevallard y la "Despersonalización" del Saber</strong>
+          <p style="font-size:13.5px; color:#E6F7F8; line-height:1.6; margin-bottom:8px">
+            Chevallard explica que en la transposición didáctica, el conocimiento sufre una <em>desincretización</em> y <em>despersonalización</em>. El <strong>saber sabio</strong> (el teorema terminado) se separa de su génesis histórica, de las dudas y de los "borradores" del matemático. Arquímedes fue el primer gran "transpositor" de su propia obra: usó la física para descubrir, pero la borró de sus libros para presentar un saber puro, ahistórico e incuestionable. La escuela hereda esta tradición, mostrando a menudo una matemática mágica y sin origen.
+          </p>
+          <p style="font-size:11.5px; color:var(--cl); font-style:italic; text-align:right">Fuente: Chevallard, Y. (1997). La transposición didáctica: del saber sabio al saber enseñado.</p>
+        </div>
+
+        <div style="background:var(--slate);border-radius:6px;padding:16px 20px;">
+          <strong style="display:block; font-size:14.5px; color:var(--amb); margin-bottom:6px">2. Guy Brousseau y el Trabajo del Alumno</strong>
+          <p style="font-size:13.5px; color:#E6F7F8; line-height:1.6; margin-bottom:8px">
+            Brousseau afirma que <em>"el trabajo del estudiante debe ser, al menos en parte, el trabajo de un investigador"</em>. Si le damos a las y los estudiantes la fórmula del área del círculo ($\pi \cdot r^2$) ya pulida y demostrada formalmente, les estamos robando el desafío heurístico. El rol del docente es realizar la <strong>re-contextualización</strong> del saber: crear una situación a-didáctica donde el curso necesite manipular, probar y equivocarse (como Arquímedes con sus balanzas) antes de que el conocimiento sea institucionalizado.
+          </p>
+          <p style="font-size:11.5px; color:var(--cl); font-style:italic; text-align:right">Fuente: Brousseau, G. (1986). Fundamentos y métodos de la Didáctica de la Matemática.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+    <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))">← Inicio
+      <small>Panorama de la semana</small>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 6 · MARTES (CON CONTENIDO OCULTO) ══════════════════ -->
+<div id="pane-c6" class="pane">
+  <!-- PANTALLA DE BLOQUEO -->
+  <div class="locked-pane" id="lock-c6">
+    <div class="locked-icon">🔒</div>
+    <h2>Clase 6 bloqueada</h2>
+    <p style="font-size:13.5px">El contenido de Apolonio y las Cónicas estará disponible a partir del martes.</p>
+  </div>
+  
+  <!-- CONTENIDO REAL (SE REVELA AL DESBLOQUEAR) -->
+  <div class="real-content" id="content-c6" style="display:none;">
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--vio)">6</div>
+        <div class="cb-info">
+          <h2>Apolonio y las curvas "inútiles"</h2>
+          <p>Martes 14/4</p>
+        </div>
+      </div>
+      <div class="cb-obj">
+        <p><strong>Objetivo:</strong> Estudiar la obra de Apolonio de Perga sobre las secciones cónicas y debatir el concepto de "la irracionable eficacia de las matemáticas".</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label"><span>📖 Lectura Base</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:var(--vcl); border-color:var(--vio)">
+          <h3 style="color:var(--vio)">El Gran Geómetra y el Cono</h3>
+          <span>Historia Pura</span>
+        </div>
+        <div class="lect-body">
+          <p>Apolonio de Perga (c. 262–190 a.C.) fue el último de la gran tríada helenística (junto con Euclides y Arquímedes). Su obra maestra, <em>Las Cónicas</em>, es un estudio exhaustivo de las curvas que se obtienen al cortar un cono con un plano: la elipse, la parábola y la hipérbola. <span class="ref">(Boyer, 1986, pp. 129-131)</span></p>
+          
+          <div class="note nv" style="margin:14px 0">
+            <span class="ni">🧐</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--vio)">El problema de la "utilidad"</strong>
+              <span style="font-size:13px;line-height:1.6">A diferencia de Arquímedes, que usaba la matemática para defender una ciudad, el trabajo de Apolonio no servía absolutamente para nada práctico en su época. Era investigación por la pura belleza y simetría de las formas. Nadie en el mundo antiguo necesitaba calcular la trayectoria de una hipérbola para construir un templo o cobrar impuestos.</span>
+            </div>
+          </div>
+          
+          <p>Sin embargo, el destino de las cónicas es una de las anécdotas más fascinantes de la historia de la ciencia. Aproximadamente 1800 años después de Apolonio, Johannes Kepler descubrió que los planetas no giran en círculos perfectos, sino en elipses. Y más tarde, Isaac Newton usó las propiedades de la parábola descubiertas por Apolonio para calcular la trayectoria de los proyectiles y los cometas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label"><span>💬 Debate en el Aula</span><hr></div>
+      <div class="act-box" style="border-color:var(--vio)">
+        <div class="act-head" style="background:var(--vio)">
+          <h3>La irracionable eficacia de las matemáticas</h3>
+        </div>
+        <div class="act-body">
+          <p>El físico Eugene Wigner escribió un famoso ensayo preguntándose por qué la matemática, siendo una invención pura del cerebro humano (como el ajedrez o la poesía), termina describiendo el universo físico con tanta perfección, incluso siglos después de haber sido inventada.</p>
+          <div style="background:var(--gris); padding:16px; border-radius:var(--r); margin-top:12px; border-left:4px solid var(--vio)">
+            <strong style="display:block; font-size:14px; color:var(--nav); margin-bottom:8px">Para charlar entre los tres (Leyni, Ana y Gonzalo):</strong>
+            <ul style="font-size:13px; margin-left:18px; line-height:1.6">
+              <li>¿Enseñarían las cónicas en la escuela desde su belleza pura (el corte del cono, los focos) o directamente desde sus aplicaciones prácticas modernas (antenas parabólicas, órbitas)?</li>
+              <li>Si un padre les pregunta "<em>¿Para qué le enseñan esto a mi hijo si no sirve para nada?</em>", ¿cómo defenderían el valor de estudiar cosas abstractas apoyándose en la historia de Apolonio?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 7 · MIÉRCOLES (CON CONTENIDO OCULTO) ══════════════════ -->
+<div id="pane-c7" class="pane">
+  <!-- PANTALLA DE BLOQUEO -->
+  <div class="locked-pane" id="lock-c7">
+    <div class="locked-icon">🔒</div>
+    <h2>Clase 7 bloqueada</h2>
+    <p style="font-size:13.5px">El cierre de la unidad y el ocaso de Alejandría (Hipatia) se habilitará el miércoles.</p>
+  </div>
+  
+  <!-- CONTENIDO REAL (SE REVELA AL DESBLOQUEAR) -->
+  <div class="real-content" id="content-c7" style="display:none;">
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--amb)">7</div>
+        <div class="cb-info">
+          <h2>El ocaso: Hipatia y el fin de una era</h2>
+          <p>Miércoles 15/4</p>
+        </div>
+      </div>
+      <div class="cb-obj">
+        <p><strong>Objetivo:</strong> Entender que la historia de la matemática no es lineal ni acumulativa, analizando el colapso de la escuela alejandrina y el asesinato de Hipatia como un quiebre en la transmisión del conocimiento occidental.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label"><span>📖 Contexto Histórico</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:var(--acl); border-color:var(--amb)">
+          <h3 style="color:var(--amb)">La última luz de Alejandría</h3>
+          <span>Historia Socio-Política</span>
+        </div>
+        <div class="lect-body">
+          <p>Para el siglo IV d.C., la matemática creadora de los griegos se había estancado. El Imperio Romano, que dominaba la región, era pragmático: les interesaba la ingeniería para acueductos y puentes, no la demostración de teoremas abstractos. Alejandría pasó de ser un centro de innovación a un lugar de conservación y comentarios de textos antiguos.</p>
+          
+          <p>En este escenario destaca <strong>Hipatia de Alejandría</strong> (c. 370–415 d.C.), matemática, astrónoma y filósofa neoplatónica. Su trabajo consistió fundamentalmente en editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo. <span class="ref">(Kline, 1992, Vol. 1, p. 182)</span></p>
+
+          <div class="note na" style="margin:14px 0">
+            <span class="ni">🔥</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--amb)">La política del conocimiento</strong>
+              <span style="font-size:13px;line-height:1.6">La época de Hipatia estuvo marcada por tensiones extremas entre el poder civil, las facciones paganas y el creciente poder de la Iglesia cristiana. El asesinato de Hipatia a manos de una turba en el año 415 d.C. simboliza históricamente el fin de la era dorada de la ciencia griega. Con la posterior caída del Imperio Romano de Occidente, gran parte de este conocimiento se perdería para Europa durante siglos, siendo preservado y ampliado únicamente en el mundo islámico y bizantino.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label"><span>🎬 Análisis Fílmico</span><hr></div>
+      <div class="act-box" style="border-color:var(--amb)">
+        <div class="act-head" style="background:var(--amb)">
+          <h3>La película "Ágora" (2009) y el debate final</h3>
+        </div>
+        <div class="act-body">
+          <p>En las clases anteriores citamos la película <em>Ágora</em> de Alejandro Amenábar. Hoy vamos a centrarnos en una escena clave: cuando los estudiosos intentan rescatar los pergaminos ante el asalto al Serapeo.</p>
+          
+          <div style="background:var(--gris); padding:16px; border-radius:var(--r); margin-top:12px; border-left:4px solid var(--amb)">
+            <strong style="display:block; font-size:14px; color:var(--nav); margin-bottom:8px">Cierre del Eje 1 (Debate Final):</strong>
+            <p style="font-size:13px; line-height:1.6">En los libros de texto escolares, la matemática se presenta como un edificio terminado, neutral y ajeno a los problemas humanos. Sin embargo, vimos que Arquímedes murió asesinado por un soldado romano en un asedio, y que Hipatia fue asesinada por tensiones político-religiosas.</p>
+            <p style="font-size:13px; line-height:1.6; margin-top:8px; font-weight:bold; color:var(--nav)">Si ustedes tuvieran que diseñar el programa de estudios de Historia de la Matemática para el año que viene, ¿les parece importante incluir los contextos de guerra y política donde se produjeron estos conocimientos, o prefieren enseñar solo la evolución de las fórmulas y teoremas?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+// --- NAVEGACIÓN TABS ---
+function showTab(id, btn) {
+  if (btn && btn.classList.contains('locked')) return;
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + id).classList.add('on');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+  
+  if(id === 'c5') {
+    setTimeout(drawArchimedes, 50); 
+  }
+}
+
+// --- SIMULADOR ARQUÍMEDES (PI) ---
+function drawArchimedes() {
+  const canvas = document.getElementById('piCanvas');
+  if(!canvas) return;
+  
+  const size = canvas.parentElement.offsetWidth;
+  if(size === 0) return; 
+  
+  canvas.width = size * 2; 
+  canvas.height = size * 2;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(2, 2);
+  
+  const cx = size / 2;
+  const cy = size / 2;
+  const r = (size / 2) * 0.45; 
+  
+  const n = parseInt(document.getElementById('sides').value);
+  document.getElementById('sides-val').innerText = n;
+  
+  ctx.clearRect(0, 0, size, size);
+  
+  const startAngle = -Math.PI / 2; 
+  
+  // 1. Draw Outer Polygon (Red)
+  ctx.beginPath();
+  const angleStep = (Math.PI * 2) / n;
+  const outerR = r / Math.cos(Math.PI / n);
+  for (let i = 0; i <= n; i++) {
+    const angle = startAngle + i * angleStep;
+    const x = cx + outerR * Math.cos(angle);
+    const y = cy + outerR * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.fillStyle = 'rgba(217, 83, 79, 0.15)'; 
+  ctx.fill();
+  ctx.strokeStyle = '#D9534F'; 
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // 2. Draw Circle (Black)
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = '#1A2C3A';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  
+  // 3. Draw Inner Polygon (Blue)
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const angle = startAngle + i * angleStep;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.fillStyle = 'rgba(46, 109, 164, 0.2)'; 
+  ctx.fill();
+  ctx.strokeStyle = '#2E6DA4'; 
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  
+  ctx.beginPath();
+  ctx.arc(cx, cy, 3, 0, Math.PI*2);
+  ctx.fillStyle = '#1A2C3A';
+  ctx.fill();
+  
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + r * Math.cos(startAngle), cy + r * Math.sin(startAngle));
+  ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+  ctx.setLineDash([4, 4]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  
+  const innerArea = (n / 2) * Math.sin((2 * Math.PI) / n);
+  const outerArea = n * Math.tan(Math.PI / n);
+  
+  document.getElementById('val-inner').innerText = innerArea.toFixed(4);
+  document.getElementById('val-outer').innerText = outerArea.toFixed(4);
+}
+
+// Lógica Compartida para desbloquear clases
+function unlockClass(classId) {
+  const btn = document.getElementById('btn-' + classId);
+  const lockPane = document.getElementById('lock-' + classId);
+  const contentPane = document.getElementById('content-' + classId);
+  
+  if (btn) {
+    btn.classList.remove('locked');
+    btn.onclick = function() { showTab(classId, this); };
+  }
+  if (lockPane) lockPane.style.display = 'none';
+  if (contentPane) contentPane.style.display = 'block';
+}
+
+// Inicialización de la página
+document.addEventListener("DOMContentLoaded", () => {
+  // --- LÓGICA DE DESBLOQUEO AUTOMÁTICO POR FECHA ---
+  const hoy = new Date();
+  const fechaClase6 = new Date(2026, 3, 14); // 14 de Abril 2026 (mes 3 es abril en JS)
+  const fechaClase7 = new Date(2026, 3, 15); // 15 de Abril 2026
+
+  if (hoy >= fechaClase6) unlockClass('c6');
+  if (hoy >= fechaClase7) unlockClass('c7');
+
+  const slider = document.getElementById('sides');
+  if(slider) {
+    slider.addEventListener('input', drawArchimedes);
+    setTimeout(drawArchimedes, 150);
+  }
+  
+  window.addEventListener('resize', () => {
+    if(document.getElementById('pane-c5').classList.contains('on')) {
+      drawArchimedes();
+    }
+  });
+});
+
+// --- SECRETO DEL PROFE: DESBLOQUEAR PESTAÑAS (Ctrl + Shift + U) ---
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
+    const lockedBtns = document.querySelectorAll('.tab-btn.locked');
+    if (lockedBtns.length > 0) {
+      
+      unlockClass('c6');
+      unlockClass('c7');
+      
+      // Notificación sutil para avisarte que funcionó
+      const toast = document.createElement('div');
+      toast.innerHTML = '🔓 Clases Desbloqueadas';
+      toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15); animation: fadeIn 0.3s ease;';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  }
+});
+
+</script>
+</body>
+</html>
