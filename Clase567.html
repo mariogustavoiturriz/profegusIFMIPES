@@ -24,9 +24,26 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
 
-  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med)}
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med);position:relative}
+  .top-info{display:flex;align-items:center;gap:20px}
   .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
   .top-r{font-size:11px;opacity:.65;text-align:right}
+
+  .btn-back {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-back:hover { background: rgba(255,255,255,0.25); }
 
   .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--med)}
   .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
@@ -104,11 +121,6 @@
   .math-display span.red { color: var(--red); font-weight: bold; }
   .math-display span.blue { color: var(--med); font-weight: bold; }
 
-  .film-card{background:var(--bco);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
-  .film-head{background:var(--acl);padding:11px 18px;border-bottom:1px solid var(--bd)}
-  .film-head h3{font-size:13.5px;font-weight:700;color:var(--amb);margin:0}
-  .film-body{padding:16px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
-
   .bitacora{background:var(--vcl);border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
   .bitacora h3{color:var(--nav);font-size:15px;margin-bottom:8px}
   .bita-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
@@ -118,7 +130,8 @@
   .locked-icon { font-size: 40px; opacity: 0.5; margin-bottom: 15px; }
 
   @media(max-width:600px){
-    .top{flex-direction:column;padding:10px 14px}
+    .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+    .top-info{flex-direction:column;align-items:flex-start;gap:10px}
     .wrap{padding:14px 10px 40px}
     .cb-num{width:52px;font-size:22px}
   }
@@ -127,9 +140,12 @@
 <body>
 
 <div class="top">
-  <div>
-    <strong>Historia y Fundamentos de la Matemática</strong>
-    <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+  <div class="top-info">
+    <a href="index.html" class="btn-back">← Volver al Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
   </div>
   <div class="top-r">Ciclo Lectivo 2026</div>
 </div>
@@ -193,7 +209,7 @@
       </div>
     </div>
     <div class="cb-obj">
-      <p><strong>Objetivo:</strong> Analizar la tensión entre el contexto de descubrimiento (heurística física) y el contexto de justificación (demostración geométrica) a través del Método de Arquímedes, y diseñar estrategias didácticas basadas en este enfoque.</p>
+      <p><strong>Objetivo:</strong> Analizar la tensión entre el contexto de descubrimiento (heurística física) y el contexto de justificación (demostración geométrica) a través del Método de Arquímedes. La clase tiene dos momentos: primero <em>vivir</em> la limitación que enfrentó Arquímedes (calculando como él), y luego <em>usar</em> esa experiencia para diseñar una actividad didáctica propia.</p>
     </div>
   </div>
 
@@ -208,7 +224,7 @@
       <div class="lect-body">
         <p>Durante siglos, los matemáticos se preguntaron cómo hizo Arquímedes para calcular áreas y volúmenes curvos de forma tan perfecta. Sus textos publicados eran demostraciones magistrales usando el <strong>Método de Exhaución</strong> (creado por Eudoxo), que consistía en meter figuras dentro de otras hasta "agotar" el espacio. Pero estas demostraciones eran un dolor de cabeza larguísimo y servían para <em>probar</em> resultados, no para <em>descubrirlos</em>.</p>
         
-        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrió un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
+        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrú un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
 
         <figure style="margin: 18px 0; text-align: center;">
           <img src="https://img.asmedia.epimg.net/resizer/v2/5SOBW4GSJJFZ7J7E77Z7HBPT3I.jpg?auth=ab86c030671d9f686b0d99388d03369e6c3de9db4c8d7d9693c39f91c77bc4d0&width=1472&height=1104&smart=true" alt="" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
@@ -372,23 +388,23 @@
     </div>
   </div>
 
-  <!-- REFLEXIÓN DOCENTE: TALLER DE DISEÑO -->
+  <!-- TALLER DE DISEÑO DIDÁCTICO -->
   <div class="sec">
     <div class="sec-label"><span>🛠️ Taller de Transposición Didáctica</span><hr></div>
-    <div class="bitacora" style="background: var(--pale); border-color: var(--med);">
-      <h3 style="color:var(--nav); font-size:16px; font-weight:bold; margin-bottom:8px">Diseñando el "Borrador" del Círculo</h3>
-      <p style="font-size:13.5px; margin-bottom:12px; line-height:1.6; color:var(--neg)">
-        Arquímedes ocultó su "Método" mecánico porque no era formal. En las aulas de hoy solemos hacer lo mismo: mostramos la fórmula terminada del área del círculo ($A = \pi \cdot r^2$) y escondemos el "borrador", el proceso físico o intuitivo que le dio origen.
+    <div class="bitacora" style="background:var(--pale);border-color:var(--med)">
+      <h3 style="color:var(--nav);font-size:16px;font-weight:bold;margin-bottom:8px">Diseñando el "Borrador" del Círculo</h3>
+      <p style="font-size:13.5px;margin-bottom:12px;line-height:1.6;color:var(--neg)">
+        Recién vivieron lo que experimentó Arquímedes: una herramienta poderosa para <em>descubrir</em> (el cálculo físico) que sin embargo se ocultaba en las publicaciones oficiales porque "no era formal". En las aulas de hoy solemos hacer lo mismo — mostramos la fórmula terminada del área del círculo ($A = \pi \cdot r^2$) y escondemos el "borrador".
       </p>
-      
-      <div class="bita-consigna" style="border-left-color: var(--med); margin-bottom: 16px;">
+
+      <div class="bita-consigna" style="border-left-color:var(--med);margin-bottom:16px">
         <strong style="color:var(--nav)">Consigna de trabajo:</strong><br>
         Van a trabajar juntos para diseñar una <strong>micro-secuencia didáctica exploratoria</strong>. El objetivo es que las y los estudiantes de 2.° o 3.° año de secundaria "descubran" la fórmula del área del círculo manipulando las formas, tal como Arquímedes manipulaba pesos en su balanza.<br><br>
-        <em>Pista metodológica:</em> Piensen en la clásica demostración física de cortar un círculo de papel en "porciones de pizza" y reorganizarlas para formar una figura conocida (como un paralelogramo o un rectángulo).<br>
+        <em>Pista metodológica:</em> Piensen en la clásica demostración de cortar un círculo en "porciones de pizza" y reorganizarlas para formar un paralelogramo.<br>
         
         <div style="background:rgba(0,0,0,0.04); border-radius:6px; padding:12px; margin-top:10px;">
           <span class="ref" style="display:block; color:var(--txt)">
-            <strong>* ¿No recuerdan esta estrategia visual?</strong> El truco consiste en que las y los estudiantes noten que la base de la nueva figura formada es la mitad del perímetro del círculo ($\pi \cdot r$) y su altura es el radio ($r$). Pueden ver ejemplos rigurosos de esta transposición en los siguientes enlaces verificados:<br><br>
+            <strong>* ¿No recuerdan esta estrategia visual?</strong> El truco consiste en que las y los estudiantes noten que la base de la nueva figura formada es la mitad del perímetro del círculo ($\pi \cdot r$) y su altura es el radio ($r$). Pueden ver ejemplos de esta transposición en los siguientes recursos:<br><br>
             ▶ <a href="https://www.youtube.com/watch?v=X3WJ3uD5PAo" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Animación visual paso a paso (YouTube)</a><br>
             ▶ <a href="https://www.geogebra.org/m/mefnavxx" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Simulador oficial del GeoGebra Content Team</a><br>
             ▶ <a href="https://www.gaussianos.com/demostracion-sin-palabras-de-la-formula-para-calcular-el-area-de-un-circulo/" target="_blank" rel="noopener" style="color:var(--med); font-weight:bold; text-decoration:none;">Demostración gráfica en el portal matemático Gaussianos</a>
@@ -396,19 +412,19 @@
         </div>
       </div>
 
-      <div style="background:#fff; border: 1px solid var(--bd); border-radius: 6px; padding: 14px;">
-        <strong style="font-size:14px; color:var(--grn); display:flex; align-items:center; gap:6px;">
-          <span>🎯</span> ¿Qué esperamos como producción al final de la clase?
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:6px;padding:14px">
+        <strong style="font-size:14px;color:var(--grn);display:flex;align-items:center;gap:6px">
+          <span>🎯</span> Producción esperada al final de la clase
         </strong>
-        <p style="font-size:13px; margin-top:8px; color:var(--txt);">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito (en papel o digital) que detalle la planificación de la actividad, conteniendo obligatoriamente:</p>
-        <ul style="font-size:13px; margin-top:8px; margin-left:20px; line-height:1.6; list-style-type:disc; color:var(--neg)">
+        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito con los siguientes componentes:</p>
+        <ul style="font-size:13px;margin-top:8px;margin-left:20px;line-height:1.6;list-style-type:disc;color:var(--neg)">
           <li><strong>Materiales:</strong> Qué necesitan exactamente las y los estudiantes (ej. compás, tijeras, cartulina o un archivo específico de GeoGebra).</li>
           <li><strong>Consigna inicial:</strong> Cómo le presentan el desafío a las y los estudiantes sin "spoilear" la fórmula.</li>
-          <li><strong>Intervención Docente (CRÍTICO):</strong> Escriban las 3 o 4 <em>"preguntas guía"</em> que harían ustedes, como profesores, mientras las y los estudiantes rearman las porciones. El objetivo es que los propios estudiantes deduzcan (mirando la figura) que la base de ese nuevo paralelogramo mide $\pi \cdot r$ (la mitad del perímetro) y que su altura es $r$.</li>
+          <li><strong>Intervención Docente (CRÍTICO):</strong> Escriban las 3 o 4 <em>"preguntas guía"</em> que harían ustedes, como profesores, mientras las y los estudiantes rearman las porciones. El objetivo es que los propios estudiantes deduzcan que la base de ese nuevo paralelogramo mide $\pi \cdot r$ (la mitad del perímetro) y que su altura es $r$.</li>
         </ul>
       </div>
 
-      <div class="srcs" style="margin-top:20px; background:rgba(255,255,255,0.8); border-color:var(--med)">
+      <div class="srcs" style="margin-top:20px;background:rgba(255,255,255,0.8);border-color:var(--med)">
         <h5 style="color:var(--med)">Fuentes bibliográficas de la clase:</h5>
         <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza Editorial, Cap. 8.</p>
         <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 45–51.</p>
@@ -437,7 +453,7 @@
         </div>
 
         <div style="background:var(--slate);border-radius:6px;padding:16px 20px;">
-          <strong style="display:block; font-size:14.5px; color:var(--amb); margin-bottom:6px">2. Guy Brousseau y el Trabajo del Alumno</strong>
+          <strong style="display:block; font-size:14.5px; color:var(--amb); margin-bottom:6px">2. Guy Brousseau y el Trabajo del Estudiante</strong>
           <p style="font-size:13.5px; color:#E6F7F8; line-height:1.6; margin-bottom:8px">
             Brousseau afirma que <em>"el trabajo del estudiante debe ser, al menos en parte, el trabajo de un investigador"</em>. Si le damos a las y los estudiantes la fórmula del área del círculo ($\pi \cdot r^2$) ya pulida y demostrada formalmente, les estamos robando el desafío heurístico. El rol del docente es realizar la <strong>re-contextualización</strong> del saber: crear una situación a-didáctica donde el curso necesite manipular, probar y equivocarse (como Arquímedes con sus balanzas) antes de que el conocimiento sea institucionalizado.
           </p>
