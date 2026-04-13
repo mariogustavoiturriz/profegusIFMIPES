@@ -188,7 +188,7 @@
       </div>
 
       <figure style="margin: 18px 0; text-align: center;">
-        <img src="https://matematicasentumundo.es/ARTE/TA3.jpg" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+        <img src="https://matematicasentumundo.es/ARTE/TA3.jpg" alt="Tumba de Arquímedes" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
         <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Representación de la tumba de Arquímedes, decorada según su deseo con un cilindro circunscrito a una esfera.</figcaption>
       </figure>
 
@@ -224,23 +224,46 @@
       <div class="lect-body">
         <p>Durante siglos, los matemáticos se preguntaron cómo hizo Arquímedes para calcular áreas y volúmenes curvos de forma tan perfecta. Sus textos publicados eran demostraciones magistrales usando el <strong>Método de Exhaución</strong> (creado por Eudoxo), que consistía en meter figuras dentro de otras hasta "agotar" el espacio. Pero estas demostraciones eran un dolor de cabeza larguísimo y servían para <em>probar</em> resultados, no para <em>descubrirlos</em>.</p>
         
-        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrú un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
+        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrió un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
 
         <figure style="margin: 18px 0; text-align: center;">
-          <img src="https://img.asmedia.epimg.net/resizer/v2/5SOBW4GSJJFZ7J7E77Z7HBPT3I.jpg?auth=ab86c030671d9f686b0d99388d03369e6c3de9db4c8d7d9693c39f91c77bc4d0&width=1472&height=1104&smart=true" alt="" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
-          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Detalle del Palimpsesto de Arquímedes. El texto matemático original (horizontal) asoma por debajo de las oraciones litúrgicas medievales (verticales).</figcaption>
+          <div style="max-width: 100%; width: 350px; margin: 0 auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); background: #fff; padding: 15px;">
+            <svg viewBox="-110 -10 220 120" width="100%" height="auto">
+              <!-- Parábola -->
+              <path d="M -100,100 Q 0,-100 100,100" fill="none" stroke="#1A2C3A" stroke-width="2.5" />
+              <!-- Línea base -->
+              <line x1="-100" y1="100" x2="100" y2="100" stroke="#1A2C3A" stroke-width="1.5" />
+              
+              <!-- Triángulo principal (Nivel 1) -->
+              <polygon points="-100,100 100,100 0,0" fill="rgba(46, 109, 164, 0.25)" stroke="#2E6DA4" stroke-width="1.5" />
+              
+              <!-- Triángulos Nivel 2 -->
+              <polygon points="-100,100 0,0 -50,25" fill="rgba(26, 107, 58, 0.3)" stroke="#1A6B3A" stroke-width="1" />
+              <polygon points="100,100 0,0 50,25" fill="rgba(26, 107, 58, 0.3)" stroke="#1A6B3A" stroke-width="1" />
+              
+              <!-- Triángulos Nivel 3 -->
+              <polygon points="-100,100 -50,25 -75,56.25" fill="rgba(200, 92, 0, 0.35)" stroke="#C85C00" stroke-width="0.8" />
+              <polygon points="0,0 -50,25 -25,6.25" fill="rgba(200, 92, 0, 0.35)" stroke="#C85C00" stroke-width="0.8" />
+              <polygon points="0,0 50,25 25,6.25" fill="rgba(200, 92, 0, 0.35)" stroke="#C85C00" stroke-width="0.8" />
+              <polygon points="100,100 50,25 75,56.25" fill="rgba(200, 92, 0, 0.35)" stroke="#C85C00" stroke-width="0.8" />
+            </svg>
+          </div>
+          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">La cuadratura de la parábola: Arquímedes "agota" el área rellenándola con triángulos cada vez más chicos, sin llegar nunca al infinito.</figcaption>
         </figure>
 
-        <div class="note nb">
-          <span class="ni">⚖️</span>
+        <p>Los griegos le tenían terror al concepto de <em>infinito actual</em>. No podían decir "si sumo infinitos triángulos, obtengo el área exacta de la curva", porque para ellos el infinito no era un destino al que se pudiera llegar. Para esquivar este problema, inventaron un truco magistral basado en la <strong>doble reducción al absurdo</strong>.</p>
+        
+        <div class="note nv" style="margin:14px 0">
+          <span class="ni">🧠</span>
           <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La mecánica mental</strong>
-            <span style="font-size:13.5px;line-height:1.6">En <em>El Método</em>, Arquímedes confiesa su secreto: para descubrir la fórmula del volumen de la esfera, él no usó geometría. Imaginó la esfera cortada en infinitas rebanadas (como fetas de salame) y usó la <strong>Ley de la Palanca</strong> de la física para "pesarlas" en una balanza imaginaria contra un cono y un cilindro. Como sabía el centro de gravedad del cilindro, pudo deducir el de la esfera. <span class="ref">(Kline, 1992, Vol. 1, p. 147)</span></span>
+            <strong style="display:block;margin-bottom:4px;color:var(--vio)">La trampa lógica perfecta</strong>
+            <span style="font-size:13px;line-height:1.6">En lugar de demostrar que el área del polígono <em>es igual</em> al círculo (o a la parábola) en el infinito, Arquímedes demostraba dos cosas por separado usando un <strong>oponente imaginario</strong> (una figura retórica muy típica en los debates filosóficos griegos):<br>
+            1. Si el oponente afirma que el área real es <strong>mayor</strong> que la fórmula, Arquímedes inscribe un polígono tan ajustado que demuestra que eso es matemáticamente falso (llega a una contradicción).<br>
+            2. Si el oponente afirma que el área es <strong>menor</strong>, circunscribe un polígono por afuera que demuestra que también es falso.<br>
+            Si el área no puede ser mayor, y tampoco puede ser menor... <strong>por obligación lógica, tiene que ser exactamente igual</strong>. <span class="ref">(Boyer, 1986, pp. 121-122)</span></span>
           </div>
         </div>
-
-        <h5>La censura del infinito</h5>
-        <p>¿Por qué Arquímedes ocultó este método en sus publicaciones oficiales? Porque el rigor griego consideraba que mezclar "mecánica" (física, peso) con "geometría" (ideas puras) era una herejía lógica. Además, cortar un objeto en "infinitas" partes rompía el tabú griego del infinito actual. Arquímedes usaba la física en privado para <em>descubrir</em> (heurística), pero luego construía la larguísima demostración por exhaución geométrica para <em>justificar</em> ante el mundo matemático (validación).</p>
+        <p>Este método era inatacable, riguroso y perfecto. Su único defecto era que resultaba pesadísimo de redactar y no servía para <em>inventar</em> o <em>descubrir</em> fórmulas nuevas, solo para legalizar las que Arquímedes ya había adivinado jugando con su física de poleas y balanzas.</p>
       </div>
     </div>
   </div>
@@ -265,7 +288,7 @@
 
         <div class="step">
           <strong>Paso 1 — Construir el hexágono en GeoGebra (o en papel con compás)</strong>
-          <p>Dibujá un círculo de radio $r = 1$. Inscribí un hexágono regular adentro. Observá que cada lado del hexágono mide exactamente <strong>1</strong> (igual al radio). Esto no es coincidencia: es una propiedad del hexágono regular. ¿Por qué ocurre? </p>
+          <p>Dibujá un círculo de radio $r = 1$. Inscribí un hexágono regular adentro. Observá que cada lado del hexágono mide exactamente <strong>1</strong> (igual al radio). Esto no es coincidencia: es una propiedad del hexágono regular. ¿Por qué ocurre? (Pista: el hexágono se puede descomponer en seis triángulos equiláteros con vértice en el centro.)</p>
         </div>
 
         <div class="step">
@@ -286,7 +309,7 @@
           <span class="ni">⚠️</span>
           <div>
             <strong style="display:block;margin-bottom:4px;color:var(--amb)">Anacronismo a la vista: ¿Así escribía Arquímedes?</strong>
-            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que ustedes experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
+            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que las y los estudiantes experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
           </div>
         </div>
 
@@ -351,39 +374,6 @@
             
             <p style="font-size:13px; line-height:1.6; margin-top:10px; font-style:italic"><strong>Debate en clase:</strong> ¿Por qué se detuvo en 96 lados? Si seguimos aumentando $n$ hacia el infinito, ¿los polígonos <em>se convierten</em> en el círculo? Para los griegos la respuesta es <strong>NO</strong>. Para ellos, un polígono de infinitos lados era una aberración lógica. Esta es la barrera que impidió que Grecia inventara el Cálculo.</p>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROFUNDIZACIÓN: EL MÉTODO DE EXHAUCIÓN -->
-  <div class="sec">
-    <div class="sec-label"><span>📖 Profundización Teórica</span><hr></div>
-    <div class="lect">
-      <div class="lect-head" style="background:var(--vcl); border-color:var(--vio)">
-        <h3 style="color:var(--vio)">¿Qué era exactamente el Método de Exhaución?</h3>
-        <span>Historia Pura</span>
-      </div>
-      <div class="lect-body">
-        <p>Mencionamos varias veces que Arquímedes usaba el <strong>Método de Exhaución</strong> (o "agotamiento") para validar sus descubrimientos físicos, pero ¿cómo funcionaba este blindaje lógico ideado originalmente por Eudoxo?</p>
-
-        <figure style="margin: 18px 0; text-align: center;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Archimedes_parabola.svg/512px-Archimedes_parabola.svg.png" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block; background: #fff; padding: 10px;">
-          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">La cuadratura de la parábola: Arquímedes "agota" el área rellenándola con triángulos cada vez más chicos, sin llegar nunca al infinito.</figcaption>
-        </figure>
-
-        <p>Los griegos le tenían terror al concepto de <em>infinito actual</em>. No podían decir "si sumo infinitos triángulos, obtengo el área exacta de la curva", porque para ellos el infinito no era un destino al que se pudiera llegar. Para esquivar este problema, inventaron un truco magistral basado en la <strong>doble reducción al absurdo</strong>.</p>
-        
-        <div class="note nv" style="margin:14px 0">
-          <span class="ni">🧠</span>
-          <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--vio)">La trampa lógica perfecta</strong>
-            <span style="font-size:13px;line-height:1.6">En lugar de demostrar que el área del polígono <em>es igual</em> al círculo (o a la parábola) en el infinito, Arquímedes demostraba dos cosas por separado usando un <strong>oponente imaginario</strong> (una figura retórica muy típica en los debates filosóficos griegos):<br>
-            1. Si el oponente afirma que el área real es <strong>mayor</strong> que la fórmula, Arquímedes inscribe un polígono tan ajustado que demuestra que eso es matemáticamente falso (llega a una contradicción).<br>
-            2. Si el oponente afirma que el área es <strong>menor</strong>, circunscribe un polígono por afuera que demuestra que también es falso.<br>
-            Si el área no puede ser mayor, y tampoco puede ser menor... <strong>por obligación lógica, tiene que ser exactamente igual</strong>. <span class="ref">(Boyer, 1986, pp. 121-122)</span></span>
-          </div>
-        </div>
-        <p>Este método era inatacable, riguroso y perfecto. Su único defecto era que resultaba pesadísimo de redactar y no servía para <em>inventar</em> o <em>descubrir</em> fórmulas nuevas, solo para legalizar las que Arquímedes ya había adivinado jugando con su física de poleas y balanzas.</p>
       </div>
     </div>
   </div>
