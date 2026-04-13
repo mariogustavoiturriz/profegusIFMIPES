@@ -24,9 +24,26 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
 
-  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med)}
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med);position:relative}
+  .top-info{display:flex;align-items:center;gap:20px}
   .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
   .top-r{font-size:11px;opacity:.65;text-align:right}
+
+  .btn-back {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-back:hover { background: rgba(255,255,255,0.25); }
 
   .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--med)}
   .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
@@ -41,22 +58,13 @@
   .tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 16px;white-space:nowrap;transition:all .15s;margin-bottom:-2px;letter-spacing:.2px}
   .tab-btn:hover{color:var(--med)}.tab-btn.active{color:var(--nav);border-bottom-color:var(--nav)}
   
-  .tab-btn.locked {opacity: 0.4; cursor: not-allowed;}
-  .tab-btn.locked::after {content: " 🔒"; font-size: 10px;}
-
-  .btn-reveal {background: var(--nav); color: #fff; border: none; border-radius: var(--r); padding: 11px 18px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;}
-  .btn-reveal:hover {background: var(--med);}
-  .btn-reveal.green {background: var(--grn);}
-  .btn-reveal.green:hover {background: #14592f;}
-
-  /* Botones colapsables para Clase 3 y 4 */
   .btn-sec-toggle { width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; display: block; margin-bottom: 12px; }
   .sec-content { display: none; margin-bottom: 24px; }
   .sec-content.open { display: block; }
-  .sec-label .indicator { font-size: 11px; color: var(--med); font-weight: 600; text-transform: none; background: none; padding: 0; }
 
   .wrap{margin:0 auto;padding:24px 28px 60px;width:100%}
-  .pane{display:none}.pane.on{display:block}
+  .pane{display:none; animation: fadeIn 0.3s ease;}.pane.on{display:block}
+  @keyframes fadeIn { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
 
   .clase-banner{border-radius:var(--r);margin-bottom:20px;overflow:hidden}
   .clase-banner-top{display:flex;align-items:stretch;min-height:60px}
@@ -67,19 +75,15 @@
   .cb-obj{background:var(--pale);padding:12px 18px;border-top:1px solid var(--bd)}
   .cb-obj p{font-size:13px;color:var(--nav);line-height:1.55}
 
-  .aviso-ajuste{background:#FFF8E7;border:2px solid var(--amb);border-radius:var(--r);padding:13px 18px;margin-bottom:18px;display:flex;gap:10px;align-items:flex-start}
-  .aviso-ajuste .ai{font-size:20px;flex-shrink:0;margin-top:1px}
-  .aviso-ajuste p{font-size:13px;color:var(--neg);line-height:1.6;margin:0}
-
   .sec{margin-bottom:22px}
   .sec-label{display:flex;align-items:center;gap:8px;margin-bottom:10px}
   .sec-label span{background:var(--nav);color:#fff;border-radius:20px;padding:2px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
   .sec-label hr{flex:1;border:none;border-top:2px solid var(--bd)}
+  .sec-label .indicator { font-size: 11px; color: var(--med); font-weight: 600; text-transform: none; background: none; padding: 0; }
 
   .lect{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
   .lect-head{background:var(--pale);padding:11px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
   .lect-head h3{font-size:14px;font-weight:700;color:var(--nav);margin:0}
-  .lect-head span{font-size:12px;color:var(--txt)}
   .lect-body{padding:16px 20px}
   .lect-body p{font-size:13.5px;line-height:1.75;margin-bottom:11px;color:var(--neg)}
   .lect-body h5{font-size:13px;font-weight:700;color:var(--nav);margin:16px 0 7px;border-left:3px solid var(--med);padding-left:8px}
@@ -89,67 +93,75 @@
 
   .act-box{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
   .act-head{background:var(--nav);padding:12px 18px;display:flex;align-items:center;gap:12px}
-  .act-head-num{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .act-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
-  .act-head .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:2px 9px;font-size:11px;color:#fff;white-space:nowrap}
   .act-body{padding:16px 20px}
-  .act-body p{font-size:13.5px;line-height:1.7;margin-bottom:10px}
-  .act-body ul,.act-body ol{margin:6px 0 10px 18px}
-  .act-body li{font-size:13.5px;margin-bottom:5px;line-height:1.65}
 
   .step{background:var(--gris);border-radius:6px;padding:11px 15px;margin-bottom:9px;border-left:3px solid var(--med)}
   .step strong{display:block;font-size:13px;color:var(--nav);margin-bottom:4px}
-  .step p,.step li{font-size:13px;line-height:1.65}
-  .step ul{margin:4px 0 0 15px}
+  .step p{font-size:13px;line-height:1.65}
 
   .note{border-radius:var(--r);padding:9px 13px;font-size:13px;margin:10px 0;display:flex;gap:9px;align-items:flex-start}
   .ni{font-size:16px;flex-shrink:0;margin-top:1px}
   .nb{background:var(--pale);border-left:3px solid var(--med)}
-  .ng{background:var(--gcl);border-left:3px solid var(--grn)}
-  .na{background:var(--acl);border-left:3px solid var(--amb)}
-  .nv{background:var(--vcl);border-left:3px solid var(--vio)}
+  .ng{background:var(--gcl);border-left:4px solid var(--grn)}
+  .na{background:var(--acl);border-left:4px solid var(--amb)}
+  .nv{background:var(--vcl);border-left:4px solid var(--vio)}
 
   .proof{background:#1e1e1e;border-radius:6px;padding:20px 24px;margin:16px 0;font-family:Georgia, "Times New Roman", serif;font-size:14.5px;line-height:1.75;color:#E0E0E0}
   .proof p{color:#E0E0E0 !important; margin-bottom:14px;}
   .proof strong{color:#FFFFFF !important;}
-  .proof p:last-child{margin-bottom:0;}
-  .proof-ok{color:#6A9955 !important; font-weight:700}
-  .proof-lem{color:#CE9178 !important; font-style:italic;}
+
+  .btn-reveal {background: var(--nav); color: #fff; border: none; border-radius: var(--r); padding: 11px 18px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;}
+  .btn-reveal:hover {background: var(--med);}
+
+  /* -- ESTILOS SIMULADOR -- */
+  #sim-container { width: 100%; height: 500px; background: #f0f8ff; border: 1px solid var(--bd); border-radius: var(--r); position: relative; overflow: hidden; margin-top: 15px; user-select: none; }
+  #river { position: absolute; top: 50%; width: 100%; height: 36px; background: rgba(46, 109, 164, 0.35); border-top: 2px solid var(--med); border-bottom: 2px solid var(--med); }
+  .point { position: absolute; width: 22px; height: 22px; border-radius: 50%; transform: translate(-50%, -50%); z-index: 25; box-shadow: 0 0 6px rgba(0,0,0,0.4); border: 2px solid #fff; }
+  .point-label { position: absolute; font-weight: 900; font-size: 14px; color: #fff; text-shadow: 1px 1px 3px #000; pointer-events: none; white-space: nowrap; background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; z-index: 30; transform: translate(-50%, -50%); }
+  .euclid-tag { position: absolute; font-size: 11px; font-weight: 800; color: #fff; background: rgba(27, 58, 107, 0.95); padding: 4px 10px; border-radius: 4px; pointer-events: none; z-index: 50; display: none; white-space: nowrap; box-shadow: 1px 1px 5px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); transform: translate(-50%, -50%); }
+
+  #pt-a { background: #d9534f; left: 15%; top: 12%; }
+  #pt-b { background: #5cb85c; left: 85%; top: 35%; }
+  #pt-p { background: #f0ad4e; cursor: ew-resize; border: 2px solid #333; z-index: 35; top: 50%; left: 50%; }
+  #pt-a-prime { background: #d9534f; opacity: 0.7; display: none; }
+  #pt-q { background: #337ab7; opacity: 0.6; display: none; border: 2px solid #fff; }
+
+  #line-ap, #line-pb, #line-a-prime-b, #line-a-prime-q, #line-qb { position: absolute; transform-origin: 0 0; pointer-events: none; }
+  #line-ap, #line-pb { height: 3px; background: #333; z-index: 5; }
+  #line-a-prime-b { height: 0; border-bottom: 3px dashed #d9534f; z-index: 4; display: none; }
+  #line-a-prime-q, #line-qb { height: 0; border-bottom: 2px dotted #337ab7; z-index: 3; display: none; }
+
+  #dist-display { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,0.95); padding: 8px 14px; border-radius: 4px; font-weight: 800; border: 2px solid var(--nav); font-variant-numeric: tabular-nums; z-index: 40; min-width: 220px; }
+  
+  .btn-sim-group { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-sim { flex: 1; background: var(--nav); color: white; border: none; padding: 12px 15px; border-radius: var(--r); cursor: pointer; font-weight: bold; transition: background 0.2s; }
+  .btn-sim:hover { background: var(--med); }
 
   .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:14px}
   .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
   .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
 
-  .bitacora{background:var(--vcl);border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
-  .bitacora h3{color:var(--nav);font-size:15px;margin-bottom:8px}
-  .bita-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
-
-  .resource-item { display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--pale); border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--bd); text-decoration: none; transition: transform 0.1s; }
-  .resource-item:hover { transform: translateX(5px); background: #e0ecf7; }
-  .resource-item span { font-size: 13.5px; font-weight: 700; color: var(--nav); }
-  .resource-item small { font-size: 11px; color: var(--txt); }
-
-  .img-pair{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 6px}
-  .img-pair figure{margin:0;flex:1;min-width:160px;max-width:390px}
-  .img-pair img{width:100%;height:auto;border-radius:5px;border:1px solid var(--bd);display:block}
-  .img-pair figcaption{font-size:11px;color:var(--txt);margin-top:5px;line-height:1.4;font-style:italic}
-
-  .class-nav{display:flex;justify-content:space-between;margin-top:26px;gap:12px}
-  .cnav-btn{flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;transition:background .15s}
-  .cnav-btn:hover{background:var(--med)}
+  .tarea { background: var(--acl); border: 2px solid var(--amb); border-radius: var(--r); padding: 15px; margin: 15px 0; }
+  .tarea h4 { color: var(--amb); font-size: 15px; margin-bottom: 8px; }
 
   @media(max-width:600px){
-    .top{flex-direction:column;padding:10px 14px}.top-r{display:none}
+    .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+    .top-info{flex-direction:column;align-items:flex-start;gap:10px}
     .wrap{padding:14px 10px 40px}
+    .cb-num{width:52px;font-size:22px}
   }
 </style>
 </head>
 <body>
 
 <div class="top">
-  <div>
-    <strong>Historia y Fundamentos de la Matemática</strong>
-    <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+  <div class="top-info">
+    <a href="index.html" class="btn-back">← Volver al Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
   </div>
   <div class="top-r">Ciclo Lectivo 2026</div>
 </div>
@@ -172,72 +184,41 @@
 
 <div class="wrap">
 
-<!-- ══════════════════ INICIO (RESTAURADO) ══════════════════ -->
+<!-- ══════════════════ INICIO ══════════════════ -->
 <div id="pane-inicio" class="pane on">
-
   <div class="act-box">
     <div class="act-head" style="background:var(--slate)">
       <h3 style="color:#fff;font-size:16px">🔍 Preguntas para reflexionar</h3>
     </div>
     <div class="act-body">
       <p style="font-size:15px;font-weight:600;color:var(--nav);line-height:1.5">¿Por qué los griegos necesitaron demostrar cuando egipcios y babilonios no lo necesitaban?</p>
-      <p style="margin-top:10px;line-height:1.7">La respuesta no es matemática: es cultural. El Egipto faraónico y la Babilonia de los escribas eran Estados centralizados donde el conocimiento era secreto de palacio y la autoridad del resultado bastaba. La Grecia clásica inventó algo distinto: la <em>polis</em>, la ciudad-estado con deliberación pública. En el ágora, las decisiones se debatían ante los ciudadanos. Para convencer ya no alcanzaba apelar a la autoridad del faraón: había que dar un argumento que cualquiera pudiera seguir y refutar. Esa presión cultural migró directamente a la filosofía y a la matemática. <span class="ref">(Boyer, 1986, pp. 53–55; Kline, 1992, Vol. 1, pp. 26–28)</span></p>
-      <p style="margin-top:9px;line-height:1.7">Pero ese clima de debate solo explica por qué los griegos <em>valoraban</em> la demostración, no por qué se volvió una necesidad absoluta. Esa obligación surgió por un problema matemático que rompió sus esquemas: la inconmensurabilidad de la diagonal del cuadrado. Este obstáculo no se podía resolver midiendo en la práctica ni aplicando recetas, porque la medida exacta que buscaban simplemente no existía. Solo una demostración basada en lógica pura podía probar que encontrarla era imposible.</p>
-      <p style="margin-top:9px;line-height:1.7;color:var(--txt);font-style:italic">Una tensión que conviene nombrar: ese "cualquiera" que debatía no incluía a cualquiera. El ciudadano del ágora era el varón adulto libre. Las mujeres estaban excluidas de la deliberación pública — y con ella, del espacio que hizo posible y valorada la demostración matemática.</p>
+      <p style="margin-top:10px;line-height:1.7">La respuesta no es matemática: es cultural. El Egipto faraónico y la Babilonia de los escribas eran Estados centralizados donde el conocimiento era secreto de palacio y la autoridad del resultado bastaba. La Grecia clásica inventó algo distinto: la <em>polis</em>, la ciudad-estado con deliberación pública. En el ágora, las decisiones se debatían ante los ciudadanos. Para convencer ya no alcanzaba apelar a la autoridad del faraón: había que dar un argumento que cualquiera pudiera seguir y refutar. <span class="ref">(Boyer, 1986, pp. 53–55; Kline, 1992, Vol. 1, pp. 26–28)</span></p>
+      <p style="margin-top:9px;line-height:1.7">Esa obligación surgió por un problema matemático que rompió sus esquemas: la inconmensurabilidad de la diagonal del cuadrado. Este obstáculo no se podía resolver midiendo en la práctica, porque la medida exacta que buscaban simplemente no existía. Solo una demostración basada en lógica pura podía probar que encontrarla era imposible.</p>
       <div class="note nb" style="margin-top:12px">
         <span class="ni">🔗</span>
-        <span>Esta semana trabajamos en dos clases. Cada una tiene su propia pestaña — se habilitan por fecha.</span>
+        <span>Esta semana trabajamos en dos momentos. La Clase 2 se enfoca en la crisis pitagórica y las Clases 3 y 4 en la respuesta de Euclides.</span>
       </div>
     </div>
   </div>
 
   <div class="act-box">
     <div class="act-head" style="background:var(--slate)">
-      <h3 style="color:#fff;font-size:16px">📍 Un poco de historia</h3>
-    </div>
-    <div class="act-body">
-      <p>Recorrimos tres mundos que hacen matemática sin demostrar. El hueso de Ishango: el número natural como herramienta de supervivencia. El escriba egipcio: la fracción como instrucción de corte, no como número. Y hay un tercer mundo que forma parte del mismo arco: Babilonia, donde los escribas calculaban con notable sofisticación usando algoritmos que el Estado validaba en la práctica, sin necesitar demostrar nada.</p>
-      <p style="margin-top:9px">Los tres resuelven problemas reales. Los tres son eficaces. Ninguno de los tres pregunta <em>por qué</em>.</p>
-      <p style="margin-top:9px">Lo que sí sabemos por las fuentes — el Papiro de Rhind egipcio y la tablilla babilónica Plimpton 322 — es que ambas civilizaciones conocían y usaban la relación entre los lados de los triángulos rectángulos. Pero en ninguna fuente disponible aparece la pregunta de <em>por qué</em> esa relación funciona siempre. <span class="ref">(Boyer, 1986, pp. 17–19; Kline, 1992, Vol. 1, pp. 7–8)</span></p>
-      <div class="img-pair">
-        <figure>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Rhind_Mathematical_Papyrus.jpg" alt="Papiro de Rhind, c. 1650 a.C.">
-          <figcaption>Papiro de Rhind (c. 1650 a.C.). 87 problemas de matemática administrativa egipcia. Museo Británico, Londres.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://francis.naukas.com/files/2017/09/Dibujo20170906-plimpton-322-babylonian-clay-tablet-cuneiform-1800-bc-columbia-university.jpg" alt="Tablilla Plimpton 322, c. 1800 a.C.">
-          <figcaption>Tablilla Plimpton 322 (c. 1800 a.C.). Registra ternas pitagóricas con notable precisión. Universidad de Columbia, Nueva York.</figcaption>
-        </figure>
-      </div>
-      <p>Esta semana vamos a ver qué pasa cuando alguien sí formula esa pregunta. Y la respuesta va a demostrar que la doctrina pitagórica —la convicción de que toda magnitud geométrica puede expresarse como razón de números enteros— era insuficiente, y va a obligar a la matemática a rehacerse desde sus bases.</p>
-      <div class="note na" style="margin-top:10px">
-        <span class="ni">⚡</span>
-        <span><strong>El obstáculo de esta semana es radicalmente distinto al de la Clase 1.</strong> En la Clase 1 el obstáculo era operativo: cómo hacían los egipcios para repartir cuando su sistema no tenía fracciones generales. Les faltaba la herramienta, pero el reparto era posible. Esta semana el obstáculo es conceptual y profundo: los pitagóricos descubrieron que una medida que <em>debería</em> ser conmensurable simplemente no existe. No les falta un método de cálculo; se les rompió la visión del mundo.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="act-box">
-    <div class="act-head" style="background:var(--slate)">
-      <h3 style="color:#fff;font-size:16px">📋 Para reflexionar</h3>
+      <h3 style="color:#fff;font-size:16px">📋 Para reflexionar (Bitácora 1)</h3>
     </div>
     <div class="act-body">
       <div style="background:var(--slate);border-radius:6px;padding:14px 18px;">
         <ul style="margin-left:16px">
-          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">¿Por qué los egipcios no tendrían el problema de la inconmensurabilidad? ¿Qué cambió en la cultura griega para que ese problema importara?</li>
-          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">¿Qué relación hay entre la necesidad de persuadir en el ágora y la necesidad de probar en matemática?</li>
-          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">El ágora que hizo posible la demostración matemática excluía a las mujeres. ¿Qué implica eso para la historia de la matemática que heredamos y enseñamos?</li>
-          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">Cuando enseñamos matemática en el nivel secundario, ¿le pedimos a los y las estudiantes que demuestren o que verifiquen con ejemplos? Buscá un caso concreto que ilustre cuál de las dos predomina.</li>
+          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">¿Por qué los egipcios no tendrían el problema de la inconmensurabilidad?</li>
+          <li style="font-size:13px;color:#E6F7F8;margin-bottom:6px;line-height:1.55">En la escuela secundaria actual, ¿predomina el modelo babilónico (aplicación de fórmulas) o el griego (demostración)?</li>
         </ul>
-        <p style="font-size:11.5px;color:var(--cl);margin-top:10px;font-style:italic">(*) Chevallard señala que la demostración es uno de los elementos que con mayor frecuencia se pierde en la transposición al saber escolar, reemplazada por la verificación empírica (Chevallard, 1997, pp. 49–51). Brousseau identifica como obstáculo epistemológico la concepción de que la verdad matemática se establece por acumulación de casos favorables (Brousseau, 1983, pp. 170–172).</p>
+        <p style="font-size:11.5px;color:var(--cl);margin-top:10px;font-style:italic">(*) Chevallard señala que la demostración es uno de los elementos que con mayor frecuencia se pierde en la transposición al saber escolar (Chevallard, 1997, pp. 49–51).</p>
       </div>
     </div>
   </div>
-
 </div>
 
 
-<!-- ══════════════════ CLASE 2 · MARTES (RESTAURADA COMPLETA) ══════════════════ -->
+<!-- ══════════════════ CLASE 2 · MARTES ══════════════════ -->
 <div id="pane-c2" class="pane">
 
   <div class="clase-banner">
@@ -245,17 +226,12 @@
       <div class="cb-num">2</div>
       <div class="cb-info">
         <h2>El programa pitagórico y la inconmensurabilidad</h2>
-        <p>Martes 7/4 · 80 minutos · GeoGebra + demostración en pizarrón</p>
+        <p>Martes 7/4 · Análisis de la crisis conceptual</p>
       </div>
     </div>
     <div class="cb-obj">
-      <p><strong>Objetivo:</strong> Comprender, a partir del problema concreto de la diagonal del cuadrado, por qué el descubrimiento de la inconmensurabilidad implicó una crisis conceptual para la doctrina pitagórica — y no solo un resultado matemático.</p>
+      <p><strong>Objetivo:</strong> Comprender por qué el descubrimiento de la inconmensurabilidad implicó una crisis conceptual para la doctrina pitagórica y el nacimiento de la prueba por el absurdo.</p>
     </div>
-  </div>
-
-  <div class="aviso-ajuste">
-    <span class="ai">📌</span>
-    <p><strong>Clase comprimida a 80 minutos.</strong> Esta clase estaba prevista para 120 min el lunes. El contenido sobre Eudoxo y la reflexión didáctica de cierre se retoma el miércoles como apertura de la Clase 3. El <strong>Paso 4</strong> de la actividad queda como tarea para casa y se debate al inicio del miércoles.</p>
   </div>
 
   <div class="sec">
@@ -267,267 +243,266 @@
         <span>Sección 1.1</span>
       </div>
       <div class="lect-body">
-        <p>La escuela pitagórica, fundada por Pitágoras de Samos en la colonia griega de Crotona en el siglo VI a.C., sostenía una visión filosófica y matemática de ambición extraordinaria: la firme convicción de que toda la realidad podía expresarse mediante números y sus relaciones. Pero hay que hacer una salvedad importante: para los pitagóricos, "número" significaba exclusivamente número entero. Y "relación" significaba razón de enteros, lo que hoy llamamos número racional. <span class="ref">(Boyer, 1986, p. 72)</span></p>
+        <p>La escuela pitagórica sostenía que toda la realidad podía expresarse mediante números enteros y sus relaciones (razones). Para ellos, la armonía del mundo era racional. Esta convicción se derrumbó con la diagonal del cuadrado.</p>
 
-        <p>Esta convicción de que "todo es número" tenía fundamentos empíricos notables. Los pitagóricos habían descubierto que las consonancias musicales corresponden exactamente a razones simples entre longitudes de cuerdas: la octava es \( 2:1 \), la quinta es \( 3:2 \), la cuarta es \( 4:3 \). Si la armonía del sonido era racional, ¿por qué no iba a serlo la geometría?</p>
+        <h5>La prueba por el absurdo</h5>
+        <p>Aristóteles resume la demostración explicando que, si suponemos que la diagonal y el lado tienen una medida común, se llega a una imposibilidad: <em>"los números impares resultan iguales a los pares"</em>.</p>
 
-        <p>Llevada a la geometría, esta doctrina suponía que cualesquiera dos magnitudes tenían siempre una medida común: existía una unidad más pequeña que "cabía" un número entero de veces en cada una. Esta propiedad se llama <strong>conmensurabilidad</strong>. La escuela pitagórica postulaba, como pilar de todo su sistema, que <em>todos</em> los segmentos son conmensurables entre sí. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 55)</span></p>
-
-        <div class="note nv" style="margin-top:14px;margin-bottom:14px">
-          <span class="ni">👥</span>
-          <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--vio)">Una excepción en la historia antigua</strong>
-            <span style="font-size:13px;line-height:1.6">La comunidad pitagórica fue, dentro del contexto griego, una excepción notable: las fuentes antiguas mencionan mujeres entre sus miembros. Teano —identificada en algunas fuentes como discípula de Pitágoras— es una de las pocas figuras femeninas asociadas a la matemática de la Antigüedad. Aunque las fuentes que le atribuyen escritos propios son tardías y la historiografía contemporánea evita exagerar su rol <span class="ref">(Boyer, 1986, p. 72)</span>, esta escuela abrió un espacio de participación intelectual para las mujeres que la cultura griega en general cerraba.</span>
-          </div>
-        </div>
-
-        <h5>La diagonal del cuadrado</h5>
-        <p>El colapso de esta visión llegó por el camino más inesperado: un cuadrado y su diagonal. La pregunta pitagórica era inevitable: ¿existe una medida común que entre una cantidad exacta de veces tanto en el lado como en la diagonal?</p>
-
-        <h5>La prueba por el absurdo: cuando lo impar se vuelve par</h5>
-        <p>Hoy solemos escribir esta demostración usando álgebra moderna, pero los griegos no tenían ecuaciones algebraicas. Ellos razonaban combinando geometría (segmentos y áreas) con aritmética (las propiedades de los números pares e impares). La primera constancia escrita que tenemos de este razonamiento proviene de Aristóteles. En sus <a href="https://www.elejandria.com/libro/primeros-analiticos/aristoteles/1154" target="_blank" rel="noopener" style="color:var(--med);font-weight:600"><em>Primeros Analíticos</em></a>, resume la demostración por reducción al absurdo explicando que, si suponemos que la diagonal y el lado tienen una medida común, se llega a una imposibilidad lógica: <em>"los números impares resultan iguales a los pares"</em>.</p>
-
-        <div class="note nb" style="margin-top:14px;margin-bottom:14px">
-          <span class="ni">💡</span>
-          <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--med)">¿Cómo demostraban los griegos el lema de los pares e impares?</strong>
-            <span style="font-size:13px;line-height:1.6">Los pitagóricos no daban nada por sentado; lo demostraban representando los números con puntos o piedras (aritmética figurativa). Definían un número par como aquel que se puede dividir en dos filas exactamente iguales. Un impar, al armar las dos filas, siempre dejaba una piedra "suelta". Con este modelo visual, demostraron rigurosamente que si multiplicás un impar por un impar, siempre sobrará una unidad al final. Por ende, un número impar elevado al cuadrado siempre da como resultado otro impar. Esto fundamenta el paso clave de la prueba: si el resultado de elevar un número al cuadrado dio par, es lógicamente imposible que el número original haya sido impar. Tenía que ser par.</span>
-          </div>
-        </div>
-
-        <p>La reconstrucción formal de este argumento histórico, fiel a la geometría original de las áreas, sigue este esquema lógico.</p>
-
-        <button class="btn-reveal" id="btn-proof" onclick="document.getElementById('proof-box').style.display='block'; this.style.display='none'">
-          👁️ Revelar demostración formal
+        <button class="btn-reveal" id="btn-proof-c2" onclick="document.getElementById('proof-box-c2').style.display='block'; this.style.display='none'">
+          👁️ Revelar demostración formal completa
         </button>
 
-        <div id="proof-box" style="display:none">
-          <div class="note na" style="margin-bottom:16px">
-            <span class="ni">⚠️</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--amb)">Nota didáctica sobre el anacronismo algebraico</strong>
-              <span style="font-size:13px;line-height:1.6">Es muy común en la escuela secundaria plantear esta demostración arrancando con una ecuación moderna como \(\sqrt{2} = \frac{p}{q}\). Como futuros docentes, deben saber que <strong>esto es un anacronismo</strong>. Para los griegos, el símbolo de la raíz y la idea de que ese "resultado" fuera un número no existían. Su problema era geométrico: buscaban una "medida común" entre dos segmentos físicos. Por eso, la demostración histórica rigurosa no parte de una ecuación, sino de comparar visualmente las áreas de dos cuadrados.</span>
-            </div>
-          </div>
-
+        <div id="proof-box-c2" style="display:none">
           <div class="proof">
-            <p><strong>1. EL SUPUESTO DE CONMENSURABILIDAD (La hipótesis pitagórica):</strong><br>
-            Supongamos que la diagonal y el lado de un cuadrado son conmensurables. Existe un segmento pequeño (una unidad \(u\)) que "entra" una cantidad entera de veces tanto en la diagonal como en el lado.<br>
-            Llamemos \(p\) a la cantidad de veces que entra en la diagonal y \(q\) a la cantidad de veces que entra en el lado.</p>
-
-            <p><strong>2. LA MÍNIMA EXPRESIÓN:</strong><br>
-            Podemos exigir que esta unidad \(u\) sea la <em>mayor medida común posible</em>. Al hacerlo, nos aseguramos de que \(p\) y \(q\) sean coprimos (fracción irreducible). Por lo tanto, <strong>no pueden ser ambos pares al mismo tiempo</strong>.</p>
-
-            <p><strong>3. LA GEOMETRÍA DE LAS ÁREAS (El paso clave sin raíces):</strong><br>
-            Si construimos un cuadrado apoyado sobre la diagonal, la geometría nos demuestra visualmente (dividiendo la figura en triángulos) que el área de este cuadrado nuevo es exactamente el <strong>doble</strong> del área del cuadrado original.<br>
-            Midiendo esas áreas con nuestra unidad hipotética: el área del cuadrado sobre la diagonal es \(p^2\). El área del cuadrado sobre el lado es \(q^2\).<br>
-            Como el área grande es el doble de la original: \(p^2 = 2q^2\).</p>
-
-            <p><strong>4. LA DEDUCCIÓN DE PARIDAD:</strong><br>
-            La ecuación nos dice que \(p^2\) es igual a \(2\) multiplicado por un entero (\(q^2\)). Por definición, \(p^2\) es <strong>par</strong>.<br>
-            <span class="proof-lem">[Lema griego: Todo cuadrado par proviene necesariamente de un número original par. Lo impar por lo impar siempre da impar].</span><br>
-            Por lo tanto, la medida de la diagonal \(p\) es un número <strong>PAR</strong>.</p>
-
-            <p><strong>5. EL IMPACTO EN EL LADO:</strong><br>
-            Si \(p\) es par, la condición del paso 2 obliga a que \(q\) sea <strong>IMPAR</strong>.</p>
-
-            <p><strong>6. LA SUSTITUCIÓN Y EL ABSURDO:</strong><br>
-            Si \(p = 2k\), entonces \(p^2 = 4k^2\).<br>
-            Volvemos a \(p^2 = 2q^2\): reemplazamos \(p^2\): \(4k^2 = 2q^2\).<br>
-            Dividimos: \(2k^2 = q^2\).</p>
-
-            <p><strong>7. LA CONTRADICCIÓN FINAL:</strong><br>
-            \(q^2 = 2k^2\) revela que \(q^2\) también es par.<br>
-            Por el mismo lema: si el cuadrado es par, entonces \(q\) tiene que ser <strong>PAR</strong>.<br>
-            ¡Pero en el Paso 5 la lógica nos había obligado a deducir que \(q\) era <strong>IMPAR</strong>!</p>
-
-            <p class="proof-ok">Un mismo número no puede ser par e impar simultáneamente. Esta contradicción lógica destruye el supuesto inicial (Paso 1). Conclusión: no existe ninguna medida común. La diagonal y el lado son inconmensurables. ∎</p>
+            <p><strong>1. SUPUESTO:</strong> Supongamos que la diagonal y el lado son conmensurables. Existe una unidad $u$ que entra $p$ veces en la diagonal y $q$ en el lado, siendo $p/q$ una fracción irreducible (no ambos pares).</p>
+            <p><strong>2. GEOMETRÍA:</strong> El cuadrado sobre la diagonal es el doble del cuadrado sobre el lado. Entonces: $p^2 = 2q^2$.</p>
+            <p><strong>3. PARIDAD:</strong> Como $p^2$ es par, $p$ debe ser <strong>PAR</strong>. Si $p$ es par, $q$ debe ser <strong>IMPAR</strong> (por ser irreducible).</p>
+            <p><strong>4. SUSTITUCIÓN:</strong> Si $p = 2k$, entonces $4k^2 = 2q^2$, lo que simplifica a $2k^2 = q^2$.</p>
+            <p><strong>5. ABSURDO:</strong> Esto implica que $q^2$ es par, por lo tanto $q$ es <strong>PAR</strong>. ¡Pero habíamos dicho que era IMPAR!</p>
+            <p><strong>Conclusión:</strong> Un número no puede ser par e impar. El supuesto inicial es falso. Son inconmensurables. ∎</p>
           </div>
-          <p style="margin-top:14px">Kline comenta sobre esto: la demostración "no requiere cálculo, no requiere medición: requiere solo lógica." El problema obligó a la matemática a abandonar la intuición empírica para confiar en la deducción rigurosa. <span class="ref">(Kline, 1992, Vol. 1, p. 33)</span></p>
         </div>
-
-        <h5 style="margin-top:20px">El impacto histórico</h5>
-        <p>Las fuentes antiguas sobre lo que ocurrió después del descubrimiento son contradictorias y en muchos casos legendarias. El relato popular — que un miembro llamado Hippasus fue arrojado al mar por revelar el secreto — no está atestiguado por ninguna fuente contemporánea fiable. <span class="ref">(Boyer, 1986, p. 74)</span></p>
-        <p>Lo que sí puede afirmarse: el descubrimiento representó una crisis conceptual de primera magnitud. La respuesta matemática llegó con <strong>Eudoxo de Cnido</strong> (c. 400–347 a.C.), que desarrolló una teoría de las proporciones capaz de manejar magnitudes inconmensurables sin expresarlas como razones de enteros. Euclides incorporaría esa teoría en el Libro V de los <em>Elementos</em>. La solución de Eudoxo no resolvió el problema cambiando los números: lo resolvió cambiando la pregunta. En vez de "¿cuál es la razón entre estas magnitudes?", preguntó "¿qué relación de orden tienen?" Es un movimiento filosófico, no solo técnico. <span class="ref">(Boyer, 1986, pp. 80–84)</span></p>
       </div>
     </div>
   </div>
 
   <div class="sec">
-    <div class="sec-label"><span>⚙️ Actividad práctica</span><hr></div>
+    <div class="sec-label"><span>⚙️ Actividad</span><hr></div>
     <div class="act-box">
-      <div class="act-head"><div class="act-head-num">1</div><h3>Exploración en GeoGebra: La búsqueda empírica</h3><span class="chip">GeoGebra</span></div>
+      <div class="act-head"><h3>Exploración en GeoGebra</h3></div>
       <div class="act-body">
-        <div class="step"><strong>Paso 1 — Construir en GeoGebra</strong><p>Construí un cuadrado de lado 1 y medí la diagonal. Probá con \(\frac{7}{5}\), \(\frac{17}{12}\), \(\frac{41}{29}\). ¿Qué observás?</p></div>
-        <div class="step"><strong>Paso 2 — La pregunta crítica</strong><p>¿Por qué verificar con muchos casos no alcanza para probar que ninguna medida común dará exacto?</p></div>
-      </div>
-    </div>
-
-    <button class="btn-reveal green" onclick="document.getElementById('extra-teodoro').style.display='block'; this.style.display='none'">⏱️ Quedó tiempo: La Espiral de Teodoro</button>
-    <div id="extra-teodoro" style="display:none;margin-top:14px">
-      <div class="act-box">
-        <div class="act-head" style="background:var(--slate)"><h3>Actividad adicional: La (falsa) Espiral de Teodoro</h3></div>
-        <div class="act-body">
-          <p>Sabemos por Platón que Teodoro demostró la inconmensurabilidad hasta la raíz de 17. Pero la espiral continua es un invento didáctico moderno.</p>
+        <div class="step">
+          <strong>La Espiral de Teodoro</strong>
+          <p>Construí una sucesión de triángulos rectángulos donde cada nueva hipotenusa sirve de base al siguiente, con un cateto de longitud 1. Verás aparecer $\sqrt{2}, \sqrt{3}, \sqrt{4},...$. ¿Por qué Teodoro se detuvo en $\sqrt{17}$?</p>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 
-<!-- ══════════════════ CLASES 3 Y 4 · MIÉRCOLES (BOTONES + GEO GEBRA) ══════════════════ -->
+<!-- ══════════════════ CLASES 3 Y 4 · MIÉRCOLES ══════════════════ -->
 <div id="pane-c3c4" class="pane">
 
   <div class="clase-banner">
     <div class="clase-banner-top">
-      <div class="cb-num" style="font-size:20px;width:80px;flex-direction:column;gap:2px"><span>3</span><span>y</span><span>4</span></div>
-      <div class="cb-info"><h2>Euclides: sistematización y Bitácora 1</h2></div>
+      <div class="cb-num">3-4</div>
+      <div class="cb-info">
+        <h2>Euclides y la arquitectura del sistema</h2>
+        <p>Miércoles 8/4 · La sistematización definitiva</p>
+      </div>
     </div>
-    <div class="cb-obj"><p><strong>Objetivo:</strong> Analizar la estructura de los <em>Elementos</em> y los límites de su rigor.</p></div>
+    <div class="cb-obj">
+      <p><strong>Objetivo:</strong> Analizar la estructura axiomática de los <em>Elementos</em> y detectar sus supuestos implícitos mediante el análisis crítico.</p>
+    </div>
   </div>
 
-  <!-- SECCIÓN 1: LECTURA COMPLETA (OCULTA) -->
-  <button class="btn-sec-toggle" onclick="toggleSec('sec-lect-3')">
-    <div class="sec-label"><span>📖 Lectura · Clase 3</span><hr><span class="indicator" id="ind-lect-3">▼ Clic para desplegar lectura completa</span></div>
-  </button>
-  <div id="sec-lect-3" class="sec-content">
+  <div class="sec">
+    <div class="sec-label"><span>📖 Lectura</span><hr></div>
     <div class="lect">
-      <div class="lect-head"><h3>Los Elementos de Euclides: la sistematización del argumento</h3><span>Sección 2</span></div>
+      <div class="lect-head"><h3>Los Elementos de Euclides</h3></div>
       <div class="lect-body">
-        <h5>Quién fue —y no fue— Euclides</h5>
-        <p>De Euclides sabemos sorprendentemente poco. Trabajó en Alejandría probablemente en el siglo III a.C. No conocemos sus fechas de nacimiento ni de muerte. Boyer es categórico: "Euclides es para nosotros principalmente el autor de los Elementos; lo demás, en su mayor parte, son conjeturas." <span class="ref">(Boyer, 1986, p. 86)</span></p>
-        <p>Los Elementos constan de 13 libros y 465 proposiciones. No son, en su mayoría, resultados originales: son la sistematización lógica del conocimiento matemático griego acumulado hasta entonces. Durante más de dos milenios fueron el texto de referencia de toda educación matemática occidental. <span class="ref">(Kline, 1992, Vol. 1, p. 54)</span></p>
-
-        <h5>La estructura axiomático-deductiva</h5>
-        <p>Lo que hace revolucionarios a los Elementos es la estructura lógica que los sostiene. Es importante contextualizar qué significaban estos términos para los griegos de esa época:</p>
+        <p>Euclides (c. 300 a.C.) no inventó la geometría, la <strong>sistematizó</strong>. Su obra organiza el saber en:</p>
         <ul>
-          <li><strong>Definiciones:</strong> establecen el vocabulario con precisión. "Un punto es aquello que no tiene partes." (Def. 1)</li>
-          <li><strong>Postulados (<em>aitemata</em>):</strong> eran supuestos específicos de la geometría que se aceptaban sin demostración para poder construir el sistema.</li>
-          <li><strong>Nociones comunes o Axiomas (<em>koinai ennoiai</em>):</strong> verdades lógicas generales, consideradas universalmente evidentes y válidas para cualquier ciencia o razonamiento.</li>
+          <li><strong>Definiciones:</strong> El vocabulario inicial.</li>
+          <li><strong>Postulados:</strong> Reglas específicas de la geometría (pedir permiso para trazar).</li>
+          <li><strong>Axiomas:</strong> Verdades lógicas universales.</li>
         </ul>
-        <p>Sobre esa base se construye cada proposición mediante deducción. Kline señala que "la contribución metodológica de Euclides fue mostrar que toda la geometría podía construirse deductivamente a partir de un conjunto mínimo de supuestos." <span class="ref">(Kline, 1992, Vol. 1, p. 57)</span></p>
+        <p>Un dato clave: la versión que conocemos fue editada por **Teón de Alejandría** (padre de Hipatia) siglos después.</p>
       </div>
     </div>
   </div>
 
-  <!-- SECCIÓN 2: BIBLIOTECA DIGITAL (OCULTA) -->
-  <button class="btn-sec-toggle" onclick="toggleSec('sec-biblio')">
-    <div class="sec-label"><span>📚 Biblioteca Digital de Euclides</span><hr><span class="indicator" id="ind-biblio">▼ Clic para desplegar materiales</span></div>
-  </button>
-  <div id="sec-biblio" class="sec-content">
+  <div class="sec">
+    <div class="sec-label"><span>🖥️ Laboratorio Visual</span><hr></div>
     <div class="act-box">
-        <div class="act-head" style="background:var(--slate)"><h3>Fuentes Primarias y Recursos Digitales</h3></div>
-        <div class="act-body">
-            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:10px;">
-                <a href="https://archive.org/details/ColeccionObrasGrecoLatinas3/462.Euclides-Elementos-Libro-1/" target="_blank" class="resource-item">
-                    <div><span>Euclides - Elementos - Libro I</span><br><small>Fundamentos (Gredos)</small></div>
-                </a>
-                <a href="https://archive.org/details/ColeccionObrasGrecoLatinas3/463.Euclides-Elementos-Libro-2" target="_blank" class="resource-item">
-                    <div><span>Euclides - Elementos - Libro II</span><br><small>Áreas (Gredos)</small></div>
-                </a>
-                <a href="https://archive.org/details/ColeccionObrasGrecoLatinas3/464.Euclides-Elementos-LibrosV-Ix/" target="_blank" class="resource-item">
-                    <div><span>Euclides - Elementos - Libros V a IX</span><br><small>Aritmética (Gredos)</small></div>
-                </a>
-                <a href="https://archive.org/details/EuclidesElementosXXIIIGredos" target="_blank" class="resource-item">
-                    <div><span>Euclides - Elementos - Libros X a XIII</span><br><small>Geometría sólida (Gredos)</small></div>
-                </a>
-                <a href="https://www.c82.net/euclid/" target="_blank" class="resource-item" style="border-left: 4px solid var(--vio);">
-                    <div><span>Byrne's Euclid (Visual)</span><br><small>Versión cromática interactiva</small></div>
-                </a>
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <!-- SECCIÓN 3: ACTIVIDADES (OCULTA + GEO GEBRA APPLET) -->
-  <button class="btn-sec-toggle" onclick="toggleSec('sec-act-3')">
-    <div class="sec-label"><span>⚙️ Actividades · Clase 3</span><hr><span class="indicator" id="ind-act-3">▼ Clic para desplegar actividades</span></div>
-  </button>
-  <div id="sec-act-3" class="sec-content">
-    <div class="act-box">
-      <div class="act-head"><h3>Acertijo Histórico: Herón y la Distancia Mínima</h3></div>
+      <div class="act-head"><h3>Acertijo de Herón: El Mensajero y el Río</h3></div>
       <div class="act-body">
-        <p>Un mensajero debe ir de A a B pasando por el río. Usá este applet interactivo de GeoGebra para encontrar el punto óptimo y entender la lógica de Herón.</p>
+        <p>Mové el punto amarillo **P** en el río. ¿En qué lugar el trayecto Casa A → P → Casa B es el más corto?</p>
         
-        <div style="width:100%; border:1px solid #ccc; border-radius:var(--r); overflow:hidden; background:#fff; margin:15px 0">
-          <iframe 
-            src="https://www.geogebra.org/material/iframe/id/v8nyz7v2/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false" 
-            width="100%" 
-            height="450px" 
-            style="border:0px;">
-          </iframe>
+        <div id="sim-container">
+          <div id="dist-display">Mové P para estimar el trayecto</div>
+          <div id="river"></div>
+          <div id="pt-a" class="point"></div><div id="label-a" class="point-label">Casa A</div>
+          <div id="pt-b" class="point"></div><div id="label-b" class="point-label">Casa B</div>
+          <div id="pt-p" class="point"></div><div id="label-p" class="point-label">P</div>
+          <div id="pt-a-prime" class="point"></div><div id="label-a-prime" class="point-label" style="display:none; background:#d9534f">A' (Reflejo)</div>
+          <div id="pt-q" class="point"></div><div id="label-q" class="point-label" style="display:none; background:#337ab7">Q (Error)</div>
+          
+          <div id="tag-prop1-4" class="euclid-tag" style="background:#d9534f">Prop 1.4: Simetría</div>
+          <div id="tag-post1" class="euclid-tag" style="background:#1A6B3A">Post. 1: Mínimo Recto</div>
+          <div id="tag-prop1-20" class="euclid-tag" style="background:#C85C00">Prop 1.20: Desigualdad</div>
+          
+          <div id="line-ap"></div><div id="line-pb"></div>
+          <div id="line-a-prime-b"></div>
+          <div id="line-a-prime-q"></div><div id="line-qb"></div>
         </div>
         
-        <div class="note nb">
-          <span class="ni">💡</span>
-          <span><strong>Lógica de Herón:</strong> La distancia mínima se halla trazando una línea recta entre el destino (B) y el reflejo del punto de partida (A') respecto al río.</span>
+        <div class="btn-sim-group">
+          <button id="toggle-solution" class="btn-sim">Revelar Solución Geométrica</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- TRABAJO FUENTES -->
-    <div class="act-box">
-      <div class="act-head"><h3>Trabajo con la fuente: leer el Libro I</h3></div>
+  <div class="sec">
+    <div class="sec-label"><span>🔍 Análisis Crítico</span><hr></div>
+    <div class="act-box" style="border: 2px solid var(--med);">
+      <div class="act-head" style="background:var(--med)"><h3>La Grieta de Euclides</h3></div>
       <div class="act-body">
-        <div class="step"><strong>Texto A — Definiciones</strong><p>"Un punto es aquello que no tiene partes". ¿Describe esto la realidad física o un ente ideal?</p></div>
-        <div class="step"><strong>Texto B — Los cinco postulados</strong><p>Identificar cuál te resulta menos "evidente" y por qué.</p></div>
+        <p>En la **Proposición I.1**, Euclides cruza dos círculos para hallar un vértice. Pero, ¿quién asegura que se tocan y no se "saltan" uno al otro? Euclides confió en su ojo; le faltaba el **Axioma de Continuidad** que recién se formalizó en el siglo XIX.</p>
       </div>
     </div>
   </div>
 
-  <!-- CLASE 4 (VISIBLE) -->
-  <div class="sec">
-    <div class="sec-label"><span>📖 Lectura · Clase 4</span><hr></div>
-    <div class="lect">
-      <div class="lect-head"><h3>La grieta en el primer teorema</h3><span>Sección 2.4</span></div>
-      <div class="lect-body">
-        <p>Euclides empieza construyendo un triángulo equilátero. Pero hay un problema: ¿dónde garantiza Euclides que esas dos circunferencias se intersectan? La respuesta es que no lo garantiza en sus postulados: confió en la intuición visual. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 71)</span></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- BITÁCORA (VISIBLE) -->
-  <div class="sec">
-    <div class="sec-label"><span>📓 Bitácora 1</span><hr></div>
-    <div class="bitacora">
-      <h3>📓 Bitácora 1 — El aula de hoy</h3>
-      <div class="bita-consigna">En la escuela secundaria actual, ¿qué modelo (Egipto/Babilonia o Grecia) predomina? Argumentá con un ejemplo concreto de una actividad o examen.</div>
-      <p style="font-size:12px; color:var(--txt); margin-top:8px">Extensión: 200–350 palabras. Entrega en Foro hoy 23:59 hs.</p>
-    </div>
-  </div>
-
-  <div class="class-nav">
-    <button class="cnav-btn" style="width:100%" onclick="showTab('c2', document.getElementById('btn-c2'))">← Volver a Clase 2</button>
-  </div>
 </div>
 
 </div>
 
 <script>
-// ── NAVEGACIÓN ────────────────────────────────────────────
 function showTab(id, btn) {
   document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('pane-' + id).classList.add('on');
   if (btn) btn.classList.add('active');
   window.scrollTo(0, 0);
+  if(id === 'c3c4') setTimeout(updateLines, 200);
 }
 
-// ── MANEJO DE COLAPSABLES ─────────────────────────────────
-function toggleSec(id) {
-  const content = document.getElementById(id);
-  const indId = 'ind-' + id.split('-').slice(1).join('-');
-  const indicator = document.getElementById(indId);
-  if (content.classList.contains('open')) {
-    content.classList.remove('open');
-    indicator.textContent = "▼ Clic para desplegar";
-  } else {
-    content.classList.add('open');
-    indicator.textContent = "▲ Clic para ocultar";
+let isDragging = false;
+let showSolution = false;
+let currentDist = 0;
+
+function initSimulator() {
+  const container = document.getElementById('sim-container');
+  const ptP = document.getElementById('pt-p');
+  const btnSolution = document.getElementById('toggle-solution');
+  const display = document.getElementById('dist-display');
+
+  if(!container || !ptP) return;
+
+  const handleStart = () => { if(!showSolution) isDragging = true; };
+  const handleEnd = () => { isDragging = false; };
+  
+  ptP.addEventListener('mousedown', handleStart);
+  window.addEventListener('mouseup', handleEnd);
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const rect = container.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    x = Math.max(20, Math.min(x, rect.width - 20));
+    ptP.style.left = x + 'px';
+    updateLines();
+  });
+
+  ptP.addEventListener('touchstart', handleStart);
+  window.addEventListener('touchend', handleEnd);
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const rect = container.getBoundingClientRect();
+    let x = e.touches[0].clientX - rect.left;
+    x = Math.max(20, Math.min(x, rect.width - 20));
+    ptP.style.left = x + 'px';
+    updateLines();
+  }, {passive: false});
+
+  btnSolution.addEventListener('click', () => {
+    showSolution = !showSolution;
+    const ptAP = document.getElementById('pt-a-prime');
+    const lblAP = document.getElementById('label-a-prime');
+    const ptQ = document.getElementById('pt-q');
+    const lblQ = document.getElementById('label-q');
+    const lineSol = document.getElementById('line-a-prime-b');
+    const lineAQ = document.getElementById('line-a-prime-q');
+    const lineQB = document.getElementById('line-qb');
+    const ptA = document.getElementById('pt-a');
+    const ptB = document.getElementById('pt-b');
+    const tags = [document.getElementById('tag-prop1-4'), document.getElementById('tag-post1'), document.getElementById('tag-prop1-20')];
+
+    if (showSolution) {
+      btnSolution.textContent = "Ocultar Solución";
+      ptAP.style.display = 'block'; lblAP.style.display = 'block';
+      ptQ.style.display = 'block'; lblQ.style.display = 'block';
+      lineSol.style.display = 'block'; lineAQ.style.display = 'block'; lineQB.style.display = 'block';
+      tags.forEach(t => t.style.display = 'block');
+      
+      const aC = getCenter(ptA);
+      const bC = getCenter(ptB);
+      const riverY = container.offsetHeight * 0.5;
+      const aPrimeY = riverY + (riverY - aC.y);
+      const optimalX = aC.x + (riverY - aPrimeY) * (bC.x - aC.x) / (bC.y - aPrimeY);
+      
+      ptAP.style.left = aC.x + 'px';
+      ptAP.style.top = aPrimeY + 'px';
+      ptQ.style.left = (optimalX + 140) + 'px';
+      ptQ.style.top = riverY + 'px';
+      ptP.style.transition = 'left 0.4s ease';
+      ptP.style.left = optimalX + 'px';
+      
+      setTimeout(() => { ptP.style.transition = 'none'; updateLines(); }, 400);
+    } else {
+      btnSolution.textContent = "Revelar Solución Geométrica";
+      ptAP.style.display = 'none'; lblAP.style.display = 'none';
+      ptQ.style.display = 'none'; lblQ.style.display = 'none';
+      lineSol.style.display = 'none'; lineAQ.style.display = 'none'; lineQB.style.display = 'none';
+      tags.forEach(t => t.style.display = 'none');
+      display.textContent = "Mové P para estimar el trayecto";
+      updateLines();
+    }
+  });
+}
+
+function getCenter(el) {
+  const container = document.getElementById('sim-container');
+  const r = el.getBoundingClientRect();
+  const c = container.getBoundingClientRect();
+  return { x: r.left + r.width/2 - c.left, y: r.top + r.height/2 - c.top };
+}
+
+function updateLines() {
+  const container = document.getElementById('sim-container');
+  if(!container || container.offsetWidth === 0) return; 
+
+  const drawL = (id, p1, p2) => {
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const len = Math.sqrt(Math.pow(p2.x-p1.x,2) + Math.pow(p2.y-p1.y,2));
+    el.style.width = len + 'px';
+    el.style.left = p1.x + 'px'; el.style.top = p1.y + 'px';
+    el.style.transform = `rotate(${Math.atan2(p2.y-p1.y, p2.x-p1.x)*180/Math.PI}deg)`;
+    return len;
+  };
+
+  const a = getCenter(document.getElementById('pt-a'));
+  const b = getCenter(document.getElementById('pt-b'));
+  const p = getCenter(document.getElementById('pt-p'));
+
+  currentDist = drawL('line-ap', a, p) + drawL('line-pb', p, b);
+  document.getElementById('dist-display').innerHTML = `Trayecto: <span style="color:var(--nav)">${(currentDist/10).toFixed(2)} km</span>`;
+  
+  const pts = [{id:'a', dy:-30},{id:'b', dy:-30},{id:'p', dy: 30}];
+  pts.forEach(item => {
+    const lbl = document.getElementById('label-' + item.id);
+    const center = getCenter(document.getElementById('pt-' + item.id));
+    lbl.style.left = center.x + 'px'; lbl.style.top = (center.y + item.dy) + 'px';
+  });
+
+  if (showSolution) {
+    const aPC = getCenter(document.getElementById('pt-a-prime'));
+    const qC = getCenter(document.getElementById('pt-q'));
+    drawL('line-a-prime-b', aPC, b);
+    drawL('line-a-prime-q', aPC, qC);
+    drawL('line-qb', qC, b);
+    document.getElementById('label-a-prime').style.left = aPC.x + 'px';
+    document.getElementById('label-a-prime').style.top = (aPC.y + 30) + 'px';
+    document.getElementById('label-q').style.left = qC.x + 'px';
+    document.getElementById('label-q').style.top = (qC.y + 30) + 'px';
   }
 }
+
+document.addEventListener("DOMContentLoaded", initSimulator);
+window.addEventListener('resize', updateLines);
 </script>
 </body>
 </html>
