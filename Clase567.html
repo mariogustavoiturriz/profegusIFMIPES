@@ -108,6 +108,9 @@
   .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
   .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
 
+  .btn-reveal {background: var(--nav); color: #fff; border: none; border-radius: var(--r); padding: 11px 18px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 100%; transition: background 0.2s;}
+  .btn-reveal:hover {background: var(--med);}
+
   /* -- SIMULADOR ARQUIMEDES -- */
   .sim-wrap { background: #fff; border: 1px solid var(--bd); border-radius: var(--r); overflow: hidden; margin: 15px 0; }
   .sim-header { background: var(--slate); color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; }
@@ -121,6 +124,11 @@
   .math-display span.red { color: var(--red); font-weight: bold; }
   .math-display span.blue { color: var(--med); font-weight: bold; }
 
+  .film-card{background:var(--bco);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+  .film-head{background:var(--acl);padding:11px 18px;border-bottom:1px solid var(--bd)}
+  .film-head h3{font-size:13.5px;font-weight:700;color:var(--amb);margin:0}
+  .film-body{padding:16px 20px;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+
   .bitacora{background:var(--vcl);border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
   .bitacora h3{color:var(--nav);font-size:15px;margin-bottom:8px}
   .bita-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
@@ -128,6 +136,14 @@
   .locked-pane { text-align: center; padding: 60px 20px; color: var(--txt); }
   .locked-pane h2 { font-size: 20px; color: var(--slate); margin-bottom: 10px; }
   .locked-icon { font-size: 40px; opacity: 0.5; margin-bottom: 15px; }
+
+  .class-nav {display:flex;justify-content:space-between;margin-top:26px;gap:12px}
+  .cnav-btn {flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+  .cnav-btn:hover {background:var(--med)}
+  .cnav-btn.left {text-align:left}
+  .cnav-btn.right {text-align:right}
+  .cnav-btn small {display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px}
+  .cnav-btn.disabled {opacity:.45;cursor:not-allowed;pointer-events:none}
 
   @media(max-width:600px){
     .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
@@ -188,7 +204,7 @@
       </div>
 
       <figure style="margin: 18px 0; text-align: center;">
-        <img src="https://matematicasentumundo.es/ARTE/TA3.jpg" alt="Tumba de Arquímedes" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+        <img src="https://matematicasentumundo.es/ARTE/TA3.jpg" alt="" style="max-width: 100%; max-height: 280px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
         <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Representación de la tumba de Arquímedes, decorada según su deseo con un cilindro circunscrito a una esfera.</figcaption>
       </figure>
 
@@ -436,7 +452,7 @@
         <strong style="font-size:14px;color:var(--grn);display:flex;align-items:center;gap:6px">
           <span>🎯</span> Producción esperada al final de la clase
         </strong>
-        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito con los siguientes componentes:</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Deberán entregar un esquema escrito con los siguientes componentes:</p>
         <ul style="font-size:13px;margin-top:8px;margin-left:20px;line-height:1.6;list-style-type:disc;color:var(--neg)">
           <li><strong>Materiales:</strong> Qué necesitan exactamente las y los estudiantes (ej. compás, tijeras, cartulina o un archivo específico de GeoGebra).</li>
           <li><strong>Consigna inicial:</strong> Cómo le presentan el desafío a las y los estudiantes sin "spoilear" la fórmula.</li>
@@ -483,9 +499,12 @@
     </div>
   </div>
 
-  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+  <div class="class-nav">
     <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))">← Inicio
       <small>Panorama de la semana</small>
+    </button>
+    <button class="cnav-btn right disabled">Clase 6 →
+      <small>Se habilita el martes</small>
     </button>
   </div>
 </div>
@@ -577,7 +596,7 @@
           <p>El caso de Apolonio es el mejor ejemplo de la historia: <strong>1800 años después</strong> de que él dibujara sus cónicas "inútiles", <strong>Johannes Kepler</strong> descubrió que los planetas orbitan alrededor del Sol describiendo elipses perfectas. Y décadas después, <strong>Isaac Newton</strong> demostró que la trayectoria de cualquier proyectil o cometa es una parábola. ¡Las curvas que Apolonio estudió por puro placer intelectual resultaron ser el esqueleto geométrico del universo!</p>
 
           <div style="background:var(--gris); padding:18px; border-radius:var(--r); margin-top:16px; border-left:4px solid var(--vio)">
-            <strong style="display:block; font-size:14.5px; color:var(--nav); margin-bottom:8px">Debate en clase (Leyni, Ana y Gonzalo):</strong>
+            <strong style="display:block; font-size:14.5px; color:var(--nav); margin-bottom:8px">Debate en clase:</strong>
             <p style="font-size:13px; margin-bottom:12px; line-height:1.6">La currícula de secundaria nos pide "contextualizar" la matemática para que tenga sentido para las y los estudiantes. A menudo lo hacemos cayendo en un utilitarismo extremo: <em>"Esto te sirve para calcular la antena parabólica de DirectTV"</em>.</p>
             <ul style="font-size:13.5px; margin-left:18px; line-height:1.6; color:var(--neg)">
               <li>¿Enseñarían las cónicas partiendo del utilitarismo moderno (la linterna, la antena, la órbita) o se animarían a arrancar por el "juego puro" del corte del cono como hizo Apolonio?</li>
@@ -595,6 +614,14 @@
       <p>Wigner, E. (1960). <em>The unreasonable effectiveness of mathematics in the natural sciences</em>. Comm. on Pure and Applied Mathematics, 13(1).</p>
     </div>
 
+    <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+      <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))">← Clase 5
+        <small>Arquímedes · Lunes</small>
+      </button>
+      <button class="cnav-btn right disabled">Clase 7 →
+        <small>Se habilita el miércoles</small>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -638,7 +665,7 @@
             <div style="background:#fff; border-radius:var(--r); border:1px solid var(--bd); padding:10px; display:inline-block; box-shadow:var(--sh);">
               <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rafael_-_Escola_de_Atenas_-_Hip%C3%A1tia.jpg" alt="" style="max-height: 250px; width: auto; border-radius: 4px;">
             </div>
-            <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Representación de Hipatia de Alejandría (detalle del fresco "La Escuela de Atenas" de Rafael Sanzio, 1511).</figcaption>
+            <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Representación idealizada de Hipatia de Alejandría (detalle del fresco "La Escuela de Atenas" de Rafael Sanzio, 1511).</figcaption>
           </figure>
 
           <div class="note na" style="margin:14px 0">
@@ -653,13 +680,38 @@
     </div>
 
     <div class="sec">
+      <div class="sec-label"><span>⚙️ Actividad: rastrear qué sobrevivió</span><hr></div>
+      <div class="act-box" style="border-color:var(--amb)">
+        <div class="act-head" style="background:var(--amb)">
+          <h3>Línea de tiempo colaborativa</h3>
+        </div>
+        <div class="act-body">
+          <p>Usando el archivo histórico <strong>MacTutor History of Mathematics</strong> (<a href="https://mathshistory.st-andrews.ac.uk" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">mathshistory.st-andrews.ac.uk</a>), construyan en un documento compartido una línea de tiempo con estos cuatro momentos:</p>
+
+          <div class="step" style="border-color:var(--amb);background:var(--acl)">
+            <strong style="color:var(--amb)">1 — Producción (siglos III–II a.C.)</strong>
+            <p>Euclides, Arquímedes, Apolonio. ¿Qué produjeron y cómo circulaban sus textos?</p>
+          </div>
+          <div class="step">
+            <strong>2 — Transmisión (siglos I a.C.–IV d.C.)</strong>
+            <p>Hipatia y Teón. ¿Qué rol cumplieron? ¿Qué sería diferente hoy si no hubieran existido?</p>
+          </div>
+          <div class="step">
+            <strong>3 — Pérdida y preservación (siglos V–X)</strong>
+            <p>¿Qué desapareció de Europa? Busquen al menos <strong>un matemático árabe o persa del período</strong> en MacTutor y anoten su aporte a la preservación del saber griego.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
       <div class="sec-label"><span>🎬 Análisis Fílmico y Reflexión Final</span><hr></div>
       <div class="act-box" style="border-color:var(--amb)">
         <div class="act-head" style="background:var(--amb)">
           <h3>El conocimiento es frágil: Cierre del Eje 1</h3>
         </div>
         <div class="act-body">
-          <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo en un formato inmaculado. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides) y se ocultó por vergüenza académica (Arquímedes).</p>
+          <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides) y se ocultó por vergüenza académica (Arquímedes).</p>
           
           <div class="step" style="background:var(--acl); border-color:var(--amb)">
             <strong style="color:var(--amb)">El asalto al Serapeo (Fragmento de la película <em>Ágora</em>, 2009)</strong>
@@ -686,6 +738,14 @@
       <p>Amenábar, A. (Director). (2009). <em>Ágora</em> [Cinta cinematográfica]. Mod Producciones.</p>
     </div>
 
+    <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+      <button class="cnav-btn left" onclick="showTab('c6', document.getElementById('btn-c6'))">← Clase 6
+        <small>Apolonio · Martes</small>
+      </button>
+      <button class="cnav-btn right" style="background:var(--grn);cursor:default">✓ Fin del Eje 1
+        <small>Próxima semana: Eje 2</small>
+      </button>
+    </div>
   </div>
 </div>
 
