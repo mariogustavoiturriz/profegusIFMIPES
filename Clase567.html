@@ -155,7 +155,7 @@
 <div class="tab-bar">
   <button class="tab-btn active" onclick="showTab('inicio',this)" id="btn-inicio">Inicio</button>
   <button class="tab-btn" onclick="showTab('c5',this)" id="btn-c5">Clase 5 · Lunes</button>
-  <button class="tab-btn locked" onclick="return false;" id="btn-c6">Clase 6 · Martes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c6">Clase 6 · Martes/Miércoles</button>
   <button class="tab-btn locked" onclick="return false;" id="btn-c7">Clase 7 · Miércoles</button>
 </div>
 
@@ -228,6 +228,11 @@
         <p>Durante siglos, los matemáticos se preguntaron cómo hizo Arquímedes para calcular áreas y volúmenes curvos de forma tan perfecta. Sus textos publicados eran demostraciones magistrales usando el <strong>Método de Exhaución</strong> (creado por Eudoxo), que consistía en meter figuras dentro de otras hasta "agotar" el espacio. Pero estas demostraciones eran un dolor de cabeza larguísimo y servían para <em>probar</em> resultados, no para <em>descubrirlos</em>.</p>
         
         <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrió un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <img src="https://img.asmedia.epimg.net/resizer/v2/5SOBW4GSJJFZ7J7E77Z7HBPT3I.jpg?auth=ab86c030671d9f686b0d99388d03369e6c3de9db4c8d7d9693c39f91c77bc4d0&width=1472&height=1104&smart=true" alt="Detalle del Palimpsesto de Arquímedes" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Detalle del Palimpsesto de Arquímedes. El texto matemático original (horizontal) asoma por debajo de las oraciones litúrgicas medievales (verticales).</figcaption>
+        </figure>
 
         <div class="note nb">
           <span class="ni">⚖️</span>
@@ -392,88 +397,11 @@
         <div class="cb-num" style="background:var(--vio)">6</div>
         <div class="cb-info">
           <h2>Apolonio y las curvas "inútiles"</h2>
-          <p>Martes 14/4 · 80 minutos · Vuelta a Euclides + cónicas + debate Wigner</p>
+          <p>Martes 14/4 y Miércoles 15/4 · Apolonio, focos y debate Wigner</p>
         </div>
       </div>
       <div class="cb-obj">
         <p><strong>Objetivo:</strong> Volver al sistema euclidiano con un problema concreto antes de saltar a Apolonio. Experimentar que los postulados de Euclides garantizan invariantes sorprendentes — y que eso mismo es lo que Apolonio buscaba en las cónicas 1800 años antes de que sirvieran para algo.</p>
-      </div>
-    </div>
-
-    <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
-    <div class="sec">
-      <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
-      <div class="act-box" style="border:2px solid var(--nav)">
-        <div class="act-head" style="background:var(--nav)">
-          <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
-        </div>
-        <div class="act-body">
-          <div style="background:var(--pale);border-radius:var(--r);padding:13px 17px;margin-bottom:14px;border-left:4px solid var(--nav)">
-            <p style="font-size:13.5px;line-height:1.7;color:var(--neg)"><strong>Apolonio de Perga</strong> fue un matemático griego del siglo II a.C. que dedicó su obra maestra — ocho volúmenes llamados <em>Las Cónicas</em> — a estudiar las curvas que se obtienen al cortar un cono con un plano. Una de esas curvas es la elipse. Sobre ella demostró una propiedad que nadie le había pedido y que no servía para nada en su época. Hoy van a descubrir cuál.</p>
-          </div>
-
-          <div class="note nb" style="margin-bottom:16px">
-            <span class="ni">🔗</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
-              <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la Proposición I.1 — la primera construcción de los <em>Elementos</em> — Euclides asume que dos círculos se cortan porque <em>se ve</em> en el dibujo, pero ninguno de sus cinco postulados lo garantiza. El edificio entero arranca con una grieta. Hoy vemos la otra cara: dentro de ese sistema, hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar en qué punto de la elipse rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
-            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
-            <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (el ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
-            <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
-            <div class="note nb" style="margin-top:10px">
-              <span class="ni">💡</span>
-              <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--amb);background:var(--acl)">
-            <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
-            <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
-            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
-            <div class="note na" style="margin-top:10px">
-              <span class="ni">💡</span>
-              <div>
-                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Pistas para pensar</strong>
-                <ul style="font-size:13px;line-height:1.7;margin-left:16px">
-                  <li><strong>Verificar</strong> es comprobar que algo funciona en casos concretos. Puedo verificar que el sol salió hoy, ayer y anteayer — pero eso no <em>demuestra</em> que saldrá mañana.</li>
-                  <li><strong>Demostrar</strong> es mostrar que algo <em>no puede ser de otra manera</em>, usando solo las reglas del sistema. Una demostración cubre todos los casos posibles a la vez, incluso los infinitos.</li>
-                  <li>En este caso: por más que muevan $P$ mil veces y el rayo siempre pase por $F_2$, siempre queda la duda de qué pasa en el punto que no probaron. La demostración del Paso 3 elimina esa duda de una vez.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--nav);background:var(--pale)">
-            <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
-            <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
-            <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
-          </div>
-
-          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
-          <div id="sim-focal" style="display:none">
-          <div class="sim-wrap" style="margin:14px 0">
-            <div class="sim-header" style="background:var(--vio)">
-              <span>Simulador — Propiedad Focal de la Elipse</span>
-              <span style="font-size:12px;opacity:.75">Arrastrá el punto P por la elipse</span>
-            </div>
-            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
-              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
-              <div style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
-                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
-            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
-            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -550,33 +478,70 @@
       </div>
     </div>
 
-    <!-- ACTIVIDAD GEOGEBRA CÓNICAS -->
+    <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
     <div class="sec">
-      <div class="sec-label"><span>⚙️ Actividad Exploratoria</span><hr></div>
-      <div class="act-box" style="border-color:var(--vio)">
-        <div class="act-head" style="background:var(--vio)">
-          <h3>Cortando el cono digital</h3>
+      <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
+      <div class="act-box" style="border:2px solid var(--nav)">
+        <div class="act-head" style="background:var(--nav)">
+          <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
         </div>
         <div class="act-body">
-          <p>En el pizarrón es muy difícil visualizar cómo una hipérbola es en realidad el corte vertical de un cono doble. Para esta actividad vamos a usar GeoGebra 3D.</p>
-
-          <div class="step" style="border-color:var(--vio);background:var(--vcl)">
-            <strong style="color:var(--vio)">Consigna de taller:</strong>
-            <p>Abran <strong>GeoGebra Calculadora 3D</strong> en sus dispositivos. El desafío no tiene instructivo paso a paso; la idea es que ustedes mismos modelen la situación:</p>
-            <ul style="font-size:13.5px;margin-left:20px;line-height:1.6;margin-top:8px;margin-bottom:8px">
-              <li>Piensen y construyan algebraicamente un <strong>cono doble</strong> tridimensional centrado en el origen.</li>
-              <li>Agreguen un <strong>plano secante</strong> cuya inclinación se pueda modificar dinámicamente (usando un deslizador).</li>
-              <li><strong>El objetivo:</strong> manipular la inclinación del plano hasta registrar visualmente los momentos exactos en que la curva de intersección muta de elipse a parábola y de parábola a hipérbola.</li>
-            </ul>
-            <p style="font-size:13px;font-style:italic;color:var(--txt)">Esta herramienta dinámica permite ver lo que Apolonio tuvo que abstraer puramente en su cabeza hace más de dos mil años.</p>
-          </div>
-
-          <div class="note nb" style="margin-top:12px">
+          <div class="note nb" style="margin-bottom:16px">
             <span class="ni">🔗</span>
             <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Plan B — si la construcción no arranca</strong>
-              <span style="font-size:13px;line-height:1.6">Si la construcción desde cero no sale en el tiempo disponible, usen este applet ya construido para verificar sus observaciones: <a href="https://www.geogebra.org/m/tMKHFjnf" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">geogebra.org/m/tMKHFjnf</a>. El objetivo de aprendizaje no cambia: identificar el momento de la transición elipse → parábola → hipérbola y explicarlo geométricamente.</span>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
+              <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la Proposición I.1 — la primera construcción de los <em>Elementos</em> — Euclides asume que dos círculos se cortan porque <em>se ve</em> en el dibujo, pero ninguno de sus cinco postulados lo garantiza. El edificio entero arranca con una grieta. Hoy vemos la otra cara: dentro de ese sistema, hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar en qué punto de la elipse rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
             </div>
+          </div>
+
+          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
+            <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (el ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
+            <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
+            <div class="note nb" style="margin-top:10px">
+              <span class="ni">💡</span>
+              <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
+            </div>
+          </div>
+
+          <div class="step" style="border-color:var(--amb);background:var(--acl)">
+            <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
+            <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
+            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
+            <div class="note na" style="margin-top:10px">
+              <span class="ni">💡</span>
+              <div>
+                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
+                <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" style="border-color:var(--nav);background:var(--pale)">
+            <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
+            <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
+            <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
+          </div>
+
+          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
+          <div id="sim-focal" style="display:none">
+          <div class="sim-wrap" style="margin:14px 0">
+            <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
+              <span>Simulador — Propiedad Focal de la Elipse</span>
+              <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
+            </div>
+            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
+              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
+              <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
+                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
+            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
           </div>
         </div>
       </div>
@@ -590,14 +555,12 @@
           <h3 style="color:#fff">La irracionable eficacia de la matemática</h3>
         </div>
         <div class="act-body">
-          <p>El físico Eugene Wigner escribió un famoso ensayo titulado <em>"La irracionable eficacia de la matemática en las ciencias naturales"</em> (1960). Se preguntaba cómo es posible que la matemática, siendo un juego mental creado libremente por los humanos, termine encajando perfectamente con las leyes físicas del universo. El caso de Apolonio y Kepler es su ejemplo favorito. <span class="ref">(Wigner, 1960, p. 1)</span></p>
+          <p>El físico Eugene Wigner preguntó por qué la matemática, siendo un juego mental creado libremente por los humanos, termina encajando perfectamente con las leyes físicas del universo. El caso de Apolonio y Kepler — 1800 años de distancia — es su ejemplo favorito. <span class="ref">(Wigner, 1960, p. 1)</span></p>
 
-          <div style="background:var(--gris);padding:18px;border-radius:var(--r);margin-top:16px;border-left:4px solid var(--vio)">
-            <strong style="display:block;font-size:14.5px;color:var(--nav);margin-bottom:8px">Debate en clase:</strong>
-            <p style="font-size:13px;margin-bottom:12px;line-height:1.6">La currícula de secundaria nos pide "contextualizar" la matemática para que tenga sentido para las y los estudiantes. A menudo lo hacemos cayendo en un utilitarismo extremo: <em>"Esto te sirve para calcular la antena parabólica de DirectTV"</em>.</p>
+          <div style="background:var(--gris);padding:18px;border-radius:var(--r);margin-top:14px;border-left:4px solid var(--vio)">
+            <strong style="display:block;font-size:14px;color:var(--nav);margin-bottom:10px">Para debatir:</strong>
             <ul style="font-size:13.5px;margin-left:18px;line-height:1.8;color:var(--neg)">
-              <li>¿Enseñarían las cónicas partiendo del utilitarismo moderno (la linterna, la antena, la órbita) o se animarían a arrancar por el "juego puro" del corte del cono como hizo Apolonio? ¿Qué gana y qué pierde cada opción?</li>
-              <li>Si un padre o un estudiante les pregunta en el aula <em>"Profe, ¿para qué me enseñan algo tan abstracto si yo no voy a ser ingeniero?"</em>, ¿cómo usarían la historia de Apolonio para defender el valor de estudiar estructuras de pensamiento aunque no tengan una aplicación inmediata?</li>
+              <li>¿Enseñarían las cónicas partiendo de sus aplicaciones modernas (antena, órbita, litotricia) o desde el "juego puro" del corte del cono como hizo Apolonio? ¿Qué gana y qué pierde cada opción?</li>
               <li>¿Cómo conecta esto con lo que Chevallard llama <em>saber sabio</em> vs. <em>saber enseñado</em>? ¿Qué se pierde cuando las cónicas se enseñan solo como "la curva de las órbitas" sin mostrar de dónde vienen? <span class="ref">(Chevallard, 1997, pp. 45–51)</span></li>
             </ul>
           </div>
@@ -640,7 +603,7 @@
         <div class="cb-num" style="background:var(--amb)">7</div>
         <div class="cb-info">
           <h2>El ocaso de Alejandría: cuando el saber necesita una institución</h2>
-          <p>Miércoles 15/4 · 80 minutos · Línea de tiempo + debate de cierre + Bitácora 2</p>
+          <p>Miércoles 15/4 · 80 minutos · Lectura + línea de tiempo Genially + debate de cierre</p>
         </div>
       </div>
       <div class="cb-obj">
@@ -656,8 +619,9 @@
       </div>
     </div>
 
+    <!-- LECTURA BASE -->
     <div class="sec">
-      <div class="sec-label"><span>📖 Contexto Histórico</span><hr></div>
+      <div class="sec-label"><span>📖 Lectura Base</span><hr></div>
       <div class="lect">
         <div class="lect-head" style="background:var(--acl);border-color:var(--amb)">
           <h3 style="color:var(--amb)">La última luz de Alejandría: de la innovación a la conservación</h3>
@@ -666,13 +630,11 @@
         <div class="lect-body">
           <p>Para el siglo IV d.C., la matemática creadora de la época de Arquímedes y Apolonio se había estancado. El Imperio Romano era pragmático: le interesaba la ingeniería para puentes, acueductos y catapultas, pero sentía profundo desinterés por la geometría abstracta y la demostración de teoremas puros. Alejandría pasó de ser un centro de <em>producción</em> del saber a un centro de <em>conservación</em> — un archivo de textos que se iban pudriendo en la Biblioteca y el Serapeo. <span class="ref">(Boyer, 1986, pp. 245–247; Kline, 1992, Vol. 1, p. 182)</span></p>
 
-          <p>En este contexto, el trabajo de Hipatia no fue producir matemática nueva: fue editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo para que sobrevivieran. <strong>Sin esa transmisión institucional, esos textos no habrían llegado hasta nosotros.</strong> La edición de los <em>Elementos</em> que Teón — su padre — preparó junto a ella es la base de todas las ediciones posteriores hasta el siglo XIX.</p>
+          <p>En este contexto, el trabajo de Hipatia no fue producir matemática nueva: fue editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo para que sobrevivieran. <strong>Sin esa transmisión institucional, esos textos no habrían llegado hasta nosotros.</strong> La edición de los <em>Elementos</em> que Teón — su padre — preparó junto a ella es la base de todas las ediciones posteriores hasta el siglo XIX. <span class="ref">(<a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med)">Mujeres con Ciencia: Hipatia</a>; <a href="https://es.wikipedia.org/wiki/Te%C3%B3n_de_Alejandr%C3%ADa" target="_blank" rel="noopener" style="color:var(--med)">Wikipedia ES: Teón de Alejandría</a>)</span></p>
 
-          <figure style="margin:18px 0;text-align:center">
-            <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rafael_-_Escola_de_Atenas_-_Hip%C3%A1tia.jpg" alt="" style="max-height:250px;width:auto;border-radius:4px">
-            </div>
-            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Representación idealizada de Hipatia de Alejandría (detalle del fresco "La Escuela de Atenas" de Rafael Sanzio, 1511).</figcaption>
+          <figure style="margin: 18px 0; text-align: center;">
+            <img src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/public/2025-12/hypatia-portrait-68fe3d.jpg.webp?itok=_ek6jemA" alt="Hipatia de Alejandría" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+            <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Hipatia de Alejandría (c. 370–415 d.C.) — matemática, astrónoma y filósofa neoplatónica. Su brutal asesinato simboliza el colapso de la ciencia griega.</figcaption>
           </figure>
 
           <div class="note na" style="margin:14px 0">
@@ -689,40 +651,142 @@
       </div>
     </div>
 
+    <!-- VISUALIZACIÓN: EL VIAJE DEL SABER — oculta por defecto, Ctrl+T para mostrar -->
+    <div id="viz-viaje" style="display:none">
+      <div class="sec">
+        <div class="sec-label"><span>🗺️ El viaje del saber matemático griego</span><hr></div>
+        <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:18px;box-shadow:var(--sh)">
+          <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+            <rect width="680" height="200" fill="#f8fafc" rx="6"/>
+
+            <!-- Nodo 1: Producción -->
+            <g transform="translate(70,100)">
+              <circle r="38" fill="#1B3A6B" opacity=".12"/>
+              <circle r="28" fill="#1B3A6B"/>
+              <text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">III–II a.C.</text>
+              <text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Producción</text>
+              <text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Euclides · Arquímedes</text>
+              <text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Apolonio · Museo</text>
+            </g>
+
+            <!-- Flecha 1→2 -->
+            <path d="M 100,100 L 202,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+            <text x="151" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">copiado</text>
+
+            <!-- Nodo 2: Transmisión -->
+            <g transform="translate(232,100)">
+              <circle r="38" fill="#1A6B3A" opacity=".12"/>
+              <circle r="28" fill="#1A6B3A"/>
+              <text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">I a.C.–IV</text>
+              <text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Transmisión</text>
+              <text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Hipatia · Teón</text>
+              <text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">comentarios · ediciones</text>
+            </g>
+
+            <!-- Flecha 2→3 -->
+            <path d="M 262,100 L 364,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+            <text x="313" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#D9534F" font-weight="700">colapso</text>
+
+            <!-- Nodo 3: Pérdida / Preservación -->
+            <g transform="translate(394,100)">
+              <circle r="38" fill="#C85C00" opacity=".12"/>
+              <circle r="28" fill="#C85C00"/>
+              <text y="-2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">V–X d.C.</text>
+              <text y="9" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fff">Bizancio / Islam</text>
+              <text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Preservación</text>
+              <text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Al-Juarismi · Averroes</text>
+              <text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">traducción al árabe</text>
+            </g>
+
+            <!-- Flecha 3→4 -->
+            <path d="M 424,100 L 526,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+            <text x="475" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">traducido</text>
+
+            <!-- Nodo 4: Reingreso -->
+            <g transform="translate(556,100)">
+              <circle r="38" fill="#4A1A7B" opacity=".12"/>
+              <circle r="28" fill="#4A1A7B"/>
+              <text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">siglo XII</text>
+              <text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Reingreso</text>
+              <text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Europa occidental</text>
+              <text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Toledo · Fibonacci</text>
+            </g>
+
+            <!-- Arrow marker -->
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#C5D2DC"/>
+              </marker>
+            </defs>
+          </svg>
+          <p style="font-size:11.5px;color:var(--txt);text-align:center;margin-top:8px;font-style:italic">El saber matemático griego no fue lineal: se produjo, se transmitió, estuvo a punto de perderse y volvió 700 años después en otro idioma.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD LÍNEA DE TIEMPO -->
     <div class="sec">
       <div class="sec-label"><span>⚙️ Actividad: rastrear qué sobrevivió y qué no</span><hr></div>
       <div class="act-box" style="border-color:var(--amb)">
         <div class="act-head" style="background:var(--amb)">
-          <h3>Línea de tiempo colaborativa con MacTutor</h3>
+          <h3>Línea de tiempo colaborativa — El viaje del saber matemático</h3>
         </div>
         <div class="act-body">
-          <p>Usando el archivo histórico <strong>MacTutor History of Mathematics</strong> (<a href="https://mathshistory.st-andrews.ac.uk" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">mathshistory.st-andrews.ac.uk</a>), construyan en un documento compartido una línea de tiempo con estos cuatro momentos:</p>
+          <p>Usando los recursos de historia de las matemáticas en español que se detallan abajo, construyan una línea de tiempo con los cuatro momentos del arco. Para cada uno: quiénes, dónde, qué institución sostenía el saber, y qué pasó con él.</p>
+
+          <div class="note nb" style="margin-bottom:14px">
+            <span class="ni">💻</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Herramienta: Genially</strong>
+              <span style="font-size:13px;line-height:1.6">Usen <a href="https://genially.com" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Genially</a> para construir la línea de tiempo. La versión gratuita permite incorporar en cada hito: texto, imágenes, videos de YouTube, enlaces y audio. El resultado se comparte con un link y puede quedar en el aula virtual.<br><br>
+              Dos plantillas disponibles como punto de partida:<br>
+              ▶ <a href="https://view.genially.com/5a589b5f0c531011c61d754b" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Timeline Educación</a> · <strong style="color:var(--grn)">Recomendada</strong> — cada hito tiene un botón que abre un popup con todo el contenido multimedia. Cuatro momentos, cuatro ventanas, cada una con sus fuentes, imágenes y videos.<br>
+              ▶ <a href="https://view.genially.com/5a71b566db5794639f5a0726" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Línea de tiempo Fotogramas</a> · Diseño horizontal más cinematográfico, mejor si quieren un recorrido visual continuo a lo largo del tiempo.</span>
+            </div>
+          </div>
+
+          <div class="note nb" style="margin-bottom:14px">
+            <span class="ni">🔗</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Recursos en español para la actividad</strong>
+              <span style="font-size:13px;line-height:1.6">
+                ▶ <a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Mujeres con Ciencia — Hipatia</a> · Blog de la Cátedra de Cultura Científica (UPV/EHU). Artículo completo, bien documentado.<br>
+                ▶ <a href="https://es.wikipedia.org/wiki/Hipatia" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Wikipedia ES — Hipatia</a> · Con referencias bibliográficas y contexto histórico.<br>
+                ▶ <a href="https://es.wikipedia.org/wiki/Matem%C3%A1tica_isl%C3%A1mica" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Wikipedia ES — Matemática islámica</a> · Para el período de preservación árabe/persa.<br>
+                ▶ <a href="https://es.wikipedia.org/wiki/Al-Juarismi" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Wikipedia ES — Al-Juarismi</a> · Punto de partida para el período árabe/persa.
+              </span>
+            </div>
+          </div>
 
           <div class="step" style="border-color:var(--amb);background:var(--acl)">
             <strong style="color:var(--amb)">1 — Producción (siglos III–II a.C.)</strong>
-            <p>Euclides, Arquímedes, Apolonio. ¿Qué produjeron? ¿En qué institución trabajaban? ¿Cómo circulaban sus textos?</p>
+            <p>Euclides, Arquímedes, Apolonio. ¿Qué institución los sostenía? ¿Cómo circulaban sus textos?</p>
           </div>
           <div class="step">
             <strong>2 — Transmisión (siglos I a.C.–IV d.C.)</strong>
-            <p>Hipatia y Teón. ¿Qué rol cumplieron exactamente? ¿Qué sería diferente hoy si no hubieran existido?</p>
+            <p><a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Hipatia</a> y <a href="https://es.wikipedia.org/wiki/Te%C3%B3n_de_Alejandr%C3%ADa" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Teón</a>. ¿Qué rol cumplieron exactamente? ¿Qué sería diferente hoy si no hubieran existido?</p>
           </div>
           <div class="step">
             <strong>3 — Pérdida y preservación (siglos V–X)</strong>
-            <p>¿Qué desapareció de Europa? ¿Quiénes lo preservaron y ampliaron? Busquen al menos <strong>un matemático árabe o persa del período</strong> en MacTutor y anoten su aporte a la preservación del saber griego.</p>
+            <p>¿Qué desapareció de Europa? ¿Quiénes lo preservaron y ampliaron? Busquen al menos <strong>un matemático árabe o persa del período</strong> en Wikipedia ES o Mujeres con Ciencia y anoten su aporte concreto.</p>
           </div>
           <div class="step">
             <strong>4 — Reingreso (siglo XII)</strong>
-            <p>¿Cómo volvieron esos textos a Europa occidental? ¿Qué rol jugaron las traducciones del árabe?</p>
+            <p>¿Cómo volvieron esos textos a Europa occidental? ¿Qué rol jugaron las traducciones del árabe y la Escuela de Traductores de Toledo?</p>
           </div>
 
-          <div class="note nb" style="margin-top:12px">
+          <div class="note nb" style="margin-top:14px">
             <span class="ni">💬</span>
-            <span><strong>Para el debate:</strong> ¿El libro de texto de matemática de secundaria que trajeron muestra algo de este recorrido, o presenta el saber como si siempre hubiera estado "terminado"? Traigan un ejemplo concreto.</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Para pensar al cerrar la actividad</strong>
+              <p style="font-size:13px;line-height:1.6">¿La matemática que se enseña en secundaria hoy muestra algo de este recorrido, o presenta el saber como si siempre hubiera estado terminado? ¿En qué momento del arco (producción, transmisión, pérdida, reingreso) ubicarían a la escuela secundaria de hoy?</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- CIERRE EJE 1 -->
     <div class="sec">
       <div class="sec-label"><span>🎬 Cierre del Eje 1</span><hr></div>
       <div class="act-box" style="border-color:var(--amb)">
@@ -733,57 +797,33 @@
           <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides), se ocultó por vergüenza académica (Arquímedes) y estuvo a punto de perderse para siempre.</p>
 
           <div class="step" style="background:var(--acl);border-color:var(--amb)">
-            <strong style="color:var(--amb)">La escena del Serapeo (<em>Ágora</em>, Amenábar, 2009)</strong>
+            <strong style="color:var(--amb)">La escena del Serapeo — <em>Ágora</em> (Amenábar, 2009) · <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med);font-weight:600;font-size:12px">Ver tráiler ↗</a></strong>
             <p>Hipatia y sus discípulos tienen apenas unos minutos antes de que la turba asalte el recinto. No salvan oro ni estatuas; arman montañas de papiros y tratan de sacarlos. Saben que lo que se queme ahí no se va a volver a deducir en siglos. <em>Ágora</em> es ficción histórica — algunas elecciones dramáticas no tienen respaldo documental — pero esa escena ilustra exactamente lo que discutimos hoy.</p>
           </div>
 
           <div style="background:var(--slate);color:white;padding:18px;border-radius:var(--r);margin-top:16px">
             <strong style="display:block;font-size:15px;color:var(--cl);margin-bottom:10px">Debate de cierre del Eje 1:</strong>
             <p style="font-size:13.5px;line-height:1.6;color:#E6F7F8;margin-bottom:12px">En los libros de texto la matemática se presenta como un museo de éxitos acumulativos. Sin embargo vimos que Arquímedes murió asesinado por un soldado, Hipatia fue asesinada por tensiones político-religiosas, y el conocimiento griego desapareció de Europa durante siglos.</p>
-            <ul style="font-size:13px;margin-left:20px;line-height:1.6;color:#E6F7F8">
-              <li>¿Les parece importante que los estudiantes de secundaria sepan que la matemática puede perderse o censurarse por cuestiones políticas?</li>
-              <li>¿Qué ganamos didácticamente mostrando la "vulnerabilidad" de la matemática frente al modelo de una ciencia fría, aséptica y superior a los problemas humanos? Apoyate en al menos un concepto de Chevallard o Brousseau para argumentar. <span class="ref" style="color:var(--cl)">(Chevallard, 1997, pp. 16–18; Brousseau, 1983, pp. 170–172)</span></li>
+            <ul style="font-size:13px;margin-left:20px;line-height:1.8;color:#E6F7F8">
+              <li>¿Les parece importante que los estudiantes de secundaria sepan que la matemática puede perderse o censurarse por cuestiones políticas? ¿Qué se gana y qué se arriesga mostrando eso en el aula?</li>
+              <li>¿Qué ganamos didácticamente mostrando la "vulnerabilidad" de la matemática frente al modelo de una ciencia fría y aséptica? Apoyate en al menos un concepto de Chevallard o Brousseau. <span class="ref" style="color:var(--cl)">(Chevallard, 1997, pp. 16–18; Brousseau, 1983, pp. 170–172)</span></li>
             </ul>
+            <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:12px;margin-top:14px;border-left:3px solid var(--amb)">
+              <p style="font-size:12.5px;color:#E6F7F8;line-height:1.6"><strong style="color:var(--amb)">Para pensar:</strong> ¿Qué diferencia hay entre una escuela que enseña procedimientos y una que transmite también la historia de por qué esos procedimientos existen? ¿Cuál de las dos estaría más cerca de lo que hizo Hipatia?</p>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BITÁCORA 2 -->
-    <div class="sec">
-      <div class="sec-label"><span>📓 Bitácora 2</span><hr></div>
-      <div class="bitacora-2">
-        <h3>📓 Bitácora 2 — El saber necesita una institución</h3>
-        <p style="font-size:13px;color:var(--txt);margin-bottom:12px;line-height:1.6">Una carilla, 200–350 palabras. No es un resumen: es el cierre reflexivo del Eje 1 completo. El mismo arco que empezó con el escriba egipcio termina acá, con la pregunta de qué pasa cuando la institución que sostiene el saber colapsa.</p>
-
-        <div class="bita-consigna">
-          A lo largo de las últimas semanas recorrimos el saber matemático desde Egipto hasta el ocaso de Alejandría. En ese recorrido, la matemática nació como herramienta de Estado, se transformó en sistema de demostración, llegó al límite de lo que ese sistema podía hacer, y estuvo a punto de perderse para siempre por razones que no tenían nada que ver con la matemática misma.<br><br>
-          Pensando en tu futura práctica docente: ¿qué rol cumple la escuela secundaria como institución que transmite este saber? ¿Qué se perdería si dejara de enseñar demostración matemática y solo enseñara procedimientos? Argumentá con al menos un ejemplo concreto de este recorrido histórico.
-        </div>
-
-        <div style="margin-bottom:10px">
-          <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:5px">Criterios de evaluación:</strong>
-          <ul style="font-size:13px;margin-left:16px;line-height:1.6">
-            <li>Conexión explícita con al menos un concepto del espacio (transposición, obstáculo, institución).</li>
-            <li>Ejemplo concreto del recorrido histórico — no genérico.</li>
-            <li>Posición propia argumentada, no solo descripción.</li>
-          </ul>
-        </div>
-
-        <div class="bita-plazo">
-          <span style="font-size:19px">⏰</span>
-          <span><strong>Se escribe en clase.</strong> Lo que no termines: en el foro antes de las 23:59 de hoy. &nbsp;·&nbsp; <strong>200–350 palabras</strong> &nbsp;·&nbsp; Texto directo, no adjunto.</span>
         </div>
       </div>
     </div>
 
     <div class="srcs">
       <h5 style="color:var(--amb)">Fuentes · Clase 7</h5>
-      <p>Amenábar, A. (Director). (2009). <em>Ágora</em> [Cinta cinematográfica]. Mod Producciones.</p>
+      <p>Amenábar, A. (Director). (2009). <em>Ágora</em> [Cinta cinematográfica]. Mod Producciones. <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med)">[Tráiler]</a></p>
       <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza Editorial, pp. 245–247.</p>
       <p>Brousseau, G. (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques,</em> 4(2), 165–198.</p>
       <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 16–18.</p>
       <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días,</em> Vol. 1. Madrid: Alianza Editorial, pp. 180–183.</p>
+      <p>Wikipedia en español. <a href="https://es.wikipedia.org/wiki/Hipatia" target="_blank" rel="noopener" style="color:var(--med)">Hipatia</a> · <a href="https://es.wikipedia.org/wiki/Matem%C3%A1tica_isl%C3%A1mica" target="_blank" rel="noopener" style="color:var(--med)">Matemática islámica</a> · <a href="https://es.wikipedia.org/wiki/Al-Juarismi" target="_blank" rel="noopener" style="color:var(--med)">Al-Juarismi</a>.</p>
     </div>
 
     <div class="class-nav">
@@ -821,9 +861,6 @@ function initEllipseSim() {
   const dpr = window.devicePixelRatio || 1;
   const W = Math.min(460, canvas.parentElement.offsetWidth - 20);
   const H = 280;
-
-  // Si el contenedor está oculto (display:none), offsetWidth = 0 → W negativo.
-  // Salimos sin marcar _simReady para que se pueda reintentar cuando sea visible.
   if (W <= 0) return;
 
   canvas._simReady = true;
@@ -841,34 +878,67 @@ function initEllipseSim() {
   const F2 = { x: cx + c, y: cy };
   let theta = 0.85;
   let dragging = false;
+  let mode = 'reflexion'; // 'reflexion' | 'orbital'
+
+  // Wire up mode button
+  const modeBtn = document.getElementById('ellipse-mode-btn');
+  const modeCaption = document.getElementById('ellipse-mode-caption');
+  if (modeBtn) {
+    modeBtn.addEventListener('click', () => {
+      mode = (mode === 'reflexion') ? 'orbital' : 'reflexion';
+      modeBtn.textContent = mode === 'reflexion' ? '🪐 Ver modo orbital (Kepler)' : '📡 Ver modo reflexión (Apolonio)';
+      modeCaption.innerHTML = mode === 'reflexion'
+        ? '✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.'
+        : '☀️ El Sol ocupa F₁. El planeta recorre la elipse. F₂ está <em>vacío</em> — es el costo matemático de que F₁ funcione.';
+      draw();
+    });
+  }
+
+  // Orbital animation
+  let orbAnim = null;
+  function startOrbit() {
+    if (orbAnim) return;
+    orbAnim = setInterval(() => {
+      if (mode === 'orbital') { theta += 0.018; draw(); }
+      else { clearInterval(orbAnim); orbAnim = null; }
+    }, 30);
+  }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
+
+    if (mode === 'orbital') {
+      drawOrbital();
+      if (!orbAnim) startOrbit();
+    } else {
+      drawReflexion();
+    }
+  }
+
+  // ── MODO REFLEXIÓN ────────────────────────────────────────────────
+  function drawReflexion() {
     ctx.fillStyle = '#f8fafc';
     ctx.fillRect(0, 0, W, H);
 
     const Px = cx + a * Math.cos(theta);
     const Py = cy + b * Math.sin(theta);
 
-    // Unit outward normal at P
     const gnx = (Px - cx) / (a * a), gny = (Py - cy) / (b * b);
     const gnl = Math.sqrt(gnx * gnx + gny * gny);
     const nx = gnx / gnl, ny = gny / gnl;
 
-    // Incoming direction: F1 → P (normalized)
     const idx = Px - F1.x, idy = Py - F1.y;
     const il = Math.sqrt(idx * idx + idy * idy);
     const inx = idx / il, iny = idy / il;
 
-    // Reflected direction: d_out = d_in - 2*(d_in·n)*n
     const dot = inx * nx + iny * ny;
     const rfx = inx - 2 * dot * nx;
     const rfy = iny - 2 * dot * ny;
 
     const far = Math.max(W, H) * 2.5;
-    const tx = -ny, ty = nx; // unit tangent
+    const tx = -ny, ty = nx;
 
-    // Tangent line (dashed purple)
+    // Tangent
     ctx.save();
     ctx.strokeStyle = 'rgba(74,26,123,0.3)';
     ctx.lineWidth = 1.5;
@@ -887,7 +957,7 @@ function initEllipseSim() {
     ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    // Incoming ray F1 → P (orange)
+    // Incoming ray
     ctx.strokeStyle = '#C85C00';
     ctx.lineWidth = 2.5;
     ctx.beginPath();
@@ -896,7 +966,7 @@ function initEllipseSim() {
     ctx.stroke();
     arrowHead(ctx, F1.x + (Px - F1.x) * 0.55, F1.y + (Py - F1.y) * 0.55, inx, iny, '#C85C00');
 
-    // Reflected ray P → far (green)
+    // Reflected ray
     ctx.strokeStyle = '#1A6B3A';
     ctx.lineWidth = 2.5;
     ctx.beginPath();
@@ -905,66 +975,132 @@ function initEllipseSim() {
     ctx.stroke();
     arrowHead(ctx, Px + rfx * 60, Py + rfy * 60, rfx, rfy, '#1A6B3A');
 
-    // F2 glow (ray always passes through F2 — mathematical certainty)
+    // F2 glow
     ctx.beginPath();
     ctx.arc(F2.x, F2.y, 16, 0, 2 * Math.PI);
     ctx.fillStyle = 'rgba(26,107,58,0.18)';
     ctx.fill();
 
-    // Angle arc at P showing equal angles
+    // Angle arcs
     const inAngle = Math.atan2(iny, inx);
     const refAngle = Math.atan2(rfy, rfx);
-    ctx.strokeStyle = 'rgba(200,92,0,0.5)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.arc(Px, Py, 22, inAngle - Math.PI, inAngle - Math.PI + 0.4);
-    ctx.stroke();
+    ctx.strokeStyle = 'rgba(200,92,0,0.5)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(Px, Py, 22, inAngle - Math.PI, inAngle - Math.PI + 0.4); ctx.stroke();
     ctx.strokeStyle = 'rgba(26,107,58,0.5)';
-    ctx.beginPath();
-    ctx.arc(Px, Py, 22, refAngle - 0.4, refAngle);
-    ctx.stroke();
+    ctx.beginPath(); ctx.arc(Px, Py, 22, refAngle - 0.4, refAngle); ctx.stroke();
 
-    // Foci dots
+    // Foci
     [[F1, '#C85C00', 'F₁', -22], [F2, '#1A6B3A', 'F₂', 10]].forEach(([f, col, lbl, lx]) => {
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, 7, 0, 2 * Math.PI);
-      ctx.fillStyle = col;
-      ctx.fill();
-      ctx.strokeStyle = '#fff';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-      ctx.fillStyle = col;
-      ctx.font = 'bold 14px Segoe UI,Arial,sans-serif';
+      ctx.beginPath(); ctx.arc(f.x, f.y, 7, 0, 2 * Math.PI);
+      ctx.fillStyle = col; ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = col; ctx.font = 'bold 14px Segoe UI,Arial,sans-serif';
       ctx.fillText(lbl, f.x + lx, f.y + 5);
     });
 
     // Point P
-    ctx.beginPath();
-    ctx.arc(Px, Py, 8, 0, 2 * Math.PI);
-    ctx.fillStyle = '#1B3A6B';
-    ctx.fill();
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 11px Segoe UI,Arial,sans-serif';
+    ctx.beginPath(); ctx.arc(Px, Py, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1B3A6B'; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Segoe UI,Arial,sans-serif';
     ctx.fillText('P', Px - 4, Py + 4);
 
     // Legend
-    const lex = W - 140, ley = 16;
+    const lex = W - 145, ley = 16;
     ctx.font = '11px Segoe UI,Arial,sans-serif';
     [['rgba(74,26,123,0.5)', '- - -  tangente'],
      ['#C85C00',            '———  rayo de F₁'],
      ['#1A6B3A',            '———  rayo reflejado']
-    ].forEach(([col, txt], i) => {
-      ctx.fillStyle = col;
-      ctx.fillText(txt, lex, ley + i * 16);
+    ].forEach(([col, txt], i) => { ctx.fillStyle = col; ctx.fillText(txt, lex, ley + i * 16); });
+  }
+
+  // ── MODO ORBITAL ──────────────────────────────────────────────────
+  function drawOrbital() {
+    // Space background
+    ctx.fillStyle = '#0a0e1a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    [[45,30],[120,55],[200,20],[310,40],[380,25],[430,60],[60,230],[150,250],[260,240],[360,220],[410,200],[80,140],[340,160]].forEach(([sx,sy]) => {
+      ctx.beginPath(); ctx.arc(sx, sy, 0.8, 0, 2*Math.PI); ctx.fill();
     });
+
+    const Px = cx + a * Math.cos(theta);
+    const Py = cy + b * Math.sin(theta);
+
+    // Orbit ellipse (dashed, dim)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(100,140,200,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 5]);
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, a, b, 0, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // Line Sun → Planet (radius vector, Kepler's 2nd law hint)
+    ctx.strokeStyle = 'rgba(255,200,60,0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(F1.x, F1.y);
+    ctx.lineTo(Px, Py);
+    ctx.stroke();
+
+    // F2 — empty focus marker
+    ctx.beginPath();
+    ctx.arc(F2.x, F2.y, 6, 0, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(150,170,220,0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3,3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(150,170,220,0.7)';
+    ctx.font = '11px Segoe UI,Arial,sans-serif';
+    ctx.fillText('F₂ (vacío)', F2.x + 10, F2.y + 4);
+
+    // Sun at F1 — glow
+    const grad = ctx.createRadialGradient(F1.x, F1.y, 2, F1.x, F1.y, 28);
+    grad.addColorStop(0, 'rgba(255,220,60,0.9)');
+    grad.addColorStop(0.4, 'rgba(255,160,20,0.4)');
+    grad.addColorStop(1, 'rgba(255,120,0,0)');
+    ctx.beginPath();
+    ctx.arc(F1.x, F1.y, 28, 0, 2 * Math.PI);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(F1.x, F1.y, 9, 0, 2 * Math.PI);
+    ctx.fillStyle = '#FFD93D';
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 13px Segoe UI,Arial,sans-serif';
+    ctx.fillText('☀', F1.x - 8, F1.y + 5);
+    ctx.fillStyle = '#FFD93D';
+    ctx.font = '11px Segoe UI,Arial,sans-serif';
+    ctx.fillText('Sol (F₁)', F1.x - 24, F1.y + 22);
+
+    // Planet
+    ctx.beginPath();
+    ctx.arc(Px, Py, 9, 0, 2 * Math.PI);
+    ctx.fillStyle = '#4A9EE0';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px Segoe UI,Arial,sans-serif';
+    ctx.fillText('🪐', Px - 8, Py + 5);
+
+    // Kepler note
+    ctx.fillStyle = 'rgba(180,210,255,0.85)';
+    ctx.font = 'italic 11px Segoe UI,Arial,sans-serif';
+    ctx.fillText('Kepler (1609): los planetas orbitan en elipses,', 10, H - 28);
+    ctx.fillText('con el Sol en uno de los focos.', 10, H - 14);
   }
 
   function arrowHead(ctx, x, y, dx, dy, color) {
-    const s = 10;
-    const angle = Math.atan2(dy, dx);
+    const s = 10, angle = Math.atan2(dy, dx);
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(x + Math.cos(angle) * s, y + Math.sin(angle) * s);
@@ -981,11 +1117,11 @@ function initEllipseSim() {
     return Math.atan2(my / b, mx / a);
   }
 
-  canvas.addEventListener('mousedown', e => { dragging = true; canvas.style.cursor = 'grabbing'; theta = thetaFrom(e.clientX, e.clientY); draw(); });
-  window.addEventListener('mousemove', e => { if (dragging) { theta = thetaFrom(e.clientX, e.clientY); draw(); } });
+  canvas.addEventListener('mousedown', e => { if (mode === 'reflexion') { dragging = true; canvas.style.cursor = 'grabbing'; theta = thetaFrom(e.clientX, e.clientY); draw(); } });
+  window.addEventListener('mousemove', e => { if (dragging && mode === 'reflexion') { theta = thetaFrom(e.clientX, e.clientY); draw(); } });
   window.addEventListener('mouseup', () => { dragging = false; canvas.style.cursor = 'grab'; });
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); dragging = true; theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); }, { passive: false });
-  window.addEventListener('touchmove', e => { if (dragging) { theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); if (mode === 'reflexion') { dragging = true; theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } }, { passive: false });
+  window.addEventListener('touchmove', e => { if (dragging && mode === 'reflexion') { theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } });
   window.addEventListener('touchend', () => { dragging = false; });
 
   draw();
@@ -1129,7 +1265,19 @@ document.addEventListener('keydown', (e) => {
     }
   }
 
-  // --- SECRETO DEL PROFE: MOSTRAR SIMULADOR FOCAL (Ctrl + M) ---
+  // --- SECRETO DEL PROFE: MOSTRAR LÍNEA DE TIEMPO (Ctrl + T) ---
+  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 't') {
+    e.preventDefault();
+    const viz = document.getElementById('viz-viaje');
+    if (!viz) return;
+    const visible = viz.style.display !== 'none';
+    viz.style.display = visible ? 'none' : 'block';
+    const toast = document.createElement('div');
+    toast.innerHTML = visible ? '🙈 Línea de tiempo oculta' : '🗺️ Línea de tiempo visible';
+    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--amb); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
   if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
     e.preventDefault();
     const sim = document.getElementById('sim-focal');
