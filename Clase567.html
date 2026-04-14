@@ -433,13 +433,40 @@
           <div class="step" style="border-color:var(--amb);background:var(--acl)">
             <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
             <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
-            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>? ¿Dónde escucharon esta distinción antes en la cursada?</p>
+            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
+            <div class="note na" style="margin-top:10px">
+              <span class="ni">💡</span>
+              <div>
+                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Pistas para pensar</strong>
+                <ul style="font-size:13px;line-height:1.7;margin-left:16px">
+                  <li><strong>Verificar</strong> es comprobar que algo funciona en casos concretos. Puedo verificar que el sol salió hoy, ayer y anteayer — pero eso no <em>demuestra</em> que saldrá mañana.</li>
+                  <li><strong>Demostrar</strong> es mostrar que algo <em>no puede ser de otra manera</em>, usando solo las reglas del sistema. Una demostración cubre todos los casos posibles a la vez, incluso los infinitos.</li>
+                  <li>En este caso: por más que muevan $P$ mil veces y el rayo siempre pase por $F_2$, siempre queda la duda de qué pasa en el punto que no probaron. La demostración del Paso 3 elimina esa duda de una vez.</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div class="step" style="border-color:var(--nav);background:var(--pale)">
             <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
             <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
             <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
+          </div>
+
+          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
+          <div id="sim-focal" style="display:none">
+          <div class="sim-wrap" style="margin:14px 0">
+            <div class="sim-header" style="background:var(--vio)">
+              <span>Simulador — Propiedad Focal de la Elipse</span>
+              <span style="font-size:12px;opacity:.75">Arrastrá el punto P por la elipse</span>
+            </div>
+            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
+              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
+              <div style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
+                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
+              </div>
+            </div>
+          </div>
           </div>
 
           <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
@@ -782,10 +809,186 @@ function showTab(id, btn) {
   document.getElementById('pane-' + id).classList.add('on');
   if (btn) btn.classList.add('active');
   window.scrollTo(0, 0);
-  
-  if(id === 'c5') {
-    setTimeout(drawArchimedes, 50); 
+  if (id === 'c5') setTimeout(drawArchimedes, 50);
+  if (id === 'c6') setTimeout(initEllipseSim, 50);
+}
+
+// --- SIMULADOR PROPIEDAD FOCAL DE LA ELIPSE ---
+function initEllipseSim() {
+  const canvas = document.getElementById('ellipseSim');
+  if (!canvas || canvas._simReady) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const W = Math.min(460, canvas.parentElement.offsetWidth - 20);
+  const H = 280;
+
+  // Si el contenedor está oculto (display:none), offsetWidth = 0 → W negativo.
+  // Salimos sin marcar _simReady para que se pueda reintentar cuando sea visible.
+  if (W <= 0) return;
+
+  canvas._simReady = true;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const cx = W / 2, cy = H / 2;
+  const a = W * 0.40, b = H * 0.36;
+  const c = Math.sqrt(a * a - b * b);
+  const F1 = { x: cx - c, y: cy };
+  const F2 = { x: cx + c, y: cy };
+  let theta = 0.85;
+  let dragging = false;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, W, H);
+
+    const Px = cx + a * Math.cos(theta);
+    const Py = cy + b * Math.sin(theta);
+
+    // Unit outward normal at P
+    const gnx = (Px - cx) / (a * a), gny = (Py - cy) / (b * b);
+    const gnl = Math.sqrt(gnx * gnx + gny * gny);
+    const nx = gnx / gnl, ny = gny / gnl;
+
+    // Incoming direction: F1 → P (normalized)
+    const idx = Px - F1.x, idy = Py - F1.y;
+    const il = Math.sqrt(idx * idx + idy * idy);
+    const inx = idx / il, iny = idy / il;
+
+    // Reflected direction: d_out = d_in - 2*(d_in·n)*n
+    const dot = inx * nx + iny * ny;
+    const rfx = inx - 2 * dot * nx;
+    const rfy = iny - 2 * dot * ny;
+
+    const far = Math.max(W, H) * 2.5;
+    const tx = -ny, ty = nx; // unit tangent
+
+    // Tangent line (dashed purple)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(74,26,123,0.3)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(Px - far * tx, Py - far * ty);
+    ctx.lineTo(Px + far * tx, Py + far * ty);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // Ellipse
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, a, b, 0, 0, 2 * Math.PI);
+    ctx.strokeStyle = '#1B3A6B';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Incoming ray F1 → P (orange)
+    ctx.strokeStyle = '#C85C00';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(F1.x, F1.y);
+    ctx.lineTo(Px, Py);
+    ctx.stroke();
+    arrowHead(ctx, F1.x + (Px - F1.x) * 0.55, F1.y + (Py - F1.y) * 0.55, inx, iny, '#C85C00');
+
+    // Reflected ray P → far (green)
+    ctx.strokeStyle = '#1A6B3A';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(Px, Py);
+    ctx.lineTo(Px + rfx * far, Py + rfy * far);
+    ctx.stroke();
+    arrowHead(ctx, Px + rfx * 60, Py + rfy * 60, rfx, rfy, '#1A6B3A');
+
+    // F2 glow (ray always passes through F2 — mathematical certainty)
+    ctx.beginPath();
+    ctx.arc(F2.x, F2.y, 16, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgba(26,107,58,0.18)';
+    ctx.fill();
+
+    // Angle arc at P showing equal angles
+    const inAngle = Math.atan2(iny, inx);
+    const refAngle = Math.atan2(rfy, rfx);
+    ctx.strokeStyle = 'rgba(200,92,0,0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(Px, Py, 22, inAngle - Math.PI, inAngle - Math.PI + 0.4);
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(26,107,58,0.5)';
+    ctx.beginPath();
+    ctx.arc(Px, Py, 22, refAngle - 0.4, refAngle);
+    ctx.stroke();
+
+    // Foci dots
+    [[F1, '#C85C00', 'F₁', -22], [F2, '#1A6B3A', 'F₂', 10]].forEach(([f, col, lbl, lx]) => {
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, 7, 0, 2 * Math.PI);
+      ctx.fillStyle = col;
+      ctx.fill();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.fillStyle = col;
+      ctx.font = 'bold 14px Segoe UI,Arial,sans-serif';
+      ctx.fillText(lbl, f.x + lx, f.y + 5);
+    });
+
+    // Point P
+    ctx.beginPath();
+    ctx.arc(Px, Py, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1B3A6B';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px Segoe UI,Arial,sans-serif';
+    ctx.fillText('P', Px - 4, Py + 4);
+
+    // Legend
+    const lex = W - 140, ley = 16;
+    ctx.font = '11px Segoe UI,Arial,sans-serif';
+    [['rgba(74,26,123,0.5)', '- - -  tangente'],
+     ['#C85C00',            '———  rayo de F₁'],
+     ['#1A6B3A',            '———  rayo reflejado']
+    ].forEach(([col, txt], i) => {
+      ctx.fillStyle = col;
+      ctx.fillText(txt, lex, ley + i * 16);
+    });
   }
+
+  function arrowHead(ctx, x, y, dx, dy, color) {
+    const s = 10;
+    const angle = Math.atan2(dy, dx);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x + Math.cos(angle) * s, y + Math.sin(angle) * s);
+    ctx.lineTo(x + Math.cos(angle + 2.4) * s * 0.6, y + Math.sin(angle + 2.4) * s * 0.6);
+    ctx.lineTo(x + Math.cos(angle - 2.4) * s * 0.6, y + Math.sin(angle - 2.4) * s * 0.6);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function thetaFrom(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    const mx = (clientX - r.left) * (W / r.width) - cx;
+    const my = (clientY - r.top) * (H / r.height) - cy;
+    return Math.atan2(my / b, mx / a);
+  }
+
+  canvas.addEventListener('mousedown', e => { dragging = true; canvas.style.cursor = 'grabbing'; theta = thetaFrom(e.clientX, e.clientY); draw(); });
+  window.addEventListener('mousemove', e => { if (dragging) { theta = thetaFrom(e.clientX, e.clientY); draw(); } });
+  window.addEventListener('mouseup', () => { dragging = false; canvas.style.cursor = 'grab'; });
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); dragging = true; theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); }, { passive: false });
+  window.addEventListener('touchmove', e => { if (dragging) { theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } });
+  window.addEventListener('touchend', () => { dragging = false; });
+
+  draw();
 }
 
 // --- SIMULADOR ARQUÍMEDES (PI) ---
@@ -924,6 +1127,21 @@ document.addEventListener('keydown', (e) => {
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 3000);
     }
+  }
+
+  // --- SECRETO DEL PROFE: MOSTRAR SIMULADOR FOCAL (Ctrl + M) ---
+  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
+    e.preventDefault();
+    const sim = document.getElementById('sim-focal');
+    if (!sim) return;
+    const visible = sim.style.display !== 'none';
+    sim.style.display = visible ? 'none' : 'block';
+    if (!visible) setTimeout(initEllipseSim, 50);
+    const toast = document.createElement('div');
+    toast.innerHTML = visible ? '🙈 Simulador oculto' : '📡 Simulador visible';
+    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--vio); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
   }
 });
 
