@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Semana 4 · El ocaso y la deuda · IPESfa 2026</title>
+<title>Semanas 3 y 4 · Límites y Nuevos Números · IPESfa 2026</title>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script>
@@ -92,10 +92,19 @@
   .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
   .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
 
-  /* -- SIMULADOR ELIPSE -- */
+  /* -- SIMULADORES -- */
   .sim-wrap { background: #fff; border: 1px solid var(--bd); border-radius: var(--r); overflow: hidden; margin: 15px 0; }
   .sim-header { background: var(--slate); color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; }
-  
+  .sim-body { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+  .canvas-container { position: relative; width: 100%; max-width: 350px; aspect-ratio: 1/1; background: #f8fafc; border-radius: 8px; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); border: 1px dashed var(--bd); overflow: hidden; }
+  canvas { width: 100%; height: 100%; display: block; }
+  .controls { width: 100%; max-width: 400px; background: var(--gris); padding: 15px; border-radius: 8px; border: 1px solid var(--bd); }
+  .slider-row { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+  input[type=range] { flex: 1; accent-color: var(--nav); }
+  .math-display { font-family: monospace; font-size: 15px; background: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 4px; text-align: center; }
+  .math-display span.red { color: var(--red); font-weight: bold; }
+  .math-display span.blue { color: var(--med); font-weight: bold; }
+
   .bitacora{background:var(--vcl);border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
   .bitacora h3{color:var(--nav);font-size:15px;margin-bottom:8px}
   .bita-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
@@ -149,23 +158,33 @@
 
 <div class="tab-bar">
   <button class="tab-btn active" onclick="showTab('inicio',this)" id="btn-inicio">Inicio</button>
-  <button class="tab-btn" onclick="showTab('c6c7',this)" id="btn-c6c7">Clases 6 y 7 · Lunes y Martes</button>
-  <button class="tab-btn locked" onclick="return false;" id="btn-c8">Clase 8 · Miércoles</button>
+  <button class="tab-btn" onclick="showTab('c5',this)" id="btn-c5">Clase 5 · (Semana Pasada)</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c6c7">Clases 6 y 7 · Lunes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c8">Clase 8 · Martes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c9">Clase 9 · Miércoles</button>
 </div>
 
 <div class="wrap">
 
 <!-- ══════════════════ INICIO ══════════════════ -->
 <div id="pane-inicio" class="pane on">
+  <div class="act-box" style="border: 2px solid var(--amb)">
+    <div class="act-head" style="background:var(--amb)">
+      <h3 style="color:#fff;font-size:16px">⚠️ Recalculando: Semanas 3 y 4 integradas</h3>
+    </div>
+    <div class="act-body">
+      <p style="font-size:14px; line-height:1.6">Por la suspensión de actividades de la semana pasada, reorganizamos el material en este único documento. Aquí encontrarán la <strong>Clase 5</strong> (que ya dictamos el lunes pasado) para consulta, y las nuevas actividades para la <strong>Semana 4</strong>: el lunes (Clases 6 y 7 integradas) cerraremos la etapa griega, el martes (Clase 8) abordaremos el nacimiento de los números negativos en Oriente, y el miércoles (Clase 9) dedicaremos la hora a un taller didáctico puro.</p>
+    </div>
+  </div>
+
   <div class="act-box">
     <div class="act-head" style="background:var(--slate)">
       <h3 style="color:#fff;font-size:16px">🔍 Panorama de la Semana</h3>
     </div>
     <div class="act-body">
-      <p style="font-size:15px;font-weight:600;color:var(--nav);line-height:1.5">Recalculando la ruta: Integración y Preludio</p>
-      <p style="margin-top:10px;line-height:1.7">Por la suspensión de actividades del miércoles pasado, esta semana vamos a trabajar de forma integrada. En las primeras dos clases (lunes y martes) completaremos el bloque que nos quedó pendiente: la obra genial de <strong>Apolonio</strong>, el debate sobre la utilidad de la matemática y el colapso final de la escuela de Alejandría con el asesinato de <strong>Hipatia</strong>. Esto dará cierre formal al Eje 1.</p>
+      <p style="font-size:15px;font-weight:600;color:var(--nav);line-height:1.5">El problema de la escuela de Platón y el choque de Oriente</p>
       
-      <p style="margin-top:12px;line-height:1.7">El miércoles inauguramos el <strong>Eje 2</strong>. Daremos el gran salto desde la geometría pura de los griegos hacia el pragmatismo del mundo oriental (China e India). ¿El vehículo para ese salto? El descubrimiento y la tortuosa aceptación de los <strong>números negativos</strong>.</p>
+      <p style="margin-top:10px;line-height:1.7">La semana pasada vimos con Arquímedes la contradicción entre el matemático que usaba la física para resolver problemas y el filósofo que sentía vergüenza de ello por no encajar en la pureza de la regla y el compás. En esta semana veremos cómo esa pureza geométrica llegó a su cumbre con Apolonio y finalmente colapsó con el ocaso de Alejandría.</p>
 
       <div class="note na">
         <span class="ni">⚡</span>
@@ -178,14 +197,200 @@
   </div>
 </div>
 
-<!-- ══════════════════ CLASES 6 Y 7 · LUNES Y MARTES ══════════════════ -->
+<!-- ══════════════════ CLASE 5 · LUNES PASADO (INTACTA) ══════════════════ -->
+<div id="pane-c5" class="pane">
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num">5</div>
+      <div class="cb-info">
+        <h2>Arquímedes y el "secreto" del Método</h2>
+        <p>Lunes 13/4 · (Clase de la semana pasada)</p>
+      </div>
+    </div>
+    <div class="cb-obj">
+      <p><strong>Objetivo:</strong> Analizar la tensión entre el contexto de descubrimiento (heurística física) y el contexto de justificación (demostración geométrica) a través del Método de Arquímedes. La clase tiene dos momentos: primero <em>vivir</em> la limitación que enfrentó Arquímedes (calculando como él), y luego <em>usar</em> esa experiencia para diseñar una actividad didáctica propia.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>📖 Lectura Base</span><hr></div>
+    <div class="lect">
+      <div class="lect-head">
+        <h3>El Palimpsesto: El libro escondido por 1000 años</h3>
+        <span>Epistemología</span>
+      </div>
+      <div class="lect-body">
+        <p>Durante siglos, los matemáticos se preguntaron cómo hizo Arquímedes para calcular áreas y volúmenes curvos de forma tan perfecta. Sus textos publicados eran demostraciones magistrales usando el <strong>Método de Exhaución</strong> (creado por Eudoxo), que consistía en meter figuras dentro de otras hasta "agotar" el espacio. Pero estas demostraciones eran un dolor de cabeza larguísimo y servían para <em>probar</em> resultados, no para <em>descubrirlos</em>.</p>
+        
+        <p>La respuesta apareció milagrosamente en 1906. En una biblioteca de Constantinopla, el historiador Heiberg descubrió un <strong>palimpsesto</strong>. Era un libro de oraciones del siglo X escrito en pergamino reciclado. Al observarlo con cuidado, debajo de las oraciones había texto matemático griego raspado y lavado. Eran copias de obras de Arquímedes perdidas, incluyendo una llamada simplemente <em>"El Método"</em>. <span class="ref">(Rey Pastor y Babini, 2000, Vol. 1, p. 110)</span></p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <img src="https://img.asmedia.epimg.net/resizer/v2/5SOBW4GSJJFZ7J7E77Z7HBPT3I.jpg?auth=ab86c030671d9f686b0d99388d03369e6c3de9db4c8d7d9693c39f91c77bc4d0&width=1472&height=1104&smart=true" alt="Detalle del Palimpsesto de Arquímedes" style="max-width: 100%; max-height: 320px; width: auto; border-radius: var(--r); border: 1px solid var(--bd); box-shadow: var(--sh); display: inline-block;">
+          <figcaption style="font-size: 11.5px; color: var(--txt); margin-top: 8px; font-style: italic;">Detalle del Palimpsesto de Arquímedes. El texto matemático original (horizontal) asoma por debajo de las oraciones litúrgicas medievales (verticales).</figcaption>
+        </figure>
+
+        <div class="note nb">
+          <span class="ni">⚖️</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La mecánica mental</strong>
+            <span style="font-size:13.5px;line-height:1.6">En <em>El Método</em>, Arquímedes confiesa su secreto: para descubrir la fórmula del volumen de la esfera, él no usó geometría. Imaginó la esfera cortada en infinitas rebanadas (como fetas de salame) y usó la <strong>Ley de la Palanca</strong> de la física para "pesarlas" en una balanza imaginaria contra un cono y un cilindro. Como sabía el centro de gravedad del cilindro, pudo deducir el de la esfera. <span class="ref">(Kline, 1992, Vol. 1, p. 147)</span></span>
+          </div>
+        </div>
+
+        <h5>La censura del infinito</h5>
+        <p>¿Por qué Arquímedes ocultó este método en sus publicaciones oficiales? Porque el rigor griego consideraba que mezclar "mecánica" (física, peso) con "geometría" (ideas puras) era una herejía lógica. Además, cortar un objeto en "infinitas" partes rompía el tabú griego del infinito actual. Arquímedes usaba la física en privado para <em>descubrir</em> (heurística), pero luego construía la larguísima demostración por exhaución geométrica para <em>justificar</em> ante el mundo matemático (validación).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>⚙️ Herramientas de época: calculá como Arquímedes</span><hr></div>
+    <div class="act-box" style="border:2px solid var(--grn)">
+      <div class="act-head" style="background:var(--grn)">
+        <h3>Antes de usar el simulador: un cálculo a mano con regla y compás</h3>
+      </div>
+      <div class="act-body">
+        <p>Antes de mover el deslizador digital, vamos a hacer lo que hizo Arquímedes: calcular los límites de π <strong>a mano, sin calculadora</strong>, con el hexágono. Este es el primer paso de la cadena de 96 lados que él completó.</p>
+
+        <div class="note nb" style="margin-bottom:14px">
+          <span class="ni">🧭</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La herramienta del período: regla y compás</strong>
+            <span style="font-size:13px;line-height:1.6">Los matemáticos griegos no tenían calculadoras, fórmulas algebraicas ni notación decimal. Trabajaban con regla, compás y propiedades geométricas. Cuando necesitaban estimar una longitud, tenían que construirla físicamente y compararla con segmentos conocidos. Esta actividad reproduce exactamente esa forma de trabajar.</span>
+          </div>
+        </div>
+
+        <div class="step">
+          <strong>Paso 1 — Construir el hexágono en GeoGebra (o en papel con compás)</strong>
+          <p>Dibujá un círculo de radio $r = 1$. Inscribí un hexágono regular adentro. Observá que cada lado del hexágono mide exactamente <strong>1</strong> (igual al radio). Esto no es coincidencia: es una propiedad del hexágono regular. ¿Por qué ocurre? (Pista: el hexágono se puede descomponer en seis triángulos equiláteros con vértice en el centro.)</p>
+        </div>
+
+        <div class="step">
+          <strong>Paso 2 — Primera cota: π > 3 (sin ninguna raíz cuadrada)</strong>
+          <p>El hexágono inscrito tiene perímetro $P_{interno} = 6 \times 1 = 6$. La circunferencia de radio 1 mide $2\pi$. Como el polígono interior es más chico que el círculo:</p>
+          <p style="text-align:center; font-size:15px; font-weight:bold; color:var(--grn); margin:10px 0">$6 < 2\pi \quad \Rightarrow \quad \pi > 3$</p>
+        </div>
+
+        <div class="step">
+          <strong>Paso 3 — Segunda cota: π &lt; 2√3 (acá aparece la dificultad)</strong>
+          <p>Ahora circunscribí el hexágono por fuera del círculo. Cada lado del hexágono externo mide $\frac{2}{\sqrt{3}}$. El perímetro externo es $\frac{12}{\sqrt{3}} = 4\sqrt{3}$. Como el círculo es más chico que el polígono exterior:</p>
+          <p style="text-align:center; font-size:15px; font-weight:bold; color:var(--red); margin:10px 0">$2\pi < 4\sqrt{3} \quad \Rightarrow \quad \pi < 2\sqrt{3}$</p>
+          <p>Ahora necesitamos estimar $\sqrt{3}$ <strong>sin calculadora</strong>. ¿Cómo? Verificá a mano: ¿$1.7^2$ es mayor o menor que 3? ¿Y $1.8^2$? Eso da $1.7 < \sqrt{3} < 1.8$, y por lo tanto $3.4 < 2\sqrt{3} < 3.6$.</p>
+          <p>Resultado con el hexágono: $\mathbf{3 < \pi < 3.46}$</p>
+        </div>
+
+        <div class="note na" style="margin-bottom:14px">
+          <span class="ni">⚠️</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Anacronismo a la vista: ¿Así escribía Arquímedes?</strong>
+            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que ustedes experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
+          </div>
+        </div>
+
+        <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+          <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">💬 La pregunta que explica todo</strong>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Para pasar al polígono de 12 lados, Arquímedes necesitaba calcular $\sqrt{2-\sqrt{3}}$. Para 24 lados: $\sqrt{2-\sqrt{2+\sqrt{3}}}$. Y así sucesivamente, con raíces anidadas cada vez más complicadas, <strong>todas a mano, con fracciones exactas</strong>. Eso es lo que hizo hasta n=96.</p>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8;margin-top:8px;font-style:italic"><strong>Ahora sí:</strong> mové el deslizador del simulador que sigue. Pero cada posición que avanzás representa horas de cálculo aritmético para un griego. ¿Cambia algo la forma en que lo mirás?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>🖥️ Laboratorio Visual</span><hr></div>
+    <div class="act-box" style="border: 2px solid var(--med);">
+      <div class="act-head" style="background:var(--med)">
+        <h3>Acorralando a $\pi$: El Método de Exhaución</h3>
+      </div>
+      <div class="act-body">
+        <p>Arquímedes no podía medir el círculo directamente, así que inscribió un polígono adentro (más chico) y circunscribió otro afuera (más grande). El círculo es el "sandwich" entre los dos.</p>
+        
+        <div class="sim-wrap">
+          <div class="sim-header">
+            <span>Simulador de Polígonos de Arquímedes</span>
+          </div>
+          <div class="sim-body">
+            <div class="canvas-container">
+              <canvas id="piCanvas"></canvas>
+            </div>
+            
+            <div class="controls">
+              <div class="slider-row">
+                <label for="sides" style="font-size:13px; font-weight:bold; min-width:130px">Lados del Polígono ($n$):</label>
+                <input type="range" id="sides" min="3" max="96" step="1" value="3">
+                <span id="sides-val" style="font-weight:bold; color:var(--nav); width:30px; text-align:right">3</span>
+              </div>
+              
+              <div class="math-display">
+                <span class="blue">Pol. Interno</span> &lt; &nbsp; $\pi$ &nbsp; &lt; <span class="red">Pol. Externo</span><br>
+                <span class="blue" id="val-inner">2.5981</span> &lt; <span style="font-weight:bold; color:#000">3.1416</span> &lt; <span class="red" id="val-outer">5.1962</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--slate); color:white; border-radius:var(--r); padding:16px; margin-top:14px">
+            <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">🎯 Foco del Debate Epistemológico</strong>
+            <p style="font-size:13px; line-height:1.6">Mové el deslizador hasta $n = 96$. Arquímedes demostró que: <br>
+            $3 \frac{10}{71} < \pi < 3 \frac{1}{7}$ (es decir, entre 3.1408 y 3.1428).</p>
+            
+            <p style="font-size:13px; line-height:1.6; margin-top:10px; font-style:italic"><strong>Debate en clase:</strong> ¿Por qué se detuvo en 96 lados? Si seguimos aumentando $n$ hacia el infinito, ¿los polígonos <em>se convierten</em> en el círculo? Para los griegos la respuesta es <strong>NO</strong>. Para ellos, un polígono de infinitos lados era una aberración lógica. Esta es la barrera que impidió que Grecia inventara el Cálculo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>🛠️ Taller de Transposición Didáctica</span><hr></div>
+    <div class="bitacora" style="background:var(--pale);border-color:var(--med)">
+      <h3 style="color:var(--nav);font-size:16px;font-weight:bold;margin-bottom:8px">Diseñando el "Borrador" del Círculo</h3>
+      <p style="font-size:13.5px;margin-bottom:12px;line-height:1.6;color:var(--neg)">
+        Recién vivieron lo que experimentó Arquímedes: una herramienta poderosa para <em>descubrir</em> (el cálculo físico) que sin embargo se ocultaba en las publicaciones oficiales porque "no era formal". En las aulas de hoy solemos hacer lo mismo — mostramos la fórmula terminada del área del círculo ($A = \pi \cdot r^2$) y escondemos el "borrador".
+      </p>
+
+      <div class="bita-consigna" style="border-left-color:var(--med);margin-bottom:16px">
+        <strong style="color:var(--nav)">Consigna de trabajo (Equipo Docente: Leyni, Ana y Gonzalo - 60 min):</strong><br>
+        Aprovechando que disponemos de 2 horas reloj, van a trabajar juntos para diseñar una <strong>micro-secuencia didáctica exploratoria</strong>. El objetivo es que alumnos de 2.° o 3.° año de secundaria "descubran" la fórmula del área del círculo manipulando las formas, tal como Arquímedes manipulaba pesos en su balanza.<br><br>
+        <em>Pista metodológica:</em> Piensen en la clásica demostración de cortar un círculo en "porciones de pizza" y reorganizarlas para formar un paralelogramo.
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:6px;padding:14px">
+        <strong style="font-size:14px;color:var(--grn);display:flex;align-items:center;gap:6px">
+          <span>🎯</span> Producción esperada al final de la clase
+        </strong>
+        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito con los siguientes componentes:</p>
+        <ul style="font-size:13px;margin-top:8px;margin-left:20px;line-height:1.6;list-style-type:disc;color:var(--neg)">
+          <li><strong>Materiales:</strong> Qué necesitan exactamente los alumnos (ej. compás, tijeras, o GeoGebra).</li>
+          <li><strong>Consigna inicial:</strong> Cómo le presentan el desafío a los estudiantes sin "spoilear" la fórmula.</li>
+          <li><strong>Intervención docente (CRÍTICO):</strong> Escriban las 3 o 4 <em>preguntas guía</em> que harían ustedes mientras los chicos rearman las porciones para que ellos mismos deduzcan que la base del paralelogramo es $\pi \cdot r$ y la altura es $r$.</li>
+        </ul>
+      </div>
+
+      <div class="srcs" style="margin-top:20px;background:rgba(255,255,255,0.8);border-color:var(--med)">
+        <h5 style="color:var(--med)">Fuentes bibliográficas de la clase:</h5>
+        <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza Editorial, Cap. 8.</p>
+        <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 45–51.</p>
+        <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza, pp. 145–150.</p>
+        <p>Rey Pastor, J. y Babini, J. (2000). <em>Historia de la matemática</em>, Vol. 1. Barcelona: Gedisa, pp. 110–115.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+    <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))">← Inicio
+      <small>Panorama de la semana</small>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASES 6 Y 7 · LUNES 20/4 ══════════════════ -->
 <div id="pane-c6c7" class="pane">
   <div class="clase-banner">
     <div class="clase-banner-top">
-      <div class="cb-num" style="background:var(--vio)">6 y 7</div>
+      <div class="cb-num" style="background:var(--vio)">6-7</div>
       <div class="cb-info">
         <h2>El límite del modelo griego: Cónicas y Colapso</h2>
-        <p>Lunes 20/4 y Martes 21/4 · Integración del cierre del Eje 1</p>
+        <p>Lunes 20/4 · 120 minutos · Cierre del Eje 1</p>
       </div>
     </div>
     <div class="cb-obj">
@@ -205,7 +410,7 @@
           <span class="ni">🔗</span>
           <div>
             <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
-            <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la primera construcción de los <em>Elementos</em> Euclides asume que dos círculos se cortan porque <em>se ve</em>, pero ningún postulado lo garantiza. Hoy vemos la otra cara: dentro de ese sistema hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar el punto de rebote. El sistema lo garantiza.</span>
+            <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la primera construcción de los <em>Elementos</em> Euclides asume que dos círculos se cortan porque <em>se ve</em>, pero ningún postulado lo garantiza. Hoy vemos la otra cara: dentro de ese sistema hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar el punto de rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
           </div>
         </div>
 
@@ -215,28 +420,30 @@
           <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
           <div class="note nb" style="margin-top:10px">
             <span class="ni">💡</span>
-            <span style="font-size:12.5px"><strong>Pista:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> y <code>Reflect(F1, tangente)</code>. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
+            <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
           </div>
         </div>
 
         <div class="step" style="border-color:var(--amb);background:var(--acl)">
           <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
-          <p>Movieron $P$ por muchísimas posiciones. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse?</p>
+          <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
+          <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
           <div class="note na" style="margin-top:10px">
             <span class="ni">💡</span>
             <div>
-              <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Qué diferencia hay entre "no encontré contraejemplos" y "es imposible que existan"?</p>
+              <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
+              <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
             </div>
           </div>
         </div>
 
         <div class="step" style="border-color:var(--nav);background:var(--pale)">
           <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
-          <p>La demostración de esta propiedad usa la definición de la elipse (suma de distancias constante a los focos) y la propiedad de la tangente como bisectriz. El sistema lo impone.</p>
-          <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Hoy, esta propiedad explica las <strong>salas de susurros</strong> y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin cirugía (el foco emisor y el cálculo renal se ubican en los focos de la elipse). <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
+          <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
+          <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
         </div>
 
-        <!-- SIMULADOR PROPIEDAD FOCAL -->
+        <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
         <div id="sim-focal" style="display:none">
         <div class="sim-wrap" style="margin:14px 0">
           <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
@@ -251,6 +458,11 @@
           </div>
         </div>
         </div>
+
+        <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+          <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -264,28 +476,100 @@
         <span>Historia Pura</span>
       </div>
       <div class="lect-body">
-        <p>Apolonio de Perga (c. 262–190 a.C.) fue el último gran pilar de la tríada helenística (los antiguos griegos se llamaban "helenos", y el período "helenístico" marca la globalización de esta cultura tras las conquistas de Alejandro Magno), completando el trabajo de sistematización junto a Euclides y Arquímedes. Su obra maestra, <em>Las Cónicas</em>, es el estudio más exhaustivo de la Antigüedad sobre curvas que no pueden trazarse con regla y compás tradicionales. <span class="ref">(Boyer, 1986, pp. 129–135)</span></p>
+        <p>Hasta ahora estudiamos a Euclides, que ordenó la geometría plana con sus postulados, y a Arquímedes, que usó la física para acorralar áreas y volúmenes complejos. Hoy nos toca conocer al tercer gigante de esta época: <strong>Apolonio de Perga</strong> (c. 262–190 a.C.). Conocido por sus contemporáneos simplemente como "El Gran Geómetra", Apolonio fue el último pilar de la famosa tríada helenística (vale aclarar que los antiguos griegos se llamaban a sí mismos "helenos", y el período "helenístico" marca la globalización y mezcla de esta cultura por el mundo oriental y egipcio tras las conquistas de Alejandro Magno).</p>
+        
+        <p>Mientras Euclides y Arquímedes ya eran leyendas consagradas, Apolonio se dedicó a completar y expandir brutalmente el trabajo de sus predecesores. Su obra maestra de ocho volúmenes, <em>Las Cónicas</em>, es el estudio más exhaustivo de la Antigüedad sobre las curvas que no pueden trazarse con la regla y el compás tradicionales. <span class="ref">(Boyer, 1986, pp. 129–135)</span></p>
 
-        <p>Antes de Apolonio, los griegos creían que para obtener curvas diferentes necesitaban cortar conos de distintas formas siempre con un plano perpendicular. La gran revolución de Apolonio fue demostrar que <strong>las tres curvas provienen del mismo cono doble</strong>, simplemente variando la inclinación del plano que lo corta.</p>
+        <p>Antes de Apolonio, los matemáticos griegos creían que para obtener curvas diferentes (parábola, elipse o hipérbola) necesitaban cortar conos de distintas formas (conos rectos, agudos u obtusos) siempre con un plano perpendicular. La gran revolución de Apolonio fue demostrar que <strong>las tres curvas provienen del mismo cono doble</strong>, simplemente variando la inclinación del plano que lo corta. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
 
         <figure style="margin:18px 0;text-align:center">
           <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:15px;display:inline-block;box-shadow:var(--sh)">
             <svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;width:480px;height:auto;display:block">
+              <!-- Background -->
               <rect width="520" height="260" fill="#f8fafc" rx="6"/>
-              <g transform="translate(65,130)"><ellipse cx="0" cy="0" rx="44" ry="44" fill="none" stroke="#1B3A6B" stroke-width="2.2"/><text x="0" y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Círculo</text><text x="0" y="86" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte horizontal)</text></g>
-              <g transform="translate(195,130)"><ellipse cx="0" cy="0" rx="55" ry="36" fill="none" stroke="#1A6B3A" stroke-width="2.2"/><text x="0" y="56" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Elipse</text><text x="0" y="70" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte inclinado)</text></g>
-              <g transform="translate(335,125)"><path d="M -38,-50 Q 0,80 38,-50" fill="none" stroke="#C85C00" stroke-width="2.2"/><text x="0" y="76" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Parábola</text><text x="0" y="90" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte paralelo)</text></g>
-              <g transform="translate(452,130)"><path d="M -30,-48 Q 8,-10 8,0 Q 8,10 -30,48" fill="none" stroke="#4A1A7B" stroke-width="2.2"/><path d="M 30,-48 Q -8,-10 -8,0 Q -8,10 30,48" fill="none" stroke="#4A1A7B" stroke-width="2.2"/><text x="0" y="66" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Hipérbola</text><text x="0" y="80" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte vertical)</text></g>
+
+              <!-- CIRCLE -->
+              <g transform="translate(65,130)">
+                <ellipse cx="0" cy="0" rx="44" ry="44" fill="none" stroke="#1B3A6B" stroke-width="2.2"/>
+                <text x="0" y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Círculo</text>
+                <text x="0" y="86" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte horizontal)</text>
+              </g>
+
+              <!-- ELLIPSE -->
+              <g transform="translate(195,130)">
+                <ellipse cx="0" cy="0" rx="55" ry="36" fill="none" stroke="#1A6B3A" stroke-width="2.2"/>
+                <text x="0" y="56" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Elipse</text>
+                <text x="0" y="70" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte inclinado)</text>
+              </g>
+
+              <!-- PARABOLA -->
+              <g transform="translate(335,125)">
+                <path d="M -38,-50 Q 0,80 38,-50" fill="none" stroke="#C85C00" stroke-width="2.2"/>
+                <text x="0" y="76" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Parábola</text>
+                <text x="0" y="90" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte paralelo)</text>
+              </g>
+
+              <!-- HYPERBOLA -->
+              <g transform="translate(452,130)">
+                <path d="M -30,-48 Q 8,-10 8,0 Q 8,10 -30,48" fill="none" stroke="#4A1A7B" stroke-width="2.2"/>
+                <path d="M 30,-48 Q -8,-10 -8,0 Q -8,10 30,48" fill="none" stroke="#4A1A7B" stroke-width="2.2"/>
+                <text x="0" y="66" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Hipérbola</text>
+                <text x="0" y="80" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">(corte vertical)</text>
+              </g>
+
+              <!-- Dividers -->
               <line x1="130" y1="20" x2="130" y2="240" stroke="#C5D2DC" stroke-width="1" stroke-dasharray="4,3"/>
               <line x1="263" y1="20" x2="263" y2="240" stroke="#C5D2DC" stroke-width="1" stroke-dasharray="4,3"/>
               <line x1="395" y1="20" x2="395" y2="240" stroke="#C5D2DC" stroke-width="1" stroke-dasharray="4,3"/>
+
+              <!-- Title -->
               <text x="260" y="18" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#3A4F6A" font-style="italic">Las cuatro secciones cónicas — el mismo cono doble, distintas inclinaciones del plano</text>
             </svg>
           </div>
-          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">La genialidad de Apolonio: variar el ángulo del plano de corte para obtener las tres cónicas del mismo cono.</figcaption>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">La genialidad de Apolonio: variar el ángulo del plano de corte para obtener elipse, parábola e hipérbola a partir del mismo cono doble.</figcaption>
         </figure>
 
-        <p>El destino de las cónicas es fascinante. Aproximadamente 1800 años después de Apolonio, Johannes Kepler descubrió que los planetas orbitan en elipses. Y más tarde, Isaac Newton usó las propiedades de la parábola para la trayectoria de proyectiles. Las curvas que Apolonio estudió por puro placer intelectual resultaron ser el esqueleto geométrico del universo.</p>
+        <div class="note nv" style="margin:16px 0">
+          <span class="ni">🧐</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--vio)">El "problema" de la utilidad</strong>
+            <span style="font-size:13px;line-height:1.6">A diferencia de Arquímedes, que usaba la matemática para defender una ciudad, el trabajo de Apolonio no servía absolutamente para nada práctico en el siglo II a.C. Era investigación pura, impulsada por la simetría y la curiosidad intelectual. Nadie en el mundo antiguo necesitaba calcular los focos de una elipse para construir un acueducto o cobrar un impuesto.</span>
+          </div>
+        </div>
+
+        <p>Sin embargo, el destino de las cónicas es una de las anécdotas más fascinantes de la historia de la ciencia. Aproximadamente 1800 años después de Apolonio, Johannes Kepler descubrió que los planetas no giran en círculos perfectos, sino en elipses. Y más tarde, Isaac Newton usó las propiedades de la parábola descubiertas por Apolonio para calcular la trayectoria de los proyectiles y los cometas. Las curvas que Apolonio estudió por puro placer intelectual resultaron ser el esqueleto geométrico del universo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD GEOGEBRA CÓNICAS -->
+  <div class="sec">
+    <div class="sec-label"><span>⚙️ Actividad Exploratoria</span><hr></div>
+    <div class="act-box" style="border-color:var(--vio)">
+      <div class="act-head" style="background:var(--vio)">
+        <h3>Cortando el cono digital</h3>
+      </div>
+      <div class="act-body">
+        <p>En el pizarrón es muy difícil visualizar cómo una hipérbola es en realidad el corte vertical de un cono doble. Para esta actividad vamos a usar GeoGebra 3D.</p>
+
+        <div class="step" style="border-color:var(--vio);background:var(--vcl)">
+          <strong style="color:var(--vio)">Consigna de taller:</strong>
+          <p>Abran <strong>GeoGebra Calculadora 3D</strong> en sus dispositivos. El desafío no tiene instructivo paso a paso; la idea es que ustedes mismos modelen la situación:</p>
+          <ul style="font-size:13.5px;margin-left:20px;line-height:1.6;margin-top:8px;margin-bottom:8px">
+            <li>Piensen y construyan algebraicamente un <strong>cono doble</strong> tridimensional centrado en el origen.</li>
+            <li>Agreguen un <strong>plano secante</strong> cuya inclinación se pueda modificar dinámicamente (usando un deslizador).</li>
+            <li><strong>El objetivo:</strong> manipular la inclinación del plano hasta registrar visualmente los momentos exactos en que la curva de intersección muta de elipse a parábola y de parábola a hipérbola.</li>
+          </ul>
+          <p style="font-size:13px;font-style:italic;color:var(--txt)">Esta herramienta dinámica permite ver lo que Apolonio tuvo que abstraer puramente en su cabeza hace más de dos mil años.</p>
+        </div>
+
+        <div class="note nb" style="margin-top:12px">
+          <span class="ni">🔗</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Plan B — si la construcción no arranca</strong>
+            <span style="font-size:13px;line-height:1.6">Si la construcción desde cero no sale en el tiempo disponible, usen este applet ya construido para verificar sus observaciones: <a href="https://www.geogebra.org/m/tMKHFjnf" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">geogebra.org/m/tMKHFjnf</a>. El objetivo de aprendizaje no cambia: identificar el momento de la transición elipse → parábola → hipérbola y explicarlo geométricamente.</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -298,14 +582,15 @@
         <h3 style="color:#fff">La irracionable eficacia de la matemática</h3>
       </div>
       <div class="act-body">
-        <p>El físico Eugene Wigner preguntó por qué la matemática, siendo un juego mental creado libremente por los humanos, termina encajando perfectamente con las leyes físicas del universo. El caso de Apolonio y Kepler es su ejemplo favorito. <span class="ref">(Wigner, 1960)</span></p>
+        <p>El físico Eugene Wigner escribió un famoso ensayo titulado <em>"La irracionable eficacia de la matemática en las ciencias naturales"</em> (1960). Se preguntaba cómo es posible que la matemática, siendo un juego mental creado libremente por los humanos, termine encajando perfectamente con las leyes físicas del universo. El caso de Apolonio y Kepler es su ejemplo favorito. <span class="ref">(Wigner, 1960, p. 1)</span></p>
 
         <div style="background:var(--gris);padding:18px;border-radius:var(--r);margin-top:16px;border-left:4px solid var(--vio)">
           <strong style="display:block;font-size:14.5px;color:var(--nav);margin-bottom:8px">Debate en clase:</strong>
-          <p style="font-size:13px;margin-bottom:12px;line-height:1.6">La currícula nos pide "contextualizar" la matemática. A menudo lo hacemos cayendo en un utilitarismo extremo: <em>"Esto te sirve para calcular la antena parabólica"</em>.</p>
+          <p style="font-size:13px;margin-bottom:12px;line-height:1.6">La currícula de secundaria nos pide "contextualizar" la matemática para que tenga sentido para las y los estudiantes. A menudo lo hacemos cayendo en un utilitarismo extremo: <em>"Esto te sirve para calcular la antena parabólica de DirectTV"</em>.</p>
           <ul style="font-size:13.5px;margin-left:18px;line-height:1.8;color:var(--neg)">
-            <li>¿Enseñarían las cónicas partiendo de sus aplicaciones o desde el "juego puro" del corte del cono? ¿Qué gana y pierde cada opción?</li>
-            <li>¿Qué se pierde cuando las cónicas se enseñan solo como "la curva de las órbitas" sin mostrar de dónde vienen en la historia? <span class="ref">(Chevallard, 1997)</span></li>
+            <li>¿Enseñarían las cónicas partiendo del utilitarismo moderno (la linterna, la antena, la órbita) o se animarían a arrancar por el "juego puro" del corte del cono como hizo Apolonio? ¿Qué gana y qué pierde cada opción?</li>
+            <li>Si un padre o un estudiante les pregunta en el aula <em>"Profe, ¿para qué me enseñan algo tan abstracto si yo no voy a ser ingeniero?"</em>, ¿cómo usarían la historia de Apolonio para defender el valor de estudiar estructuras de pensamiento aunque no tengan una aplicación inmediata?</li>
+            <li>¿Cómo conecta esto con lo que Chevallard llama <em>saber sabio</em> vs. <em>saber enseñado</em>? ¿Qué se pierde cuando las cónicas se enseñan solo como "la curva de las órbitas" sin mostrar de dónde vienen? <span class="ref">(Chevallard, 1997, pp. 45–51)</span></li>
           </ul>
         </div>
       </div>
@@ -328,22 +613,30 @@
         <h3 style="color:var(--amb)">El ocaso de Alejandría: de la innovación a la conservación</h3>
       </div>
       <div class="lect-body">
-        <p>Para el siglo IV d.C., la matemática creadora de la época de Arquímedes y Apolonio se había estancado. El Imperio Romano era pragmático: le interesaba la ingeniería para puentes y catapultas, pero sentía profundo desinterés por la geometría abstracta. Alejandría pasó de ser un centro de <em>producción</em> del saber a un centro de <em>conservación</em>. <span class="ref">(Boyer, 1986, pp. 245–247)</span></p>
+        <p>Para el siglo IV d.C., la matemática creadora de la época de Arquímedes y Apolonio se había estancado. El Imperio Romano era pragmático: le interesaba la ingeniería para puentes, acueductos y catapultas, pero sentía profundo desinterés por la geometría abstracta y la demostración de teoremas puros. Alejandría pasó de ser un centro de <em>producción</em> del saber a un centro de <em>conservación</em> — un archivo de textos que se iban pudriendo en la Biblioteca y el Serapeo. <span class="ref">(Boyer, 1986, pp. 245–247; Kline, 1992, Vol. 1, p. 182)</span></p>
 
-        <p>En este contexto, el trabajo de Hipatia de Alejandría no fue producir matemática nueva: fue editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo para que sobrevivieran. <strong>Sin esa transmisión institucional, esos textos no habrían llegado hasta nosotros.</strong></p>
+        <p>En este contexto, el trabajo de Hipatia no fue producir matemática nueva: fue editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo para que sobrevivieran. <strong>Sin esa transmisión institucional, esos textos no habrían llegado hasta nosotros.</strong> La edición de los <em>Elementos</em> que Teón — su padre — preparó junto a ella es la base de todas las ediciones posteriores hasta el siglo XIX. <span class="ref">(<a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med)">Mujeres con Ciencia: Hipatia</a>; <a href="https://es.wikipedia.org/wiki/Te%C3%B3n_de_Alejandr%C3%ADa" target="_blank" rel="noopener" style="color:var(--med)">Wikipedia ES: Teón de Alejandría</a>)</span></p>
 
         <figure style="margin:18px 0;text-align:center">
           <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-            <img src="https://www.unesco.org/sites/default/files/styles/paragraph_medium_desktop/public/2025-12/hypatia-portrait-68fe3d.jpg.webp?itok=_ek6jemA"
+            <img src="https://mujeresconciencia.com/app/uploads/2015/06/rafael1.jpg"
                  onerror="this.src='https://www.biografiasyvidas.com/biografia/h/fotos/hipatia.jpg'"
                  alt="Hipatia de Alejandría"
                  style="max-height:320px;width:auto;border-radius:4px;display:block">
           </div>
-          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Hipatia de Alejandría (c. 370–415 d.C.). Su brutal asesinato por una turba radical simboliza el colapso de la ciencia griega clásica.</figcaption>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Hipatia de Alejandría (c. 370–415 d.C.) — matemática, astrónoma y filósofa neoplatónica. Su brutal asesinato simboliza el colapso de la ciencia griega.</figcaption>
         </figure>
 
-        <h5>La política del conocimiento</h5>
-        <p>El asesinato de Hipatia en 415 d.C. fue el resultado de tensiones políticas y religiosas. Con el posterior colapso del Imperio Romano de Occidente, gran parte del conocimiento griego desapareció de Europa durante siglos. Fue preservado y ampliado en el mundo islámico, y regresó a Europa en el siglo XII traducido del árabe. <span class="ref">(Kline, 1992, Vol. 1, pp. 180–183)</span></p>
+        <div class="note na" style="margin:14px 0">
+          <span class="ni">🔥</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">La política del conocimiento</strong>
+            <span style="font-size:13px;line-height:1.6">El asesinato de Hipatia en 415 d.C. no fue un accidente. Fue el resultado de tensiones entre el prefecto Orestes (aliado de Hipatia), el obispo Cirilo (que expandía su poder político) y el contexto de colapso del Imperio Romano de Occidente. Con ese colapso, gran parte del conocimiento griego desapareció de Europa durante siglos. Fue preservado y ampliado en el mundo islámico y en el Imperio Bizantino, y regresó a Europa en el siglo XII traducido del árabe. <span class="ref">(Kline, 1992, Vol. 1, pp. 180–183)</span></span>
+          </div>
+        </div>
+
+        <h5>La pregunta que importa para futuros docentes</h5>
+        <p>Chevallard nos enseña que el saber necesita una institución que lo sostenga para poder ser enseñado. Cuando esa institución colapsa, el saber no "flota" en el aire: desaparece o se transforma radicalmente. La escuela es hoy una de esas instituciones. ¿Qué condiciones necesita para cumplir ese rol? <span class="ref">(Chevallard, 1997, pp. 16–18)</span></p>
       </div>
     </div>
   </div>
@@ -355,13 +648,13 @@
       <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:18px;box-shadow:var(--sh)">
         <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
           <rect width="680" height="200" fill="#f8fafc" rx="6"/>
-          <g transform="translate(70,100)"><circle r="38" fill="#1B3A6B" opacity=".12"/><circle r="28" fill="#1B3A6B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">III–II a.C.</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Producción</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Euclides · Arquímedes</text></g>
+          <g transform="translate(70,100)"><circle r="38" fill="#1B3A6B" opacity=".12"/><circle r="28" fill="#1B3A6B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">III–II a.C.</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Producción</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Euclides · Arquímedes</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Apolonio · Museo</text></g>
           <path d="M 100,100 L 202,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="151" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">copiado</text>
-          <g transform="translate(232,100)"><circle r="38" fill="#1A6B3A" opacity=".12"/><circle r="28" fill="#1A6B3A"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">I a.C.–IV</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Transmisión</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Hipatia · Teón</text></g>
+          <g transform="translate(232,100)"><circle r="38" fill="#1A6B3A" opacity=".12"/><circle r="28" fill="#1A6B3A"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">I a.C.–IV</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Transmisión</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Hipatia · Teón</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">comentarios · ediciones</text></g>
           <path d="M 262,100 L 364,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="313" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#D9534F" font-weight="700">colapso</text>
-          <g transform="translate(394,100)"><circle r="38" fill="#C85C00" opacity=".12"/><circle r="28" fill="#C85C00"/><text y="-2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">V–X d.C.</text><text y="9" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fff">Islam</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Preservación</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Al-Juarismi</text></g>
+          <g transform="translate(394,100)"><circle r="38" fill="#C85C00" opacity=".12"/><circle r="28" fill="#C85C00"/><text y="-2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">V–X d.C.</text><text y="9" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fff">Bizancio / Islam</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Preservación</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Al-Juarismi · Averroes</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">traducción al árabe</text></g>
           <path d="M 424,100 L 526,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="475" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">traducido</text>
-          <g transform="translate(556,100)"><circle r="38" fill="#4A1A7B" opacity=".12"/><circle r="28" fill="#4A1A7B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">siglo XII</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Reingreso</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Europa occidental</text></g>
+          <g transform="translate(556,100)"><circle r="38" fill="#4A1A7B" opacity=".12"/><circle r="28" fill="#4A1A7B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">siglo XII</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Reingreso</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Europa occidental</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Toledo · Fibonacci</text></g>
           <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#C5D2DC"/></marker></defs>
         </svg>
         <p style="font-size:11.5px;color:var(--txt);text-align:center;margin-top:8px;font-style:italic">El saber matemático griego no fue lineal: se produjo, se transmitió, estuvo a punto de perderse y volvió 700 años después en otro idioma.</p>
@@ -371,23 +664,79 @@
 
   <!-- ACTIVIDAD MACTUTOR -->
   <div class="sec">
-    <div class="sec-label"><span>⚙️ Actividad Integradora</span><hr></div>
+    <div class="sec-label"><span>⚙️ Actividad: rastrear qué sobrevivió y qué no</span><hr></div>
     <div class="act-box" style="border-color:var(--amb)">
       <div class="act-head" style="background:var(--amb)">
-        <h3>Línea de tiempo colaborativa</h3>
+        <h3>Línea de tiempo colaborativa con MacTutor</h3>
       </div>
       <div class="act-body">
-        <p>Construyan en un documento compartido o presentación visual la línea de tiempo con los 4 momentos del arco. Para cada uno, indiquen qué institución sostenía el saber y qué pasó con él.</p>
+        <p>Usando los recursos de historia de las matemáticas en español que se detallan abajo, construyan en un documento compartido o en una presentación visual interactiva (usando <strong>Genially</strong>) la línea de tiempo con estos cuatro momentos. Para cada uno: quiénes, dónde, qué institución sostenía el saber, y qué pasó con él.</p>
+
+        <div class="note nb" style="margin-bottom:14px">
+          <span class="ni">🔗</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Recursos en español para la actividad</strong>
+            <span style="font-size:13px;line-height:1.6">
+              ▶ <a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Mujeres con Ciencia — Hipatia</a> · Blog de la Cátedra de Cultura Científica (UPV/EHU). Artículo completo, bien documentado.<br>
+              ▶ <a href="https://es.wikipedia.org/wiki/Hipatia" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Wikipedia ES — Hipatia</a> · Con referencias bibliográficas y contexto histórico.<br>
+              ▶ <a href="https://es.wikipedia.org/wiki/Matem%C3%A1ticas_isl%C3%A1micas_medievales" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Wikipedia ES — Matemáticas islámicas medievales</a> · Para el período de preservación árabe/persa.<br>
+              ▶ <a href="https://mathshistory.st-andrews.ac.uk" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">MacTutor</a> · En inglés, pero el más completo para buscar matemáticos individuales del período V–X. Usar como referencia adicional.
+            </span>
+          </div>
+        </div>
 
         <div class="step" style="border-color:var(--amb);background:var(--acl)">
-          <strong style="color:var(--amb)">1. Producción (III–II a.C.) | 2. Transmisión (I a.C.–IV d.C.) | 3. Pérdida/Preservación (V–X) | 4. Reingreso (XII)</strong>
+          <strong style="color:var(--amb)">1 — Producción (siglos III–II a.C.)</strong>
+          <p>Euclides, Arquímedes, Apolonio. ¿Qué institución los sostenía? ¿Cómo circulaban sus textos?</p>
+        </div>
+        <div class="step">
+          <strong>2 — Transmisión (siglos I a.C.–IV d.C.)</strong>
+          <p><a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Hipatia</a> y <a href="https://es.wikipedia.org/wiki/Te%C3%B3n_de_Alejandr%C3%ADa" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">Teón</a>. ¿Qué rol cumplieron exactamente? ¿Qué sería diferente hoy si no hubieran existido?</p>
+        </div>
+        <div class="step">
+          <strong>3 — Pérdida y preservación (siglos V–X)</strong>
+          <p>¿Qué desapareció de Europa? ¿Quiénes lo preservaron y ampliaron? Busquen al menos <strong>un matemático árabe o persa del período</strong> en MacTutor y anoten su aporte concreto.</p>
+        </div>
+        <div class="step">
+          <strong>4 — Reingreso (siglo XII)</strong>
+          <p>¿Cómo volvieron esos textos a Europa occidental? ¿Qué rol jugaron las traducciones del árabe y la Escuela de Traductores de Toledo?</p>
         </div>
 
         <div class="note nb" style="margin-top:14px">
           <span class="ni">💬</span>
           <div>
             <strong style="display:block;margin-bottom:4px;color:var(--nav)">Para pensar al cerrar la actividad</strong>
-            <p style="font-size:13px;line-height:1.6">¿El libro de texto de matemática que trajeron muestra algo de este recorrido, o presenta el saber como si siempre hubiera estado terminado? ¿En qué momento del arco ubican a la escuela secundaria de hoy?</p>
+            <p style="font-size:13px;line-height:1.6">¿Un libro de texto de matemática habitual muestra algo de este recorrido, o presenta el saber como si siempre hubiera estado terminado? ¿En qué momento del arco (producción, transmisión, pérdida, reingreso) ubican a la escuela secundaria de hoy?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE EJE 1 -->
+  <div class="sec">
+    <div class="sec-label"><span>🎬 Cierre del Eje 1</span><hr></div>
+    <div class="act-box" style="border-color:var(--amb)">
+      <div class="act-head" style="background:var(--amb)">
+        <h3>Ágora (Amenábar, 2009) — La escena del Serapeo</h3>
+      </div>
+      <div class="act-body">
+        <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides), se ocultó por vergüenza académica (Arquímedes) y estuvo a punto de perderse para siempre.</p>
+
+        <div class="step" style="background:var(--acl);border-color:var(--amb)">
+          <strong style="color:var(--amb)">La escena del Serapeo — <em>Ágora</em> (Amenábar, 2009) · <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med);font-weight:600;font-size:12px">Ver tráiler ↗</a></strong>
+          <p>Hipatia y sus discípulos tienen apenas unos minutos antes de que la turba asalte el recinto. No salvan oro ni estatuas; arman montañas de papiros y tratan de sacarlos. Saben que lo que se queme ahí no se va a volver a deducir en siglos. <em>Ágora</em> es ficción histórica — algunas elecciones dramáticas no tienen respaldo documental — pero esa escena ilustra exactamente lo que discutimos hoy.</p>
+        </div>
+
+        <div style="background:var(--slate);color:white;padding:18px;border-radius:var(--r);margin-top:16px">
+          <strong style="display:block;font-size:15px;color:var(--cl);margin-bottom:10px">Debate de cierre del Eje 1:</strong>
+          <p style="font-size:13.5px;line-height:1.6;color:#E6F7F8;margin-bottom:12px">En los libros de texto la matemática se presenta como un museo de éxitos acumulativos. Sin embargo vimos que Arquímedes murió asesinado por un soldado, Hipatia fue asesinada por tensiones político-religiosas, y el conocimiento griego desapareció de Europa durante siglos.</p>
+          <ul style="font-size:13px;margin-left:20px;line-height:1.8;color:#E6F7F8">
+            <li>¿Les parece importante que los estudiantes de secundaria sepan que la matemática puede perderse o censurarse por cuestiones políticas? ¿Qué se gana y qué se arriesga mostrando eso en el aula?</li>
+            <li>¿Qué ganamos didácticamente mostrando la "vulnerabilidad" de la matemática frente al modelo de una ciencia fría y aséptica? Apoyate en al menos un concepto de Chevallard o Brousseau. <span class="ref" style="color:var(--cl)">(Chevallard, 1997, pp. 16–18; Brousseau, 1983, pp. 170–172)</span></li>
+          </ul>
+          <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:12px;margin-top:14px;border-left:3px solid var(--amb)">
+            <p style="font-size:12.5px;color:#E6F7F8;line-height:1.6"><strong style="color:var(--amb)">Para pensar:</strong> ¿Qué diferencia hay entre una escuela que enseña procedimientos y una que transmite también la historia de por qué esos procedimientos existen? ¿Cuál de las dos estaría más cerca de lo que hizo Hipatia?</p>
           </div>
         </div>
       </div>
@@ -399,31 +748,55 @@
     <div class="sec-label"><span>📓 Bitácora 2</span><hr></div>
     <div class="bitacora-2">
       <h3>📓 Bitácora 2 — El saber necesita una institución</h3>
-      <p style="font-size:13px;color:var(--txt);margin-bottom:12px;line-height:1.6">Una carilla, 200–350 palabras. No es un resumen: es el cierre reflexivo del Eje 1 completo.</p>
+      <p style="font-size:13px;color:var(--txt);margin-bottom:12px;line-height:1.6">Una carilla, 200–350 palabras. No es un resumen: es el cierre reflexivo del Eje 1 completo. El mismo arco que empezó con el escriba egipcio termina acá, con la pregunta de qué pasa cuando la institución que sostiene el saber colapsa.</p>
+
       <div class="bita-consigna">
+        A lo largo de las últimas semanas recorrimos el saber matemático desde Egipto hasta el ocaso de Alejandría. En ese recorrido, la matemática nació como herramienta de Estado, se transformó en sistema de demostración, llegó al límite de lo que ese sistema podía hacer, y estuvo a punto de perderse para siempre por razones que no tenían nada que ver con la matemática misma.<br><br>
         Pensando en tu futura práctica docente: ¿qué rol cumple la escuela secundaria como institución que transmite este saber? ¿Qué se perdería si dejara de enseñar demostración matemática y solo enseñara procedimientos? Argumentá con al menos un ejemplo concreto de este recorrido histórico.
       </div>
+
+      <div style="margin-bottom:10px">
+        <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:5px">Criterios de evaluación:</strong>
+        <ul style="font-size:13px;margin-left:16px;line-height:1.6">
+          <li>Conexión explícita con al menos un concepto del espacio (transposición, obstáculo, institución).</li>
+          <li>Ejemplo concreto del recorrido histórico — no genérico.</li>
+          <li>Posición propia argumentada, no solo descripción.</li>
+        </ul>
+      </div>
+
       <div class="bita-plazo">
         <span style="font-size:19px">⏰</span>
-        <span><strong>Se escribe en clase.</strong> Lo que no termines: en el foro antes de las 23:59 del martes. &nbsp;·&nbsp; <strong>200–350 palabras</strong></span>
+        <span><strong>Se escribe en clase.</strong> Lo que no termines: en el foro antes de las 23:59 del martes. &nbsp;·&nbsp; <strong>200–350 palabras</strong> &nbsp;·&nbsp; Texto directo, no adjunto.</span>
       </div>
     </div>
   </div>
 
+  <div class="srcs">
+    <h5 style="color:var(--amb)">Fuentes · Clases 6 y 7</h5>
+    <p>Amenábar, A. (Director). (2009). <em>Ágora</em> [Cinta cinematográfica]. Mod Producciones. <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med)">[Tráiler]</a></p>
+    <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza Editorial, pp. 245–247.</p>
+    <p>Brousseau, G. (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques,</em> 4(2), 165–198.</p>
+    <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 16–18.</p>
+    <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días,</em> Vol. 1. Madrid: Alianza Editorial, pp. 180–183.</p>
+    <p>MacTutor History of Mathematics. University of St Andrews. <a href="https://mathshistory.st-andrews.ac.uk" target="_blank" rel="noopener" style="color:var(--med)">mathshistory.st-andrews.ac.uk</a> · En inglés. Referencia adicional para búsquedas específicas.</p>
+    <p>Mujeres con Ciencia (Cátedra de Cultura Científica, UPV/EHU). <a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med)">Entrada sobre Hipatia</a>. En español.</p>
+    <p>Wikipedia en español. <a href="https://es.wikipedia.org/wiki/Hipatia" target="_blank" rel="noopener" style="color:var(--med)">Hipatia</a> · <a href="https://es.wikipedia.org/wiki/Matem%C3%A1ticas_isl%C3%A1micas_medievales" target="_blank" rel="noopener" style="color:var(--med)">Matemáticas islámicas medievales</a>.</p>
+  </div>
+
   <div class="class-nav">
-    <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))">← Inicio</button>
+    <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))">← Clase 5</button>
     <button class="cnav-btn right" onclick="showTab('c8', document.getElementById('btn-c8'))">Clase 8 →
-      <small>Miércoles · El escándalo de la deuda</small>
+      <small>Martes · El escándalo de la deuda</small>
     </button>
   </div>
 </div>
 
-<!-- ══════════════════ CLASE 8 · MIÉRCOLES (NUEVO CONTENIDO) ══════════════════ -->
+<!-- ══════════════════ CLASE 8 · MARTES 21/4 (HISTORIA PURA) ══════════════════ -->
 <div id="pane-c8" class="pane">
   <div class="locked-pane" id="lock-c8">
     <div class="locked-icon">🔒</div>
     <h2>Clase 8 bloqueada</h2>
-    <p style="font-size:13.5px">El inicio del Eje 2 estará disponible el miércoles.</p>
+    <p style="font-size:13.5px">El inicio del Eje 2 estará disponible el martes.</p>
   </div>
 
   <div class="real-content" id="content-c8" style="display:none;">
@@ -432,11 +805,11 @@
         <div class="cb-num" style="background:var(--red)">8</div>
         <div class="cb-info">
           <h2>La ruptura: el problema de la nada y la deuda</h2>
-          <p>Miércoles 22/4 · 80 minutos · Preludio al Eje 2</p>
+          <p>Martes 21/4 · 80 minutos · Inicio Eje 2</p>
         </div>
       </div>
       <div class="cb-obj" style="border-top-color:var(--red)">
-        <p style="color:var(--red)"><strong>Objetivo:</strong> Introducir el concepto de "obstáculo epistemológico" analizando el rechazo a los números negativos en la antigüedad, comprendiendo por qué la geometría griega los hizo impensables y cómo el pragmatismo hindú los hizo necesarios.</p>
+        <p style="color:var(--red)"><strong>Objetivo:</strong> Comprender por qué la geometría griega hizo impensables a los números negativos y cómo el pragmatismo oriental los hizo necesarios.</p>
       </div>
     </div>
 
@@ -481,9 +854,23 @@
 
           <figure style="margin: 18px 0; text-align: center;">
             <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Counting_rods.png" alt="Varillas de cálculo chinas" style="max-height:160px;width:auto;border-radius:4px;display:block">
+              <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg" style="max-height:140px;width:auto;display:block;margin:0 auto;">
+                <rect width="160" height="100" fill="#f8fafc" rx="4"/>
+                <!-- Positivos (Rojos) -->
+                <g stroke="#d9534f" stroke-width="6" stroke-linecap="round">
+                  <line x1="30" y1="25" x2="30" y2="75"/>
+                  <line x1="45" y1="25" x2="45" y2="75"/>
+                  <line x1="60" y1="25" x2="60" y2="75"/>
+                </g>
+                <!-- Negativos (Negros) -->
+                <g stroke="#1A2C3A" stroke-width="6" stroke-linecap="round">
+                  <line x1="100" y1="40" x2="140" y2="40"/>
+                  <line x1="100" y1="60" x2="140" y2="60"/>
+                  <line x1="120" y1="25" x2="120" y2="75"/>
+                </g>
+              </svg>
             </div>
-            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Representación moderna de las posiciones de las varillas de cálculo chinas. Su uso pragmático en tableros permitió operar con negativos mucho antes que Occidente.</figcaption>
+            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Representación de las posiciones de las varillas de cálculo chinas (rojo = positivo, negro = negativo). Su uso pragmático en tableros permitió operar con negativos mucho antes que Occidente.</figcaption>
           </figure>
 
           <h5 style="color:var(--red); border-left-color:var(--red)">India: Las reglas de Brahmagupta</h5>
@@ -501,54 +888,83 @@
       </div>
     </div>
 
-    <!-- TALLER DIDÁCTICO -->
+    <div class="class-nav">
+      <button class="cnav-btn left" onclick="showTab('c6c7', document.getElementById('btn-c6c7'))">← Clases 6 y 7
+        <small>Lunes</small>
+      </button>
+      <button class="cnav-btn right" onclick="showTab('c9', document.getElementById('btn-c9'))">Clase 9 →
+        <small>Miércoles · Taller Didáctico</small>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 9 · MIÉRCOLES 22/4 (PURA DIDÁCTICA) ══════════════════ -->
+<div id="pane-c9" class="pane">
+  <div class="locked-pane" id="lock-c9">
+    <div class="locked-icon">🔒</div>
+    <h2>Clase 9 bloqueada</h2>
+    <p style="font-size:13.5px">El Taller Didáctico estará disponible el miércoles.</p>
+  </div>
+
+  <div class="real-content" id="content-c9" style="display:none;">
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--red)">9</div>
+        <div class="cb-info">
+          <h2>Taller Didáctico: La pesadilla de los signos</h2>
+          <p>Miércoles 22/4 · 80 minutos · Taller de Transposición</p>
+        </div>
+      </div>
+      <div class="cb-obj" style="border-top-color:var(--red)">
+        <p style="color:var(--red)"><strong>Objetivo:</strong> Diseñar una secuencia que permita superar el obstáculo epistemológico de la regla de los signos en la escuela secundaria, identificando dónde falla la intuición física y dónde es obligatoria la justificación formal geométrica/algebraica.</p>
+      </div>
+    </div>
+
     <div class="sec">
       <div class="sec-label"><span style="background:var(--red)">🛠️ Foco Didáctico</span><hr></div>
       <div class="act-box" style="border-color:var(--red)">
         <div class="act-head" style="background:var(--red)">
-          <h3>La pesadilla de enseñar: Menos por Menos es Más</h3>
+          <h3>El problema de enseñar: Menos por Menos es Más</h3>
         </div>
         <div class="act-body">
-          <p>La historia nos muestra que los números negativos no fueron un descubrimiento obvio, sino un <strong>obstáculo epistemológico</strong> gigante. A las mentes más brillantes de la humanidad les costó siglos aceptarlos. Sin embargo, en la escuela secundaria esperamos que los chicos de 1.º o 2.º año los acepten en un par de clases y los operen mecánicamente.</p>
+          <p>Ayer vimos que a las mentes más brillantes de la humanidad les costó siglos aceptar los números negativos. Sin embargo, en la escuela secundaria actual, esperamos que un estudiante de 1.º año acepte la regla de los signos ($- \times - = +$) en un par de clases, generalmente memorizándola como si fuera una canción.</p>
           
           <div class="step" style="border-color:var(--red); background:#FDECEA">
-            <strong style="color:var(--red)">Debate y Planificación (Grupal - Leyni, Ana y Gonzalo):</strong>
-            <p>La regla de la suma es intuitiva con el modelo de Brahmagupta o las varillas chinas: si tengo una deuda de $500 y adquiero otra deuda de $200, tengo una deuda total de $700. ($-500 + -200 = -700$).</p>
-            <p style="margin-top:10px; font-weight:bold">Pero... ¿cómo explican la multiplicación a un chico de 12 años?</p>
-            <ul style="font-size:13.5px; margin-left:20px; line-height:1.6; margin-top:6px; margin-bottom:8px">
-              <li>¿Se puede explicar "deuda por deuda es fortuna" ($- \times - = +$) usando plata real, ascensores o termómetros?</li>
-              <li>¿O llega un punto donde el modelo empírico se rompe, y hay que justificarlo desde la <em>pura coherencia estructural del álgebra</em> (como mantener válida la propiedad distributiva)?</li>
+            <strong style="color:var(--red)">Consigna de Trabajo (Equipo: Leyni, Ana y Gonzalo) - 60 min:</strong>
+            <p>Van a armar un <strong>esquema de pizarrón</strong> (o secuencia breve en papel) detallando cómo enseñarían las operaciones básicas con números enteros. Deben dividir su clase imaginaria en las siguientes tres etapas, respondiendo a los desafíos:</p>
+
+            <ul style="font-size:13.5px; margin-left:20px; line-height:1.6; margin-top:8px; margin-bottom:8px">
+              <li style="margin-bottom:8px"><strong>Paso 1 - La intuición (Suma y Resta):</strong> Propongan un modelo empírico (el ascensor, el termómetro, o el modelo de deudas/fortunas de Brahmagupta) para que los alumnos deduzcan solos cuánto da $-500 + (-200)$. Escriban <em>exactamente</em> cómo se lo dirían al aula.</li>
+              
+              <li style="margin-bottom:8px"><strong>Paso 2 - El límite del modelo empírico (El choque):</strong> Ahora intenten usar ese <em>mismo</em> modelo para explicar la multiplicación de dos negativos. Por ejemplo: ¿Qué significa en la vida real "deuda por deuda"? (Ej: Te quito 3 deudas de 5 pesos = ¿ganás 15 pesos?). ¿Qué pasa si usan velocidad y tiempo retrocediendo? <em>Anoten en su esquema dónde sienten que el ejemplo de la vida real "se rompe" o se vuelve demasiado rebuscado para un chico de 12 años.</em></li>
+              
+              <li><strong>Paso 3 - La justificación estructural (La salida matemática):</strong> Cuando la intuición del mundo físico falla (como advierte Brousseau), hay que apoyarse en la estructura del Álgebra. Expliquen en su esquema cómo usarían la <strong>Propiedad Distributiva</strong> para demostrarle a un alumno desconfiado que $-1 \times -1$ <em>tiene</em> que dar $+1$ para que la matemática no colapse. <br>
+              <em>(Pista: Partan de la expresión $-1 \times (1 + (-1)) = 0$ y fuércenlos a distribuir).</em></li>
             </ul>
           </div>
 
-          <div class="note nb" style="margin-top:14px">
-            <span class="ni">💡</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Para el Eje 2: La ruptura formal</strong>
-              <span style="font-size:13px;line-height:1.6">La semana que viene profundizaremos en cómo el álgebra se vio obligada a divorciarse de la intuición del mundo físico (Brousseau). La regla de los signos no es un "hecho natural", es una convención necesaria para que la maquinaria matemática no colapse.</span>
-            </div>
+          <div style="background:var(--slate); color:white; border-radius:var(--r); padding:16px; margin-top:14px">
+            <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">🎯 El entregable de hoy</strong>
+            <p style="font-size:13px; line-height:1.6">Al final de la clase, cada uno presentará oralmente su esquema y debatiremos por qué la regla de los signos no es un "hecho natural" de la física, sino una convención necesaria para la coherencia de la máquina matemática.</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="srcs">
-      <h5 style="color:var(--red)">Fuentes · Clase 8</h5>
-      <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza Editorial. Cap. 12 y Cap. 13.</p>
+      <h5 style="color:var(--red)">Fuentes · Clase 9</h5>
       <p>Brousseau, G. (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques,</em> 4(2), 165–198.</p>
-      <p>Ifrah, G. (1997). <em>Historia universal de las cifras</em>. Madrid: Espasa-Calpe.</p>
-      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días,</em> Vol. 1. Cap. 8.</p>
     </div>
 
     <div class="class-nav">
-      <button class="cnav-btn left" onclick="showTab('c6c7', document.getElementById('btn-c6c7'))">← Clases 6 y 7
-        <small>Lunes y Martes</small>
+      <button class="cnav-btn left" onclick="showTab('c8', document.getElementById('btn-c8'))">← Clase 8
+        <small>Martes</small>
       </button>
       <button class="cnav-btn right" style="background:var(--grn);cursor:default">✓ Fin de Semana 4
         <small>¡Nos vemos la próxima!</small>
       </button>
     </div>
-
   </div>
 </div>
 
@@ -560,9 +976,16 @@ function showTab(id, btn) {
   if (btn && btn.classList.contains('locked')) return;
   document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('pane-' + id).classList.add('on');
+  
+  const targetPane = document.getElementById('pane-' + id);
+  if (targetPane) {
+    targetPane.classList.add('on');
+  }
+  
   if (btn) btn.classList.add('active');
   window.scrollTo(0, 0);
+  
+  if (id === 'c5') setTimeout(drawArchimedes, 50);
   if (id === 'c6c7') setTimeout(initEllipseSim, 50);
 }
 
@@ -723,6 +1146,92 @@ function initEllipseSim() {
   draw();
 }
 
+// --- SIMULADOR ARQUÍMEDES (PI) ---
+function drawArchimedes() {
+  const canvas = document.getElementById('piCanvas');
+  if(!canvas) return;
+  
+  const size = canvas.parentElement.offsetWidth;
+  if(size === 0) return; 
+  
+  canvas.width = size * 2; 
+  canvas.height = size * 2;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(2, 2);
+  
+  const cx = size / 2;
+  const cy = size / 2;
+  const r = (size / 2) * 0.45; 
+  
+  const n = parseInt(document.getElementById('sides').value);
+  const sidesVal = document.getElementById('sides-val');
+  if(sidesVal) sidesVal.innerText = n;
+  
+  ctx.clearRect(0, 0, size, size);
+  
+  const startAngle = -Math.PI / 2; 
+  
+  // 1. Draw Outer Polygon (Red)
+  ctx.beginPath();
+  const angleStep = (Math.PI * 2) / n;
+  const outerR = r / Math.cos(Math.PI / n);
+  for (let i = 0; i <= n; i++) {
+    const angle = startAngle + i * angleStep;
+    const x = cx + outerR * Math.cos(angle);
+    const y = cy + outerR * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.fillStyle = 'rgba(217, 83, 79, 0.15)'; 
+  ctx.fill();
+  ctx.strokeStyle = '#D9534F'; 
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // 2. Draw Circle (Black)
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = '#1A2C3A';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  
+  // 3. Draw Inner Polygon (Blue)
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const angle = startAngle + i * angleStep;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.fillStyle = 'rgba(46, 109, 164, 0.2)'; 
+  ctx.fill();
+  ctx.strokeStyle = '#2E6DA4'; 
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  
+  ctx.beginPath();
+  ctx.arc(cx, cy, 3, 0, Math.PI*2);
+  ctx.fillStyle = '#1A2C3A';
+  ctx.fill();
+  
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + r * Math.cos(startAngle), cy + r * Math.sin(startAngle));
+  ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+  ctx.setLineDash([4, 4]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  
+  const innerArea = (n / 2) * Math.sin((2 * Math.PI) / n);
+  const outerArea = n * Math.tan(Math.PI / n);
+  
+  const valInner = document.getElementById('val-inner');
+  const valOuter = document.getElementById('val-outer');
+  if(valInner) valInner.innerText = innerArea.toFixed(4);
+  if(valOuter) valOuter.innerText = outerArea.toFixed(4);
+}
+
 function unlockClass(classId) {
   const btn = document.getElementById('btn-' + classId);
   const lockPane = document.getElementById('lock-' + classId);
@@ -735,17 +1244,32 @@ function unlockClass(classId) {
 document.addEventListener("DOMContentLoaded", () => {
   const hoy = new Date();
   const fechaC6C7 = new Date(2026, 3, 20); // 20 Abril 2026
-  const fechaC8 = new Date(2026, 3, 22);   // 22 Abril 2026
+  const fechaC8 = new Date(2026, 3, 21);   // 21 Abril 2026
+  const fechaC9 = new Date(2026, 3, 22);   // 22 Abril 2026
 
   if (hoy >= fechaC6C7) unlockClass('c6c7');
   if (hoy >= fechaC8) unlockClass('c8');
+  if (hoy >= fechaC9) unlockClass('c9');
+
+  const slider = document.getElementById('sides');
+  if(slider) {
+    slider.addEventListener('input', drawArchimedes);
+    setTimeout(drawArchimedes, 150);
+  }
+  
+  window.addEventListener('resize', () => {
+    const paneC5 = document.getElementById('pane-c5');
+    if(paneC5 && paneC5.classList.contains('on')) {
+      drawArchimedes();
+    }
+  });
 });
 
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
     const lockedBtns = document.querySelectorAll('.tab-btn.locked');
     if (lockedBtns.length > 0) {
-      unlockClass('c6c7'); unlockClass('c8');
+      unlockClass('c6c7'); unlockClass('c8'); unlockClass('c9');
       const toast = document.createElement('div');
       toast.innerHTML = '🔓 Clases Desbloqueadas';
       toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15); animation: fadeIn 0.3s ease;';
