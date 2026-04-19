@@ -283,7 +283,7 @@
           <span class="ni">⚠️</span>
           <div>
             <strong style="display:block;margin-bottom:4px;color:var(--amb)">Anacronismo a la vista: ¿Así escribía Arquímedes?</strong>
-            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que ustedes experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
+            <span style="font-size:13px;line-height:1.6">¡No! Los griegos no usaban nuestra notación algebraica (no tenían el símbolo de raíz cuadrada ni escribían fracciones de esta manera). Arquímedes trabajaba comparando proporciones de segmentos físicos. Para acotar <strong>la raíz cuadrada de 3 ($\sqrt{3}$)</strong>, él no usaba decimales; buscaba relaciones entre números enteros, dictaminando que esa proporción era mayor que la razón 265 a 153, y menor que 1351 a 780. Escribir $\frac{2}{\sqrt{3}}$ es una <strong>traducción didáctica moderna</strong> nuestra para que experimenten el "dolor de cabeza" de acorralar irracionales a mano, pero hablando en nuestro idioma actual.</span>
           </div>
         </div>
 
@@ -349,8 +349,8 @@
       </p>
 
       <div class="bita-consigna" style="border-left-color:var(--med);margin-bottom:16px">
-        <strong style="color:var(--nav)">Consigna de trabajo (Equipo Docente: Leyni, Ana y Gonzalo - 60 min):</strong><br>
-        Aprovechando que disponemos de 2 horas reloj, van a trabajar juntos para diseñar una <strong>micro-secuencia didáctica exploratoria</strong>. El objetivo es que alumnos de 2.° o 3.° año de secundaria "descubran" la fórmula del área del círculo manipulando las formas, tal como Arquímedes manipulaba pesos en su balanza.<br><br>
+        <strong style="color:var(--nav)">Consigna de trabajo:</strong><br>
+        Van a trabajar juntos para diseñar una <strong>micro-secuencia didáctica exploratoria</strong>. El objetivo es que alumnos de 2.° o 3.° año de secundaria "descubran" la fórmula del área del círculo manipulando las formas, tal como Arquímedes manipulaba pesos en su balanza.<br><br>
         <em>Pista metodológica:</em> Piensen en la clásica demostración de cortar un círculo en "porciones de pizza" y reorganizarlas para formar un paralelogramo.
       </div>
 
@@ -358,7 +358,7 @@
         <strong style="font-size:14px;color:var(--grn);display:flex;align-items:center;gap:6px">
           <span>🎯</span> Producción esperada al final de la clase
         </strong>
-        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Leyni, Ana y Gonzalo: Deberán entregar un esquema escrito con los siguientes componentes:</p>
+        <p style="font-size:13px;margin-top:8px;color:var(--txt)">Deberán entregar un esquema escrito con los siguientes componentes:</p>
         <ul style="font-size:13px;margin-top:8px;margin-left:20px;line-height:1.6;list-style-type:disc;color:var(--neg)">
           <li><strong>Materiales:</strong> Qué necesitan exactamente los alumnos (ej. compás, tijeras, o GeoGebra).</li>
           <li><strong>Consigna inicial:</strong> Cómo le presentan el desafío a los estudiantes sin "spoilear" la fórmula.</li>
@@ -377,8 +377,8 @@
   </div>
 
   <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
-    <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))">← Inicio
-      <small>Panorama de la semana</small>
+    <button class="cnav-btn left" onclick="showTab('inicio', null)" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Inicio
+      <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Panorama de la semana</small>
     </button>
   </div>
 </div>
@@ -783,10 +783,10 @@
     <p>Wikipedia en español. <a href="https://es.wikipedia.org/wiki/Hipatia" target="_blank" rel="noopener" style="color:var(--med)">Hipatia</a> · <a href="https://es.wikipedia.org/wiki/Matem%C3%A1ticas_isl%C3%A1micas_medievales" target="_blank" rel="noopener" style="color:var(--med)">Matemáticas islámicas medievales</a>.</p>
   </div>
 
-  <div class="class-nav">
-    <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))">← Clase 5</button>
-    <button class="cnav-btn right" onclick="showTab('c8', document.getElementById('btn-c8'))">Clase 8 →
-      <small>Martes · El escándalo de la deuda</small>
+  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+    <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 5</button>
+    <button class="cnav-btn right" onclick="showTab('c8', document.getElementById('btn-c8'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:right;transition:background .15s">Clase 8 →
+      <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Martes · El escándalo de la deuda</small>
     </button>
   </div>
 </div>
@@ -911,12 +911,12 @@
       </div>
     </div>
 
-    <div class="class-nav">
-      <button class="cnav-btn left" onclick="showTab('c6c7', document.getElementById('btn-c6c7'))">← Clases 6 y 7
-        <small>Lunes</small>
+    <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+      <button class="cnav-btn left" onclick="showTab('c6c7', document.getElementById('btn-c6c7'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clases 6 y 7
+        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Lunes</small>
       </button>
-      <button class="cnav-btn right" onclick="showTab('c9', document.getElementById('btn-c9'))">Clase 9 →
-        <small>Miércoles · Taller Didáctico</small>
+      <button class="cnav-btn right" onclick="showTab('c9', document.getElementById('btn-c9'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:right;transition:background .15s">Clase 9 →
+        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Miércoles · Taller Didáctico</small>
       </button>
     </div>
   </div>
@@ -940,7 +940,7 @@
         </div>
       </div>
       <div class="cb-obj" style="border-top-color:var(--red)">
-        <p style="color:var(--red)"><strong>Objetivo:</strong> Diseñar una secuencia que permita superar el obstáculo epistemológico de la regla de los signos en la escuela secundaria, identificando dónde falla la intuición física y dónde es obligatoria la justificación formal geométrica/algebraica.</p>
+        <p style="color:var(--red)"><strong>Objetivo:</strong> Diseñar una secuencia que permita superar el obstáculo epistemológico de la regla de los signos en la escuela secundaria, identificando dónde falla la intuición física y dónde es obligatoria la justificación formal matemática.</p>
       </div>
     </div>
 
@@ -979,12 +979,12 @@
       <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático.</em> Buenos Aires: A-Z Editora.</p>
     </div>
 
-    <div class="class-nav">
-      <button class="cnav-btn left" onclick="showTab('c8', document.getElementById('btn-c8'))">← Clase 8
-        <small>Martes</small>
+    <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+      <button class="cnav-btn left" onclick="showTab('c8', document.getElementById('btn-c8'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 8
+        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Martes</small>
       </button>
-      <button class="cnav-btn right" style="background:var(--grn);cursor:default">✓ Fin de Semana 4
-        <small>¡Nos vemos la próxima!</small>
+      <button class="cnav-btn right" style="flex:1;background:var(--grn);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:default;text-align:right">✓ Fin de Semana 4
+        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">¡Nos vemos la próxima!</small>
       </button>
     </div>
   </div>
@@ -995,7 +995,8 @@
 <script>
 // --- NAVEGACIÓN TABS ---
 function showTab(id, btn) {
-  if (btn && btn.classList.contains('locked')) return;
+  if (btn && btn.classList && btn.classList.contains('locked')) return;
+  
   document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   
@@ -1004,11 +1005,17 @@ function showTab(id, btn) {
     targetPane.classList.add('on');
   }
   
-  if (btn) btn.classList.add('active');
+  if (btn && btn.classList) {
+    btn.classList.add('active');
+  } else {
+    const fallbackBtn = document.getElementById('btn-' + id);
+    if (fallbackBtn) fallbackBtn.classList.add('active');
+  }
+  
   window.scrollTo(0, 0);
   
-  if (id === 'c5') setTimeout(drawArchimedes, 50);
-  if (id === 'c6c7') setTimeout(initEllipseSim, 50);
+  if (id === 'c5' && typeof drawArchimedes === 'function') setTimeout(drawArchimedes, 50);
+  if (id === 'c6c7' && typeof initEllipseSim === 'function') setTimeout(initEllipseSim, 50);
 }
 
 // --- SIMULADOR PROPIEDAD FOCAL DE LA ELIPSE ---
@@ -1185,7 +1192,10 @@ function drawArchimedes() {
   const cy = size / 2;
   const r = (size / 2) * 0.45; 
   
-  const n = parseInt(document.getElementById('sides').value);
+  const sidesInput = document.getElementById('sides');
+  if(!sidesInput) return;
+  const n = parseInt(sidesInput.value);
+  
   const sidesVal = document.getElementById('sides-val');
   if(sidesVal) sidesVal.innerText = n;
   
@@ -1258,7 +1268,11 @@ function unlockClass(classId) {
   const btn = document.getElementById('btn-' + classId);
   const lockPane = document.getElementById('lock-' + classId);
   const contentPane = document.getElementById('content-' + classId);
-  if (btn) { btn.classList.remove('locked'); btn.onclick = function() { showTab(classId, this); }; }
+  
+  if (btn) { 
+    btn.classList.remove('locked'); 
+    btn.onclick = function() { showTab(classId, this); }; 
+  }
   if (lockPane) lockPane.style.display = 'none';
   if (contentPane) contentPane.style.display = 'block';
 }
