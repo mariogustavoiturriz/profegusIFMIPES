@@ -603,10 +603,29 @@
           </div>
 
           <div class="note nb" style="margin-top:12px">
-            <span class="ni">🔗</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Plan B — si la construcción no arranca</strong>
-              <span style="font-size:13px;line-height:1.6">Si la construcción desde cero no sale en el tiempo disponible, usen este applet ya construido para verificar sus observaciones: <a href="https://www.geogebra.org/m/tMKHFjnf" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">geogebra.org/m/tMKHFjnf</a>. El objetivo de aprendizaje no cambia: identificar el momento de la transición elipse → parábola → hipérbola y explicarlo geométricamente.</span>
+            <span class="ni">🆘</span>
+            <div style="width: 100%;">
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Plan B — Paso a paso para GeoGebra 3D</strong>
+              <span style="font-size:13px;line-height:1.6;display:block;margin-bottom:8px">Si la construcción desde cero se complica o los chicos no manejan mucho la entrada algebraica en 3D, acá están los comandos exactos que tienen que tipear para que el modelo funcione perfecto.</span>
+              
+              <button class="btn-reveal" style="width:auto; padding:6px 12px; font-size:12px; background:var(--med);" onclick="document.getElementById('pista-cono-c6c7').style.display='block'; this.style.display='none'">
+                💡 Mostrar comandos paso a paso
+              </button>
+              
+              <div id="pista-cono-c6c7" style="display:none; margin-top:10px; background:#fff; padding:12px; border-radius:6px; border:1px solid var(--bd);">
+                <ul style="font-size:13px; line-height:1.6; margin-left:16px; color:var(--neg)">
+                  <li style="margin-bottom:6px"><strong>Paso 1 (El cono doble):</strong> Tipeen exactamente <code>x^2 + y^2 = z^2</code> en la entrada y den Enter. GeoGebra dibujará el cono infinito hacia arriba y abajo.</li>
+                  <li style="margin-bottom:6px"><strong>Paso 2 (El deslizador):</strong> Tipeen <code>a = 0.5</code> y den Enter. GeoGebra creará automáticamente un deslizador numérico.</li>
+                  <li style="margin-bottom:6px"><strong>Paso 3 (El plano secante):</strong> Tipeen <code>z = a*x + 1</code>. El "+ 1" es clave para que el plano corte el cono más arriba y no pase por la pura punta (si pasa por el origen, solo da un punto o dos rectas cruzadas).</li>
+                  <li style="margin-bottom:6px"><strong>Paso 4 (La curva):</strong> Muevan el deslizador <code>a</code> y observen el cambio de forma:
+                    <ul style="margin-top:4px; margin-left:16px; color:var(--txt)">
+                      <li>Si <code>a &lt; 1</code> el corte es una <strong>elipse</strong>.</li>
+                      <li>Si <code>a = 1</code> el plano queda paralelo a la pared del cono: <strong>parábola</strong>.</li>
+                      <li>Si <code>a &gt; 1</code> el plano se vuelve tan vertical que corta ambas mitades del cono: <strong>hipérbola</strong>.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
