@@ -158,7 +158,7 @@
     .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
     .top-info{flex-direction:column;align-items:flex-start;gap:10px}
     .wrap{padding:14px 10px 40px}
-    .cb-num{width:52px;font-size:20px}
+    .cb-num{width:52px;font-size:22px}
   }
 </style>
 </head>
@@ -424,12 +424,69 @@
       <div class="clase-banner-top">
         <div class="cb-num" style="background:var(--vio)">6</div>
         <div class="cb-info">
-          <h2>El límite del modelo griego: Cónicas y Colapso</h2>
-          <p>Lunes 20/4 · 120 minutos · Cierre del Eje 1</p>
+          <h2>Apolonio y las curvas "inútiles"</h2>
+          <p>Lunes 20/4 · 120 minutos</p>
         </div>
       </div>
       <div class="cb-obj">
-        <p><strong>Objetivo:</strong> Comprender que el sistema euclidiano garantiza invariantes asombrosos (las cónicas), reflexionar sobre la "eficacia" de la matemática abstracta, y analizar la desinstitucionalización del saber con la caída de Alejandría.</p>
+        <p><strong>Objetivo:</strong> Volver al sistema euclidiano con un problema concreto antes de saltar a Apolonio. Experimentar que los postulados de Euclides garantizan invariantes sorprendentes — y que eso mismo es lo que Apolonio buscaba en las cónicas 1800 años antes de que sirvieran para algo.</p>
+      </div>
+    </div>
+
+    <!-- APERTURA: EL TESORO DEL PIRATA -->
+    <div class="sec">
+      <div class="sec-label"><span>🏴‍☠️ Apertura: un problema para calentar motores</span><hr></div>
+
+      <div class="act-box" style="border:2px solid var(--nav)">
+        <div class="act-head" style="background:var(--nav)">
+          <h3>El Tesoro del Pirata — ¿Dónde está el tesoro sin importar dónde esté el cuchillo?</h3>
+        </div>
+        <div class="act-body">
+
+          <div class="note nb" style="margin-bottom:16px">
+            <span class="ni">🔗</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
+              <span style="font-size:13px;line-height:1.6">La semana pasada terminamos con una grieta en los <em>Elementos</em>: supuestos que Euclides usó sin demostrar. Hoy empezamos desde el otro lado — con un problema que funciona <em>porque</em> el sistema euclidiano produce invariantes que no son obvios. Después de resolverlo, vamos a ver que Apolonio hizo exactamente lo mismo con las cónicas: explorar estructuras, encontrar propiedades elegantes, sin saber aún para qué servirían.</span>
+            </div>
+          </div>
+
+          <div style="background:var(--pale);border-radius:var(--r);padding:16px 20px;margin-bottom:16px;border-left:4px solid var(--nav)">
+            <strong style="display:block;font-size:14px;color:var(--nav);margin-bottom:10px">📜 La historia</strong>
+            <p style="font-size:13.5px;line-height:1.75;color:var(--neg)">Un barco pirata llegó a una isla perseguido por galeones españoles. El capitán escondió el botín en la playa desierta, donde había solamente un <strong>arbusto</strong> y un <strong>monolito</strong>. Clavó su cuchillo en la arena y desde ahí caminó en línea recta hasta el arbusto. Estando ahí giró 90° en sentido contrario a las agujas del reloj, anduvo la misma distancia (arbusto-cuchillo) y puso una estaca.</p>
+            <p style="font-size:13.5px;line-height:1.75;color:var(--neg);margin-top:8px">Volvió al cuchillo, caminó en línea recta hasta el monolito y, girando 90° en el <em>mismo</em> sentido de las agujas del reloj, repitió la misma distancia (monolito-cuchillo) y clavó una segunda estaca. Enterró el tesoro en el <strong>punto medio</strong> entre las dos estacas. Después recogió el cuchillo y las estacas y se fue con su tripulación por 5 años.</p>
+            <p style="font-size:13.5px;line-height:1.75;color:var(--neg);margin-top:8px;font-weight:600">Al volver encontró el tesoro sin problema. ¿Por qué?</p>
+          </div>
+
+          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra (15 min)</strong>
+            <p>El desafío no tiene instrucciones paso a paso. Lean la historia del pirata y piensen cómo modelar ustedes mismos la situación en GeoGebra.</p>
+            <p style="margin-top:6px; font-size:13.5px; line-height:1.6"><em>Pista:</em> Asegúrense de usar un punto <strong>libre</strong> para el cuchillo, así después pueden arrastrarlo por toda la pantalla (activándole el rastro al tesoro final) para ver qué sucede cuando cambia el lugar de inicio.</p>
+            <p style="margin-top:8px"><strong>¿Qué observan al mover el cuchillo?</strong> Anoten la conclusión antes de seguir al próximo paso.</p>
+          </div>
+
+          <div class="step" style="border-color:var(--amb);background:var(--acl)">
+            <strong style="color:var(--amb)">Paso 2 — La pregunta socrática (5 min)</strong>
+            <p>Probaron el problema con 10, 20, 50 posiciones distintas del cuchillo. En todas el tesoro quedó en el mismo punto. ¿Eso prueba que funciona para <em>todos</em> los posibles cuchillos del plano?</p>
+            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar con muchos casos</em> y <em>demostrar</em>? ¿Dónde escucharon esta distinción antes?</p>
+          </div>
+
+          <div class="step" style="border-color:var(--nav);background:var(--pale)">
+            <strong style="color:var(--nav)">Paso 3 — Volvemos a Euclides (10 min)</strong>
+            <p>Para demostrar que el punto medio <em>siempre</em> es el mismo necesitamos herramientas del sistema de Euclides. Identifiquen cuáles:</p>
+            <ul style="font-size:13.5px; margin-left:20px; line-height:1.6">
+              <li><strong>¿Qué postulado garantiza los trayectos en línea recta del pirata?</strong> (Postulado 1 del Libro I)</li>
+              <li><strong>¿Qué garantiza que los dos giros de 90° son "la misma operación"?</strong> (Postulado 4: todos los ángulos rectos son iguales entre sí)</li>
+              <li><strong>¿Qué proposición del Libro I garantiza que los dos triángulos formados son congruentes?</strong> Pista: tienen dos lados iguales (la distancia cuchillo-arbusto y cuchillo-monolito conservadas) y el ángulo entre ellos... ¿cuánto mide? (Proposición 4 — criterio LAL)</li>
+            </ul>
+            <p style="margin-top:8px">La demostración algebraica confirma lo que GeoGebra mostró: al calcular el punto medio, las coordenadas del cuchillo <em>se cancelan</em> exactamente. El resultado no depende de K.</p>
+          </div>
+
+          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia Apolonio</strong>
+            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver es exactamente lo que Apolonio hacía: usar el sistema de Euclides para explorar propiedades que producen invariantes elegantes — sin preguntar todavía para qué sirven. La diferencia es que las de Apolonio eran curvas, y tardaron 1800 años en "servir".</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -442,10 +499,8 @@
           <span>Historia Pura</span>
         </div>
         <div class="lect-body">
-          <p>Hasta ahora estudiamos a <strong>Euclides</strong> (c. 300 a.C.), que ordenó la geometría plana con sus postulados, y a <strong>Arquímedes</strong> (c. 287–212 a.C.), que usó la física para acorralar áreas y volúmenes complejos. Hoy nos toca conocer al tercer gigante de esta época: <strong>Apolonio de Perga</strong> (c. 262–190 a.C.). Conocido por sus contemporáneos simplemente como "El Gran Geómetra", Apolonio fue el último pilar de la famosa tríada helenística (vale aclarar que los antiguos griegos se llamaban a sí mismos "helenos", y el período "helenístico" marca la globalización y mezcla de esta cultura por el mundo oriental y egipcio tras las conquistas de Alejandro Magno).</p>
+          <p>Apolonio de Perga (c. 262–190 a.C.) fue el último gran pilar de la tríada helenística (vale aclarar que los antiguos griegos se llamaban a sí mismos "helenos", y el período "helenístico" marca la globalización y mezcla de esta cultura por el mundo oriental y egipcio tras las conquistas de Alejandro Magno), completando el trabajo de sistematización geométrica junto a Euclides y Arquímedes. Su obra maestra de ocho volúmenes, <em>Las Cónicas</em>, es el estudio más exhaustivo de la Antigüedad sobre las curvas que no pueden trazarse con regla y compás tradicionales. <span class="ref">(Boyer, 1986, pp. 129-131)</span></p>
           
-          <p>Mientras Euclides y Arquímedes ya eran leyendas consagradas, Apolonio se dedicó a completar y expandir brutalmente el trabajo de sus predecesores. Su obra maestra de ocho volúmenes, <em>Las Cónicas</em>, es el estudio más exhaustivo de la Antigüedad sobre las curvas que no pueden trazarse con la regla y el compás tradicionales. <span class="ref">(Boyer, 1986, pp. 129–135)</span></p>
-
           <p>Antes de Apolonio, los matemáticos griegos creían que para obtener curvas diferentes (parábola, elipse o hipérbola) necesitaban cortar conos de distintas formas (conos rectos, agudos u obtusos) siempre con un plano perpendicular. <strong>(Nota: el plano no era perpendicular a la base, sino a la <em>generatriz</em> o borde inclinado del cono. Por eso necesitaban un cono "puntiagudo" para que el corte atravesara todo y cerrara una elipse, y uno muy abierto para la hipérbola).</strong> La gran revolución de Apolonio fue demostrar que <strong>las tres curvas provienen del mismo cono doble</strong>, simplemente variando la inclinación del plano que lo corta. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
 
           <figure style="margin:18px 0;text-align:center">
@@ -504,80 +559,6 @@
           </div>
 
           <p>Sin embargo, el destino de las cónicas es una de las anécdotas más fascinantes de la historia de la ciencia. Aproximadamente 1800 años después de Apolonio, Johannes Kepler descubrió que los planetas no giran en círculos perfectos, sino en elipses. Y más tarde, Isaac Newton usó las propiedades de la parábola descubiertas por Apolonio para calcular la trayectoria de los proyectiles y los cometas. Las curvas que Apolonio estudió por puro placer intelectual resultaron ser el esqueleto geométrico del universo.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
-    <div class="sec">
-      <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
-      <div class="act-box" style="border:2px solid var(--nav)">
-        <div class="act-head" style="background:var(--nav)">
-          <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
-        </div>
-        <div class="act-body">
-          <div class="note nb" style="margin-bottom:16px">
-            <span class="ni">🔗</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
-              <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la Proposición I.1 — la primera construcción de los <em>Elementos</em> — Euclides asume que dos círculos se cortan porque <em>se ve</em> en el dibujo, pero ninguno de sus cinco postulados lo garantiza. El edificio entero arranca con una grieta. Hoy vemos la otra cara: dentro de ese sistema, hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar en qué punto de la elipse rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
-            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
-            <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (el ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
-            <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
-            <div style="margin-top:10px">
-              <button class="btn-reveal" style="width:auto; padding:6px 12px; font-size:12px; background:var(--med); margin-top:8px" onclick="document.getElementById('pista-c6').style.display='flex'; this.style.display='none'">
-                💡 Revelar pista para GeoGebra
-              </button>
-              <div id="pista-c6" class="note nb" style="margin-top:0; display:none">
-                <span class="ni">💡</span>
-                <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--amb);background:var(--acl)">
-            <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
-            <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
-            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
-            <div class="note na" style="margin-top:10px">
-              <span class="ni">💡</span>
-              <div>
-                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
-                <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--nav);background:var(--pale)">
-            <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
-            <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
-            <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
-          </div>
-
-          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
-          <div id="sim-focal" style="display:none">
-          <div class="sim-wrap" style="margin:14px 0">
-            <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
-              <span>Simulador — Propiedad Focal de la Elipse</span>
-              <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
-            </div>
-            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
-              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
-              <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
-                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
-            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
-            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -656,69 +637,12 @@
       </div>
     </div>
 
-    <div class="note ng" style="margin:24px 0">
-      <span class="ni">⬇️</span>
-      <div>
-        <strong style="display:block;margin-bottom:4px;color:var(--grn)">De la gloria de Apolonio al colapso del sistema</strong>
-        <span style="font-size:13px;line-height:1.6">Apolonio marca la cumbre del virtuosismo griego. Pero todo ese conocimiento gigantesco requería instituciones, bibliotecas y estabilidad política para sostenerse. Ahora vamos a ver qué pasa cuando esa base material desaparece.</span>
-      </div>
-    </div>
-
-    <!-- LECTURA HIPATIA -->
-    <div class="sec">
-      <div class="sec-label"><span>📖 Contexto Socio-Político</span><hr></div>
-      <div class="lect">
-        <div class="lect-head" style="background:var(--acl);border-color:var(--amb)">
-          <h3 style="color:var(--amb)">El ocaso de Alejandría: de la innovación a la conservación</h3>
-        </div>
-        <div class="lect-body">
-          <p>Para el siglo IV d.C., la matemática creadora de la época de Arquímedes y Apolonio se había estancado. El Imperio Romano era pragmático: le interesaba la ingeniería para puentes, acueductos y catapultas, pero sentía profundo desinterés por la geometría abstracta y la demostración de teoremas puros. Alejandría pasó de ser un centro de <em>producción</em> del saber a un centro de <em>conservación</em> — un archivo de textos que se iban pudriendo en la Biblioteca y el Serapeo. <span class="ref">(Boyer, 1986, pp. 245–247; Kline, 1992, Vol. 1, p. 182)</span></p>
-
-          <p>En este contexto, el trabajo de Hipatia no fue producir matemática nueva: fue editar, corregir y comentar las obras de Euclides, Apolonio y Ptolomeo para que sobrevivieran. <strong>Sin esa transmisión institucional, esos textos no habrían llegado hasta nosotros.</strong> La edición de los <em>Elementos</em> que Teón — su padre — preparó junto a ella es la base de todas las ediciones posteriores hasta el siglo XIX. <span class="ref">(<a href="https://mujeresconciencia.com/2015/06/15/hipatia/" target="_blank" rel="noopener" style="color:var(--med)">Mujeres con Ciencia: Hipatia</a>; <a href="https://es.wikipedia.org/wiki/Te%C3%B3n_de_Alejandr%C3%ADa" target="_blank" rel="noopener" style="color:var(--med)">Wikipedia ES: Teón de Alejandría</a>)</span></p>
-
-          <figure style="margin:18px 0;text-align:center">
-            <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-              <img src="https://mujeresconciencia.com/app/uploads/2015/06/rafael1.jpg"
-                   onerror="this.src='https://www.biografiasyvidas.com/biografia/h/fotos/hipatia.jpg'"
-                   alt="Hipatia de Alejandría"
-                   style="max-height:320px;width:auto;border-radius:4px;display:block">
-            </div>
-            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Hipatia de Alejandría (c. 370–415 d.C.) — matemática, astrónoma y filósofa neoplatónica. Su brutal asesinato simboliza el colapso de la ciencia griega.</figcaption>
-          </figure>
-
-          <div class="note na" style="margin:14px 0">
-            <span class="ni">🔥</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--amb)">La política del conocimiento</strong>
-              <span style="font-size:13px;line-height:1.6">El asesinato de Hipatia en 415 d.C. no fue un accidente. Fue el resultado de tensiones entre el prefecto Orestes (aliado de Hipatia), el obispo Cirilo (que expandía su poder político) y el contexto de colapso del Imperio Romano de Occidente. Con ese colapso, gran parte del conocimiento griego desapareció de Europa durante siglos. Fue preservado y ampliado en el mundo islámico y en el Imperio Bizantino, y regresó a Europa en el siglo XII traducido del árabe. <span class="ref">(Kline, 1992, Vol. 1, pp. 180–183)</span></span>
-            </div>
-          </div>
-
-          <h5>La pregunta que importa para futuros docentes</h5>
-          <p>Chevallard nos enseña que el saber necesita una institución que lo sostenga para poder ser enseñado. Cuando esa institución colapsa, el saber no "flota" en el aire: desaparece o se transforma radicalmente. La escuela es hoy una de esas instituciones. ¿Qué condiciones necesita para cumplir ese rol? <span class="ref">(Chevallard, 1997, pp. 16–18)</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- VISUALIZACIÓN: EL VIAJE DEL SABER — oculta por defecto, Ctrl+T para mostrar -->
-    <div id="viz-viaje" style="display:none">
-      <div class="sec">
-        <div class="sec-label"><span>🗺️ El viaje del saber matemático griego</span><hr></div>
-        <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:18px;box-shadow:var(--sh)">
-          <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-            <rect width="680" height="200" fill="#f8fafc" rx="6"/>
-            <g transform="translate(70,100)"><circle r="38" fill="#1B3A6B" opacity=".12"/><circle r="28" fill="#1B3A6B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">III–II a.C.</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1B3A6B" font-weight="700">Producción</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Euclides · Arquímedes</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Apolonio · Museo</text></g>
-            <path d="M 100,100 L 202,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="151" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">copiado</text>
-            <g transform="translate(232,100)"><circle r="38" fill="#1A6B3A" opacity=".12"/><circle r="28" fill="#1A6B3A"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">I a.C.–IV</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#1A6B3A" font-weight="700">Transmisión</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Hipatia · Teón</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">comentarios · ediciones</text></g>
-            <path d="M 262,100 L 364,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="313" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#D9534F" font-weight="700">colapso</text>
-            <g transform="translate(394,100)"><circle r="38" fill="#C85C00" opacity=".12"/><circle r="28" fill="#C85C00"/><text y="-2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">V–X d.C.</text><text y="9" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#fff">Bizancio / Islam</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#C85C00" font-weight="700">Preservación</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Al-Juarismi · Averroes</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">traducción al árabe</text></g>
-            <path d="M 424,100 L 526,100" stroke="#C5D2DC" stroke-width="2" fill="none" marker-end="url(#arr)"/><text x="475" y="93" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#4A5E70">traducido</text>
-            <g transform="translate(556,100)"><circle r="38" fill="#4A1A7B" opacity=".12"/><circle r="28" fill="#4A1A7B"/><text y="4" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#fff" font-weight="700">siglo XII</text><text y="58" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#4A1A7B" font-weight="700">Reingreso</text><text y="72" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Europa occidental</text><text y="84" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#4A5E70">Toledo · Fibonacci</text></g>
-            <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#C5D2DC"/></marker></defs>
-          </svg>
-          <p style="font-size:11.5px;color:var(--txt);text-align:center;margin-top:8px;font-style:italic">El saber matemático griego no fue lineal: se produjo, se transmitió, estuvo a punto de perderse y volvió 700 años después en otro idioma.</p>
-        </div>
-      </div>
+    <div class="srcs">
+      <h5 style="color:var(--vio)">Fuentes de la Clase 6:</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, Cap. 9 (Apolonio de Perga).</p>
+      <p>Chevallard, Y. (1997). <em>La transposición didáctica.</em> Buenos Aires: Aique, pp. 45–51.</p>
+      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Vol. 1, Cap. 5.</p>
+      <p>Wigner, E. (1960). <em>The unreasonable effectiveness of mathematics in the natural sciences</em>. Comm. on Pure and Applied Mathematics, 13(1).</p>
     </div>
 
     <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
@@ -729,7 +653,6 @@
         <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Se habilita el martes</small>
       </button>
     </div>
-
   </div>
 </div>
 
@@ -868,7 +791,7 @@
   </div>
 </div>
 
-<!-- ══════════════════ CLASE 8 · MIÉRCOLES 22/4 (LOS NUEVOS NÚMEROS) ══════════════════ -->
+<!-- ══════════════════ CLASE 8 · MIÉRCOLES (LOS NUEVOS NÚMEROS) ══════════════════ -->
 <div id="pane-c8" class="pane">
   <div class="locked-pane" id="lock-c8">
     <div class="locked-icon">🔒</div>
@@ -925,30 +848,18 @@
         <div class="lect-body">
           <p>Para que los números negativos fueran aceptados, la matemática tenía que liberarse del "corsé" de la geometría euclidiana. Y eso no ocurrió en Europa, sino en Asia, donde la matemática respondía a necesidades de administración, agrimensura y contabilidad, despegada del dogma de la "pureza" geométrica.</p>
 
-          <p>Siglos antes de que los griegos se asustaran con el cero o los negativos, la dinastía Han en China recopiló un texto matemático fundamental: <em>Los Nueve Capítulos sobre el Arte Matemático</em> (Jiu Zhang Suan Shu, compilado entre el siglo II a.C. y el I d.C.). En su capítulo 8, los chinos usaban varillas de bambú sobre un tablero.</p>
+          <h5 style="color:var(--red); border-left-color:var(--red)">China: Las varillas rojas y negras</h5>
+          <p>Siglos antes de que los griegos se asustaran con el cero o los negativos, la dinastía Han en China recopiló un texto matemático fundamental: <em>Los Nueve Capítulos sobre el Arte Matemático</em> (Jiu Zhang Suan Shu, compilado entre el siglo II a.C. y el I d.C.). En su capítulo 8, dedicado a resolver sistemas de ecuaciones con varias incógnitas, los chinos usaban varillas de bambú sobre un tablero.</p>
           <p>Para diferenciar los tipos de valores, usaban <strong>varillas rojas para los números positivos (ganancias) y varillas negras para los negativos (deudas)</strong>. Operaban sumando y restando filas de varillas con total naturalidad mediante el método <em>Fangcheng</em>. No les importaba que una "área negativa" fuera imposible de dibujar; les importaba que el algoritmo funcionara y la contabilidad cerrara. <span class="ref">(Ifrah, 1997; Mankiewicz, 2000)</span></p>
 
           <figure style="margin: 18px 0; text-align: center;">
             <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-              <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg" style="max-height:140px;width:auto;display:block;margin:0 auto;">
-                <rect width="160" height="100" fill="#f8fafc" rx="4"/>
-                <!-- Positivos (Rojos) -->
-                <g stroke="#d9534f" stroke-width="6" stroke-linecap="round">
-                  <line x1="30" y1="25" x2="30" y2="75"/>
-                  <line x1="45" y1="25" x2="45" y2="75"/>
-                  <line x1="60" y1="25" x2="60" y2="75"/>
-                </g>
-                <!-- Negativos (Negros) -->
-                <g stroke="#1A2C3A" stroke-width="6" stroke-linecap="round">
-                  <line x1="100" y1="40" x2="140" y2="40"/>
-                  <line x1="100" y1="60" x2="140" y2="60"/>
-                  <line x1="120" y1="25" x2="120" y2="75"/>
-                </g>
-              </svg>
+              <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyvK_xbV5mXe3zrOoDuho-j2kuzlLjKdADMd8JtRkF52XjxAAiOgGKKZI9s-hdXpACRFjmEgAEq2vkKXy-MppWpLjeUHocaBm2us1FHn7BHnRIIPyqm3a8-cZStJFH6aJ-YEKCXVoPzKQ3/s1600/Sistema+de+numeraci%25C3%25B3n+con+varillas.png" alt="Varillas de cálculo chinas" style="max-height:160px;width:auto;border-radius:4px;display:block">
             </div>
             <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Representación de las posiciones de las varillas de cálculo chinas (rojo = positivo, negro = negativo). Su uso pragmático en tableros permitió operar con negativos mucho antes que Occidente.</figcaption>
           </figure>
           
+          <h5 style="color:var(--red); border-left-color:var(--red)">India: Las reglas de Brahmagupta</h5>
           <p>Más al oeste, en la India del siglo VII d.C., el brillante matemático <strong>Brahmagupta</strong> estableció las reglas formales para operar con el cero y los números negativos llamándolos "Fortunas" y "Deudas".</p>
 
           <div style="background:#1e1e1e; color:#E0E0E0; padding:16px 20px; border-radius:var(--r); font-family:Georgia, serif; font-size:14px; line-height:1.7; margin:16px 0">
@@ -963,7 +874,7 @@
       </div>
     </div>
 
-    <!-- TALLER: EL ALGORITMO DE LAS VARILLAS -->
+    <!-- TALLER DE MODELIZACIÓN (Varillas) -->
     <div class="sec">
       <div class="sec-label"><span style="background:var(--red)">⚙️ Taller de Modelización</span><hr></div>
       <div class="act-box" style="border-color:var(--red)">
@@ -984,6 +895,14 @@
             <p>Pongan $2$ varillas rojas sobre la mesa. La consigna es <em>restar</em> (quitar físicamente) $5$ varillas rojas. Obviamente les faltan.</p>
             <p>¿Cómo lo resolvían los chinos sin usar rectas numéricas mentales? Agregando <strong>"ceros"</strong>. Como un rojo y un negro juntos se aniquilan y valen cero, ustedes pueden agregar a la mesa tantos pares "rojo-negro" como quieran sin alterar el valor total.</p>
             <p><em>Agreguen 3 pares rojo-negro a la mesa. Ahora sí, quiten las 5 varillas rojas. ¿Qué color y cantidad les quedó en la mesa?</em> Acaban de demostrar físicamente, hace más de 2000 años, que $2 - 5 = -3$.</p>
+          </div>
+
+          <div class="note nb" style="margin-top:14px">
+            <span class="ni">💬</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Análisis Didáctico Rápido</strong>
+              <p style="font-size:13px;line-height:1.6">A menudo en la escuela enseñamos la suma y resta de enteros solo con la recta numérica o con reglas abstractas de memoria ("si tienen distinto signo se restan y lleva el signo del mayor"). ¿Creen que llevar "fichas" o "tapitas" de dos colores (el modelo de cancelación oriental) a un aula de 1.° o 2.° año ayudaría a materializar este obstáculo? ¿Qué ventajas le ven frente a enseñar la recta de entrada?</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1021,8 +940,11 @@
 
     <div class="srcs">
       <h5 style="color:var(--red)">Fuentes de la Clase 8</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza Editorial. Cap. 12 (Diofanto) y Cap. 13 (La India).</p>
       <p>Brousseau, G. (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques,</em> 4(2), 165–198.</p>
+      <p>Ifrah, G. (1997). <em>Historia universal de las cifras</em>. Madrid: Espasa-Calpe.</p>
       <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático.</em> Buenos Aires: A-Z Editora.</p>
+      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días,</em> Vol. 1. Cap. 8 (Álgebra hindú).</p>
     </div>
 
     <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
