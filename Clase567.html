@@ -398,75 +398,6 @@
     </div>
   </div>
 
-  <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
-  <div class="sec">
-    <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
-    <div class="act-box" style="border:2px solid var(--nav)">
-      <div class="act-head" style="background:var(--nav)">
-        <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
-      </div>
-      <div class="act-body">
-        <div class="note nb" style="margin-bottom:16px">
-          <span class="ni">🔗</span>
-          <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
-            <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la primera construcción de los <em>Elementos</em> Euclides asume que dos círculos se cortan porque <em>se ve</em>, pero ningún postulado lo garantiza. Hoy vemos la otra cara: dentro de ese sistema hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar el punto de rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
-          </div>
-        </div>
-
-        <div class="step" style="border-color:var(--grn);background:var(--gcl)">
-          <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
-          <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
-          <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
-          <div class="note nb" style="margin-top:10px">
-            <span class="ni">💡</span>
-            <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
-          </div>
-        </div>
-
-        <div class="step" style="border-color:var(--amb);background:var(--acl)">
-          <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
-          <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
-          <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
-          <div class="note na" style="margin-top:10px">
-            <span class="ni">💡</span>
-            <div>
-              <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
-              <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="step" style="border-color:var(--nav);background:var(--pale)">
-          <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
-          <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
-          <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
-        </div>
-
-        <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
-        <div id="sim-focal" style="display:none">
-        <div class="sim-wrap" style="margin:14px 0">
-          <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
-            <span>Simulador — Propiedad Focal de la Elipse</span>
-            <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
-          </div>
-          <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
-            <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
-            <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
-              ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
-            </div>
-          </div>
-        </div>
-        </div>
-
-        <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
-          <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
-          <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- LECTURA APOLONIO -->
   <div class="sec">
     <div class="sec-label"><span>📖 Lectura Base</span><hr></div>
@@ -542,33 +473,70 @@
     </div>
   </div>
 
-  <!-- ACTIVIDAD GEOGEBRA CÓNICAS -->
+  <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
   <div class="sec">
-    <div class="sec-label"><span>⚙️ Actividad Exploratoria</span><hr></div>
-    <div class="act-box" style="border-color:var(--vio)">
-      <div class="act-head" style="background:var(--vio)">
-        <h3>Cortando el cono digital</h3>
+    <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
+    <div class="act-box" style="border:2px solid var(--nav)">
+      <div class="act-head" style="background:var(--nav)">
+        <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
       </div>
       <div class="act-body">
-        <p>En el pizarrón es muy difícil visualizar cómo una hipérbola es en realidad el corte vertical de un cono doble. Para esta actividad vamos a usar GeoGebra 3D.</p>
-
-        <div class="step" style="border-color:var(--vio);background:var(--vcl)">
-          <strong style="color:var(--vio)">Consigna de taller:</strong>
-          <p>Abran <strong>GeoGebra Calculadora 3D</strong> en sus dispositivos. El desafío no tiene instructivo paso a paso; la idea es que ustedes mismos modelen la situación:</p>
-          <ul style="font-size:13.5px;margin-left:20px;line-height:1.6;margin-top:8px;margin-bottom:8px">
-            <li>Piensen y construyan algebraicamente un <strong>cono doble</strong> tridimensional centrado en el origen.</li>
-            <li>Agreguen un <strong>plano secante</strong> cuya inclinación se pueda modificar dinámicamente (usando un deslizador).</li>
-            <li><strong>El objetivo:</strong> manipular la inclinación del plano hasta registrar visualmente los momentos exactos en que la curva de intersección muta de elipse a parábola y de parábola a hipérbola.</li>
-          </ul>
-          <p style="font-size:13px;font-style:italic;color:var(--txt)">Esta herramienta dinámica permite ver lo que Apolonio tuvo que abstraer puramente en su cabeza hace más de dos mil años.</p>
-        </div>
-
-        <div class="note nb" style="margin-top:12px">
+        <div class="note nb" style="margin-bottom:16px">
           <span class="ni">🔗</span>
           <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Plan B — si la construcción no arranca</strong>
-            <span style="font-size:13px;line-height:1.6">Si la construcción desde cero no sale en el tiempo disponible, usen este applet ya construido para verificar sus observaciones: <a href="https://www.geogebra.org/m/tMKHFjnf" target="_blank" rel="noopener" style="color:var(--med);font-weight:600">geogebra.org/m/tMKHFjnf</a>. El objetivo de aprendizaje no cambia: identificar el momento de la transición elipse → parábola → hipérbola y explicarlo geométricamente.</span>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
+            <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la primera construcción de los <em>Elementos</em> Euclides asume que dos círculos se cortan porque <em>se ve</em>, pero ningún postulado lo garantiza. Hoy vemos la otra cara: dentro de ese sistema hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar el punto de rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
           </div>
+        </div>
+
+        <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+          <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
+          <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
+          <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
+          <div class="note nb" style="margin-top:10px">
+            <span class="ni">💡</span>
+            <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
+          </div>
+        </div>
+
+        <div class="step" style="border-color:var(--amb);background:var(--acl)">
+          <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
+          <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
+          <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
+          <div class="note na" style="margin-top:10px">
+            <span class="ni">💡</span>
+            <div>
+              <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
+              <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" style="border-color:var(--nav);background:var(--pale)">
+          <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
+          <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
+          <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
+        </div>
+
+        <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
+        <div id="sim-focal" style="display:none">
+        <div class="sim-wrap" style="margin:14px 0">
+          <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
+            <span>Simulador — Propiedad Focal de la Elipse</span>
+            <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
+          </div>
+          <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
+            <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
+            <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
+              ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+          <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
+          <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
         </div>
       </div>
     </div>
@@ -954,388 +922,3 @@
 
             <ul style="font-size:13.5px; margin-left:20px; line-height:1.6; margin-top:8px; margin-bottom:8px">
               <li style="margin-bottom:12px"><strong>Etapa 1 - El límite del modelo empírico (El choque):</strong> Intenten usar un modelo real (varillas, deudas, termómetros, el ascensor) para explicar la multiplicación de dos negativos. Por ejemplo: ¿Qué significa en la vida real "deuda multiplicada por deuda"? ¿Qué pasa si usan un auto retrocediendo en el tiempo? <em>Anoten en su esquema en qué momento sienten que el ejemplo de la vida real "se rompe", deja de tener sentido o se vuelve demasiado rebuscado para un chico de 12 años.</em></li>
-              
-              <li><strong>Etapa 2 - La justificación estructural (La salida de Brousseau):</strong> Como advierte Brousseau, llega un punto donde la intuición del mundo físico ya no sirve, y hay que apoyarse en la estructura de la Matemática. Expliquen paso a paso cómo usarían la <strong>Propiedad Distributiva</strong> en el pizarrón para demostrarle a un alumno desconfiado que $-1 \times -1$ <em>tiene</em> que dar $+1$ para que el álgebra no colapse. <br>
-              <em>(Pista histórica: Partan de la expresión $-1 \times (1 + (-1)) = 0$ y obliguen a la clase a aplicar la distributiva).</em></li>
-            </ul>
-          </div>
-
-          <div style="background:var(--slate); color:white; border-radius:var(--r); padding:16px; margin-top:14px">
-            <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">🎯 El entregable de hoy</strong>
-            <p style="font-size:13px; line-height:1.6">Al final de la clase, presentarán oralmente su esquema y debatiremos por qué la regla de los signos no es un "hecho natural" de la naturaleza, sino una convención lógicamente necesaria para mantener viva la estructura matemática.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="srcs">
-      <h5 style="color:var(--red)">Fuentes de la Clase 9</h5>
-      <p>Brousseau, G. (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques,</em> 4(2), 165–198.</p>
-      <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático.</em> Buenos Aires: A-Z Editora.</p>
-    </div>
-
-    <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
-      <button class="cnav-btn left" onclick="showTab('c8', document.getElementById('btn-c8'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 8
-        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Martes</small>
-      </button>
-      <button class="cnav-btn right" style="flex:1;background:var(--grn);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:default;text-align:right">✓ Fin de Semana 4
-        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">¡Nos vemos la próxima!</small>
-      </button>
-    </div>
-  </div>
-</div>
-
-</div>
-
-<script>
-// --- NAVEGACIÓN TABS ---
-function showTab(id, btn) {
-  if (btn && btn.classList && btn.classList.contains('locked')) return;
-  
-  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  
-  const targetPane = document.getElementById('pane-' + id);
-  if (targetPane) {
-    targetPane.classList.add('on');
-  }
-  
-  if (btn && btn.classList) {
-    btn.classList.add('active');
-  } else {
-    const fallbackBtn = document.getElementById('btn-' + id);
-    if (fallbackBtn) fallbackBtn.classList.add('active');
-  }
-  
-  window.scrollTo(0, 0);
-  
-  if (id === 'c5' && typeof drawArchimedes === 'function') setTimeout(drawArchimedes, 50);
-  if (id === 'c6c7' && typeof initEllipseSim === 'function') setTimeout(initEllipseSim, 50);
-}
-
-// --- SIMULADOR PROPIEDAD FOCAL DE LA ELIPSE ---
-function initEllipseSim() {
-  const canvas = document.getElementById('ellipseSim');
-  if (!canvas || canvas._simReady) return;
-
-  const dpr = window.devicePixelRatio || 1;
-  const W = Math.min(460, canvas.parentElement.offsetWidth - 20);
-  const H = 280;
-  if (W <= 0) return;
-
-  canvas._simReady = true;
-  canvas.style.width = W + 'px';
-  canvas.style.height = H + 'px';
-  canvas.width = W * dpr;
-  canvas.height = H * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const cx = W / 2, cy = H / 2;
-  const a = W * 0.40, b = H * 0.36;
-  const c = Math.sqrt(a * a - b * b);
-  const F1 = { x: cx - c, y: cy };
-  const F2 = { x: cx + c, y: cy };
-  let theta = 0.85;
-  let dragging = false;
-  let mode = 'reflexion'; 
-
-  const modeBtn = document.getElementById('ellipse-mode-btn');
-  const modeCaption = document.getElementById('ellipse-mode-caption');
-  if (modeBtn) {
-    modeBtn.addEventListener('click', () => {
-      mode = (mode === 'reflexion') ? 'orbital' : 'reflexion';
-      modeBtn.textContent = mode === 'reflexion' ? '🪐 Ver modo orbital (Kepler)' : '📡 Ver modo reflexión (Apolonio)';
-      modeCaption.innerHTML = mode === 'reflexion'
-        ? '✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.'
-        : '☀️ El Sol ocupa F₁. El planeta recorre la elipse. F₂ está <em>vacío</em> — es el costo matemático de que F₁ funcione.';
-      draw();
-    });
-  }
-
-  let orbAnim = null;
-  function startOrbit() {
-    if (orbAnim) return;
-    orbAnim = setInterval(() => {
-      if (mode === 'orbital') { theta += 0.018; draw(); }
-      else { clearInterval(orbAnim); orbAnim = null; }
-    }, 30);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    if (mode === 'orbital') {
-      drawOrbital();
-      if (!orbAnim) startOrbit();
-    } else {
-      drawReflexion();
-    }
-  }
-
-  function drawReflexion() {
-    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
-    const Px = cx + a * Math.cos(theta), Py = cy + b * Math.sin(theta);
-    const gnx = (Px - cx)/(a*a), gny = (Py - cy)/(b*b);
-    const gnl = Math.sqrt(gnx*gnx + gny*gny);
-    const nx = gnx/gnl, ny = gny/gnl;
-    const idx = Px - F1.x, idy = Py - F1.y;
-    const il = Math.sqrt(idx*idx + idy*idy);
-    const inx = idx/il, iny = idy/il;
-    const dot = inx*nx + iny*ny;
-    const rfx = inx - 2*dot*nx, rfy = iny - 2*dot*ny;
-    const far = Math.max(W, H)*2.5, tx = -ny, ty = nx;
-
-    ctx.save(); ctx.strokeStyle = 'rgba(74,26,123,0.3)'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 4]);
-    ctx.beginPath(); ctx.moveTo(Px - far*tx, Py - far*ty); ctx.lineTo(Px + far*tx, Py + far*ty); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
-
-    ctx.beginPath(); ctx.ellipse(cx, cy, a, b, 0, 0, 2*Math.PI); ctx.strokeStyle = '#1B3A6B'; ctx.lineWidth = 2.5; ctx.stroke();
-
-    ctx.strokeStyle = '#C85C00'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(F1.x, F1.y); ctx.lineTo(Px, Py); ctx.stroke();
-    arrowHead(ctx, F1.x + (Px - F1.x)*0.55, F1.y + (Py - F1.y)*0.55, inx, iny, '#C85C00');
-
-    ctx.strokeStyle = '#1A6B3A'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(Px, Py); ctx.lineTo(Px + rfx*far, Py + rfy*far); ctx.stroke();
-    arrowHead(ctx, Px + rfx*60, Py + rfy*60, rfx, rfy, '#1A6B3A');
-
-    ctx.beginPath(); ctx.arc(F2.x, F2.y, 16, 0, 2*Math.PI); ctx.fillStyle = 'rgba(26,107,58,0.18)'; ctx.fill();
-
-    const inAngle = Math.atan2(iny, inx), refAngle = Math.atan2(rfy, rfx);
-    ctx.strokeStyle = 'rgba(200,92,0,0.5)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(Px, Py, 22, inAngle - Math.PI, inAngle - Math.PI + 0.4); ctx.stroke();
-    ctx.strokeStyle = 'rgba(26,107,58,0.5)'; ctx.beginPath(); ctx.arc(Px, Py, 22, refAngle - 0.4, refAngle); ctx.stroke();
-
-    [[F1, '#C85C00', 'F₁', -22], [F2, '#1A6B3A', 'F₂', 10]].forEach(([f, col, lbl, lx]) => {
-      ctx.beginPath(); ctx.arc(f.x, f.y, 7, 0, 2*Math.PI); ctx.fillStyle = col; ctx.fill();
-      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
-      ctx.fillStyle = col; ctx.font = 'bold 14px Segoe UI,Arial,sans-serif'; ctx.fillText(lbl, f.x + lx, f.y + 5);
-    });
-
-    ctx.beginPath(); ctx.arc(Px, Py, 8, 0, 2*Math.PI); ctx.fillStyle = '#1B3A6B'; ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Segoe UI,Arial,sans-serif'; ctx.fillText('P', Px - 4, Py + 4);
-
-    const lex = W - 145, ley = 16; ctx.font = '11px Segoe UI,Arial,sans-serif';
-    [['rgba(74,26,123,0.5)', '- - -  tangente'], ['#C85C00', '———  rayo de F₁'], ['#1A6B3A', '———  rayo reflejado']].forEach(([col, txt], i) => { ctx.fillStyle = col; ctx.fillText(txt, lex, ley + i * 16); });
-  }
-
-  function drawOrbital() {
-    ctx.fillStyle = '#0a0e1a'; ctx.fillRect(0, 0, W, H);
-    ctx.fillStyle = 'rgba(255,255,255,0.6)';
-    [[45,30],[120,55],[200,20],[310,40],[380,25],[430,60],[60,230],[150,250],[260,240],[360,220],[410,200],[80,140],[340,160]].forEach(([sx,sy]) => {
-      ctx.beginPath(); ctx.arc(sx, sy, 0.8, 0, 2*Math.PI); ctx.fill();
-    });
-
-    const Px = cx + a * Math.cos(theta), Py = cy + b * Math.sin(theta);
-    ctx.save(); ctx.strokeStyle = 'rgba(100,140,200,0.35)'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 5]);
-    ctx.beginPath(); ctx.ellipse(cx, cy, a, b, 0, 0, 2*Math.PI); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
-
-    ctx.strokeStyle = 'rgba(255,200,60,0.25)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(F1.x, F1.y); ctx.lineTo(Px, Py); ctx.stroke();
-
-    ctx.beginPath(); ctx.arc(F2.x, F2.y, 6, 0, 2*Math.PI); ctx.strokeStyle = 'rgba(150,170,220,0.5)'; ctx.lineWidth = 1.5; ctx.setLineDash([3,3]); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = 'rgba(150,170,220,0.7)'; ctx.font = '11px Segoe UI,Arial,sans-serif'; ctx.fillText('F₂ (vacío)', F2.x + 10, F2.y + 4);
-
-    const grad = ctx.createRadialGradient(F1.x, F1.y, 2, F1.x, F1.y, 28);
-    grad.addColorStop(0, 'rgba(255,220,60,0.9)'); grad.addColorStop(0.4, 'rgba(255,160,20,0.4)'); grad.addColorStop(1, 'rgba(255,120,0,0)');
-    ctx.beginPath(); ctx.arc(F1.x, F1.y, 28, 0, 2*Math.PI); ctx.fillStyle = grad; ctx.fill();
-    ctx.beginPath(); ctx.arc(F1.x, F1.y, 9, 0, 2*Math.PI); ctx.fillStyle = '#FFD93D'; ctx.fill();
-    ctx.fillStyle = '#fff'; ctx.font = 'bold 13px Segoe UI,Arial,sans-serif'; ctx.fillText('☀', F1.x - 8, F1.y + 5);
-    ctx.fillStyle = '#FFD93D'; ctx.font = '11px Segoe UI,Arial,sans-serif'; ctx.fillText('Sol (F₁)', F1.x - 24, F1.y + 22);
-
-    ctx.beginPath(); ctx.arc(Px, Py, 9, 0, 2*Math.PI); ctx.fillStyle = '#4A9EE0'; ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 1.5; ctx.stroke();
-    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Segoe UI,Arial,sans-serif'; ctx.fillText('🪐', Px - 8, Py + 5);
-
-    ctx.fillStyle = 'rgba(180,210,255,0.85)'; ctx.font = 'italic 11px Segoe UI,Arial,sans-serif';
-    ctx.fillText('Kepler (1609): los planetas orbitan en elipses,', 10, H - 28); ctx.fillText('con el Sol en uno de los focos.', 10, H - 14);
-  }
-
-  function arrowHead(ctx, x, y, dx, dy, color) {
-    const s = 10, angle = Math.atan2(dy, dx);
-    ctx.fillStyle = color; ctx.beginPath();
-    ctx.moveTo(x + Math.cos(angle)*s, y + Math.sin(angle)*s);
-    ctx.lineTo(x + Math.cos(angle + 2.4)*s*0.6, y + Math.sin(angle + 2.4)*s*0.6);
-    ctx.lineTo(x + Math.cos(angle - 2.4)*s*0.6, y + Math.sin(angle - 2.4)*s*0.6);
-    ctx.closePath(); ctx.fill();
-  }
-
-  function thetaFrom(clientX, clientY) {
-    const r = canvas.getBoundingClientRect(), mx = (clientX - r.left)*(W/r.width) - cx, my = (clientY - r.top)*(H/r.height) - cy;
-    return Math.atan2(my/b, mx/a);
-  }
-
-  canvas.addEventListener('mousedown', e => { if (mode === 'reflexion') { dragging = true; canvas.style.cursor = 'grabbing'; theta = thetaFrom(e.clientX, e.clientY); draw(); } });
-  window.addEventListener('mousemove', e => { if (dragging && mode === 'reflexion') { theta = thetaFrom(e.clientX, e.clientY); draw(); } });
-  window.addEventListener('mouseup', () => { dragging = false; canvas.style.cursor = 'grab'; });
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); if (mode === 'reflexion') { dragging = true; theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } }, { passive: false });
-  window.addEventListener('touchmove', e => { if (dragging && mode === 'reflexion') { theta = thetaFrom(e.touches[0].clientX, e.touches[0].clientY); draw(); } });
-  window.addEventListener('touchend', () => { dragging = false; });
-  draw();
-}
-
-// --- SIMULADOR ARQUÍMEDES (PI) ---
-function drawArchimedes() {
-  const canvas = document.getElementById('piCanvas');
-  if(!canvas) return;
-  
-  const size = canvas.parentElement.offsetWidth;
-  if(size === 0) return; 
-  
-  canvas.width = size * 2; 
-  canvas.height = size * 2;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(2, 2);
-  
-  const cx = size / 2;
-  const cy = size / 2;
-  const r = (size / 2) * 0.45; 
-  
-  const sidesInput = document.getElementById('sides');
-  if(!sidesInput) return;
-  const n = parseInt(sidesInput.value);
-  
-  const sidesVal = document.getElementById('sides-val');
-  if(sidesVal) sidesVal.innerText = n;
-  
-  ctx.clearRect(0, 0, size, size);
-  
-  const startAngle = -Math.PI / 2; 
-  
-  // 1. Draw Outer Polygon (Red)
-  ctx.beginPath();
-  const angleStep = (Math.PI * 2) / n;
-  const outerR = r / Math.cos(Math.PI / n);
-  for (let i = 0; i <= n; i++) {
-    const angle = startAngle + i * angleStep;
-    const x = cx + outerR * Math.cos(angle);
-    const y = cy + outerR * Math.sin(angle);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.fillStyle = 'rgba(217, 83, 79, 0.15)'; 
-  ctx.fill();
-  ctx.strokeStyle = '#D9534F'; 
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // 2. Draw Circle (Black)
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.strokeStyle = '#1A2C3A';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  
-  // 3. Draw Inner Polygon (Blue)
-  ctx.beginPath();
-  for (let i = 0; i <= n; i++) {
-    const angle = startAngle + i * angleStep;
-    const x = cx + r * Math.cos(angle);
-    const y = cy + r * Math.sin(angle);
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.fillStyle = 'rgba(46, 109, 164, 0.2)'; 
-  ctx.fill();
-  ctx.strokeStyle = '#2E6DA4'; 
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  
-  ctx.beginPath();
-  ctx.arc(cx, cy, 3, 0, Math.PI*2);
-  ctx.fillStyle = '#1A2C3A';
-  ctx.fill();
-  
-  ctx.beginPath();
-  ctx.moveTo(cx, cy);
-  ctx.lineTo(cx + r * Math.cos(startAngle), cy + r * Math.sin(startAngle));
-  ctx.strokeStyle = 'rgba(0,0,0,0.3)';
-  ctx.setLineDash([4, 4]);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  
-  const innerArea = (n / 2) * Math.sin((2 * Math.PI) / n);
-  const outerArea = n * Math.tan(Math.PI / n);
-  
-  const valInner = document.getElementById('val-inner');
-  const valOuter = document.getElementById('val-outer');
-  if(valInner) valInner.innerText = innerArea.toFixed(4);
-  if(valOuter) valOuter.innerText = outerArea.toFixed(4);
-}
-
-function unlockClass(classId) {
-  const btn = document.getElementById('btn-' + classId);
-  const lockPane = document.getElementById('lock-' + classId);
-  const contentPane = document.getElementById('content-' + classId);
-  
-  if (btn) { 
-    btn.classList.remove('locked'); 
-    btn.onclick = function() { showTab(classId, this); }; 
-  }
-  if (lockPane) lockPane.style.display = 'none';
-  if (contentPane) contentPane.style.display = 'block';
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const hoy = new Date();
-  const fechaC6C7 = new Date(2026, 3, 20); // 20 Abril 2026
-  const fechaC8 = new Date(2026, 3, 21);   // 21 Abril 2026
-  const fechaC9 = new Date(2026, 3, 22);   // 22 Abril 2026
-
-  if (hoy >= fechaC6C7) unlockClass('c6c7');
-  if (hoy >= fechaC8) unlockClass('c8');
-  if (hoy >= fechaC9) unlockClass('c9');
-
-  const slider = document.getElementById('sides');
-  if(slider) {
-    slider.addEventListener('input', drawArchimedes);
-    setTimeout(drawArchimedes, 150);
-  }
-  
-  window.addEventListener('resize', () => {
-    const paneC5 = document.getElementById('pane-c5');
-    if(paneC5 && paneC5.classList.contains('on')) {
-      drawArchimedes();
-    }
-  });
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
-    const lockedBtns = document.querySelectorAll('.tab-btn.locked');
-    if (lockedBtns.length > 0) {
-      unlockClass('c6c7'); unlockClass('c8'); unlockClass('c9');
-      const toast = document.createElement('div');
-      toast.innerHTML = '🔓 Clases Desbloqueadas';
-      toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15); animation: fadeIn 0.3s ease;';
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
-    }
-  }
-
-  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 't') {
-    e.preventDefault();
-    const viz = document.getElementById('viz-viaje');
-    if (!viz) return;
-    const visible = viz.style.display !== 'none';
-    viz.style.display = visible ? 'none' : 'block';
-    const toast = document.createElement('div');
-    toast.innerHTML = visible ? '🙈 Línea de tiempo oculta' : '🗺️ Línea de tiempo visible';
-    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--amb); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
-  }
-  
-  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
-    e.preventDefault();
-    const sim = document.getElementById('sim-focal');
-    if (!sim) return;
-    const visible = sim.style.display !== 'none';
-    sim.style.display = visible ? 'none' : 'block';
-    if (!visible) setTimeout(initEllipseSim, 50);
-    const toast = document.createElement('div');
-    toast.innerHTML = visible ? '🙈 Simulador oculto' : '📡 Simulador visible';
-    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--vio); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
-  }
-});
-</script>
-</body>
-</html>
