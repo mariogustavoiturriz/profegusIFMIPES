@@ -425,85 +425,11 @@
         <div class="cb-num" style="background:var(--vio)">6</div>
         <div class="cb-info">
           <h2>El límite del modelo griego: Cónicas y Colapso</h2>
-          <p>Lunes 20/4 · 120 minutos</p>
+          <p>Lunes 20/4 · 120 minutos · Cierre del Eje 1</p>
         </div>
       </div>
       <div class="cb-obj">
         <p><strong>Objetivo:</strong> Comprender que el sistema euclidiano garantiza invariantes asombrosos (las cónicas), reflexionar sobre la "eficacia" de la matemática abstracta, y analizar la desinstitucionalización del saber con la caída de Alejandría.</p>
-      </div>
-    </div>
-
-    <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
-    <div class="sec">
-      <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
-      <div class="act-box" style="border:2px solid var(--nav)">
-        <div class="act-head" style="background:var(--nav)">
-          <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
-        </div>
-        <div class="act-body">
-          <div class="note nb" style="margin-bottom:16px">
-            <span class="ni">🔗</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
-              <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la Proposición I.1 — la primera construcción de los <em>Elementos</em> — Euclides asume que dos círculos se cortan porque <em>se ve</em> en el dibujo, pero ninguno de sus cinco postulados lo garantiza. El edificio entero arranca con una grieta. Hoy vemos la otra cara: dentro de ese sistema, hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar en qué punto de la elipse rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
-            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
-            <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (el ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
-            <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
-            <div style="margin-top:10px">
-              <button class="btn-reveal" style="width:auto; padding:6px 12px; font-size:12px; background:var(--med); margin-top:8px" onclick="document.getElementById('pista-c6').style.display='flex'; this.style.display='none'">
-                💡 Revelar pista para GeoGebra
-              </button>
-              <div id="pista-c6" class="note nb" style="margin-top:0; display:none">
-                <span class="ni">💡</span>
-                <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--amb);background:var(--acl)">
-            <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
-            <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
-            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
-            <div class="note na" style="margin-top:10px">
-              <span class="ni">💡</span>
-              <div>
-                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
-                <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="step" style="border-color:var(--nav);background:var(--pale)">
-            <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
-            <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
-            <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
-          </div>
-
-          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
-          <div id="sim-focal" style="display:none">
-          <div class="sim-wrap" style="margin:14px 0">
-            <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
-              <span>Simulador — Propiedad Focal de la Elipse</span>
-              <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
-            </div>
-            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
-              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
-              <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
-                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
-              </div>
-            </div>
-          </div>
-          </div>
-
-          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
-            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
-            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -578,6 +504,80 @@
           </div>
 
           <p>Sin embargo, el destino de las cónicas es una de las anécdotas más fascinantes de la historia de la ciencia. Aproximadamente 1800 años después de Apolonio, Johannes Kepler descubrió que los planetas no giran en círculos perfectos, sino en elipses. Y más tarde, Isaac Newton usó las propiedades de la parábola descubiertas por Apolonio para calcular la trayectoria de los proyectiles y los cometas. Las curvas que Apolonio estudió por puro placer intelectual resultaron ser el esqueleto geométrico del universo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- APERTURA: PROPIEDAD DE REFLEXIÓN DE LA ELIPSE -->
+    <div class="sec">
+      <div class="sec-label"><span>🎯 Apertura: un resultado que sorprende</span><hr></div>
+      <div class="act-box" style="border:2px solid var(--nav)">
+        <div class="act-head" style="background:var(--nav)">
+          <h3>La propiedad de los focos — lo que el sistema garantiza y el ojo no ve</h3>
+        </div>
+        <div class="act-body">
+          <div class="note nb" style="margin-bottom:16px">
+            <span class="ni">🔗</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">Por qué arrancamos con esto</strong>
+              <span style="font-size:13px;line-height:1.6">La semana pasada encontramos el <em>techo</em> del sistema euclidiano: en la Proposición I.1 — la primera construcción de los <em>Elementos</em> — Euclides asume que dos círculos se cortan porque <em>se ve</em> en el dibujo, pero ninguno de sus cinco postulados lo garantiza. El edificio entero arranca con una grieta. Hoy vemos la otra cara: dentro de ese sistema, hay resultados que sorprenden precisamente porque la lógica llega más lejos de lo que el ojo ve. Apolonio demostró que cualquier rayo que salga de un foco de una elipse, al rebotar en la curva, llega siempre al otro foco — sin importar en qué punto de la elipse rebote. El sistema lo garantiza. Eso es lo que van a explorar ahora en GeoGebra antes de ver de dónde viene ese resultado.</span>
+            </div>
+          </div>
+
+          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+            <strong style="color:var(--grn)">Paso 1 — Exploración en GeoGebra</strong>
+            <p>Construyan en GeoGebra la siguiente situación: una elipse con dos focos fijos $F_1$ y $F_2$, y un punto $P$ libre sobre la curva. Tracen el rayo que sale de $F_1$, llega a $P$, y rebota según la ley de reflexión (el ángulo de incidencia igual al ángulo de reflexión respecto a la tangente en $P$).</p>
+            <p style="margin-top:8px">Activen el rastro del rayo reflejado y muevan $P$ por toda la elipse. <strong>¿Qué observan?</strong></p>
+            <div style="margin-top:10px">
+              <button class="btn-reveal" style="width:auto; padding:6px 12px; font-size:12px; background:var(--med); margin-top:8px" onclick="document.getElementById('pista-c6').style.display='flex'; this.style.display='none'">
+                💡 Revelar pista para GeoGebra
+              </button>
+              <div id="pista-c6" class="note nb" style="margin-top:0; display:none">
+                <span class="ni">💡</span>
+                <span style="font-size:12.5px"><strong>Pista para la construcción:</strong> usen <code>Ellipse(F1, F2, 3)</code>, luego <code>Tangent(P, elipse)</code> para obtener la tangente en el punto libre, y <code>Reflect(F1, tangente)</code> para obtener el rayo reflejado. El objetivo es observar por dónde pasa ese rayo al mover P.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" style="border-color:var(--amb);background:var(--acl)">
+            <strong style="color:var(--amb)">Paso 2 — ¿Verificar es lo mismo que demostrar?</strong>
+            <p>Movieron $P$ por 20, 50 posiciones distintas. En todas, el rayo reflejado pasó por $F_2$. ¿Eso <em>demuestra</em> que ocurre en todos los puntos de la elipse, incluso en los que no probaron?</p>
+            <p style="margin-top:6px">¿Qué diferencia hay entre <em>verificar</em> y <em>demostrar</em>?</p>
+            <div class="note na" style="margin-top:10px">
+              <span class="ni">💡</span>
+              <div>
+                <strong style="display:block;margin-bottom:5px;color:var(--amb)">Para pensar</strong>
+                <p style="font-size:13px;line-height:1.7">¿Cuántos casos hacen falta para estar seguros? ¿Hay algún número de verificaciones que alcance para cubrir <em>todos</em> los puntos de la elipse? ¿Qué diferencia hay entre "no encontré ningún contraejemplo" y "es imposible que exista un contraejemplo"?</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" style="border-color:var(--nav);background:var(--pale)">
+            <strong style="color:var(--nav)">Paso 3 — La garantía del sistema</strong>
+            <p>La demostración de esta propiedad usa la definición misma de la elipse: el conjunto de puntos cuya suma de distancias a los dos focos es constante. Eso, combinado con la propiedad de la tangente como bisectriz del ángulo entre los dos radios focales, garantiza la reflexión. No hace falta medir: el sistema lo impone.</p>
+            <p style="margin-top:8px">Esto es lo que Apolonio demostró. No tenía aplicación alguna en el siglo II a.C. Dieciocho siglos después, esta propiedad explica las <strong>salas de susurros</strong> (la cúpula del Capitolio de Washington, la Catedral de San Pablo en Londres) y las máquinas de <strong>litotricia</strong> que rompen cálculos renales con ondas de sonido sin abrir el cuerpo. El foco emisor y el cálculo renal se ubican en los dos focos de la elipse. <span class="ref">(Kline, 1992, Vol. 1, pp. 155–165)</span></p>
+          </div>
+
+          <!-- SIMULADOR PROPIEDAD FOCAL — oculto por defecto, Ctrl+M para mostrar -->
+          <div id="sim-focal" style="display:none">
+          <div class="sim-wrap" style="margin:14px 0">
+            <div class="sim-header" style="background:var(--vio);display:flex;justify-content:space-between;align-items:center">
+              <span>Simulador — Propiedad Focal de la Elipse</span>
+              <button id="ellipse-mode-btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.35);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;cursor:pointer">🪐 Ver modo orbital (Kepler)</button>
+            </div>
+            <div style="padding:16px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:10px">
+              <canvas id="ellipseSim" style="border-radius:6px;border:1px solid var(--bd);cursor:grab;touch-action:none;max-width:100%"></canvas>
+              <div id="ellipse-mode-caption" style="font-size:13px;font-weight:600;color:var(--grn);background:var(--gcl);padding:9px 18px;border-radius:6px;text-align:center;width:100%">
+                ✓ El rayo reflejado pasa siempre por F₂ — sin importar en qué punto de la elipse esté P.
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div style="background:var(--slate);border-radius:var(--r);padding:14px 18px;margin-top:12px">
+            <strong style="display:block;margin-bottom:6px;font-size:14px;color:var(--cl)">🌉 El puente hacia las Cónicas</strong>
+            <p style="font-size:13px;line-height:1.6;color:#E6F7F8">Lo que acaban de ver <em>es</em> el trabajo de Apolonio: explorar propiedades que el sistema euclidiano garantiza en curvas que nadie pedía, sin saber para qué servirían. Ahora van a ver de dónde vienen esas curvas.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -721,34 +721,19 @@
       </div>
     </div>
 
-    <!-- CIERRE EJE 1 -->
-    <div class="sec">
-      <div class="sec-label"><span>🎬 Cierre del Eje 1</span><hr></div>
-      <div class="act-box" style="border-color:var(--amb)">
-        <div class="act-head" style="background:var(--amb)">
-          <h3>Ágora (Amenábar, 2009) — La escena del Serapeo</h3>
-        </div>
-        <div class="act-body">
-          <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides), se ocultó por vergüenza académica (Arquímedes) y estuvo a punto de perderse para siempre.</p>
-
-          <div class="step" style="background:var(--acl);border-color:var(--amb)">
-            <strong style="color:var(--amb)">La escena del Serapeo — <em>Ágora</em> (Amenábar, 2009) · <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med);font-weight:600;font-size:12px">Ver tráiler ↗</a></strong>
-            <p>Hipatia y sus discípulos tienen apenas unos minutos antes de que la turba asalte el recinto. No salvan oro ni estatuas; arman montañas de papiros y tratan de sacarlos. Saben que lo que se queme ahí no se va a volver a deducir en siglos. <em>Ágora</em> es ficción histórica — algunas elecciones dramáticas no tienen respaldo documental — pero esa escena ilustra exactamente lo que discutimos hoy.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
-      <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 5</button>
-      <button class="cnav-btn right disabled" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:not-allowed;opacity:.45;text-align:right;transition:background .15s">Clase 7 →
+      <button class="cnav-btn left" onclick="showTab('c5', document.getElementById('btn-c5'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 5
+        <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Arquímedes · Lunes</small>
+      </button>
+      <button class="cnav-btn right disabled" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:not-allowed;opacity:.45;text-align:right">Clase 7 →
         <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Se habilita el martes</small>
       </button>
     </div>
+
   </div>
 </div>
 
-<!-- ══════════════════ CLASE 7 · MARTES 21/4 (LÍNEA DE TIEMPO Y REFLEXIÓN) ══════════════════ -->
+<!-- ══════════════════ CLASE 7 · MARTES (LÍNEA DE TIEMPO Y REFLEXIÓN) ══════════════════ -->
 <div id="pane-c7" class="pane">
   <div class="locked-pane" id="lock-c7">
     <div class="locked-icon">🔒</div>
@@ -813,6 +798,36 @@
             <div>
               <strong style="display:block;margin-bottom:4px;color:var(--nav)">Para pensar al cerrar la actividad</strong>
               <p style="font-size:13px;line-height:1.6">¿Un libro de texto de matemática habitual de la escuela muestra algo de este recorrido, o presenta el saber como si siempre hubiera estado terminado y pulido? ¿En qué momento del arco (producción, transmisión, pérdida, reingreso) ubican el trabajo de la escuela secundaria de hoy?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CIERRE EJE 1 -->
+    <div class="sec">
+      <div class="sec-label"><span>🎬 Cierre del Eje 1</span><hr></div>
+      <div class="act-box" style="border-color:var(--amb)">
+        <div class="act-head" style="background:var(--amb)">
+          <h3>Ágora (Amenábar, 2009) — La escena del Serapeo</h3>
+        </div>
+        <div class="act-body">
+          <p>A lo largo de todo este primer eje hemos visto cómo el conocimiento matemático no baja del cielo. Nació de la supervivencia (Ishango), se moldeó por necesidades de Estado (Egipto y Babilonia), se abstrajo en el debate democrático (Euclides), se ocultó por vergüenza académica (Arquímedes) y estuvo a punto de perderse para siempre.</p>
+
+          <div class="step" style="background:var(--acl);border-color:var(--amb)">
+            <strong style="color:var(--amb)">La escena del Serapeo — <em>Ágora</em> (Amenábar, 2009) · <a href="https://www.youtube.com/watch?v=MoMKWVDhHKE" target="_blank" rel="noopener" style="color:var(--med);font-weight:600;font-size:12px">Ver tráiler ↗</a></strong>
+            <p>Hipatia y sus discípulos tienen apenas unos minutos antes de que la turba asalte el recinto. No salvan oro ni estatuas; arman montañas de papiros y tratan de sacarlos. Saben que lo que se queme ahí no se va a volver a deducir en siglos. <em>Ágora</em> es ficción histórica — algunas elecciones dramáticas no tienen respaldo documental — pero esa escena ilustra exactamente lo que discutimos hoy.</p>
+          </div>
+
+          <div style="background:var(--slate);color:white;padding:18px;border-radius:var(--r);margin-top:16px">
+            <strong style="display:block;font-size:15px;color:var(--cl);margin-bottom:10px">Debate de cierre del Eje 1:</strong>
+            <p style="font-size:13.5px;line-height:1.6;color:#E6F7F8;margin-bottom:12px">En los libros de texto la matemática se presenta como un museo de éxitos acumulativos. Sin embargo vimos que Arquímedes murió asesinado por un soldado, Hipatia fue asesinada por tensiones político-religiosas, y el conocimiento griego desapareció de Europa durante siglos.</p>
+            <ul style="font-size:13px;margin-left:20px;line-height:1.8;color:#E6F7F8">
+              <li>¿Les parece importante que los estudiantes de secundaria sepan que la matemática puede perderse o censurarse por cuestiones políticas? ¿Qué se gana y qué se arriesga mostrando eso en el aula?</li>
+              <li>¿Qué ganamos didácticamente mostrando la "vulnerabilidad" de la matemática frente al modelo de una ciencia fría y aséptica? Apoyate en al menos un concepto de Chevallard o Brousseau. <span class="ref" style="color:var(--cl)">(Chevallard, 1997, pp. 16–18; Brousseau, 1983, pp. 170–172)</span></li>
+            </ul>
+            <div style="background:rgba(255,255,255,.08);border-radius:6px;padding:12px;margin-top:14px;border-left:3px solid var(--amb)">
+              <p style="font-size:12.5px;color:#E6F7F8;line-height:1.6"><strong style="color:var(--amb)">Para pensar:</strong> ¿Qué diferencia hay entre una escuela que enseña procedimientos y una que transmite también la historia de por qué esos procedimientos existen? ¿Cuál de las dos estaría más cerca de lo que hizo Hipatia?</p>
             </div>
           </div>
         </div>
