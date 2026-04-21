@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 1 · Origen del Número · IPESfa 2026</title>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  :root {
+    --nav:#1B3A6B; --med:#2E6DA4; --cl:#D6E4F0; --pale:#EDF4FB;
+    --grn:#1A6B3A; --gcl:#DFF0E9; --amb:#C85C00; --acl:#FFF3E0;
+    --vio:#4A1A7B; --vcl:#EDE7F6; --slate:#3A4F6A; --red:#D9534F;
+    --gris:#F3F6F9; --bd:#C5D2DC; --txt:#4A5E70; --neg:#1A2C3A; --bco:#FFFFFF;
+    --r:8px; --sh:0 2px 8px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--med);position:relative}
+  .top-info{display:flex;align-items:center;gap:20px}
+  .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+  .top-r{font-size:11px;opacity:.65;text-align:right}
+
+  .btn-back {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+  .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--med)}
+  .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+  .subbar-title{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+  .subbar-title span{font-weight:400;color:var(--cl)}
+
+  .hero{background:linear-gradient(135deg,var(--slate) 0%,var(--nav) 100%);color:#fff;padding:28px 28px 20px}
+  .hero h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}
+  .hero-sub{font-size:13px;opacity:.82;margin-bottom:0}
+
+  .tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;overflow-x:auto;padding:0 16px}
+  .tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 16px;white-space:nowrap;transition:all .15s;margin-bottom:-2px;letter-spacing:.2px}
+  .tab-btn:hover:not(.locked){color:var(--med)}
+  .tab-btn.active{color:var(--nav);border-bottom-color:var(--nav)}
+
+  .wrap{margin:0 auto;padding:24px 28px 60px;width:100%;max-width:1000px;}
+  .pane{display:none; animation: fadeIn 0.3s ease;}
+  .pane.on{display:block}
+  @keyframes fadeIn { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
+
+  .clase-banner{border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+  .clase-banner-top{display:flex;align-items:stretch;min-height:60px}
+  .cb-num{background:var(--nav);color:#fff;font-size:28px;font-weight:900;width:66px;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;flex-direction:column;line-height:1.1}
+  .cb-info{background:var(--slate);flex:1;padding:14px 18px}
+  .cb-info h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:3px}
+  .cb-info p{font-size:12px;color:var(--cl);margin:0}
+  .cb-obj{background:var(--pale);padding:12px 18px;border-top:1px solid var(--bd)}
+  .cb-obj p{font-size:13px;color:var(--nav);line-height:1.55}
+
+  .sec{margin-bottom:22px}
+  .sec-label{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .sec-label span{background:var(--nav);color:#fff;border-radius:20px;padding:2px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+  .sec-label hr{flex:1;border:none;border-top:2px solid var(--bd)}
+
+  .act-box{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .act-head{background:var(--nav);padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .act-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
+  .act-body{padding:16px 20px}
+  .act-body p{font-size:13.5px;line-height:1.7;margin-bottom:10px}
+
+  .lect{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .lect-head{background:var(--pale);padding:11px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
+  .lect-head h3{font-size:14px;font-weight:700;color:var(--nav);margin:0}
+  .lect-body{padding:16px 20px}
+  .lect-body p{font-size:13.5px;line-height:1.75;margin-bottom:11px;color:var(--neg)}
+
+  .step{background:var(--gris);border-radius:6px;padding:11px 15px;margin-bottom:9px;border-left:3px solid var(--med)}
+  .step strong{display:block;font-size:13px;color:var(--nav);margin-bottom:4px}
+  
+  .note{border-radius:var(--r);padding:12px 16px;font-size:13.5px;margin:12px 0;display:flex;gap:10px;align-items:flex-start}
+  .ni{font-size:18px;flex-shrink:0;margin-top:2px}
+  .nb{background:var(--pale);border-left:4px solid var(--med)}
+  .ng{background:var(--gcl);border-left:4px solid var(--grn)}
+  .na{background:var(--acl);border-left:4px solid var(--amb)}
+  .nv{background:var(--vcl);border-left:4px solid var(--vio)}
+
+  .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:16px}
+  .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
+
+  .class-nav {display:flex;justify-content:space-between;margin-top:26px;gap:12px}
+  .cnav-btn {flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+  .cnav-btn:hover {background:var(--med)}
+  .cnav-btn.left {text-align:left}
+  .cnav-btn.right {text-align:right}
+  .cnav-btn small {display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px}
+
+  @media(max-width:600px){
+    .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+    .top-info{flex-direction:column;align-items:flex-start;gap:10px}
+    .wrap{padding:14px 10px 40px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-info">
+    <a href="index.html" class="btn-back">← Volver al Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
+  </div>
+  <div class="top-r">Ciclo Lectivo 2026</div>
+</div>
+
+<div class="subbar">
+  <p class="subbar-pre">Semana 1 · 17 y 18 de marzo</p>
+  <p class="subbar-title">Presentación <span>— y el Origen del Número</span></p>
+</div>
+
+<div class="hero">
+  <h1>Desnaturalizar la Matemática</h1>
+  <p class="hero-sub">Bienvenidos y bienvenidas. Empezamos nuestra cursada preguntándonos por qué la matemática es como es, y viajamos miles de años atrás para ver nacer la necesidad de contar y repartir.</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('inicio',this)" id="btn-inicio">Inicio</button>
+  <button class="tab-btn" onclick="showTab('c0',this)" id="btn-c0">Clase 0 · Martes</button>
+  <button class="tab-btn" onclick="showTab('c1',this)" id="btn-c1">Clase 1 · Miércoles</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════ INICIO ══════════════════ -->
+<div id="pane-inicio" class="pane on">
+  <div class="act-box">
+    <div class="act-head" style="background:var(--slate)">
+      <h3 style="color:#fff;font-size:16px">👋 ¡Bienvenidos al espacio!</h3>
+    </div>
+    <div class="act-body">
+      <p style="font-size:15px;font-weight:600;color:var(--nav);line-height:1.5">¿Para qué estudiamos Historia de la Matemática?</p>
+      <p style="margin-top:10px;line-height:1.7">La enseñanza de la matemática en la escuela secundaria ha cristalizado una visión de la disciplina como un corpus de saberes dogmáticos, infalibles y acabados. A menudo, los teoremas y algoritmos se presentan como objetos asépticos, despojados por completo del contexto de descubrimiento, de las crisis fundacionales y de las controversias filosóficas o políticas que motivaron su génesis.</p>
+      
+      <p style="margin-top:10px;line-height:1.7">Este espacio curricular se instituye como un ámbito de estricta "vigilancia epistemológica". No concebimos a la Historia de la Matemática como un "museo de anécdotas" para amenizar las clases, sino como una herramienta de análisis didáctico de primer orden. Reconstruir el recorrido histórico permite comprender que la matemática es una construcción social dinámica, tensionada por necesidades de Estado, limitaciones técnicas, debates lógicos e incluso censuras institucionales.</p>
+
+      <div class="note na">
+        <span class="ni">📌</span>
+        <div>
+          <strong style="display:block;margin-bottom:4px;color:var(--amb)">Nuestra metodología</strong>
+          <span style="font-size:13.5px;line-height:1.6">Aprenderemos a través del hacer. Cada clase arranca con un problema. Recurriremos al <em>método genético</em> (hacer pasar al estudiante por donde pasaron nuestros antepasados) y utilizaremos TIC (GeoGebra, Desmos, IA) como verdaderos laboratorios de experimentación histórica y didáctica.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 0 · MARTES ══════════════════ -->
+<div id="pane-c0" class="pane">
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num" style="background:var(--nav)">0</div>
+      <div class="cb-info">
+        <h2>El encuadre y la desnaturalización</h2>
+        <p>Martes 17/3 · 80 minutos</p>
+      </div>
+    </div>
+    <div class="cb-obj">
+      <p><strong>Objetivo:</strong> Presentar el encuadre de trabajo anual (Régimen, TFI, La Gran Línea) y abrir el debate fundamental sobre la naturaleza epistemológica de la matemática.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>🧠 Debate de Apertura</span><hr></div>
+    <div class="act-box" style="border-color:var(--med)">
+      <div class="act-head" style="background:var(--med)">
+        <h3>¿La matemática se descubre o se inventa?</h3>
+      </div>
+      <div class="act-body">
+        <p>Vamos a arrancar la cursada posicionándonos frente a esta pregunta clásica que divide a matemáticos, filósofos y docentes hasta el día de hoy.</p>
+        
+        <div class="step" style="border-color:var(--med); background:var(--pale)">
+          <strong style="color:var(--med)">Dinámica en Mentimeter</strong>
+          <p>Ingresen desde sus teléfonos a <strong>menti.com</strong> y coloquen el código que está en el pizarrón. Voten según su intuición inicial. ¿El Teorema de Pitágoras ya existía en el universo antes de que llegaran los humanos, o es una creación puramente mental de nuestra especie?</p>
+        </div>
+
+        <div class="note nb" style="margin-top:14px">
+          <span class="ni">💬</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">El Escriba vs. El Geómetra</strong>
+            <span style="font-size:13px;line-height:1.6">Leeremos un breve fragmento de Rey Pastor y Babini (2000) sobre cómo concebía la matemática un escriba babilónico (como un recetario útil y técnico) versus cómo la concebía un filósofo de la antigua Grecia (como una estructura lógica de verdades eternas). ¿Con cuál de las dos posturas se identifica más la escuela secundaria actual?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span>🤖 Laboratorio IA</span><hr></div>
+    <div class="act-box" style="border-color:var(--vio)">
+      <div class="act-head" style="background:var(--vio)">
+        <h3>Interrogando al Diseño Curricular con NotebookLM</h3>
+      </div>
+      <div class="act-body">
+        <p>¿Qué nos pide el Estado Provincial que enseñemos? Para no leer un PDF de 200 páginas de forma lineal, vamos a usar Inteligencia Artificial para interrogarlo.</p>
+
+        <div class="step" style="border-color:var(--vio); background:var(--vcl)">
+          <strong style="color:var(--vio)">Actividad Práctica:</strong>
+          <p>1. Ingresen al entorno de Google <strong>NotebookLM</strong> compartido por la cátedra (ya tiene cargado el Diseño Curricular Jurisdiccional de Matemática para Secundaria de Tierra del Fuego).<br>
+             2. Creen preguntas (prompts) para que la IA extraiga información clave:<br>
+             &nbsp;&nbsp;&nbsp;• <em>"¿Qué dice el diseño sobre el uso de la Historia de la Matemática en el aula?"</em><br>
+             &nbsp;&nbsp;&nbsp;• <em>"¿Exige el diseño que los alumnos 'demuestren' o que 'apliquen' algoritmos?"</em><br>
+             3. Compartan los hallazgos. ¿El currículum oficial tiene una visión platónica (descubrimiento) o constructivista (invención) del saber?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+    <button class="cnav-btn left" onclick="showTab('inicio', document.getElementById('btn-inicio'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Inicio
+    </button>
+    <button class="cnav-btn right" onclick="showTab('c1', document.getElementById('btn-c1'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:right;transition:background .15s">Clase 1 →
+      <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Miércoles · Del Hueso a la Fracción</small>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 1 · MIÉRCOLES ══════════════════ -->
+<div id="pane-c1" class="pane">
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num" style="background:var(--grn)">1</div>
+      <div class="cb-info">
+        <h2>Del Hueso a la Fracción</h2>
+        <p>Miércoles 18/3 · 80 minutos</p>
+      </div>
+    </div>
+    <div class="cb-obj" style="border-top-color:var(--grn)">
+      <p style="color:var(--grn)"><strong>Objetivo:</strong> Analizar los orígenes empíricos del número natural (supervivencia) y experimentar el obstáculo histórico de las fracciones (Egipto) como reflejo de las dificultades de aprendizaje actuales.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--grn)">🦴 El número natural</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--gcl);border-color:var(--grn)">
+        <h3 style="color:var(--grn)">El Hueso de Ishango: Contar para sobrevivir</h3>
+      </div>
+      <div class="lect-body">
+        <p>Durante milenios, la matemática fue una herramienta puramente empírica. El primer registro matemático indiscutible que poseemos no es un papiro con axiomas, sino un peroné de babuino: el <strong>Hueso de Ishango</strong>, hallado cerca de las fuentes del Nilo, datado en más de 20.000 años de antigüedad.</p>
+        
+        <figure style="margin:18px 0;text-align:center">
+          <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ishango_bone.jpg/800px-Ishango_bone.jpg" alt="Hueso de Ishango" style="max-height:220px;width:auto;border-radius:4px;display:block">
+          </div>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">El hueso presenta muescas agrupadas en secuencias lógicas (ej. primos entre 10 y 20). No sabemos si era un calendario lunar o un juego de conteo, pero demuestra una incipiente abstracción del "número".</figcaption>
+        </figure>
+
+        <p>El número natural nace pegado a la realidad material: 3 ovejas, 5 lunas, 2 flechas. Se cuenta sumando unidades enteras. El problema, sin embargo, surge cuando la civilización avanza, el Estado se vuelve complejo y ya no alcanza con contar entidades enteras. Hay que empezar a repartir recursos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--amb)">📐 Taller Histórico</span><hr></div>
+    <div class="act-box" style="border-color:var(--amb)">
+      <div class="act-head" style="background:var(--amb)">
+        <h3>El límite del número natural: El problema del escriba</h3>
+      </div>
+      <div class="act-body">
+        <p>Avanzamos hasta el antiguo Egipto. Como vimos en la lectura inicial, a los egipcios no les interesaba la demostración lógica; les interesaba el control y la administración del Estado (medir tierras, repartir raciones, calcular impuestos).</p>
+
+        <p>El <strong>Papiro de Rhind</strong> (c. 1650 a.C.) nos muestra que, para ellos, la fracción no era un "número racional" abstracto ubicado en una recta numérica. Era, fundamentalmente, una <strong>instrucción de corte</strong>. Además, los egipcios tenían una particularidad gigantesca: <strong>sólo usaban fracciones unitarias</strong> (es decir, con numerador 1, como $1/2, 1/3, 1/4$). La única excepción era $2/3$. Cualquier otra porción debía escribirse obligatoriamente como una suma de fracciones unitarias diferentes.</p>
+        
+        <div class="step" style="border-color:var(--amb); background:var(--acl)">
+          <strong style="color:var(--amb)">Consigna de modelización (El reparto de panes):</strong>
+          <p>Imaginen que son escribas egipcios encargados de la logística. Tienen que <strong>repartir 3 panes entre 5 trabajadores</strong> de forma equitativa.</p>
+          <p style="margin-top:8px">Para nosotros, con álgebra moderna, la respuesta es trivial: cada uno recibe $3/5$ de pan. ¡Pero ustedes son escribas! El símbolo "tres quintos" no existe en su cabeza ni en su lenguaje.</p>
+          <ul style="font-size:13.5px; margin-left:20px; line-height:1.6; margin-top:8px">
+            <li>Tomen hojas de papel (que simulen los 3 panes).</li>
+            <li>¿Cómo los cortarían físicamente para darle a cada trabajador porciones idénticas que, sumadas, puedan expresarse como fracciones unitarias diferentes?</li>
+            <li><em>Pista de resolución egipcia:</em> No traten de cortar todos los panes en 5. Corten primero a la mitad. ¿Qué les queda?</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--slate); color:white; border-radius:var(--r); padding:16px; margin-top:16px">
+          <strong style="display:block;margin-bottom:8px;font-size:14px;color:var(--cl)">💬 Foco Epistemológico y Didáctico</strong>
+          <p style="font-size:13px; line-height:1.6; margin-bottom:8px">Al lograr el reparto, habrán descubierto que para los egipcios el resultado era: darle a cada uno $\frac{1}{2}$ pan y $\frac{1}{10}$ de pan. ($3/5 = 1/2 + 1/10$).</p>
+          <p style="font-size:13px; line-height:1.6; font-weight:bold; color:#E6F7F8">Debate final de clase:</p>
+          <p style="font-size:13px; line-height:1.6">La dificultad monumental que tuvieron los egipcios para conceptualizar la fracción como un número propio (y no solo como pedazos de cosas reales) es un claro <strong>obstáculo epistemológico</strong> histórico. ¿Ven cómo este mismo "horror a la fracción" y la necesidad de materializarla en tortas o pizzas reaparece intacto en los estudiantes de 1.º año de secundaria actual?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-nav" style="display:flex;justify-content:space-between;margin-top:26px;gap:12px">
+    <button class="cnav-btn left" onclick="showTab('c0', document.getElementById('btn-c0'))" style="flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;text-align:left;transition:background .15s">← Clase 0
+      <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">Martes</small>
+    </button>
+    <button class="cnav-btn right" style="flex:1;background:var(--grn);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:default;text-align:right">✓ Fin de Semana 1
+      <small style="display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px">¡La próxima semana: Crisis en Grecia!</small>
+    </button>
+  </div>
+</div>
+
+</div>
+
+<script>
+// --- NAVEGACIÓN TABS ---
+function showTab(id, btn) {
+  if (btn && btn.classList && btn.classList.contains('locked')) return;
+  
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  
+  const targetPane = document.getElementById('pane-' + id);
+  if (targetPane) {
+    targetPane.classList.add('on');
+  }
+  
+  if (btn && btn.classList) {
+    btn.classList.add('active');
+  } else {
+    const fallbackBtn = document.getElementById('btn-' + id);
+    if (fallbackBtn) fallbackBtn.classList.add('active');
+  }
+  
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
