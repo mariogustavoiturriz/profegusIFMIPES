@@ -181,8 +181,8 @@
 </div>
 
 <div class="hero">
-  <h1>De la crisis geométrica al nacimiento del álgebra</h1>
-  <p class="hero-sub">Esta semana cerramos el Eje 1 despidiendo a la escuela griega, e iniciamos el Eje 2 analizando el obstáculo epistemológico más grande de la historia escolar: los números negativos.</p>
+  <h1>De la crisis geométrica al colapso institucional</h1>
+  <p class="hero-sub">Esta semana cerramos el Eje 1 despidiendo a la escuela griega, analizando su mayor obra de abstracción pura y entendiendo por qué su conocimiento estuvo a punto de perderse para siempre.</p>
 </div>
 
 <div class="tab-bar">
@@ -190,7 +190,6 @@
   <button class="tab-btn" onclick="showTab('c5',this)" id="btn-c5">Clase 5 · Lunes (Pasado)</button>
   <button class="tab-btn locked" onclick="return false;" id="btn-c6">Clase 6 · Lunes</button>
   <button class="tab-btn locked" onclick="return false;" id="btn-c7">Clase 7 · Martes</button>
-  <button class="tab-btn locked" onclick="return false;" id="btn-c8">Clase 8 · Miércoles</button>
 </div>
 
 <div class="wrap">
@@ -1462,26 +1461,29 @@ function drawArchimedes() {
   document.getElementById('val-outer').innerText = outerArea.toFixed(4);
 }
 
+// Lógica Compartida para desbloquear clases
 function unlockClass(classId) {
   const btn = document.getElementById('btn-' + classId);
   const lockPane = document.getElementById('lock-' + classId);
   const contentPane = document.getElementById('content-' + classId);
   
-  if (btn) { 
-    btn.classList.remove('locked'); 
-    btn.onclick = function() { showTab(classId, this); }; 
+  if (btn) {
+    btn.classList.remove('locked');
+    btn.onclick = function() { showTab(classId, this); };
   }
   if (lockPane) lockPane.style.display = 'none';
   if (contentPane) contentPane.style.display = 'block';
 }
 
+// Inicialización de la página
 document.addEventListener("DOMContentLoaded", () => {
+  // --- LÓGICA DE DESBLOQUEO AUTOMÁTICO POR FECHA ---
   const hoy = new Date();
-  const fechaC6 = new Date(2026, 3, 20); // 20 Abril 2026
-  const fechaC7 = new Date(2026, 3, 21); // 21 Abril 2026
+  const fechaClase6 = new Date(2026, 3, 20); // 20 Abril 2026
+  const fechaClase7 = new Date(2026, 3, 21); // 21 Abril 2026
 
-  if (hoy >= fechaC6) unlockClass('c6');
-  if (hoy >= fechaC7) unlockClass('c7');
+  if (hoy >= fechaClase6) unlockClass('c6');
+  if (hoy >= fechaClase7) unlockClass('c7');
 
   const slider = document.getElementById('sides');
   if(slider) {
@@ -1490,18 +1492,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   window.addEventListener('resize', () => {
-    const paneC5 = document.getElementById('pane-c5');
-    if(paneC5 && paneC5.classList.contains('on')) {
+    if(document.getElementById('pane-c5').classList.contains('on')) {
       drawArchimedes();
     }
   });
 });
 
+// --- SECRETO DEL PROFE: DESBLOQUEAR PESTAÑAS (Ctrl + Shift + U) ---
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
     const lockedBtns = document.querySelectorAll('.tab-btn.locked');
     if (lockedBtns.length > 0) {
-      unlockClass('c6'); unlockClass('c7');
+      
+      unlockClass('c6');
+      unlockClass('c7');
+      
+      // Notificación sutil para avisarte que funcionó
       const toast = document.createElement('div');
       toast.innerHTML = '🔓 Clases Desbloqueadas';
       toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15); animation: fadeIn 0.3s ease;';
