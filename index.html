@@ -57,8 +57,9 @@
   }
   
   .c-pasada { border-top-color: #4A6080; opacity: 0.85; }
-  .c-actual { border-top-color: var(--teal); }
+  .c-actual { border-top-color: var(--red); }
   .c-recurso { border-top-color: var(--amb); }
+  .c-recurso-alt { border-top-color: #deff9a; }
   
   .clase-num { 
     font-size: 14px; 
@@ -69,8 +70,9 @@
     letter-spacing: 1px;
   }
   
-  .c-actual .clase-num { color: var(--teal); }
+  .c-actual .clase-num { color: var(--red); }
   .c-recurso .clase-num { color: var(--amb); }
+  .c-recurso-alt .clase-num { color: #8B9D4F; }
   
   .card h2 { 
     color: var(--nav); 
@@ -80,7 +82,7 @@
   }
   
   .card p { 
-    font-size: 16px; 
+    font-size: 15px; 
     color: #555; 
     flex-grow: 1;
   }
@@ -97,12 +99,14 @@
     transition: background 0.2s;
   }
   
-  .c-actual .btn { background: var(--teal); color: white; }
+  .c-actual .btn { background: var(--red); color: white; }
   .c-recurso .btn { background: var(--amb); color: white; }
+  .c-recurso-alt .btn { background: #1E293B; color: #deff9a; }
   
   .card:hover .btn { background: var(--nav); color: white; }
-  .c-actual:hover .btn { background: #235482; }
+  .c-actual:hover .btn { background: #b52b27; }
   .c-recurso:hover .btn { background: #a64c00; }
+  .c-recurso-alt:hover .btn { background: #0f172a; }
 
   .section-title {
     font-size: 24px;
@@ -123,40 +127,59 @@
 
 <div class="container">
 
-  <h2 class="section-title">Semana 3 · 13 al 15 de Abril</h2>
+  <h2 class="section-title">Semana Actual · Eje 2</h2>
   <div class="grid">
     
-    <a href="Clase567.html" class="card c-actual">
-      <div class="clase-num">Semana 3 • Clases 5, 6 y 7...y 8</div>
-      <h2>El genio mecánico</h2>
-      <p>Arquímedes y el descubrimiento físico. El método de exhaución, las cónicas de Apolonio y el ocaso de Alejandría con Hipatia.</p>
+    <a href="semana_5_ifm.html" class="card c-actual">
+      <div class="clase-num">Semana 5 • Clases 8, 9 y 10</div>
+      <h2>El nacimiento del álgebra</h2>
+      <p>La ruptura formal y los números que "no existen". El pragmatismo oriental, la Edad de Oro Islámica y el límite empírico en la regla de los signos.</p>
       <div class="btn">Abrir Clases de la Semana</div>
     </a>
 
   </div>
 
-  <h2 class="section-title">Clases Anteriores y Recursos</h2>
+  <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
 
+    <a href="Clase_5_6_7_8_9.html" class="card c-pasada">
+      <div class="clase-num">Semanas 3 y 4 • Clases 5, 6 y 7</div>
+      <h2>El fin de una era</h2>
+      <p>Arquímedes y el descubrimiento físico. Apolonio de Perga, la irracionable eficacia y el ocaso de la escuela de Alejandría con Hipatia.</p>
+      <div class="btn">Repasar Semanas 3 y 4</div>
+    </a>
+
     <a href="Clase234.html" class="card c-pasada">
-      <div class="clase-num">Semanas 1 y 2 • Clases 2, 3 y 4</div>
+      <div class="clase-num">Semana 2 • Clases 2, 3 y 4</div>
       <h2>Del Número al Argumento</h2>
       <p>La crisis pitagórica por la inconmensurabilidad de la diagonal y la sistematización de la geometría en los Elementos de Euclides.</p>
-      <div class="btn">Repasar Clases 2, 3 y 4</div>
+      <div class="btn">Repasar Semana 2</div>
     </a>
+
+    <a href="clase_1.html" class="card c-pasada">
+      <div class="clase-num">Semana 1 • Clases 0 y 1</div>
+      <h2>Desnaturalizar la Matemática</h2>
+      <p>Mundos empíricos sin demostración: el cálculo en el Antiguo Egipto (Papiro de Rhind), Babilonia y el hueso de Ishango.</p>
+      <div class="btn">Repasar Semana 1</div>
+    </a>
+
+  </div>
+
+  <h2 class="section-title">Recursos y Herramientas</h2>
+  <div class="grid">
 
     <a href="euclides_recursos.html" class="card c-recurso">
       <div class="clase-num">Biblioteca Digital</div>
       <h2>Los Elementos de Euclides</h2>
-      <p>Repositorio interactivo con los tomos de la Editorial Gredos digitalizados, el libro cromático de Byrne y simuladores.</p>
-      <div class="btn">Abrir Recursos</div>
+      <p>Repositorio interactivo con los tomos de la Editorial Gredos digitalizados, el libro cromático de Byrne y simuladores adicionales.</p>
+      <div class="btn">Abrir Biblioteca</div>
     </a>
 
-    <a href="clase_1.html" class="card c-pasada">
-      <div class="clase-num">Semana 1 • Clase 1</div>
-      <h2>La Matemática Práctica</h2>
-      <p>Mundos empíricos sin demostración: el cálculo en el Antiguo Egipto (Papiro de Rhind) y la Babilonia de los escribas (Plimpton 322).</p>
-      <div class="btn">Repasar Clase 1</div>
+    <a href="clase_7_linea_tiempo.html" class="card c-recurso-alt">
+      <div class="clase-num">Línea de Tiempo Interactiva</div>
+      <h2>El viaje del saber griego</h2>
+      <p>Presentación colaborativa. De la época de oro de Alejandría y la conservación islámica, al reingreso de los textos a la Europa Medieval.</p>
+      <div class="btn">Abrir Presentación</div>
     </a>
 
   </div>
