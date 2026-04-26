@@ -116,6 +116,11 @@
     border-bottom: 2px solid var(--bd);
   }
 
+  /* Estilos para tarjetas bloqueadas */
+  .card.locked { opacity: 0.65; cursor: not-allowed; }
+  .card.locked:hover { transform: none; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+  .card.locked .btn { background: #e2e8f0; color: #64748b; }
+
 </style>
 </head>
 <body>
@@ -130,11 +135,11 @@
   <h2 class="section-title">Semana Actual · Eje 2</h2>
   <div class="grid">
     
-    <a href="semana_5_ifm.html" class="card c-actual">
+    <a href="javascript:void(0)" class="card c-actual locked" id="card-sem5">
       <div class="clase-num">Semana 5 • Clases 8, 9 y 10</div>
       <h2>El nacimiento del álgebra</h2>
       <p>La ruptura formal y los números que "no existen". El pragmatismo oriental, la Edad de Oro Islámica y el límite empírico en la regla de los signos.</p>
-      <div class="btn">Abrir Clases de la Semana</div>
+      <div class="btn" id="btn-sem5">🔒 Se abre mañana a las 15:20 hs</div>
     </a>
 
   </div>
@@ -186,5 +191,41 @@
 
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Mes 3 = Abril en JavaScript
+    const targetDate = new Date(2026, 3, 27, 15, 20, 0); 
+    const now = new Date();
+    const cardSem5 = document.getElementById("card-sem5");
+    const btnSem5 = document.getElementById("btn-sem5");
+    
+    // Desbloqueo automático por fecha y hora
+    if (now >= targetDate) {
+      cardSem5.href = "semana_5_ifm.html";
+      cardSem5.classList.remove("locked");
+      btnSem5.innerHTML = "Abrir Clases de la Semana";
+    }
+  });
+
+  // --- SECRETO DEL PROFE: DESBLOQUEAR TODO (Ctrl + Shift + U) ---
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
+      const cardSem5 = document.getElementById("card-sem5");
+      const btnSem5 = document.getElementById("btn-sem5");
+      
+      if (cardSem5 && cardSem5.classList.contains("locked")) {
+        cardSem5.href = "semana_5_ifm.html";
+        cardSem5.classList.remove("locked");
+        btnSem5.innerHTML = "🔓 Abrir Clases de la Semana";
+        
+        const toast = document.createElement('div');
+        toast.innerHTML = '🔓 Semanas desbloqueadas manualmente';
+        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+    }
+  });
+</script>
 </body>
 </html>
