@@ -238,6 +238,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
         <h5>Diofanto de Alejandría — El obstáculo en persona</h5>
         <p>En el siglo III d.C., el matemático alejandrino Diofanto escribió su obra <em>Aritmética</em> en trece libros — de los cuales solo se conservan seis. Su trabajo es fundamental en la historia del álgebra: fue el primero en usar un simbolismo sistemático para las incógnitas en Occidente, aunque distinto al nuestro. Al encontrar una ecuación equivalente en notación moderna a $4x + 20 = 4$ (cuya solución es $x = -4$), la declaró "imposible". No porque no supiera operar: sino porque el resultado no podía representar ninguna magnitud real. Esto es exactamente lo que Brousseau llama un <strong>obstáculo epistemológico</strong>: un conocimiento previo (el número como magnitud geométrica) que fue tan exitoso en su dominio que bloquea el avance al enfrentarse a nuevos contextos. <span class="ref">(Boyer, 1986, p. 238; Brousseau, 1983, pp. 170–172)</span></p>
 
+        <figure style="margin:18px 0;text-align:center">
+          <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSArmM-JGVbIBHvwsJE6MxaY4h9h5XRR7D8uw&s" alt="Portada Arithmetica de Diofanto, edición Bachet 1621" style="max-height:280px;width:auto;border-radius:4px;display:block" onerror="this.closest('figure').style.display='none'">
+          </div>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Portada de la edición de 1621 de la <em>Arithmetica</em> de Diofanto (traducida al latín por Bachet). En esta obra, las soluciones negativas eran sistemáticamente descartadas como "absurdas". <span class="ref">(Boyer, 1986, p. 237)</span></figcaption>
+        </figure>
+
         <div class="note na" style="margin:6px 0 14px">
           <span class="ni">📌</span>
           <div><strong style="display:block;margin-bottom:4px;color:var(--amb)">Nota sobre el título "padre del álgebra"</strong>
@@ -317,6 +324,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
 
         <h5>India: Brahmagupta (598–670 d.C.) — Las reglas escritas en verso</h5>
         <p>El matemático y astrónomo Brahmagupta, director del observatorio de Ujjain, escribió en 628 d.C. el <em>Brahmasphutasiddhanta</em> ("La corrección del tratado de Brahma"). Sus textos matemáticos estaban escritos en verso sánscrito, como era costumbre entre los matemáticos indios. En el capítulo 18 estableció las primeras reglas explícitas y escritas de la historia para operar con el cero y los números negativos, usando un modelo económico — las llamó "fortunas" (positivos) y "deudas" (negativos). <span class="ref">(Boyer, 1986, pp. 241–244)</span></p>
+
+        <figure style="margin:18px 0;text-align:center">
+          <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPLuhRhZcF-pPyeiPmM0cTV4AIqH2HBrw91g&s" alt="Manuscrito de Bakhshali — tradición matemática india en sánscrito" style="max-height:220px;width:auto;border-radius:4px;display:block" onerror="this.closest('figure').style.display='none'">
+          </div>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Fragmento del manuscrito de Bakhshali. Ilustra la tradición matemática de la India antigua escrita en sánscrito — una cultura que no tuvo los prejuicios geométricos griegos para operar con el cero y la deuda.</figcaption>
+        </figure>
 
         <div class="cita-hist">
           <div class="cita-label">Cita Histórica Verificada</div>
@@ -614,26 +628,32 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
           <div class="step" style="border-color:var(--grn);background:var(--gcl)">
             <strong style="color:var(--grn)">Vía C — La coherencia algebraica (Vía estructural)</strong>
             <p>Cuando los modelos empíricos muestran su límite, queda la estructura interna del álgebra. El matemático George Peacock formuló en 1833 su <strong>Principio de Permanencia de las Formas Equivalentes</strong>: las reglas del álgebra deben valer sin excepción para preservar la coherencia del sistema. Si queremos que la propiedad distributiva siga siendo válida para todos los números, entonces $(-1) \times (-1)$ <em>tiene que ser</em> $+1$. <span class="ref">(Klimovsky y Boido, 2005, pp. 48–52; Boyer, 1986, pp. 295–300)</span></p>
-            <p><strong>La demostración completa:</strong></p>
-            <p style="font-family:Georgia,serif;padding-left:16px;line-height:2.2;color:var(--neg);margin:8px 0">
-              $-1 \times (1 + (-1)) = -1 \times 0 = 0$<br>
-              Distribuyendo: $(-1 \times 1) + (-1 \times (-1)) = 0$<br>
-              Sabemos que $-1 \times 1 = -1$, entonces:<br>
-              $-1 + (-1 \times (-1)) = 0$<br>
-              Por lo tanto: $(-1) \times (-1) = +1$ ✓
-            </p>
+
+            <!-- Demostración oculta — Ctrl+M para revelar -->
+            <div id="viac-proof" style="display:none;background:#fff;border-radius:6px;border-left:3px solid var(--grn);padding:12px 16px;margin:10px 0">
+              <p style="font-size:12px;font-weight:700;color:var(--grn);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Demostración completa</p>
+              <p style="font-family:Georgia,serif;padding-left:8px;line-height:2.2;color:var(--neg);margin:0">
+                $-1 \times (1 + (-1)) = -1 \times 0 = 0$<br>
+                Distribuyendo: $(-1 \times 1) + (-1 \times (-1)) = 0$<br>
+                Sabemos que $-1 \times 1 = -1$, entonces:<br>
+                $-1 + (-1 \times (-1)) = 0$<br>
+                Por lo tanto: $(-1) \times (-1) = +1$ ✓
+              </p>
+            </div>
+            <p style="font-size:12px;color:var(--txt);font-style:italic;margin-top:6px">💡 Presioná <kbd style="background:var(--gris);border:1px solid var(--bd);border-radius:3px;padding:1px 5px;font-size:11px">Ctrl + M</kbd> para ver/ocultar la demostración completa.</p>
+
             <ul>
               <li><em>Ventaja:</em> es la justificación históricamente más sólida — la misma que usaron los matemáticos del siglo XIX para formalizar la aritmética de enteros.</li>
               <li><em>Límite crítico:</em> requiere que el estudiante acepte la propiedad distributiva como algo que "no puede romperse bajo ninguna circunstancia". Es un dogmatismo estructural — diferente al empírico de las vías A y B, pero dogmatismo al fin. ¿Es ese supuesto más honesto que los modelos concretos?</li>
             </ul>
           </div>
 
-          <!-- Imagen de Euler con URL estable -->
+          <!-- Imagen de Euler — URL estable Wikimedia Commons -->
           <figure style="margin:18px 0;text-align:center">
             <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Euler_portrait_by_Handmann.jpg" alt="Retrato de Leonhard Euler por Emanuel Handmann" style="max-height:240px;width:auto;border-radius:4px;display:block" onerror="this.style.display='none'">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqL9NPcfwkSpyDevTg-3zZCH1NNFte0Orz7g&s" alt="Retrato de Leonhard Euler por Jakob Emanuel Handmann, 1753" style="max-height:240px;width:auto;border-radius:4px;display:block" onerror="this.closest('figure').style.display='none'">
             </div>
-            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Leonhard Euler (1707–1783), retrato de Emanuel Handmann. En sus <em>Elementos de Álgebra</em> (1770), Euler justificó la regla de los signos por coherencia estructural — exactamente la Vía C. <span class="ref">(Euler, <em>Elementos de Álgebra</em>, 1770, §36)</span></figcaption>
+            <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Leonhard Euler (1707–1783), retrato de Jakob Emanuel Handmann, 1753. Kunstmuseum Basel. En sus <em>Elementos de Álgebra</em> (1770), Euler justificó la regla de los signos por coherencia estructural — exactamente la Vía C. <span class="ref">(Euler, <em>Elementos de Álgebra</em>, 1770, §36)</span></figcaption>
           </figure>
 
           <!-- ENTREGABLE -->
@@ -970,6 +990,18 @@ document.addEventListener('keydown', e => {
     t.textContent = '🔓 Clases desbloqueadas';
     t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:var(--grn);color:white;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2)';
     document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
+  }
+  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
+    e.preventDefault();
+    const proof = document.getElementById('viac-proof');
+    if (!proof) return;
+    const visible = proof.style.display !== 'none';
+    proof.style.display = visible ? 'none' : 'block';
+    if (!visible && window.MathJax) MathJax.typesetPromise([proof]);
+    const t = document.createElement('div');
+    t.textContent = visible ? '🙈 Demostración oculta' : '📐 Demostración visible';
+    t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:var(--grn);color:white;padding:10px 22px;border-radius:8px;font-weight:bold;z-index:9999';
+    document.body.appendChild(t); setTimeout(() => t.remove(), 2000);
   }
 });
 
