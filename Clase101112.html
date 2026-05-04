@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 6 · El cierre del Eje 2 · IPESfa 2026</title>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  :root {
+    --nav:#1B3A6B; --med:#2E6DA4; --cl:#D6E4F0; --pale:#EDF4FB;
+    --grn:#1A6B3A; --gcl:#DFF0E9; --amb:#C85C00; --acl:#FFF3E0;
+    --vio:#4A1A7B; --vcl:#EDE7F6; --slate:#3A4F6A; --red:#D9534F;
+    --gris:#F3F6F9; --bd:#C5D2DC; --txt:#4A5E70; --neg:#1A2C3A; --bco:#FFFFFF;
+    --r:8px; --sh:0 2px 8px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--vio);position:relative}
+  .top-info{display:flex;align-items:center;gap:20px}
+  .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+  .top-r{font-size:11px;opacity:.65;text-align:right}
+
+  .btn-back {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+  .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--vio)}
+  .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+  .subbar-title{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+  .subbar-title span{font-weight:400;color:var(--cl)}
+
+  .hero{background:linear-gradient(135deg,var(--vio) 0%,var(--nav) 100%);color:#fff;padding:28px 28px 20px}
+  .hero h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}
+  .hero-sub{font-size:13px;opacity:.82;margin-bottom:0}
+
+  .tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;overflow-x:auto;padding:0 16px}
+  .tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 16px;white-space:nowrap;transition:all .15s;margin-bottom:-2px;letter-spacing:.2px}
+  .tab-btn:hover:not(.locked){color:var(--vio)}
+  .tab-btn.active{color:var(--vio);border-bottom-color:var(--vio)}
+  
+  .tab-btn.locked {opacity: 0.4; cursor: not-allowed; background: #fafafa;}
+  .tab-btn.locked::after {content: " 🔒"; font-size: 11px;}
+
+  .wrap{margin:0 auto;padding:24px 28px 60px;width:100%}
+  .pane{display:none; animation: fadeIn 0.3s ease;}
+  .pane.on{display:block}
+  @keyframes fadeIn { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
+
+  .clase-banner{border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+  .clase-banner-top{display:flex;align-items:stretch;min-height:60px}
+  .cb-num{background:var(--vio);color:#fff;font-size:28px;font-weight:900;width:66px;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;flex-direction:column;line-height:1.1}
+  .cb-info{background:var(--slate);flex:1;padding:14px 18px}
+  .cb-info h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:3px}
+  .cb-info p{font-size:12px;color:var(--cl);margin:0}
+  .cb-obj{background:var(--vcl);padding:12px 18px;border-top:1px solid var(--bd)}
+  .cb-obj p{font-size:13px;color:var(--vio);line-height:1.55}
+
+  .sec{margin-bottom:22px}
+  .sec-label{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .sec-label span{background:var(--nav);color:#fff;border-radius:20px;padding:2px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+  .sec-label hr{flex:1;border:none;border-top:2px solid var(--bd)}
+
+  .act-box{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .act-head{background:var(--nav);padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .act-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
+  .act-body{padding:16px 20px}
+  .act-body p{font-size:13.5px;line-height:1.7;margin-bottom:10px}
+
+  .lect{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .lect-head{background:var(--pale);padding:11px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .lect-head h3{font-size:14px;font-weight:700;color:var(--nav);margin:0;flex:1}
+  .lect-body{padding:16px 20px}
+  .lect-body p{font-size:13.5px;line-height:1.75;margin-bottom:11px;color:var(--neg)}
+  .lect-body h5{font-size:13px;font-weight:700;color:var(--nav);margin:14px 0 6px;border-left:3px solid var(--med);padding-left:8px}
+
+  .step{background:var(--gris);border-radius:6px;padding:11px 15px;margin-bottom:9px;border-left:3px solid var(--med)}
+  .step strong{display:block;font-size:13px;color:var(--nav);margin-bottom:4px}
+  .step p{font-size:13px;line-height:1.65;margin-top:5px}
+  .step ul{margin:6px 0 0 16px}
+  .step li{font-size:13px;line-height:1.65;margin-bottom:4px}
+
+  .note{border-radius:var(--r);padding:12px 16px;font-size:13.5px;margin:12px 0;display:flex;gap:10px;align-items:flex-start}
+  .ni{font-size:18px;flex-shrink:0;margin-top:2px}
+  .nb{background:var(--pale);border-left:4px solid var(--med)}
+  .ng{background:var(--gcl);border-left:4px solid var(--grn)}
+  .na{background:var(--acl);border-left:4px solid var(--amb)}
+  .nv{background:var(--vcl);border-left:4px solid var(--vio)}
+
+  .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:16px}
+  .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
+  .ref{font-size:11.5px;color:#666;font-style:italic}
+
+  /* Cita histórica destacada */
+  .cita-hist{background:#1A1A2E;color:#E0E0E0;padding:20px 24px;border-radius:var(--r);font-family:Georgia,serif;font-size:14px;line-height:1.8;margin:16px 0;border-left:4px solid var(--amb);position:relative}
+  .cita-hist p { color: #E0E0E0 !important; }
+  .cita-hist .cita-autor{text-align:right;font-size:12px;color:#aaa;margin-top:10px;font-style:italic}
+  .cita-hist .cita-label{position:absolute;top:-10px;left:18px;background:var(--amb);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;font-family:Arial,sans-serif}
+  
+  /* Cajas de Aula Virtual */
+  .aula-virtual-box { background: #EBF5FB; border: 2px solid var(--med); border-radius: var(--r); padding: 18px; margin-top: 20px; }
+  .aula-virtual-box h4 { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--nav); margin-bottom: 12px; margin-top: 0; }
+  .aula-virtual-box p { font-size: 13.5px; color: var(--neg); line-height: 1.6; margin-bottom:10px; }
+  .aula-virtual-box ul { font-size: 13.5px; color: var(--neg); line-height: 1.6; margin-left: 20px; margin-bottom: 12px; }
+  .aula-virtual-box .plazo { background: rgba(255,255,255,0.8); border-radius: 6px; padding: 8px 12px; display: inline-block; font-weight: bold; color: var(--nav); font-size: 13px; }
+  
+  /* Simulador complejo */
+  .complex-sim{background:#0d1117;border-radius:var(--r);overflow:hidden;margin:14px 0}
+  .complex-header{background:#161b22;color:#fff;padding:12px 16px;font-size:14px;font-weight:700;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center}
+  .complex-body{padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .complex-info{background:rgba(255,255,255,.06);border-radius:8px;padding:12px 18px;width:100%;max-width:320px;text-align:center}
+  .complex-power{font-size:22px;font-family:Georgia,serif;color:#FFD93D;font-weight:700;margin-bottom:4px}
+  .complex-meaning{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:10px}
+  .btn-rotate{background:linear-gradient(135deg,var(--vio),#7B2FBE);color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+  .btn-rotate:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(74,26,123,.4)}
+  .complex-track{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .track-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid transparent;transition:all .3s;color:#fff}
+  .track-dot.active{transform:scale(1.2);border-color:#fff;box-shadow:0 0 12px rgba(255,255,255,.3)}
+
+  /* Simulador Dedekind */
+  .dedekind-sim{background:#fff;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin:14px 0}
+  .dedekind-header{background:var(--slate);color:#fff;padding:12px 16px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+  .dedekind-body{padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px;background:#f8fafc}
+  
+  /* Registro */
+  .registro{background:#F3EFF8;border:2px solid var(--vio);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
+  .registro h3{color:var(--vio);font-size:15px;margin-bottom:8px}
+  .reg-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--vio);line-height:1.7}
+  .reg-plazo{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.7);border-radius:6px;padding:9px 13px;font-size:13px;margin-top:12px}
+  
+  .locked-pane{text-align:center;padding:60px 20px;color:var(--txt)}
+  .locked-pane h2{font-size:20px;color:var(--slate);margin-bottom:10px}
+  .locked-icon{font-size:40px;opacity:.5;margin-bottom:15px}
+  
+  .class-nav{display:flex;justify-content:space-between;margin-top:26px;gap:12px}
+  .cnav-btn{flex:1;background:var(--nav);color:#fff;border:none;border-radius:var(--r);padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+  .cnav-btn:hover{background:var(--med)}
+  .cnav-btn.left{text-align:left}
+  .cnav-btn.right{text-align:right}
+  .cnav-btn small{display:block;font-size:11px;font-weight:400;opacity:.8;margin-top:2px}
+  .cnav-btn.disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+  .btn-reveal{background:var(--slate);color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:14px;font-weight:700;cursor:pointer}
+
+  /* Notación Bombelli */
+  .bombelli-nota{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media(max-width:480px){.bombelli-nota{grid-template-columns:1fr}}
+  .bom-card{border-radius:8px;padding:14px;text-align:center}
+  .bom-simbolo{font-size:22px;font-family:Georgia,serif;font-weight:700;display:block;margin-bottom:4px}
+  .bom-nombre{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:6px}
+  .bom-significa{font-size:12px;line-height:1.5}
+
+  @media(max-width:600px){
+    .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+    .top-info{flex-direction:column;align-items:flex-start;gap:10px}
+    .wrap{padding:14px 10px 40px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-info">
+    <a href="index.html" class="btn-back">← Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
+  </div>
+  <div class="top-r">Ciclo Lectivo 2026</div>
+</div>
+
+<div class="subbar">
+  <p class="subbar-pre">Semana 6 · 4 al 6 de mayo · Eje 2</p>
+  <p class="subbar-title">El mapa completo de los números <span>— Imaginarios e Irracionales</span></p>
+</div>
+
+<div class="hero">
+  <h1>El fin de la pureza geométrica y el triunfo del álgebra</h1>
+  <p class="hero-sub">Esta semana cerramos el Eje 2. Veremos cómo los matemáticos se animaron a operar con "fantasmas" (los números imaginarios) y cómo, finalmente, lograron independizar a la recta numérica de los dibujos geométricos (Dedekind).</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="window.showTab('inicio',this)" id="btn-inicio">Inicio</button>
+  <button class="tab-btn" onclick="window.showTab('c10',this)" id="btn-c10">Clase 10 · Lunes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c11">Clase 11 · Martes</button>
+  <button class="tab-btn locked" onclick="return false;" id="btn-c12">Clase 12 · Miércoles</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══ INICIO ══ -->
+<div id="pane-inicio" class="pane on">
+  <div class="act-box" style="border:2px solid var(--amb)">
+    <div class="act-head" style="background:var(--amb)"><h3>⚠️ Recalculando: Semana 6</h3></div>
+    <div class="act-body">
+      <p style="font-size:14px;line-height:1.6">Como no tuvimos la clase del miércoles pasado, reestructuramos esta semana. El lunes tendremos un <strong>bloque doble (120 min)</strong> para absorber la Clase 10 sobre los Imaginarios y sumar el paso fundamental al Simbolismo (Viète/Descartes). El martes (Clase 11) cerraremos el arco del concepto de número saltando al siglo XIX con Dedekind y los irracionales. Finalmente, el miércoles (Clase 12) haremos el Taller de cierre del Eje 2.</p>
+    </div>
+  </div>
+  <div class="act-box">
+    <div class="act-head" style="background:var(--slate)"><h3 style="color:#fff;font-size:16px">🔍 Panorama de la Semana</h3></div>
+    <div class="act-body">
+      <div class="note nv"><span class="ni">🌌</span><div><strong style="display:block;margin-bottom:4px;color:var(--vio)">Clase 10 · Lunes (120 min)</strong><span style="font-size:13px;line-height:1.6">Los imaginarios: el mito de $x^2+1=0$ y la verdad de las cúbicas. El plano de Gauss. Además, la rebelión simbólica: cómo Viète y Descartes inventaron el lenguaje con letras ($x, y, a, b$) para "divorciarse" de la geometría.</span></div></div>
+      <div class="note ng"><span class="ni">✂️</span><div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Clase 11 · Martes (80 min)</strong><span style="font-size:13px;line-height:1.6">El agujero en la recta: los irracionales. Retomamos la crisis pitagórica de $\sqrt{2}$ y saltamos al año 1872 para ver cómo Richard Dedekind inventó las "Cortaduras" para fundamentar el continuo sin usar dibujos.</span></div></div>
+      <div class="note nb"><span class="ni">📚</span><div><strong style="display:block;margin-bottom:4px;color:var(--nav)">Clase 12 · Miércoles (80 min)</strong><span style="font-size:13px;line-height:1.6">Manuales bajo la lupa. ¿Cómo transpone la escuela los conjuntos numéricos? Registro individual de cierre del Eje 2 y carga de los 6 nodos en La Gran Línea de Genially.</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLASE 10 · LUNES (BLOQUE DOBLE) ══ -->
+<div id="pane-c10" class="pane">
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num" style="background:var(--vio)">10</div>
+      <div class="cb-info">
+        <h2>Los imaginarios y la rebelión simbólica</h2>
+        <p>Lunes 4/5 · 120 minutos</p>
+      </div>
+    </div>
+    <div class="cb-obj" style="border-top-color:var(--vio)">
+      <p style="color:var(--vio)"><strong>Objetivo:</strong> Desmitificar el origen escolar de $i$, comprender la crisis de las cúbicas que lo forzó a aparecer, y analizar cómo la formalización del lenguaje algebraico (Viète/Descartes) permitió independizar definitivamente a la matemática de la geometría.</p>
+    </div>
+  </div>
+
+  <div class="note ng" style="margin-bottom:18px">
+    <span class="ni">⏱️</span>
+    <div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Gestión de los 120 minutos</strong>
+      <span style="font-size:13px;line-height:1.6">Lectura Cardano + Bombelli: ~20 min · Simulador plano complejo: ~15 min · Lectura Viète/Descartes (Simbolismo): ~25 min · Actividad de traducción retórica $\to$ simbólica: ~40 min · Debate epistemológico: ~20 min</span>
+    </div>
+  </div>
+
+  <!-- LECTURA 1 (TEXTUAL VIEJA C10) -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--vio)">📖 Lectura Histórica</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--vcl);border-color:var(--vio)">
+        <h3 style="color:var(--vio)">El mito de $x^2 + 1 = 0$ — los imaginarios no nacieron ahí</h3>
+        <span style="font-size:11px;color:var(--vio);font-weight:700">Historia Pura</span>
+      </div>
+      <div class="lect-body">
+        <p>En la escuela solemos enseñar que los números complejos se inventaron para resolver $x^2 + 1 = 0$. Esto es <strong>históricamente incorrecto</strong>. Cuando un matemático renacentista encontraba una cuadrática sin solución real, simplemente decía "no tiene solución" y seguía adelante. No había urgencia: la parábola no cortaba el eje $X$, fin del problema.</p>
+
+        <p>La verdadera crisis se desató en el siglo XVI al resolver ecuaciones <strong>cúbicas</strong>. <strong>Gerolamo Cardano</strong> (1501–1576) publicó la fórmula general en su obra <em>Ars Magna</em> (Nuremberg, 1545). Cardano sabía que las soluciones cuadráticas sin raíz real eran "imposibles" — y así las llamó en el Capítulo 37 del Ars Magna, cuando tuvo que lidiar brevemente con $\sqrt{-15}$:</p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/ArsMagna.jpg" alt="Ars Magna de Cardano" style="max-height:280px;width:auto;border-radius:4px;display:block">
+          </div>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Portada de la primera edición del "Ars Magna" (Núremberg, 1545) de Gerolamo Cardano. La obra donde estalla la crisis de las raíces de negativos al intentar resolver cúbicas.</figcaption>
+        </figure>
+
+        <div class="cita-hist">
+          <div class="cita-label">Cita Histórica Verificada</div>
+          <p><em>"Dejando a un lado las torturas mentales, y multiplicando $5+\sqrt{-15}$ por $5-\sqrt{-15}$... el producto es 40... Y hasta aquí llega la sutileza aritmética, de la cual esta, en extremo, es, como he dicho, tan sutil como inútil."</em></p>
+          <p class="cita-autor">— Gerolamo Cardano, <em>Ars Magna</em>, Capítulo 37, 1545.<br><span style="font-style:normal;font-size:11px;color:#aaa">Traducción estándar del latín. Citado en Boyer (1986, p. 305).</span></p>
+        </div>
+
+        <h5 style="color:var(--vio)">Rafael Bombelli (c. 1526–1572) — El punto de quiebre</h5>
+        <p>Casi tres décadas después de Cardano, el ingeniero hidráulico y matemático Bombelli publicó en Bolonia su <em>L'Algebra</em> (1572). Al aplicar la fórmula de Cardano a la ecuación $x^3 = 15x + 4$, obtuvo inevitablemente $\sqrt{-121}$ dentro del cálculo. El problema grave para la matemática de la época era que $x = 4$ es una solución real y obvia ($4^3 = 64 = 15 \times 4 + 4$). Entonces la fórmula <em>tenía que</em> dar 4 — pero el camino intermedio pasaba por lo "imposible". <span class="ref">(Boyer, 1986, pp. 311–313)</span></p>
+
+        <div class="note na">
+          <span class="ni">💥</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Lo que hizo Bombelli</strong>
+            <span style="font-size:13px;line-height:1.6">En lugar de abandonar el problema, Bombelli decidió tratar $\sqrt{-121} = 11i$ como si fuera un número y operar con él siguiendo las reglas algebraicas habituales. Asumió que $\sqrt[3]{2 + 11i} = 2 + i$ y verificó que $(2+i)^3 = 2 + 11i$. Entonces: $(2+i) + (2-i) = 4$. Las partes imaginarias se cancelaron — dejando el número real que ya se sabía que debía ser la respuesta. Los imaginarios nacieron como <em>pasaje obligatorio</em>, no como fin en sí mismos.</span>
+          </div>
+        </div>
+
+        <div class="cita-hist" style="margin-top:14px">
+          <div class="cita-label">Cita Histórica Verificada</div>
+          <p><em>"Y aunque a muchos esto les parecerá una extravagancia, porque incluso yo sostuve esta opinión hace algún tiempo, ya que apareció para mí más sofista que verdad, sin embargo busqué arduamente y encontré la demostración."</em></p>
+          <p class="cita-autor">— Rafael Bombelli, <em>L'Algebra</em>, 1572.<br><span style="font-style:normal;font-size:11px;color:#aaa">Citado en Boyer y Gindikin.</span></p>
+        </div>
+
+        <h5 style="color:var(--vio)">La notación de Bombelli para los imaginarios</h5>
+        <p>Bombelli no tenía el símbolo $i$ — ese vino mucho después (Euler, siglo XVIII). Él usó una notación propia que hoy nos parece curiosa pero era perfectamente consistente para establecer las reglas de los signos de los imaginarios:</p>
+
+        <figure style="margin: 18px 0; text-align: center;">
+          <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
+            <img src="https://old.maa.org/sites/default/files/images/upload_library/46/Linda-Hall-Lib_CHuffman/Bombelli/Title_page.jpg" alt="L'Algebra de Bombelli" style="max-height:260px;width:auto;border-radius:4px;display:block" onerror="this.closest('figure').style.display='none'">
+          </div>
+          <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Página de "L'Algebra" (1572) de Rafael Bombelli. El libro que cruzó el abismo operando con las raíces "imposibles" para llegar a resultados reales.</figcaption>
+        </figure>
+
+        <div class="bombelli-nota">
+          <div class="bom-card" style="background:#2C1060;color:#fff">
+            <span class="bom-simbolo" style="color:#FFD93D">p.d.m.</span>
+            <span class="bom-nombre" style="color:#C5B4E3">più di meno</span>
+            <span class="bom-significa" style="color:#E0D0FF">"más de menos" = $+i$<br>raíz positiva de número negativo</span>
+          </div>
+          <div class="bom-card" style="background:#1A1A1A;color:#fff">
+            <span class="bom-simbolo" style="color:#FF9999">m.d.m.</span>
+            <span class="bom-nombre" style="color:#FFCCCC">meno di meno</span>
+            <span class="bom-significa" style="color:#FFE0E0">"menos de menos" = $-i$<br>raíz negativa de número negativo</span>
+          </div>
+        </div>
+
+        <h5 style="color:var(--vio)">Gauss y la interpretación geométrica (1831)</h5>
+        <p>La interpretación geométrica definitiva llegó de Carl Friedrich Gauss en su nota de 1831 para la <em>Sociedad Real de Ciencias de Gotinga</em> (aunque Caspar Wessel y Jean-Robert Argand lo habían anticipado años antes sin tanta repercusión). Gauss demostró que los números complejos pueden representarse como puntos en un plano de dos dimensiones — el eje horizontal para los reales, el vertical para los imaginarios. Y que <strong>multiplicar por $i$ equivale a rotar el vector 90° en sentido antihorario</strong>. Lo que parecía un absurdo algebraico era en realidad una rotación geométrica. <span class="ref">(Boyer, 1986, pp. 461–466)</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULADOR PLANO COMPLEJO -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--vio)">🖥️ Simulador — El plano de Gauss</span><hr></div>
+    <div class="act-box" style="border-color:var(--vio)">
+      <div class="act-head" style="background:var(--vio)">
+        <h3>Multiplicar por $i$ = rotar 90°</h3>
+      </div>
+      <div class="act-body">
+        <p>Cada clic multiplica el vector por $i$ — rotándolo 90° en el plano. Observen qué pasa después de cuatro multiplicaciones.</p>
+
+        <div class="complex-sim">
+          <div class="complex-header">
+            <span>Plano de Gauss-Argand</span>
+            <span id="complex-status" style="font-family:monospace;color:var(--vcl);font-size:13px">i⁰ = 1</span>
+          </div>
+          <div class="complex-body">
+            <canvas id="complexCanvas" width="300" height="300" style="border-radius:8px;border:1px solid rgba(255,255,255,.15);display:block;max-width:100%"></canvas>
+            <div class="complex-info">
+              <div class="complex-power" id="cpower">$i^0 = 1$</div>
+              <div class="complex-meaning" id="cmeaning">Posición inicial — sobre el eje real</div>
+              <button class="btn-rotate" onclick="window.rotateComplex()">✕ i &nbsp; (rotar 90°)</button>
+              <div class="complex-track" id="ctrack">
+                <div class="track-dot active" style="background:#FFD93D;color:#1A2C3A" title="i⁰=1">1</div>
+                <div class="track-dot" style="background:#9B59B6" title="i¹=i">i</div>
+                <div class="track-dot" style="background:#D9534F" title="i²=-1">−1</div>
+                <div class="track-dot" style="background:#2E6DA4" title="i³=-i">−i</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note nv" style="margin-top:10px">
+          <span class="ni">💡</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--vio)">Lo que el simulador revela</strong>
+            <p style="font-size:13px;line-height:1.6">Después de dos multiplicaciones por $i$: $i^2 = -1$. Dos rotaciones de 90° = una de 180° = el vector apunta en sentido contrario = multiplicar por $-1$. Lo que Cardano llamó "tan sutil como inútil" resulta ser simplemente <em>girar a la izquierda</em>. La "realidad" de la solución $x=4$ de Bombelli deja de ser misteriosa: los imaginarios giran en el plano y se cancelan al volver al eje real. <span class="ref">(Boyer, 1986, pp. 461–466)</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LECTURA 2: EL SIMBOLISMO -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--nav)">📖 Segunda Parte: La rebelión simbólica</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--pale);border-color:var(--nav)">
+        <h3 style="color:var(--nav)">Del álgebra retórica al lenguaje con letras</h3>
+      </div>
+      <div class="lect-body">
+        
+        <div class="note na" style="margin: 16px 0;">
+          <span class="ni">💭</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Pregunta provocadora</strong>
+            <span style="font-size:13px;line-height:1.6">¿Es posible pensar conceptos completamente nuevos si no tenemos las palabras o los símbolos para escribirlos? ¿El lenguaje matemático solo *describe* ideas que ya existen en la cabeza, o la invención de nuevos símbolos es lo que *crea* la posibilidad de pensar cosas nuevas?</span>
+          </div>
+        </div>
+
+        <p>Bombelli y Cardano lograron proezas increíbles, pero sufrieron "torturas mentales" porque no tenían el lenguaje adecuado. Toda el álgebra desde Babilonia hasta el Renacimiento era "retórica" (escrita en oraciones completas) o "sincopada" (con algunas abreviaturas). Las operaciones complejas se perdían en párrafos larguísimos. Los estudiantes no logran ver que la formalización que vendría con <strong>François Viète</strong> en 1591 fue la verdadera solución a las pesadillas de Bombelli: Viète inventó el lenguaje que permitió al álgebra independizarse para siempre de la geometría.</p>
+
+        <p>El salto monumental lo dio Viète al ser el primero en usar sistemáticamente letras para representar no solo incógnitas, sino también cantidades conocidas (coeficientes). Viète usaba <em>consonantes</em> para los parámetros fijos y <em>vocales</em> para las incógnitas.</p>
+
+        <div class="note nb">
+          <span class="ni">🔑</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">La Geometría Analítica de Descartes (1637)</strong>
+            <span style="font-size:13px;line-height:1.6">Unas décadas después, <strong>René Descartes</strong> publicó <em>La Géométrie</em>. Él introdujo la convención que usamos hoy: las últimas letras del alfabeto ($x, y, z$) para las incógnitas y las primeras ($a, b, c$) para las constantes. Y algo aún más importante: inventó los ejes cartesianos, fusionando el álgebra con la geometría. Pero cuidado: Descartes era un genio moderno con prejuicios antiguos. Odiaba los números negativos y complejos. Fue él quien acuñó el término <strong>"imaginarios"</strong> de forma despectiva, porque en su gráfico, esas raíces no cortaban ningún eje "real". <span class="ref">(Klimovsky y Boido, 2005, p. 55)</span></span>
+          </div>
+        </div>
+        
+        <!-- Texto oculto de Descartes - Revelar con Ctrl+M -->
+        <div id="descartes-quote" style="display:none;background:#1A1A2E;color:#E0E0E0;padding:16px 20px;border-radius:6px;border-left:4px solid var(--nav);margin-top:14px">
+          <p style="font-size:12px;font-weight:700;color:var(--cl);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Evidencia Documental Oculta</p>
+          <p style="font-family:Georgia,serif;font-style:italic;font-size:13.5px;line-height:1.7;margin:0">"Tanto las raíces verdaderas como las falsas [negativas] no son siempre reales; a veces solo son imaginarias; es decir, siempre se puede imaginar en cada ecuación tantas raíces como he dicho, pero a veces no hay cantidad que corresponda a las que se imaginan."</p>
+          <p style="text-align:right;font-size:11px;color:#aaa;margin-top:8px">— René Descartes, <em>La Géométrie</em>, Libro III (1637).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TALLER DE TRADUCCIÓN -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--nav)">⚙️ Taller de Traducción</span><hr></div>
+    <div class="act-box" style="border-color:var(--nav)">
+      <div class="act-head" style="background:var(--nav)"><h3>Viajando en el tiempo matemático (~40 min)</h3></div>
+      <div class="act-body">
+        <p>Vamos a experimentar el "dolor de cabeza" de hacer matemática sin letras.</p>
+        
+        <div class="step" style="border-color:var(--nav);background:var(--pale)">
+          <strong style="color:var(--nav)">Consigna en grupos:</strong>
+          <p>Acá tienen un problema escrito al estilo del álgebra retórica de Al-Juarismi (siglo IX). Su misión es traducirlo en tres etapas.</p>
+          <div style="background:#fff;border:1px solid var(--bd);border-radius:6px;padding:14px;margin:12px 0;font-family:Georgia,serif;font-style:italic;color:var(--neg)">
+            "Si una cosa y diez dirhams son iguales a la cosa multiplicada por sí misma, ¿cuál es la cosa?"
+          </div>
+          <ol style="font-size:13.5px;margin-left:20px;line-height:1.8">
+            <li><strong>Paso 1: Traducción al Estilo Viète (1591):</strong> Traduzcan la oración usando la vocal "A" para la incógnita ("la cosa") y la consonante "B" para el parámetro fijo (los diez dirhams). <em>Objetivo: Ver cómo las letras liberan a la matemática de los casos particulares, permitiendo fórmulas generales.</em></li>
+            <li><strong>Paso 2: Traducción al Estilo Descartes (1637):</strong> Traduzcan esa misma expresión a la notación de la escuela secundaria actual ($x$, números, exponentes y el signo de igual). <em>Objetivo: Reconocer que lo que hoy es "natural" fue un invento reciente.</em></li>
+            <li><strong>Paso 3: Resolución y análisis de la negatividad:</strong> Resuelvan la ecuación resultante ($x^2 = x + 10$). Es una ecuación cuadrática que arrojará una raíz positiva y una negativa. ¿Qué habría hecho Al-Juarismi con esa raíz negativa? ¿Qué hacemos nosotros hoy?</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="class-nav">
+    <button class="cnav-btn left" onclick="window.showTab('inicio', document.getElementById('btn-inicio'))">← Inicio</button>
+    <button class="cnav-btn right" onclick="window.showTab('c11', document.getElementById('btn-c11'))">Clase 11 →<small>Martes · Los irracionales</small></button>
+  </div>
+</div>
+
+<!-- ══ CLASE 11 · MARTES ══ -->
+<div id="pane-c11" class="pane">
+  <div class="locked-pane" id="lock-c11"><div class="locked-icon">🔒</div><h2>Clase 11 bloqueada</h2><p style="font-size:13.5px">El contenido de los irracionales se habilitará el martes.</p></div>
+  <div class="real-content" id="content-c11" style="display:none">
+
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--grn)">11</div>
+        <div class="cb-info">
+          <h2>El agujero en la recta: los irracionales y Dedekind</h2>
+          <p>Martes 5/5 · 80 minutos</p>
+        </div>
+      </div>
+      <div class="cb-obj" style="border-top-color:var(--grn)">
+        <p style="color:var(--grn)"><strong>Objetivo:</strong> Retomar la crisis pitagórica de $\sqrt{2}$ y comprender cómo, más de 2000 años después, Richard Dedekind logró fundamentar el "continuo" de la recta numérica sin depender de dibujos geométricos.</p>
+      </div>
+    </div>
+
+    <!-- LECTURA: LA RECTA ROTA -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">📖 Lectura Histórica</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:var(--gcl);border-color:var(--grn)">
+          <h3 style="color:var(--grn)">Un problema de 2000 años</h3>
+        </div>
+        <div class="lect-body">
+          <p>En la Clase 2 vimos cómo los pitagóricos descubrieron que $\sqrt{2}$ era "inconmensurable". No se podía escribir como una fracción $p/q$. Si imaginamos la recta formada solo por fracciones (racionales), la recta tiene "agujeros". Hay puntos donde debería haber un número, pero no hay nada.</p>
+          
+          <p>El griego <strong>Eudoxo</strong> parcheó este problema de la inconmensurabilidad de manera magistral usando la geometría (sus ideas están en el Libro V de Euclides, con su famosa "teoría de las proporciones"). Pero este parche escondía una limitación severa: <em>dependía de dibujar segmentos</em>.</p>
+        
+          <div class="note nb" style="margin: 14px 0;">
+            <span class="ni">⚙️</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">La crisis del Análisis en el siglo XIX</strong>
+              <span style="font-size:13px;line-height:1.6">En el siglo XIX, con la explosión del cálculo infinitesimal (límites, derivadas e integrales, que veremos en el Eje 3), los matemáticos como <strong>Karl Weierstrass</strong> se dieron cuenta de que no podían seguir fundamentando el rigor matemático en dibujos geométricos que engañan al ojo humano. Necesitaban definir el "continuo" (una recta sin agujeros) utilizando <strong>aritmética pura</strong>. Para fundamentar rigurosamente conceptos como el límite, no alcanzaba con decir "la línea mide $\sqrt{2}$ porque lo tracé con un compás". Tenían que redefinir el número irracional desde cero. <span class="ref">(Boyer, 1986, pp. 680–682)</span></span>
+            </div>
+          </div>
+
+          <h5 style="color:var(--grn)">El paseo de Richard Dedekind (1872)</h5>
+          <p>La solución definitiva se le ocurrió a <strong>Richard Dedekind</strong> mientras vacacionaba en Suiza. En su obra <em>Continuidad y números irracionales</em> (1872), propuso una idea revolucionaria: <strong>la Cortadura</strong>.</p>
+          
+          <div class="note ng">
+            <span class="ni">✂️</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--grn)">La idea de la cortadura</strong>
+              <span style="font-size:13px;line-height:1.6">Si agarramos la recta de los números racionales y le damos un "hachazo" que la divide en dos conjuntos (Izquierda y Derecha), pueden pasar tres cosas:<br>
+              1. Que el corte caiga justo <em>sobre</em> un número racional (ej: el número 3).<br>
+              2. Que la Izquierda no tenga un número máximo, y la Derecha no tenga un número mínimo. ¡El hachazo cayó en un agujero! <strong>Ese agujero mismo ES el número irracional.</strong> Dedekind definió al número no como un objeto, sino como <em>el acto mismo de partir el conjunto de los racionales</em>.</span>
+            </div>
+          </div>
+          
+          <!-- Notación formal Dedekind oculta — Ctrl+M -->
+          <div id="dedekind-proof" style="display:none;background:#fff;border-radius:6px;border-left:3px solid var(--grn);padding:12px 16px;margin:10px 0">
+            <p style="font-size:12px;font-weight:700;color:var(--grn);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Definición Formal de la Cortadura de $\sqrt{2}$</p>
+            <p style="font-family:Georgia,serif;padding-left:8px;line-height:2.2;color:var(--neg);margin:0">
+              $L = \{x \in \mathbb{Q} : x < 0 \lor x^2 < 2\}$<br>
+              $R = \{x \in \mathbb{Q} : x > 0 \land x^2 > 2\}$<br>
+              <span style="font-size:13.5px;font-family:sans-serif;font-style:italic">Observen que no hay $\le$ ni $\ge$. Ni L tiene máximo, ni R tiene mínimo. Esa brecha es $\sqrt{2}$.</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMULADOR DEDEKIND -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">🖥️ Laboratorio Visual</span><hr></div>
+      <div class="act-box" style="border-color:var(--grn)">
+        <div class="act-head" style="background:var(--grn)"><h3>Acercándose al agujero: La Cortadura de $\sqrt{2}$</h3></div>
+        <div class="act-body">
+          <p>Muevan el deslizador para acercarse a $\sqrt{2}$ usando solo números racionales (fracciones/decimales). Noten que, por más que afinemos los decimales, el cuadrado nunca llega a 2 exacto. Siempre caemos en el conjunto L (azul) o en el R (rojo).</p>
+          
+          <div class="dedekind-sim">
+            <div class="dedekind-header"><span>Cortadura en la Recta Racional</span></div>
+            <div class="dedekind-body">
+              <div style="width:100%; position:relative; height:40px; margin:20px 0;">
+                <!-- Linea base -->
+                <div style="position:absolute; top:20px; left:0; right:0; height:4px; background:#e2e8f0;"></div>
+                <!-- Conjunto L (Azul) -->
+                <div id="dk-set-l" style="position:absolute; top:20px; left:0; width:41.4%; height:4px; background:var(--med);"></div>
+                <!-- Conjunto R (Rojo) -->
+                <div id="dk-set-r" style="position:absolute; top:20px; right:0; width:58.6%; height:4px; background:var(--red);"></div>
+                <!-- El Corte -->
+                <div style="position:absolute; top:10px; left:41.4%; width:2px; height:24px; background:#000;"></div>
+                <div style="position:absolute; top:36px; left:41.4%; transform:translateX(-50%); font-weight:bold; font-size:14px;">$\sqrt{2}$ (Agujero)</div>
+                <!-- Puntero movil -->
+                <div id="dk-pointer" style="position:absolute; top:6px; left:50%; width:12px; height:12px; background:var(--nav); border-radius:50%; transform:translateX(-50%); border:2px solid #fff; box-shadow:0 0 4px rgba(0,0,0,0.5);"></div>
+              </div>
+
+              <div style="display:flex; width:100%; gap:10px; align-items:center; margin-bottom:10px;">
+                <input type="range" id="dk-slider" min="1000" max="2000" value="1500" style="flex:1">
+              </div>
+
+              <div style="background:#fff; border:1px solid var(--bd); border-radius:6px; padding:12px; width:100%; text-align:center; font-family:monospace; font-size:16px;">
+                Valor racional ($x$): <span id="dk-x" style="font-weight:bold">1.500</span><br>
+                Cuadrado ($x^2$): <span id="dk-sq" style="font-weight:bold">2.250000</span><br>
+                <div id="dk-result" style="margin-top:8px; padding:4px; border-radius:4px; font-weight:bold; background:var(--red); color:#fff">Pertenece al Conjunto R (Derecha)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="srcs">
+      <h5>Fuentes · Clase 11</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza, pp. 680–682.</p>
+    </div>
+
+    <div class="class-nav">
+      <button class="cnav-btn left" onclick="window.showTab('c10',document.getElementById('btn-c10'))">← Clase 10<small>Lunes</small></button>
+      <button class="cnav-btn right disabled">Clase 12 →<small>Se habilita el miércoles</small></button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CLASE 12 · MIÉRCOLES ══ -->
+<div id="pane-c12" class="pane">
+  <div class="locked-pane" id="lock-c12"><div class="locked-icon">🔒</div><h2>Clase 12 bloqueada</h2><p style="font-size:13.5px">El cierre del Eje 2 se habilitará el miércoles.</p></div>
+  <div class="real-content" id="content-c12" style="display:none">
+
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--nav)">12</div>
+        <div class="cb-info">
+          <h2>Manuales bajo la lupa y cierre del Eje 2</h2>
+          <p>Miércoles 6/5 · 80 minutos</p>
+        </div>
+      </div>
+      <div class="cb-obj" style="border-top-color:var(--nav)">
+        <p style="color:var(--nav)"><strong>Objetivo:</strong> Analizar la transposición didáctica de los conjuntos numéricos en los libros de texto de secundaria y reflexionar sobre la necesidad de los modelos empíricos a través del Registro de Cierre.</p>
+      </div>
+    </div>
+
+    <!-- TALLER DE MANUALES -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--nav)">📚 Taller Didáctico</span><hr></div>
+      <div class="act-box" style="border-color:var(--nav)">
+        <div class="act-head" style="background:var(--nav)"><h3>Manuales bajo la lupa</h3></div>
+        <div class="act-body">
+          <p>Traigan libros de matemática de 1.° a 4.° año de secundaria. Vamos a analizar cómo se presentan los conjuntos numéricos ($\mathbb{Z}, \mathbb{Q}, \mathbb{I}, \mathbb{R}, \mathbb{C}$).</p>
+          <div class="step" style="border-color:var(--nav);background:var(--pale)">
+            <strong style="color:var(--nav)">Consigna de análisis:</strong>
+            <ul style="font-size:13.5px;margin-left:20px;line-height:1.6">
+              <li>¿Cómo introduce el libro a los números negativos? ¿Usa deudas, termómetros, la recta numérica abstracta o saltan directo a la regla de signos?</li>
+              <li>¿Mencionan las crisis históricas ($\sqrt{2}$, $\sqrt{-1}$) o presentan los números como si siempre hubieran existido? (La "ilusión de transparencia" de Chevallard).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTRO DE CIERRE EJE 2 REFORZADO -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--vio)">📝 Registro de cierre</span><hr></div>
+      <div class="registro" style="background:#F9F4FF;">
+        <h3>📤 Registro Individual de Cierre del Eje 2</h3>
+        <p style="font-size:13px;color:var(--txt);margin-bottom:12px;line-height:1.6">150–250 palabras. Se empieza en clase y se completa en el aula virtual.</p>
+        <div class="reg-consigna">
+          <strong>Consigna de cierre con rigor histórico:</strong><br><br>
+          A partir de la crisis de los imaginarios (Cardano/Bombelli) y el agujero de los irracionales (crisis pitagórica vs. Dedekind), hemos visto que la historia de la matemática avanzó superando los límites de la intuición geométrica y empírica.<br><br>
+          Elegí <strong>uno</strong> de estos dos momentos de ruptura histórica (el paso de las raíces "imposibles" al plano de Gauss, o de la recta agujereada a la cortadura aritmética de Dedekind). Utilizando el concepto de <strong>obstáculo epistemológico</strong> de Brousseau, explicá:<br>
+          1. ¿Por qué fue históricamente necesario abandonar la representación empírica/geométrica para que ese concepto de número pudiera crecer?<br>
+          2. Como docente: ¿cómo deberíamos gestionar ese "salto a la abstracción" en la escuela secundaria actual para que el estudiante no lo viva como una imposición dogmática de fórmulas vacías?
+        </div>
+        <div style="margin-bottom:10px">
+          <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:5px">Criterios de evaluación:</strong>
+          <ul style="font-size:13px;margin-left:16px;line-height:1.7">
+            <li>Elección clara de UN momento histórico y rigor en su descripción.</li>
+            <li>Obstáculo epistemológico de Brousseau aplicado lógicamente a la ruptura empírica $\to$ formal.</li>
+            <li>Propuesta o reflexión didáctica fundamentada y personal.</li>
+          </ul>
+        </div>
+        <div class="reg-plazo">
+          <span style="font-size:19px">⏰</span>
+          <span>Se empieza en clase. Completar en el aula virtual: <strong>miércoles 6/5 a las 23:59.</strong> Texto directo, no adjunto. 150–250 palabras.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LA GRAN LÍNEA ACTUALIZACIÓN -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea</span><hr></div>
+      <div class="act-box" style="border-color:var(--grn)">
+        <div class="act-head" style="background:var(--grn)"><h3>Carga de Nodos — Cierre Eje 2</h3></div>
+        <div class="act-body">
+          <p>Para cerrar este Eje, van a volcar al Genially colectivo los hitos de la "expansión del número".</p>
+          <p style="margin-top:10px;font-weight:bold;color:var(--grn)">Los 6 nodos que agregan al Genially de La Gran Línea:</p>
+          <ul style="font-size:13.5px;margin-left:20px;line-height:1.6;margin-top:6px;">
+            <li><strong>Nodo 1 — Diofanto (siglo III d.C.):</strong> El obstáculo instalado. La ecuación "imposible".</li>
+            <li><strong>Nodo 2 — Brahmagupta (628 d.C.):</strong> Fortunas, deudas y el Brahmasphutasiddhanta.</li>
+            <li><strong>Nodo 3 — Cardano / Ars Magna (1545):</strong> La primera aparición de $\sqrt{-15}$.</li>
+            <li><strong>Nodo 4 — Bombelli / L'Algebra (1572):</strong> El quiebre. $x^3 = 15x + 4$ y $\sqrt{-121}$.</li>
+            <li><strong>Nodo 5 — Gauss / Plano complejo (1831):</strong> La formalización geométrica. Multiplicar por $i$ = rotar 90°.</li>
+            <li><strong>Nodo 6 — Dedekind / Cortaduras (1872):</strong> La recta sin agujeros. El paso definitivo a la aritmética sin dibujos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="class-nav">
+      <button class="cnav-btn left" onclick="window.showTab('c11',document.getElementById('btn-c11'))">← Clase 11<small>Martes</small></button>
+      <button class="cnav-btn right" style="background:var(--nav);cursor:default">✓ Fin de Semana 6<small>¡Nos vemos la próxima con el Eje 3!</small></button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ── TABS ──────────────────────────────────────────────────────────────────────
+window.showTab = function(id, btn) {
+  if (btn && btn.classList && btn.classList.contains('locked')) return;
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + id).classList.add('on');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'c10') setTimeout(window.initComplexSim, 80);
+  if (id === 'c11') setTimeout(window.initDedekindSim, 50);
+};
+
+// ── DESBLOQUEO ────────────────────────────────────────────────────────────────
+window.unlockClass = function(id) {
+  const btn = document.getElementById('btn-' + id), lock = document.getElementById('lock-' + id), content = document.getElementById('content-' + id);
+  if (btn) { btn.classList.remove('locked'); btn.onclick = function() { window.showTab(id, this); }; }
+  if (lock) lock.style.display = 'none';
+  if (content) content.style.display = 'block';
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date();
+  window.unlockClass('c10'); // lunes ya pasó en contexto del docente
+  if (hoy >= new Date(2026, 4, 5)) window.unlockClass('c11'); // 5 Mayo
+  if (hoy >= new Date(2026, 4, 6)) window.unlockClass('c12'); // 6 Mayo
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
+    window.unlockClass('c10'); window.unlockClass('c11'); window.unlockClass('c12');
+    var t = document.createElement('div');
+    t.textContent = '🔓 Clases desbloqueadas';
+    t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:var(--grn);color:white;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2)';
+    document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
+  }
+
+  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
+    e.preventDefault();
+    
+    var visible = false;
+    
+    // Cita oculta en C10 (Descartes)
+    var quote = document.getElementById('descartes-quote');
+    if (quote) {
+        visible = quote.style.display !== 'none';
+        quote.style.display = visible ? 'none' : 'block';
+    }
+
+    // Demostración Dedekind en C11
+    var dproof = document.getElementById('dedekind-proof');
+    if (dproof) {
+        dproof.style.display = visible ? 'none' : 'block';
+        if (!visible && window.MathJax) MathJax.typesetPromise([dproof]);
+    }
+
+    var toast = document.createElement('div');
+    toast.innerHTML = visible ? '🙈 Elementos teóricos ocultos' : '🎯 Elementos teóricos activados';
+    toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--vio); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2500);
+  }
+});
+
+// ── PLANO COMPLEJO ────────────────────────────────────────────────────────────
+var CSTATES = [
+  { label: 'i⁰ = 1',  meaning: 'Posición inicial — sobre el eje real', angle: 0,   color: '#FFD93D', dot: 0 },
+  { label: 'i¹ = i',  meaning: 'Primera rotación — eje imaginario (+)',  angle: 90,  color: '#9B59B6', dot: 1 },
+  { label: 'i² = −1', meaning: 'Segunda rotación — eje real negativo',   angle: 180, color: '#D9534F', dot: 2 },
+  { label: 'i³ = −i', meaning: 'Tercera rotación — eje imaginario (−)',  angle: 270, color: '#2E6DA4', dot: 3 }
+];
+var cIdx = 0;
+var cAnimating = false;
+var cFromAngle = 0;
+
+window.initComplexSim = function() {
+  cIdx = 0; 
+  cFromAngle = 0;
+  window.updateComplexUI();
+  window.drawComplexPlane(0, CSTATES[0].color);
+};
+
+window.rotateComplex = function() {
+  if (cAnimating) return;
+  cAnimating = true;
+  var from = cIdx * 90;
+  cIdx = (cIdx + 1) % 4;
+  var to = cIdx * 90;
+  var next = CSTATES[cIdx];
+  var t = 0;
+  var steps = 24;
+  
+  var iv = setInterval(function() {
+    t++;
+    var angle = from + (to - from) * window.easeOut(t / steps);
+    window.drawComplexPlane(angle, next.color);
+    if (t >= steps) {
+      clearInterval(iv);
+      cAnimating = false;
+      window.drawComplexPlane(to, next.color);
+      window.updateComplexUI();
+    }
+  }, 16);
+};
+
+window.easeOut = function(t) { 
+  return 1 - (1 - t) * (1 - t); 
+};
+
+window.updateComplexUI = function() {
+  var s = CSTATES[cIdx];
+  var powerEl = document.getElementById('cpower');
+  var meaningEl = document.getElementById('cmeaning');
+  var statusEl = document.getElementById('complex-status');
+  
+  if (powerEl) powerEl.textContent = s.label;
+  if (meaningEl) meaningEl.textContent = s.meaning;
+  if (statusEl) statusEl.textContent = s.label;
+  
+  var dots = document.querySelectorAll('.track-dot');
+  for (var i = 0; i < dots.length; i++) {
+    if (dots[i] && dots[i].classList) {
+      if (i === cIdx) {
+        dots[i].classList.add('active');
+      } else {
+        dots[i].classList.remove('active');
+      }
+    }
+  }
+};
+
+window.drawComplexPlane = function(angleDeg, activeColor) {
+  var canvas = document.getElementById('complexCanvas');
+  if (!canvas) return;
+  var dpr = window.devicePixelRatio || 1;
+  var parent = canvas.parentElement;
+  if (!parent) return;
+  
+  var S = Math.min(300, parent.offsetWidth - 20);
+  if (S <= 0) return;
+  
+  canvas.style.width = S + 'px'; 
+  canvas.style.height = S + 'px';
+  canvas.width = S * dpr; 
+  canvas.height = S * dpr;
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  var cx = S / 2;
+  var cy = S / 2;
+  var R = S * 0.36;
+
+  ctx.fillStyle = '#0d1117'; 
+  ctx.fillRect(0, 0, S, S);
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)'; 
+  ctx.lineWidth = 1;
+  for (var i = -2; i <= 2; i++) {
+    ctx.beginPath(); ctx.moveTo(cx + i * R / 2, 0); ctx.lineTo(cx + i * R / 2, S); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, cy + i * R / 2); ctx.lineTo(S, cy + i * R / 2); ctx.stroke();
+  }
+
+  ctx.beginPath(); 
+  ctx.arc(cx, cy, R, 0, 2 * Math.PI);
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)'; 
+  ctx.lineWidth = 1.5; 
+  ctx.setLineDash([4, 4]); 
+  ctx.stroke(); 
+  ctx.setLineDash([]);
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)'; 
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(8, cy); ctx.lineTo(S - 8, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, 8); ctx.lineTo(cx, S - 8); ctx.stroke();
+
+  ctx.fillStyle = 'rgba(255,255,255,0.4)'; 
+  ctx.font = '11px Segoe UI, Arial, sans-serif';
+  ctx.fillText('Re', S - 22, cy - 6);
+  ctx.fillText('Im', cx + 6, 16);
+
+  var pts = [
+    { x: R, y: 0, lbl: '1', col: '#FFD93D', dx: 8, dy: 4 },
+    { x: 0, y: -R, lbl: 'i', col: '#9B59B6', dx: 6, dy: -6 },
+    { x: -R, y: 0, lbl: '−1', col: '#D9534F', dx: -26, dy: 4 },
+    { x: 0, y: R, lbl: '−i', col: '#2E6DA4', dx: 6, dy: 14 }
+  ];
+  
+  for (var p = 0; p < pts.length; p++) {
+    var pt = pts[p];
+    ctx.beginPath(); 
+    ctx.arc(cx + pt.x, cy + pt.y, 4, 0, 2 * Math.PI);
+    ctx.fillStyle = pt.col + '80'; 
+    ctx.fill();
+    ctx.fillStyle = pt.col; 
+    ctx.font = '11px Segoe UI, Arial, sans-serif';
+    ctx.fillText(pt.lbl, cx + pt.x + pt.dx, cy + pt.y + pt.dy);
+  }
+
+  var rad = -angleDeg * Math.PI / 180; 
+  var vx = cx + R * Math.cos(rad);
+  var vy = cy + R * Math.sin(rad);
+
+  ctx.shadowColor = activeColor; 
+  ctx.shadowBlur = 16;
+
+  ctx.beginPath(); 
+  ctx.moveTo(cx, cy); 
+  ctx.lineTo(vx, vy);
+  ctx.strokeStyle = activeColor; 
+  ctx.lineWidth = 3; 
+  ctx.stroke();
+
+  var headAngle = Math.atan2(vy - cy, vx - cx);
+  ctx.beginPath();
+  ctx.moveTo(vx, vy);
+  ctx.lineTo(vx - 12 * Math.cos(headAngle - 0.4), vy - 12 * Math.sin(headAngle - 0.4));
+  ctx.lineTo(vx - 12 * Math.cos(headAngle + 0.4), vy - 12 * Math.sin(headAngle + 0.4));
+  ctx.closePath(); 
+  ctx.fillStyle = activeColor; 
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+
+  ctx.beginPath(); 
+  ctx.arc(vx, vy, 8, 0, 2 * Math.PI);
+  ctx.fillStyle = activeColor; 
+  ctx.fill();
+  ctx.strokeStyle = '#0d1117'; 
+  ctx.lineWidth = 2; 
+  ctx.stroke();
+
+  ctx.beginPath(); 
+  ctx.arc(cx, cy, 5, 0, 2 * Math.PI);
+  ctx.fillStyle = '#fff'; 
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, 22, 0, rad, false);
+  ctx.strokeStyle = activeColor + '40'; 
+  ctx.lineWidth = 2; 
+  ctx.stroke();
+};
+
+window.addEventListener('resize', function() {
+  var paneC10 = document.getElementById('pane-c10');
+  if (paneC10 && paneC10.classList && paneC10.classList.contains('on')) {
+    window.drawComplexPlane(cIdx * 90, CSTATES[cIdx].color);
+  }
+});
+
+// ── SIMULADOR DEDEKIND ────────────────────────────────────────────────────────
+window.initDedekindSim = function() {
+  const slider = document.getElementById('dk-slider');
+  const spanX = document.getElementById('dk-x');
+  const spanSq = document.getElementById('dk-sq');
+  const result = document.getElementById('dk-result');
+  const pointer = document.getElementById('dk-pointer');
+  
+  if(!slider) return;
+
+  function update() {
+    let val = parseInt(slider.value) / 1000;
+    let sq = val * val;
+    spanX.textContent = val.toFixed(3);
+    spanSq.textContent = sq.toFixed(6);
+    
+    // Posición del puntero (41.4% = sqrt(2), mapeamos 1 a 2 -> 0% a 100%)
+    let pct = ((val - 1) / 1) * 100;
+    pointer.style.left = pct + '%';
+
+    if(sq < 2) {
+      result.textContent = 'Pertenece al Conjunto L (Izquierda)';
+      result.style.background = 'var(--med)';
+      spanSq.style.color = 'var(--med)';
+    } else {
+      result.textContent = 'Pertenece al Conjunto R (Derecha)';
+      result.style.background = 'var(--red)';
+      spanSq.style.color = 'var(--red)';
+    }
+  }
+
+  slider.addEventListener('input', update);
+  update();
+};
+</script>
+</body>
+</html>
