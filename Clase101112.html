@@ -106,6 +106,7 @@
   .ng{background:var(--gcl);border-left:4px solid var(--grn)}
   .na{background:var(--acl);border-left:4px solid var(--amb)}
   .nv{background:var(--vcl);border-left:4px solid var(--vio)}
+  .nr{background:#FDECEA;border-left:4px solid var(--red)}
 
   .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:16px}
   .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
@@ -245,7 +246,7 @@
   <div class="note ng" style="margin-bottom:18px">
     <span class="ni">⏱️</span>
     <div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Gestión de los 120 minutos</strong>
-      <span style="font-size:13px;line-height:1.6">Lectura Cardano + Bombelli: ~20 min · Simulador plano complejo: ~15 min · Lectura Viète/Descartes (Simbolismo): ~25 min · Actividad de traducción retórica $\to$ simbólica: ~40 min · Debate epistemológico: ~20 min</span>
+      <span style="font-size:13px;line-height:1.6">Lectura Cardano + Bombelli + pregunta provocadora: ~18 min · Simulador plano complejo: ~15 min · Lectura Viète/Descartes (Simbolismo): ~27 min · Actividad de traducción retórica $\to$ simbólica: ~42 min · Debate epistemológico: ~18 min</span>
     </div>
   </div>
 
@@ -264,7 +265,7 @@
 
         <figure style="margin: 18px 0; text-align: center;">
           <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/ArsMagna.jpg" alt="Ars Magna de Cardano" style="max-height:280px;width:auto;border-radius:4px;display:block">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4ZVKGxL2qU3cLjL8nPpG4p0EjMjQJDU5XFQ&s" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F9F4FF/4A1A7B?text=Ars+Magna+(Cardano)'" alt="Ars Magna de Cardano" style="max-height:280px;width:auto;border-radius:4px;display:block">
           </div>
           <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Portada de la primera edición del "Ars Magna" (Núremberg, 1545) de Gerolamo Cardano. La obra donde estalla la crisis de las raíces de negativos al intentar resolver cúbicas.</figcaption>
         </figure>
@@ -297,7 +298,7 @@
 
         <figure style="margin: 18px 0; text-align: center;">
           <div style="background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:10px;display:inline-block;box-shadow:var(--sh)">
-            <img src="https://old.maa.org/sites/default/files/images/upload_library/46/Linda-Hall-Lib_CHuffman/Bombelli/Title_page.jpg" alt="L'Algebra de Bombelli" style="max-height:260px;width:auto;border-radius:4px;display:block" onerror="this.closest('figure').style.display='none'">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmM5tKj4LPk7eQ-Q4T8v0ZjHDKQ8TjQ9P0ug&s" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F9F4FF/4A1A7B?text=L+Algebra+(Bombelli)'" alt="L'Algebra de Bombelli" style="max-height:260px;width:auto;border-radius:4px;display:block">
           </div>
           <figcaption style="font-size:11.5px;color:var(--txt);margin-top:8px;font-style:italic">Página de "L'Algebra" (1572) de Rafael Bombelli. El libro que cruzó el abismo operando con las raíces "imposibles" para llegar a resultados reales.</figcaption>
         </figure>
@@ -312,6 +313,14 @@
             <span class="bom-simbolo" style="color:#FF9999">m.d.m.</span>
             <span class="bom-nombre" style="color:#FFCCCC">meno di meno</span>
             <span class="bom-significa" style="color:#FFE0E0">"menos de menos" = $-i$<br>raíz negativa de número negativo</span>
+          </div>
+        </div>
+
+        <div class="note na" style="margin:14px 0;background:#FFF3E0;border-left:4px solid var(--amb)">
+          <span class="ni">❓</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Pregunta de corte</strong>
+            <span style="font-size:13px;line-height:1.6">Bombelli en 1572 tiene la ecuación $x^3 = 15x + 4$ y obtiene $\sqrt{-121}$ en el medio del cálculo. Pero aquí va el quid: ¿cómo <em>escribe</em> esta ecuación? ¿Cómo comunica a otros matemáticos que $\sqrt[3]{2 + 11i} = 2 + i$? ¿Tiene nuestras letras x, y, z? ¿Tiene el signo = como lo conocemos? ¿Tiene exponentes? No. Todo debe ir en palabras. En retórica algebraica. ¿Cómo se las arregla?</span>
           </div>
         </div>
 
@@ -366,23 +375,24 @@
   <!-- LECTURA 2: EL SIMBOLISMO -->
   <div class="sec">
     <div class="sec-label"><span style="background:var(--nav)">📖 Segunda Parte: La rebelión simbólica</span><hr></div>
+    
+    <!-- PÁRRAFO DE TRANSICIÓN CRÍTICO -->
+    <div class="note nv" style="background:#F3F6F9;border-left:4px solid var(--vio);margin-bottom:16px">
+      <span class="ni">🔗</span>
+      <div>
+        <strong style="display:block;margin-bottom:6px;color:var(--vio)">El Puente: por qué la simbología resolvió el problema de Bombelli</strong>
+        <p style="font-size:13.5px;line-height:1.7;color:var(--txt)">Pero aquí está el quid de todo: <strong>Bombelli nunca pudo haber operado con $\sqrt{-121}$ sin el lenguaje algebraico que Viète formalizaría apenas 19 años después</strong> (Bombelli: 1572; Viète: 1591). Viète no "inventó" los imaginarios — de hecho, murió sin ser plenamente consciente de la importancia de Bombelli. Pero sin la notación de Viète, sin la posibilidad de escribir $\sqrt[3]{2 + 11i}$ como un símbolo que podía manipularse algebraicamente, Bombelli habría estado atrapado en la retórica medieval. <strong>El álgebra simbólica fue el vehículo que hizo posible que lo "imposible" se volviera operacional.</strong> Las letras no solo simplifican; transforman el pensamiento.</p>
+      </div>
+    </div>
+
     <div class="lect">
       <div class="lect-head" style="background:var(--pale);border-color:var(--nav)">
         <h3 style="color:var(--nav)">Del álgebra retórica al lenguaje con letras</h3>
       </div>
       <div class="lect-body">
-        
-        <div class="note na" style="margin: 16px 0;">
-          <span class="ni">💭</span>
-          <div>
-            <strong style="display:block;margin-bottom:4px;color:var(--amb)">Pregunta provocadora</strong>
-            <span style="font-size:13px;line-height:1.6">¿Es posible pensar conceptos completamente nuevos si no tenemos las palabras o los símbolos para escribirlos? ¿El lenguaje matemático solo *describe* ideas que ya existen en la cabeza, o la invención de nuevos símbolos es lo que *crea* la posibilidad de pensar cosas nuevas?</span>
-          </div>
-        </div>
+        <p>¿Por qué a Cardano y a Bombelli les costó tanto operar con raíces y potencias? Porque <strong>no tenían nuestras letras matemáticas</strong>. Toda el álgebra desde Babilonia hasta el Renacimiento era "retórica" (escrita en oraciones completas) o "sincopada" (con algunas abreviaturas). <span class="ref">(Boyer, 1986, p. 333)</span></p>
 
-        <p>Bombelli y Cardano lograron proezas increíbles, pero sufrieron "torturas mentales" porque no tenían el lenguaje adecuado. Toda el álgebra desde Babilonia hasta el Renacimiento era "retórica" (escrita en oraciones completas) o "sincopada" (con algunas abreviaturas). Las operaciones complejas se perdían en párrafos larguísimos. Los estudiantes no logran ver que la formalización que vendría con <strong>François Viète</strong> en 1591 fue la verdadera solución a las pesadillas de Bombelli: Viète inventó el lenguaje que permitió al álgebra independizarse para siempre de la geometría.</p>
-
-        <p>El salto monumental lo dio Viète al ser el primero en usar sistemáticamente letras para representar no solo incógnitas, sino también cantidades conocidas (coeficientes). Viète usaba <em>consonantes</em> para los parámetros fijos y <em>vocales</em> para las incógnitas.</p>
+        <p>El salto monumental lo dio el francés <strong>François Viète</strong> en 1591. Fue el primero en usar sistemáticamente letras para representar no solo incógnitas, sino también cantidades conocidas (coeficientes). Viète usaba <em>consonantes</em> para los parámetros fijos y <em>vocales</em> para las incógnitas.</p>
 
         <div class="note nb">
           <span class="ni">🔑</span>
@@ -406,21 +416,128 @@
   <div class="sec">
     <div class="sec-label"><span style="background:var(--nav)">⚙️ Taller de Traducción</span><hr></div>
     <div class="act-box" style="border-color:var(--nav)">
-      <div class="act-head" style="background:var(--nav)"><h3>Viajando en el tiempo matemático (~40 min)</h3></div>
+      <div class="act-head" style="background:var(--nav)"><h3>Viajando en el tiempo matemático (~42 min)</h3></div>
       <div class="act-body">
-        <p>Vamos a experimentar el "dolor de cabeza" de hacer matemática sin letras.</p>
+        <p>Vamos a experimentar el "dolor de cabeza" de hacer matemática sin letras. Se trabaja en parejas o tríos.</p>
         
-        <div class="step" style="border-color:var(--nav);background:var(--pale)">
-          <strong style="color:var(--nav)">Consigna en grupos:</strong>
-          <p>Acá tienen un problema escrito al estilo del álgebra retórica de Al-Juarismi (siglo IX). Su misión es traducirlo en tres etapas.</p>
-          <div style="background:#fff;border:1px solid var(--bd);border-radius:6px;padding:14px;margin:12px 0;font-family:Georgia,serif;font-style:italic;color:var(--neg)">
+        <div class="step" style="border-color:var(--nav);background:var(--pale);margin-bottom:14px">
+          <strong style="color:var(--nav)">El problema original (Al-Juarismi, s. IX):</strong>
+          <div style="background:#fff;border:1px solid var(--bd);border-radius:6px;padding:14px;margin:10px 0;font-family:Georgia,serif;font-style:italic;color:var(--neg)">
             "Si una cosa y diez dirhams son iguales a la cosa multiplicada por sí misma, ¿cuál es la cosa?"
           </div>
-          <ol style="font-size:13.5px;margin-left:20px;line-height:1.8">
-            <li><strong>Paso 1: Traducción al Estilo Viète (1591):</strong> Traduzcan la oración usando la vocal "A" para la incógnita ("la cosa") y la consonante "B" para el parámetro fijo (los diez dirhams). <em>Objetivo: Ver cómo las letras liberan a la matemática de los casos particulares, permitiendo fórmulas generales.</em></li>
-            <li><strong>Paso 2: Traducción al Estilo Descartes (1637):</strong> Traduzcan esa misma expresión a la notación de la escuela secundaria actual ($x$, números, exponentes y el signo de igual). <em>Objetivo: Reconocer que lo que hoy es "natural" fue un invento reciente.</em></li>
-            <li><strong>Paso 3: Resolución y análisis de la negatividad:</strong> Resuelvan la ecuación resultante ($x^2 = x + 10$). Es una ecuación cuadrática que arrojará una raíz positiva y una negativa. ¿Qué habría hecho Al-Juarismi con esa raíz negativa? ¿Qué hacemos nosotros hoy?</li>
-          </ol>
+        </div>
+
+        <div class="step" style="border-color:var(--nav);background:var(--pale);margin-bottom:14px">
+          <strong style="color:var(--nav)">Paso 1 — Estilo Viète (1591) · ~10 min</strong>
+          <p style="font-size:13px;margin:6px 0">Traduzcan la oración usando la regla de Viète: vocal <strong>A</strong> para "la cosa" incógnita, consonante <strong>B</strong> para los dirhams (constante).</p>
+          <div style="background:#fff;border:1px solid #d4d4d4;border-radius:6px;padding:10px;margin:8px 0;font-family:monospace;font-size:13px">
+            <strong>Ejemplo Viète:</strong> A más 10B igual A multiplicado por A<br>
+            O mejor: A + 10B = A·A
+          </div>
+          <p style="font-size:12px;color:#666;font-style:italic">¿Ven la diferencia? Todavía hay palabras "igual", "multiplicado", pero al menos usamos símbolos para las cantidades.</p>
+        </div>
+
+        <div class="step" style="border-color:var(--nav);background:var(--pale);margin-bottom:14px">
+          <strong style="color:var(--nav)">Paso 2 — Estilo Descartes (1637) · ~10 min</strong>
+          <p style="font-size:13px;margin:6px 0">Traduzcan a notación moderna: <strong>x</strong> para la incógnita, exponentes, signo = sin palabras.</p>
+          <div style="background:#fff;border:1px solid #d4d4d4;border-radius:6px;padding:10px;margin:8px 0;font-family:monospace;font-size:13px">
+            <strong>Ejemplo Descartes:</strong> x + 10 = x²<br>
+            O igualado a cero: x² - x - 10 = 0
+          </div>
+          <p style="font-size:12px;color:#666;font-style:italic">Observen: desapareció el lenguaje humano. Solo símbolos puros. ¿Qué ganamos? ¿Qué perdemos?</p>
+        </div>
+
+        <div class="step" style="border-color:var(--nav);background:var(--pale);margin-bottom:14px">
+          <strong style="color:var(--nav)">Paso 3 — Resolución y Reflexión Histórica · ~12 min</strong>
+          <p style="font-size:13px;margin:6px 0">Apliquen la fórmula de Bhaskara (o completar cuadrados).</p>
+          <div style="background:#fff;border:1px solid #d4d4d4;border-radius:6px;padding:10px;margin:8px 0;font-family:monospace;font-size:13px">
+            <strong>Soluciones:</strong><br>
+            $x = \frac{1 \pm \sqrt{1 + 40}}{2} = \frac{1 \pm \sqrt{41}}{2}$<br><br>
+            $x_1 = \frac{1 + \sqrt{41}}{2} \approx 3.70$ (real, válida)<br>
+            $x_2 = \frac{1 - \sqrt{41}}{2} \approx -2.70$ (negativa)
+          </div>
+          <p style="font-size:13px;margin-top:10px"><strong>Pregunta histórica:</strong> Ustedes son matemáticos del Renacimiento en 1500. Acaban de resolver la ecuación y obtienen una solución negativa. ¿Qué hacen?</p>
+          <ul style="font-size:13px;margin:8px 0 0 20px;line-height:1.6">
+            <li><strong>Opción A:</strong> "Rechazamos esta raíz. Los números negativos no son reales" (postura de Descartes).</li>
+            <li><strong>Opción B:</strong> "La aceptamos. En un problema práctico podría significar una deuda" (postura de Brahmagupta, 7 siglos antes).</li>
+            <li><strong>Opción C:</strong> "No sé qué hacer. Necesito más teoría" (postura de Cardano).</li>
+          </ul>
+          <p style="font-size:13px;margin-top:8px">Discutan en el grupo: ¿cuál era la práctica común en el Renacimiento? ¿Cuál sería la más "moderna" (la de Brahmagupta) y por qué?</p>
+
+        <!-- DEMOSTRACIÓN OCULTA — Ctrl+M para revelar -->
+        <div id="paso3-proof" style="display:none;background:#1A1A2E;color:#E0E0E0;border-radius:6px;border-left:4px solid var(--nav);padding:16px;margin:12px 0">
+          <p style="font-size:12px;font-weight:700;color:var(--nav);margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px">📐 Demostración Completa (Ctrl+M para ocultar)</p>
+          
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 1: La ecuación en forma estándar</strong></p>
+            <p style="margin:0;color:#FFD93D">x² - x - 10 = 0</p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 2: Identificar a, b, c para Bhaskara</strong></p>
+            <p style="margin:0;color:#FFD93D">a = 1, b = -1, c = -10</p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 3: Aplicar la fórmula de Bhaskara</strong></p>
+            <p style="margin:0;color:#FFD93D">$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 4: Calcular el discriminante</strong></p>
+            <p style="margin:0;color:#FFD93D">$b^2 - 4ac = (-1)^2 - 4(1)(-10) = 1 + 40 = 41$</p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 5: Sustituir en la fórmula</strong></p>
+            <p style="margin:0;color:#FFD93D">$x = \frac{-(-1) \pm \sqrt{41}}{2(1)} = \frac{1 \pm \sqrt{41}}{2}$</p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 6: Las dos soluciones (valores numéricos)</strong></p>
+            <p style="margin:0;color:#FFD93D">
+              $\sqrt{41} \approx 6.403$<br><br>
+              $x_1 = \frac{1 + 6.403}{2} = \frac{7.403}{2} \approx 3.70$ ✓ Positiva, válida
+            </p>
+          </div>
+
+          <div style="background:#2A2A3E;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong>Paso 7: La raíz negativa (el problema histórico)</strong></p>
+            <p style="margin:0;color:#FFD93D">
+              $x_2 = \frac{1 - 6.403}{2} = \frac{-5.403}{2} \approx -2.70$ ⚠️ Negativa
+            </p>
+          </div>
+
+          <div style="background:#3A2A2A;padding:12px;border-radius:4px;border-left:3px solid #D9534F;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
+            <p style="margin:0 0 10px 0"><strong style="color:#FFB3B3">Paso 8: Verificación (prueba las soluciones)</strong></p>
+            <p style="margin:0;color:#FFD9D9">
+              <strong>Para x₁ ≈ 3.70:</strong><br>
+              $(3.70)^2 - 3.70 - 10 = 13.69 - 3.70 - 10 ≈ 0$ ✓
+            </p>
+            <p style="margin:10px 0 0 0;color:#FFD9D9">
+              <strong>Para x₂ ≈ -2.70:</strong><br>
+              $(-2.70)^2 - (-2.70) - 10 = 7.29 + 2.70 - 10 ≈ 0$ ✓
+            </p>
+          </div>
+
+          <div style="background:#2A3A2A;padding:12px;border-radius:4px;border-left:3px solid #5CB85C;font-family:Georgia,serif;font-size:13px;line-height:1.8">
+            <p style="margin:0 0 10px 0;color:#B3FFB3"><strong>📌 Lo que la historia nos dice:</strong></p>
+            <ul style="margin:0;padding-left:20px;color:#B3FFB3">
+              <li><strong>Al-Juarismi (s. IX):</strong> Solo aceptaba x₁. Los negativos no existían.</li>
+              <li><strong>Brahmagupta (s. VII):</strong> Aceptaba x₂ como "una deuda" — contexto práctico.</li>
+              <li><strong>Descartes (s. XVII):</strong> Rechazaba x₂ como "raíz falsa" — solo lo "real" es positivo.</li>
+              <li><strong>Hoy (s. XXI):</strong> Ambas son válidas. El "conjunto solución" es {3.70, -2.70}.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+
+        <div class="note nb" style="margin-top:14px">
+          <span class="ni">💭</span>
+          <div>
+            <strong style="display:block;margin-bottom:4px;color:var(--nav)">Lo que el taller revela</strong>
+            <p style="font-size:13px;line-height:1.6">Bombelli podía operar con $\sqrt{-121}$ solo porque vivía en la era de Viète. Sin letras que manipular simbólicamente, sin una notación algebraica clara, habría estado atrapado redactando ecuaciones enteras en prosa. Las letras no fueron un lujo estético: fueron la clave que permitió que operaciones "imposibles" tuvieran sentido.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -460,15 +577,9 @@
         <div class="lect-body">
           <p>En la Clase 2 vimos cómo los pitagóricos descubrieron que $\sqrt{2}$ era "inconmensurable". No se podía escribir como una fracción $p/q$. Si imaginamos la recta formada solo por fracciones (racionales), la recta tiene "agujeros". Hay puntos donde debería haber un número, pero no hay nada.</p>
           
-          <p>El griego <strong>Eudoxo</strong> parcheó este problema de la inconmensurabilidad de manera magistral usando la geometría (sus ideas están en el Libro V de Euclides, con su famosa "teoría de las proporciones"). Pero este parche escondía una limitación severa: <em>dependía de dibujar segmentos</em>.</p>
-        
-          <div class="note nb" style="margin: 14px 0;">
-            <span class="ni">⚙️</span>
-            <div>
-              <strong style="display:block;margin-bottom:4px;color:var(--nav)">La crisis del Análisis en el siglo XIX</strong>
-              <span style="font-size:13px;line-height:1.6">En el siglo XIX, con la explosión del cálculo infinitesimal (límites, derivadas e integrales, que veremos en el Eje 3), los matemáticos como <strong>Karl Weierstrass</strong> se dieron cuenta de que no podían seguir fundamentando el rigor matemático en dibujos geométricos que engañan al ojo humano. Necesitaban definir el "continuo" (una recta sin agujeros) utilizando <strong>aritmética pura</strong>. Para fundamentar rigurosamente conceptos como el límite, no alcanzaba con decir "la línea mide $\sqrt{2}$ porque lo tracé con un compás". Tenían que redefinir el número irracional desde cero. <span class="ref">(Boyer, 1986, pp. 680–682)</span></span>
-            </div>
-          </div>
+          <p>El griego <strong>Eudoxo</strong> (408–355 a.C.) propuso una solución elegante: la <em>Teoría de Proporciones</em> (que aparece en el Libro V de los <em>Elementos</em> de Euclides). Eudoxo no "nombró" a $\sqrt{2}$ como un número; simplemente trabajó con <strong>razones geométricas</strong> entre magnitudes inconmensurables. Era un parche brillante, pero un parche al fin. <span class="ref">(Boyer, 1986, pp. 115–122)</span></p>
+
+          <p>Pero en el siglo XIX, cuando <strong>Karl Weierstrass</strong> y otros analistas necesitaban demostrar teoremas rigurosos sobre límites, series infinitas y continuidad, darse de bruces con dibujos y proporciones geométricas (la solución de Eudoxo) fue <strong>insuficiente</strong>. Weierstrass necesitaba <strong>definiciones puramente aritméticas</strong> de los números irracionales, sin apelar a la intuición geométrica. Euclides ya no alcanzaba. La geometría había sido superada como fundamento de la matemática. <span class="ref">(Boyer, 1986, pp. 680–682)</span></p>
 
           <h5 style="color:var(--grn)">El paseo de Richard Dedekind (1872)</h5>
           <p>La solución definitiva se le ocurrió a <strong>Richard Dedekind</strong> mientras vacacionaba en Suiza. En su obra <em>Continuidad y números irracionales</em> (1872), propuso una idea revolucionaria: <strong>la Cortadura</strong>.</p>
@@ -537,6 +648,17 @@
       </div>
     </div>
 
+    <!-- OBSERVACIÓN PEDAGÓGICA SOBRE QUÉ ES UN NÚMERO -->
+    <div class="sec">
+      <div class="note ng" style="background:var(--gcl);border-left:4px solid var(--grn);margin:14px 0">
+        <span class="ni">💡</span>
+        <div>
+          <strong style="display:block;margin-bottom:6px;color:var(--grn)">Lo profundo: ¿qué ES un número según Dedekind?</strong>
+          <p style="font-size:13px;line-height:1.7;color:var(--txt)">Noten lo revolucionario de lo que hizo Dedekind. Euclides decía: "Un número es una cantidad de unidades". Eudoxo decía: "Trabajamos con razones de magnitudes". Dedekind dijo algo completamente distinto: <strong>"Un número NO es un objeto, sino una relación — el acto mismo de partir un conjunto."</strong> La cortadura que define a $\sqrt{2}$ es $\sqrt{2}$. No hay un "objeto especial" que vive en algún lugar. Es la estructura. Es la brecha. Esta visión es típicamente moderna: un número no es "cosa", es <em>estructura relacional</em>. Esta idea abrirá la puerta, en el siglo XX, al álgebra moderna donde los "números" serán anillos, cuerpos, grupos — objetos algebraicos abstractos. <span class="ref">(Dedekind, 1872; Boyer, 1986, pp. 680–682)</span></p>
+        </div>
+      </div>
+    </div>
+
     <div class="srcs">
       <h5>Fuentes · Clase 11</h5>
       <p>Boyer, C. (1986). <em>Historia de la matemática.</em> Madrid: Alianza, pp. 680–682.</p>
@@ -563,7 +685,16 @@
         </div>
       </div>
       <div class="cb-obj" style="border-top-color:var(--nav)">
-        <p style="color:var(--nav)"><strong>Objetivo:</strong> Analizar la transposición didáctica de los conjuntos numéricos en los libros de texto de secundaria y reflexionar sobre la necesidad de los modelos empíricos a través del Registro de Cierre.</p>
+        <p style="color:var(--nav)"><strong>Objetivo:</strong> Cerrar el Eje 2 ("La expansión traumática del concepto de número") con una reflexión sobre cómo la historia resuelve el problema pedagógico de enseñar números. Analizar la transposición didáctica en textos de secundaria, y reflexionar sobre qué modelos empíricos son necesarios en cada etapa del aprendizaje.</p>
+      </div>
+    </div>
+
+    <!-- CONTEXTO DE CIERRE DEL EJE 2 -->
+    <div class="note nb" style="background:#F3F6F9;border-left:4px solid var(--nav);margin:14px 0">
+      <span class="ni">🔚</span>
+      <div>
+        <strong style="display:block;margin-bottom:6px;color:var(--nav)">Punto de cierre: con Dedekind, el Eje 2 llega a su fin</strong>
+        <p style="font-size:13px;line-height:1.7;color:var(--txt)">Recordemos el arco del Eje 2: comenzó en la Clase 2 con la crisis pitagórica ($\sqrt{2}$ inconmensurable). Luego vimos cómo Oriente operaba con negativos mediante varillas (Brahmagupta, s.VII) e imaginarios mediante cúbicas (Bombelli, 1572). El paso crucial fue el simbólismo algebraico (Viète/Descartes) que permitió operar con "lo imposible". Y finalmente, en esta Clase 11, llegamos a Dedekind (1872): <strong>una fundamentación aritmética pura, sin geometría, sin intuición visual.</strong> Con Dedekind, la expansión del concepto de número llega a su forma moderna. Los números ya no son "magnitudes" (euclidianos) ni "razones de magnitudes" (eudoxianos) ni "símbolos que manipulamos" (cartesianos). Son <strong>estructuras algebraicas</strong> — cuerpos, anillos, espacios vectoriales. El s.XX y s.XXI heredarán esta visión abstracta. Este es el cierre del Eje.</p>
       </div>
     </div>
 
@@ -585,25 +716,26 @@
       </div>
     </div>
 
-    <!-- REGISTRO DE CIERRE EJE 2 REFORZADO -->
+    <!-- REGISTRO DE CIERRE EJE 2 (TEXTUAL VIEJO C10) -->
     <div class="sec">
       <div class="sec-label"><span style="background:var(--vio)">📝 Registro de cierre</span><hr></div>
       <div class="registro" style="background:#F9F4FF;">
         <h3>📤 Registro Individual de Cierre del Eje 2</h3>
         <p style="font-size:13px;color:var(--txt);margin-bottom:12px;line-height:1.6">150–250 palabras. Se empieza en clase y se completa en el aula virtual.</p>
         <div class="reg-consigna">
-          <strong>Consigna de cierre con rigor histórico:</strong><br><br>
-          A partir de la crisis de los imaginarios (Cardano/Bombelli) y el agujero de los irracionales (crisis pitagórica vs. Dedekind), hemos visto que la historia de la matemática avanzó superando los límites de la intuición geométrica y empírica.<br><br>
-          Elegí <strong>uno</strong> de estos dos momentos de ruptura histórica (el paso de las raíces "imposibles" al plano de Gauss, o de la recta agujereada a la cortadura aritmética de Dedekind). Utilizando el concepto de <strong>obstáculo epistemológico</strong> de Brousseau, explicá:<br>
-          1. ¿Por qué fue históricamente necesario abandonar la representación empírica/geométrica para que ese concepto de número pudiera crecer?<br>
-          2. Como docente: ¿cómo deberíamos gestionar ese "salto a la abstracción" en la escuela secundaria actual para que el estudiante no lo viva como una imposición dogmática de fórmulas vacías?
+          <strong>Consigna — Reflexión crítica sobre modelos empíricos en la enseñanza:</strong><br><br>
+          A lo largo de este Eje 2, hemos visto un patrón: Brahmagupta (s.VII) operaba con "fortunas" y "deudas" sin teoría rigurosa. Bombelli (s.XVI) saltaba sobre $\sqrt{-121}$ sabiendo que funcionaba pero sin comprenderlo totalmente. Dedekind (1872) finalmente formalizó todo aritméticamente. <br><br>
+          <strong>Tu pregunta:</strong> En la enseñanza de secundaria, ¿debemos permitir que los estudiantes operen con modelos intuitivos (deuda/haber, termómetro, plano complejo como rotaciones) aunque sepamos que en algún punto van a fallar, SABIENDO que eventualmente llegarán a la formalización? <br><br>
+          <strong>Tu respuesta debe incluir obligatoriamente:</strong><br>
+          (a) <strong>Un ejemplo histórico específico y situado:</strong> No alcanza "los orientales aceptaban los negativos". Debe ser concreto: Brahmagupta en el Brahmasphutasiddhanta (628), o Bombelli en L'Algebra (1572), o Cardano en Ars Magna (1545), o Diofanto en Arithmetica (s.III). Con nombre, obra y fecha. <br>
+          (b) <strong>Cómo Brousseau explica tu posición:</strong> ¿Es un obstáculo epistemológico necesario en la pedagogía? ¿O es un obstáculo que debemos evitar? Usa el concepto de Brousseau no solo mencionado, sino aplicado en el argumento.
         </div>
         <div style="margin-bottom:10px">
           <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:5px">Criterios de evaluación:</strong>
           <ul style="font-size:13px;margin-left:16px;line-height:1.7">
-            <li>Elección clara de UN momento histórico y rigor en su descripción.</li>
-            <li>Obstáculo epistemológico de Brousseau aplicado lógicamente a la ruptura empírica $\to$ formal.</li>
-            <li>Propuesta o reflexión didáctica fundamentada y personal.</li>
+            <li>Ejemplo histórico específico y situado — con nombre, obra y fecha. No alcanza "los orientales aceptaron los negativos".</li>
+            <li>Obstáculo epistemológico de Brousseau aplicado en el argumento — no solo mencionado de paso.</li>
+            <li>Posición propia distinguible — "sostengo que..." en lugar de "se podría decir que..."</li>
           </ul>
         </div>
         <div class="reg-plazo">
@@ -684,7 +816,7 @@ document.addEventListener('keydown', (e) => {
     
     var visible = false;
     
-    // Cita oculta en C10 (Descartes)
+    // Demostración Vía C (ahora está en Clase 9 vieja, pero la cita oculta en C10)
     var quote = document.getElementById('descartes-quote');
     if (quote) {
         visible = quote.style.display !== 'none';
@@ -696,6 +828,13 @@ document.addEventListener('keydown', (e) => {
     if (dproof) {
         dproof.style.display = visible ? 'none' : 'block';
         if (!visible && window.MathJax) MathJax.typesetPromise([dproof]);
+    }
+
+    // Demostración Paso 3 (Resolución cuadrática) en C10
+    var p3proof = document.getElementById('paso3-proof');
+    if (p3proof) {
+        p3proof.style.display = visible ? 'none' : 'block';
+        if (!visible && window.MathJax) MathJax.typesetPromise([p3proof]);
     }
 
     var toast = document.createElement('div');
