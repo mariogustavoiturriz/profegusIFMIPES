@@ -8,6 +8,7 @@
   :root {
     --nav: #1B3A6B; --teal: #2E6DA4; --grn: #1A6B3A; --amb: #C85C00; 
     --vio: #4A1A7B; --gris: #F3F6F9; --bd: #C5D2DC; --txt: #2C3E50;
+    --red: #D9534F;
     --bco: #FFFFFF; --r: 12px;
   }
   
@@ -25,7 +26,7 @@
     color: var(--bco); 
     padding: 40px 20px; 
     text-align: center;
-    border-bottom: 6px solid var(--teal); 
+    border-bottom: 6px solid var(--vio); 
   }
   header h1 { font-size: 32px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
   header p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
@@ -57,7 +58,7 @@
   }
   
   .c-pasada { border-top-color: #4A6080; opacity: 0.85; }
-  .c-actual { border-top-color: var(--red); }
+  .c-actual { border-top-color: var(--vio); }
   .c-recurso { border-top-color: var(--amb); }
   .c-recurso-alt { border-top-color: #deff9a; }
   
@@ -70,7 +71,7 @@
     letter-spacing: 1px;
   }
   
-  .c-actual .clase-num { color: var(--red); }
+  .c-actual .clase-num { color: var(--vio); }
   .c-recurso .clase-num { color: var(--amb); }
   .c-recurso-alt .clase-num { color: #8B9D4F; }
   
@@ -99,12 +100,12 @@
     transition: background 0.2s;
   }
   
-  .c-actual .btn { background: var(--red); color: white; }
+  .c-actual .btn { background: var(--vio); color: white; }
   .c-recurso .btn { background: var(--amb); color: white; }
   .c-recurso-alt .btn { background: #1E293B; color: #deff9a; }
   
   .card:hover .btn { background: var(--nav); color: white; }
-  .c-actual:hover .btn { background: #b52b27; }
+  .c-actual:hover .btn { background: #301050; }
   .c-recurso:hover .btn { background: #a64c00; }
   .c-recurso-alt:hover .btn { background: #0f172a; }
 
@@ -135,11 +136,11 @@
   <h2 class="section-title">Semana Actual · Eje 2</h2>
   <div class="grid">
     
-    <a href="javascript:void(0)" class="card c-actual locked" id="card-sem5">
-      <div class="clase-num">Semana 5 • Clases 8, 9 y 10</div>
-      <h2>El nacimiento del álgebra</h2>
-      <p>La ruptura formal y los números que "no existen". El pragmatismo oriental, la Edad de Oro Islámica y el límite empírico en la regla de los signos.</p>
-      <div class="btn" id="btn-sem5">🔒 Se abre mañana a las 15:20 hs</div>
+    <a href="javascript:void(0)" class="card c-actual locked" id="card-sem6">
+      <div class="clase-num">Semana 6 • Clases 10, 11 y 12</div>
+      <h2>El mapa completo de los números</h2>
+      <p>El fin de la pureza geométrica y el triunfo del álgebra. Los imaginarios (Cardano/Bombelli), el salto a la aritmética pura con las cortaduras de Dedekind y la transposición en los manuales.</p>
+      <div class="btn" id="btn-sem6">🔒 Se abre el lunes a las 15:20 hs</div>
     </a>
 
   </div>
@@ -147,7 +148,14 @@
   <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
 
-    <a href="Clase567.html" class="card c-pasada">
+    <a href="semana_5.html" class="card c-pasada">
+      <div class="clase-num">Semana 5 • Clases 8 y 9</div>
+      <h2>El nacimiento del álgebra</h2>
+      <p>La ruptura formal y los números que "no existen". El pragmatismo oriental, el método Fangcheng y el límite empírico en la enseñanza de la regla de los signos.</p>
+      <div class="btn">Repasar Semana 5</div>
+    </a>
+
+    <a href="Clase_5_6_7_8_9.html" class="card c-pasada">
       <div class="clase-num">Semanas 3 y 4 • Clases 5, 6 y 7</div>
       <h2>El fin de una era</h2>
       <p>Arquímedes y el descubrimiento físico. Apolonio de Perga, la irracionable eficacia y el ocaso de la escuela de Alejandría con Hipatia.</p>
@@ -193,33 +201,34 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Mes 3 = Abril en JavaScript
-    const targetDate = new Date(2026, 3, 27, 15, 20, 0); 
+    // Mes 4 = Mayo en JavaScript (los meses empiezan en 0)
+    // Se desbloquea el lunes 4 de mayo de 2026 a las 15:20 hs.
+    const targetDate = new Date(2026, 4, 4, 15, 20, 0); 
     const now = new Date();
-    const cardSem5 = document.getElementById("card-sem5");
-    const btnSem5 = document.getElementById("btn-sem5");
+    const cardSem6 = document.getElementById("card-sem6");
+    const btnSem6 = document.getElementById("btn-sem6");
     
     // Desbloqueo automático por fecha y hora
     if (now >= targetDate) {
-      cardSem5.href = "Clase8910.html";
-      cardSem5.classList.remove("locked");
-      btnSem5.innerHTML = "Abrir Clases de la Semana";
+      cardSem6.href = "semana_6.html";
+      cardSem6.classList.remove("locked");
+      btnSem6.innerHTML = "Abrir Clases de la Semana";
     }
   });
 
   // --- SECRETO DEL PROFE: DESBLOQUEAR TODO (Ctrl + Shift + U) ---
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
-      const cardSem5 = document.getElementById("card-sem5");
-      const btnSem5 = document.getElementById("btn-sem5");
+      const cardSem6 = document.getElementById("card-sem6");
+      const btnSem6 = document.getElementById("btn-sem6");
       
-      if (cardSem5 && cardSem5.classList.contains("locked")) {
-        cardSem5.href = "Clase8910.html";
-        cardSem5.classList.remove("locked");
-        btnSem5.innerHTML = "🔓 Abrir Clases de la Semana";
+      if (cardSem6 && cardSem6.classList.contains("locked")) {
+        cardSem6.href = "semana_6.html";
+        cardSem6.classList.remove("locked");
+        btnSem6.innerHTML = "🔓 Abrir Clases de la Semana";
         
         const toast = document.createElement('div');
-        toast.innerHTML = '🔓 Semanas desbloqueadas manualmente';
+        toast.innerHTML = '🔓 Semana desbloqueada manualmente';
         toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--grn); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15);';
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
