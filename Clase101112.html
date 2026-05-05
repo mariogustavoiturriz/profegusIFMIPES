@@ -574,13 +574,21 @@
           <h3 style="color:var(--grn)">Un problema de 2000 años</h3>
         </div>
         <div class="lect-body">
-          <p><strong>Un patrón en la historia:</strong> Cuando los matemáticos enfrentan lo "imposible", encuentran formas creativas para operarlo antes de entenderlo. En la Clase 10 vimos cómo <strong>Tartaglia</strong> resolvió la cúbica (que Cardano le robó y publicó en Ars Magna, 1545) utilizando fórmulas que involucraban raíces de números negativos. Pero la historia es más dramatizada. <span class="ref">(Boyer, 1986, pp. 295–297)</span></p>
+          <p><strong>Un patrón en la historia:</strong> Cuando los matemáticos enfrentan lo "imposible", encuentran formas creativas para operarlo antes de entenderlo. Ayer vimos cómo la obra de Cardano y Bombelli lidió con las raíces de números negativos. Pero detrás de la publicación del <em>Ars Magna</em> (1545) se esconde una de las historias de plagio más dramáticas del Renacimiento, protagonizada por el verdadero descubridor de la solución a la ecuación cúbica: <strong>Tartaglia</strong>. <span class="ref">(Boyer, 1986, pp. 295–297)</span></p>
 
           <p><strong>Las competencias matemáticas del Renacimiento:</strong> En el siglo XVI, antes de que existieran revistas científicas, los matemáticos demostraban su maestría en <em>competencias públicas</em>. Se intercambiaban listas de problemas y ganaba quien resolvía más. <strong>Scipione del Ferro</strong> (1465–1526) había descubierto la solución a la cúbica $x^3 + px = q$, pero la guardó como secreto de Estado matemático. Su alumno <strong>Antonio Fior</strong> heredó el método. En <strong>1535, Tartaglia (1500–1557)</strong> —matemático con cicatriz de guerra, de donde viene su apoyo "tartamudo"— redescubrió independientemente la solución. Desafió a Fior públicamente en Milán: <strong>30 problemas cúbicos vs. 30 problemas arbitrarios. Tartaglia ganó 30-0.</strong> <span class="ref">(Boyer, 1986, pp. 295–297; Kline, 1972, pp. 256–260)</span></p>
 
           <p>Cardano, maestro matemático en Milán, se enteró del triunfo. Bajo promesa de "confesión" (juramento de secreto sagrado), <strong>extrajo la fórmula de Tartaglia en 1539.</strong> Años después, descubriendo que del Ferro ya la había resuelto, Cardano decidió publicar en Ars Magna sin mencionar a Tartaglia. La traición fue notoria. Tartaglia reclamó públicamente durante décadas. Hoy decimos "fórmula de Cardano" cuando debería ser "fórmula de Tartaglia/del Ferro". <span class="ref">(Boyer, 1986, pp. 295–297)</span></p>
 
           <p>Casi 350 años después, Dedekind haría lo mismo con los irracionales: no definiría $\sqrt{2}$ como un "objeto", sino como <strong>el acto de partir un conjunto.</strong> Esta clase cuenta cómo. <span class="ref">(Dedekind, 1872; Boyer, 1986, pp. 680–682)</span></p>
+
+          <div class="note nb" style="margin:14px 0">
+            <span class="ni">💡</span>
+            <div>
+              <strong style="display:block;margin-bottom:4px;color:var(--nav)">¿De dónde sale el discriminante ($\Delta$)?</strong>
+              <span style="font-size:13px;line-height:1.6">Para resolver $x^3 + px = q$, Tartaglia usó una sustitución magistral ($x = u - v$) que transforma la cúbica en una <em>cuadrática escondida</em>. La expresión $\Delta = \frac{q^2}{4} + \frac{p^3}{27}$ que calcula el simulador es literalmente el discriminante (el $b^2 - 4ac$) de esa cuadrática. Si $\Delta$ da negativo, la fórmula exige calcular la raíz cuadrada de un negativo, forzando la irrupción de los números imaginarios para hallar una solución que, como verán en la gráfica, <strong>¡es un punto real perfectamente visible!</strong></span>
+            </div>
+          </div>
 
           <!-- SIMULADOR TARTAGLIA -->
           <div style="background:var(--gcl);border-radius:8px;padding:16px;margin:16px 0;border-left:4px solid var(--grn)">
@@ -615,7 +623,20 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- SEGUNDA PARTE LECTURA: LA RECTA ROTA (NUEVO BLOQUE SEPARADO) -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">📖 El segundo salto histórico</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:var(--gcl);border-color:var(--grn)">
+          <h3 style="color:var(--grn)">La recta rota: De la crisis pitagórica a Dedekind</h3>
+        </div>
+        <div class="lect-body">
+          <p>Dejamos la crisis de las ecuaciones cúbicas y volvemos a la recta numérica para encarar el segundo gran problema de esta clase.</p>
+          
           <p>En la Clase 2 vimos cómo los pitagóricos descubrieron que $\sqrt{2}$ era "inconmensurable". No se podía escribir como una fracción $p/q$. Si imaginamos la recta formada solo por fracciones (racionales), la recta tiene "agujeros". Hay puntos donde debería haber un número, pero no hay nada.</p>
           
           <p>El griego <strong>Eudoxo</strong> (408–355 a.C.) propuso una solución elegante: la <em>Teoría de Proporciones</em> (que aparece en el Libro V de los <em>Elementos</em> de Euclides). Eudoxo no "nombró" a $\sqrt{2}$ como un número; simplemente trabajó con <strong>razones geométricas</strong> entre magnitudes inconmensurables. Era un parche brillante, pero un parche al fin. <span class="ref">(Boyer, 1986, pp. 115–122)</span></p>
