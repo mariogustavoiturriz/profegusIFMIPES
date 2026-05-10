@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -50,42 +50,48 @@
 <div class="container">
   <h2 class="section-title">Clases de la Semana</h2>
   <div class="grid">
-    <!-- SEMANA 7 — Desbloqueo programado para el Lunes 11 de Mayo -->
+    <!-- SEMANA 7 — Desbloqueo programado para el Lunes 11 de Mayo a las 08:00 -->
     <a href="Semana7_Clases13_14_15.html" class="card c-futura" 
        data-unlock="2026-05-11T08:00:00-03:00" 
-       data-label="Entrar al Eje 3: El Infinito">
+       data-label="Entrar al Eje 3: El Cálculo y el Infinito">
       <span class="badge-date">Lunes 11 de Mayo</span>
       <h2>Semana 7: El Infinito y el Cálculo</h2>
-      <p>Clases 13, 14 y 15. Apertura del Eje 3. El horror infiniti de Zenón, la heurística del s. XVII y la guerra Newton vs Leibniz.</p>
-      <div class="btn">Entrar al Eje 3: El Infinito</div>
+      <p>Clases 13, 14 y 15. Apertura del Eje 3. El horror infiniti de Zenón, la heurística de Cavalieri y Fermat, y el nacimiento formal con Newton y Leibniz.</p>
+      <div class="btn">Entrar al Eje 3</div>
     </a>
   </div>
 
   <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
-    <a href="Clase101112.html" class="card c-pasada">
+    <a href="clase101112.html" class="card c-pasada">
       <span class="badge-date">Lunes 04 de Mayo</span>
-      <h2>Semana 6: El mapa de los números</h2>
+      <h2>Semana 6: El mapa completo de los números</h2>
       <p>Cierre del Eje 2. Imaginarios, irracionales y la fundamentación del continuo con Dedekind.</p>
       <div class="btn">Repasar Semana 6</div>
     </a>
     <a href="clase8910.html" class="card c-pasada">
       <span class="badge-date">Lunes 27 de Abril</span>
       <h2>Semana 5: El nacimiento del álgebra</h2>
-      <p>Mundos empíricos y la ruptura formal de la regla de los signos.</p>
+      <p>La ruptura formal y los números que "no existen". Método Fangcheng y obstáculos epistemológicos.</p>
       <div class="btn">Repasar Semana 5</div>
     </a>
     <a href="clase567.html" class="card c-pasada">
       <span class="badge-date">Lunes 13 de Abril</span>
       <h2>Semanas 3 y 4: El fin de una era</h2>
-      <p>Arquímedes, Apolonio y el ocaso de Alejandría.</p>
+      <p>Arquímedes, Apolonio y el ocaso de Alejandría. La sistematización de la demostración.</p>
       <div class="btn">Repasar Semanas 3 y 4</div>
     </a>
     <a href="Clase234.html" class="card c-pasada">
       <span class="badge-date">Lunes 06 de Abril</span>
       <h2>Semana 2: Del Número al Argumento</h2>
-      <p>La crisis de la inconmensurabilidad y Euclides.</p>
+      <p>La crisis pitagórica y los Elementos de Euclides.</p>
       <div class="btn">Repasar Semana 2</div>
+    </a>
+    <a href="clase_1.html" class="card c-pasada">
+      <span class="badge-date">Martes 31 de Marzo</span>
+      <h2>Semana 1: Desnaturalizar la Matemática</h2>
+      <p>Mundos empíricos: Egipto y Babilonia.</p>
+      <div class="btn">Repasar Semana 1</div>
     </a>
   </div>
 </div>
@@ -109,9 +115,7 @@
         btn.classList.add('locked');
         const h = String(unlockTime.getHours()).padStart(2,'0');
         const m = String(unlockTime.getMinutes()).padStart(2,'0');
-        const d = String(unlockTime.getDate()).padStart(2,'0');
-        const mo = String(unlockTime.getMonth()+1).padStart(2,'0');
-        btn.textContent = `🔒 Se habilita el ${d}/${mo} a las ${h}:${m}`;
+        btn.textContent = `🔒 Se habilita a las ${h}:${m}`;
         card.classList.remove('c-actual');
         card.classList.add('c-futura');
       } else {
