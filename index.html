@@ -1,233 +1,152 @@
-<!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Historia y Fundamentos de la Matemática</title>
-<style>
-  :root {
-    --nav: #1A2C3A; --teal: #00949A; --amb: #D4873A; 
-    --vio: #3D5A99; --gris: #F3F6F9; --bd: #C5D2DC; --txt: #2C3E50;
-    --bco: #FFFFFF; --r: 12px; --tp: #8E24AA;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-  body { background: #EEF3F7; color: var(--txt); line-height: 1.6; font-size: 18px; padding-bottom: 50px; }
-  header { background: var(--nav); color: var(--bco); padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--amb); }
-  header h1 { font-size: 34px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-  header p { opacity: 0.9; font-size: 20px; }
-  .container { width: 95%; max-width: 1200px; margin: 40px auto; }
-  .section-title { font-size: 26px; color: var(--nav); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--bd); text-transform: uppercase; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
-
-  .card {
-    background: var(--bco); border-radius: var(--r); padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08); border-top: 6px solid var(--bd);
-    display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none; color: inherit;
-  }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,.1); }
-
-  .c-pasada { border-top-color: #4A6080; background: #FAFBFC; }
-  .c-actual  { border-top-color: var(--teal); background: #F0FAFA; }
-  .c-futura  { border-top-color: var(--amb); }
-
-  /* ── Tarjeta terminal para el desafío extra ── */
-  .c-extra   {
-    border-top-color: #00FF41;
-    background: #060D0A;
-    color: #00FF41;
-    box-shadow: 0 4px 20px rgba(0,255,65,0.15);
-  }
-  .c-extra:hover { box-shadow: 0 8px 28px rgba(0,255,65,0.3); }
-  .c-extra h2    { color: #00FF41; font-family: 'Courier New', monospace; line-height: 1.4; }
-  .c-extra p     { color: #00AA2A; font-family: 'Courier New', monospace; font-size: 15px; }
-  .c-extra .badge-date { color: #00882A; font-family: 'Courier New', monospace; }
-
-  .badge-date { font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block; text-transform: uppercase; color: #666; }
-  .c-actual .badge-date { color: var(--teal); }
-
-  .card h2 { font-size: 22px; color: var(--nav); margin-bottom: 10px; line-height: 1.3; }
-  .card p  { font-size: 16px; color: #555; flex-grow: 1; margin-bottom: 20px; }
-
-  .btn { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; color: white; }
-  .c-pasada .btn { background: #4A6080; }
-  .c-pasada .btn:hover { background: #2C3E50; }
-  .c-actual .btn  { background: var(--teal); }
-  .c-actual .btn:hover { background: #007B80; }
-  .c-futura .btn  { background: var(--amb); }
-  
-  .c-extra .btn {
-    background: transparent; color: #00FF41;
-    border: 2px solid #00FF41;
-    font-family: 'Courier New', monospace;
-    box-shadow: 0 0 8px rgba(0,255,65,0.2);
-  }
-  .c-extra .btn:hover { background: #00FF41; color: #000; box-shadow: 0 0 18px rgba(0,255,65,0.5); }
-
-  /* Estilos para el bloqueo por tiempo */
-  .locked { background: #E0E0E0 !important; color: #888 !important; border: 1px solid #ccc !important; cursor: not-allowed; box-shadow: none !important; }
-  .card-locked { pointer-events: none; opacity: 0.8; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia de la Matemática · IPESfa</title>
+  <style>
+    :root {
+      --nav: #1A2C3A; --teal: #00949A; --amb: #D4873A; 
+      --vio: #3D5A99; --gris: #F3F6F9; --bd: #C5D2DC; --txt: #2C3E50;
+      --bco: #FFFFFF; --r: 12px; --tp: #8E24AA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #EEF3F7; color: var(--txt); line-height: 1.6; font-size: 18px; padding-bottom: 50px; }
+    header { background: var(--nav); color: var(--bco); padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--amb); }
+    header h1 { font-size: 34px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+    header p { opacity: 0.9; font-size: 20px; }
+    .container { width: 95%; max-width: 1200px; margin: 40px auto; }
+    .section-title { font-size: 26px; color: var(--nav); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--bd); text-transform: uppercase; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+    .card {
+      background: var(--bco); border-radius: var(--r); padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08); border-top: 6px solid var(--bd);
+      display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,.1); }
+    .c-pasada { border-top-color: #4A6080; background: #FAFBFC; }
+    .c-actual { border-top-color: var(--teal); background: #F0FAFA; }
+    .c-futura { border-top-color: var(--amb); }
+    .badge-date { font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block; text-transform: uppercase; color: #666; }
+    .c-actual .badge-date { color: var(--teal); }
+    .card h2 { font-size: 22px; color: var(--nav); margin-bottom: 10px; line-height: 1.3; }
+    .card p { font-size: 16px; color: #555; flex-grow: 1; margin-bottom: 20px; }
+    .btn { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; color: white; }
+    .c-pasada .btn { background: #4A6080; }
+    .c-pasada .btn:hover { background: #2C3E50; }
+    .c-actual .btn { background: var(--teal); }
+    .c-actual .btn:hover { background: #007B80; }
+    .c-futura .btn { background: var(--amb); }
+    .locked { background: #E0E0E0 !important; color: #888 !important; border: 1px solid #ccc !important; cursor: not-allowed; box-shadow: none !important; }
+    .card-locked { pointer-events: none; opacity: 0.8; }
+  </style>
 </head>
 <body>
-
 <header>
   <h1>Historia de la Matemática</h1>
-  <p>Profesorado de Matemática 4.° Año | IPESfa "Florentino Ameghino"</p>
+  <p>Profesorado de Matemática · 4.° Año | IPESfa "Florentino Ameghino"</p>
 </header>
-
 <div class="container">
-
   <h2 class="section-title">Clases de la Semana</h2>
   <div class="grid">
-
-    <!-- SEMANA 6 (Lunes) — habilita a las 15:20 -->
-    <a href="Clase101112.html" class="card c-futura"
-       data-unlock="2026-05-04T15:20:00-03:00"
-       data-label="Abrir Clases de la Semana">
-      <span class="badge-date">Lunes 04 de Mayo</span>
-      <h2>Semana 6: El mapa de los números</h2>
-      <p>Clases 10, 11 y 12. El fin de la pureza geométrica y el triunfo del álgebra. Imaginarios (Cardano/Bombelli) y cortaduras de Dedekind.</p>
-      <div class="btn">Abrir Clase</div>
+    <!-- SEMANA 7 — Desbloqueo programado para el Lunes 11 de Mayo -->
+    <a href="Semana7_Clases13_14_15.html" class="card c-futura" 
+       data-unlock="2026-05-11T08:00:00-03:00" 
+       data-label="Entrar al Eje 3: El Infinito">
+      <span class="badge-date">Lunes 11 de Mayo</span>
+      <h2>Semana 7: El Infinito y el Cálculo</h2>
+      <p>Clases 13, 14 y 15. Apertura del Eje 3. El horror infiniti de Zenón, la heurística del s. XVII y la guerra Newton vs Leibniz.</p>
+      <div class="btn">Entrar al Eje 3: El Infinito</div>
     </a>
-
   </div>
 
   <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
-
-    <!-- SEMANA 5 -->
-    <a href="Clase8910.html" class="card c-pasada">
+    <a href="Clase101112.html" class="card c-pasada">
+      <span class="badge-date">Lunes 04 de Mayo</span>
+      <h2>Semana 6: El mapa de los números</h2>
+      <p>Cierre del Eje 2. Imaginarios, irracionales y la fundamentación del continuo con Dedekind.</p>
+      <div class="btn">Repasar Semana 6</div>
+    </a>
+    <a href="clase8910.html" class="card c-pasada">
       <span class="badge-date">Lunes 27 de Abril</span>
       <h2>Semana 5: El nacimiento del álgebra</h2>
-      <p>Clases 8 y 9. La ruptura formal y los números que "no existen". El pragmatismo oriental y el límite empírico en la escuela.</p>
+      <p>Mundos empíricos y la ruptura formal de la regla de los signos.</p>
       <div class="btn">Repasar Semana 5</div>
     </a>
-
-    <!-- SEMANA 3 y 4 -->
-    <a href="Clase567.html" class="card c-pasada">
+    <a href="clase567.html" class="card c-pasada">
       <span class="badge-date">Lunes 13 de Abril</span>
       <h2>Semanas 3 y 4: El fin de una era</h2>
-      <p>Clases 5, 6 y 7. Arquímedes y el descubrimiento físico. Apolonio de Perga y el ocaso de Alejandría con Hipatia.</p>
+      <p>Arquímedes, Apolonio y el ocaso de Alejandría.</p>
       <div class="btn">Repasar Semanas 3 y 4</div>
     </a>
-
-    <!-- SEMANA 2 -->
     <a href="Clase234.html" class="card c-pasada">
       <span class="badge-date">Lunes 06 de Abril</span>
       <h2>Semana 2: Del Número al Argumento</h2>
-      <p>Clases 2, 3 y 4. La crisis pitagórica por la inconmensurabilidad y la sistematización geométrica de Euclides.</p>
+      <p>La crisis de la inconmensurabilidad y Euclides.</p>
       <div class="btn">Repasar Semana 2</div>
     </a>
-
-    <!-- SEMANA 1 -->
-    <a href="clase_1.html" class="card c-pasada">
-      <span class="badge-date">Martes 31 de Marzo</span>
-      <h2>Semana 1: Desnaturalizar la Matemática</h2>
-      <p>Clases 0 y 1. Mundos empíricos sin demostración: Papiro de Rhind, Babilonia y el hueso de Ishango.</p>
-      <div class="btn">Repasar Semana 1</div>
-    </a>
-
-    <!-- RECURSOS EXTRA -->
-    <a href="euclides_recursos.html" class="card c-extra">
-      <span class="badge-date">&gt;_ BIBLIOTECA DIGITAL</span>
-      <h2>&gt;_ LOS ELEMENTOS DE EUCLIDES</h2>
-      <p>Repositorio con los tomos de la Editorial Gredos digitalizados y el libro cromático de Oliver Byrne.</p>
-      <div class="btn">&gt;_ ABRIR_BIBLIOTECA</div>
-    </a>
-
-    <a href="clase_7_linea_tiempo.html" class="card c-pasada" style="border-top-color: var(--tp);">
-      <span class="badge-date" style="color: var(--tp);">Recurso Dinámico</span>
-      <h2>El viaje del saber griego</h2>
-      <p>Presentación colaborativa. De la época de oro de Alejandría al reingreso de los textos a Europa por Toledo.</p>
-      <div class="btn" style="background: #FAF5FF; color: var(--tp); border: 2px solid var(--tp);">Abrir Línea de Tiempo</div>
-    </a>
-
   </div>
 </div>
 
 <script>
   let modoProfe = false;
-
   function lockClassesWithTime() {
-    if (modoProfe) return; // Si el profe desbloqueó todo, ignoramos la hora
-
+    if (modoProfe) return;
     const now = new Date();
     document.querySelectorAll('.card[data-unlock]').forEach(card => {
       const unlockTime = new Date(card.getAttribute('data-unlock'));
-      const btn        = card.querySelector('.btn');
-      const label      = card.getAttribute('data-label') || 'Abrir';
-      const href       = card.getAttribute('data-href-orig') || card.getAttribute('href');
-
-      // Guardar href original la primera vez
+      const btn = card.querySelector('.btn');
+      const label = card.getAttribute('data-label') || 'Abrir';
+      const href = card.getAttribute('data-href-orig') || card.getAttribute('href');
       if (!card.getAttribute('data-href-orig') && href && href !== '#') {
         card.setAttribute('data-href-orig', href);
       }
-
       if (now < unlockTime) {
-        // Aún no es la hora, bloqueamos
         card.classList.add('card-locked');
         card.removeAttribute('href');
         btn.classList.add('locked');
         const h = String(unlockTime.getHours()).padStart(2,'0');
         const m = String(unlockTime.getMinutes()).padStart(2,'0');
-        btn.textContent = `🔒 Se habilita a las ${h}:${m}`;
-        
-        // Volvemos a color de clase "futura"
+        const d = String(unlockTime.getDate()).padStart(2,'0');
+        const mo = String(unlockTime.getMonth()+1).padStart(2,'0');
+        btn.textContent = `🔒 Se habilita el ${d}/${mo} a las ${h}:${m}`;
         card.classList.remove('c-actual');
         card.classList.add('c-futura');
       } else {
-        // Ya es la hora, desbloqueamos
         card.classList.remove('card-locked');
         const orig = card.getAttribute('data-href-orig');
         if (orig) card.setAttribute('href', orig);
         btn.classList.remove('locked');
         btn.innerHTML = label;
-        
-        // Ponemos el color de clase "actual"
         card.classList.remove('c-futura');
         card.classList.add('c-actual');
       }
     });
   }
-
-  // Atajo de teclado oculto: Ctrl + Shift + U
   document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
-      modoProfe = !modoProfe; // Activar o desactivar
-      
+      modoProfe = !modoProfe;
       if (modoProfe) {
         document.querySelectorAll('.card[data-unlock]').forEach(card => {
           const btn = card.querySelector('.btn');
           const orig = card.getAttribute('data-href-orig');
-          
           card.classList.remove('card-locked');
           if (orig) card.setAttribute('href', orig);
-          
           btn.classList.remove('locked');
-          btn.innerHTML = '🔓 Desbloqueada (Modo Profe)';
-          btn.style.background = '#8E24AA'; // Violeta para indicar que forzaste el acceso
-          btn.style.color = 'white';
-          btn.style.borderColor = '#8E24AA';
-          
+          btn.innerHTML = '🔓 Acceso Forzado (Modo Profe)';
+          btn.style.background = '#8E24AA';
           card.classList.remove('c-futura');
           card.classList.add('c-actual');
         });
       } else {
-        // Si vuelve a tocar el atajo, le sacamos los estilos en línea y volvemos a evaluar el reloj
-        document.querySelectorAll('.card[data-unlock] .btn').forEach(btn => {
-            btn.style.background = '';
-            btn.style.color = '';
-            btn.style.borderColor = '';
-        });
         lockClassesWithTime();
       }
     }
   });
-
-  window.onload   = lockClassesWithTime;
-  setInterval(lockClassesWithTime, 30000); // Chequea cada 30 segundos
+  window.onload = lockClassesWithTime;
+  setInterval(lockClassesWithTime, 30000);
 </script>
-
 </body>
 </html>
