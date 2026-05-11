@@ -50,7 +50,6 @@
 <div class="container">
   <h2 class="section-title">Clases de la Semana</h2>
   <div class="grid">
-    <!-- SEMANA 7 — Desbloqueo programado para el Lunes 11 de Mayo a las 08:00 -->
     <a href="Clase131415.html" class="card c-futura" 
        data-unlock="2026-05-11T08:00:00-03:00" 
        data-label="Entrar al Eje 3: El Cálculo y el Infinito">
@@ -63,19 +62,19 @@
 
   <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
-    <a href="clase101112.html" class="card c-pasada">
+    <a href="Clase101112.html" class="card c-pasada">
       <span class="badge-date">Lunes 04 de Mayo</span>
       <h2>Semana 6: El mapa completo de los números</h2>
       <p>Cierre del Eje 2. Imaginarios, irracionales y la fundamentación del continuo con Dedekind.</p>
       <div class="btn">Repasar Semana 6</div>
     </a>
-    <a href="clase8910.html" class="card c-pasada">
+    <a href="Clase8910.html" class="card c-pasada">
       <span class="badge-date">Lunes 27 de Abril</span>
       <h2>Semana 5: El nacimiento del álgebra</h2>
       <p>La ruptura formal y los números que "no existen". Método Fangcheng y obstáculos epistemológicos.</p>
       <div class="btn">Repasar Semana 5</div>
     </a>
-    <a href="clase567.html" class="card c-pasada">
+    <a href="Clase567.html" class="card c-pasada">
       <span class="badge-date">Lunes 13 de Abril</span>
       <h2>Semanas 3 y 4: El fin de una era</h2>
       <p>Arquímedes, Apolonio y el ocaso de Alejandría. La sistematización de la demostración.</p>
@@ -94,6 +93,17 @@
       <div class="btn">Repasar Semana 1</div>
     </a>
   </div>
+
+  <h2 class="section-title">Recursos de Cátedra</h2>
+  <div class="grid">
+    <a href="https://mariogustavoiturriz.github.io/profegusPECTIPES/repositorio_herramientas.html" target="_blank" class="card" style="border-top-color: var(--tp); background: #F8F4FA;">
+      <span class="badge-date" style="color: var(--tp);">Material Permanente</span>
+      <h2 style="color: var(--tp);">Caja de Herramientas</h2>
+      <p>Repositorio centralizado con todos los simuladores, aplicaciones y recursos TIC utilizados durante la cursada para la transposición didáctica.</p>
+      <div class="btn" style="background: var(--tp);">Abrir Repositorio ↗</div>
+    </a>
+  </div>
+
 </div>
 
 <script>
@@ -144,6 +154,10 @@
           card.classList.remove('c-futura');
           card.classList.add('c-actual');
         });
+        const t = document.createElement('div');
+        t.textContent = '🔓 Modo Profe: Clases desbloqueadas temporalmente';
+        t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#8E24AA;color:white;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2)';
+        document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
       } else {
         lockClassesWithTime();
       }
