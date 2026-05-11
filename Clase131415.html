@@ -219,12 +219,14 @@
       <div class="act-head" style="background:var(--amb)"><h3>Las Paradojas en Acción</h3></div>
       <div class="act-body">
         <h5 style="color:var(--amb);">Paradoja 1: La Dicotomía</h5>
+        <p style="font-size:13px; color:var(--txt); margin-bottom: 8px;">Antes de usar el simulador, pongámonos en contexto. Zenón, defendiendo la filosofía estática de su maestro Parménides (quien afirmaba que el cambio era una pura ilusión), planteó este escenario para demostrar que el movimiento es un absurdo lógico. Argumentaba que, si querés ir de un punto A a un punto B, primero tenés que llegar a la mitad del camino. Pero para llegar a esa mitad, tenés que recorrer la mitad de esa mitad (un cuarto), y así ad infinitum. Como es imposible completar una infinidad de pasos en un tiempo finito, el movimiento ni siquiera puede empezar.</p>
         <p style="font-size:13px; font-style:italic;">"Para llegar de A a B, debés cruzar infinitas mitades. Como son infinitas, nunca llegás."</p>
         <div class="sim-container">
           <div class="sim-canvas-box"><canvas id="zenoCanvas" width="300" height="100"></canvas></div>
           <div class="sim-controls"><input type="range" id="zeno-slider" class="sim-slider" min="1" max="12" value="1"><div class="sim-math">Distancia: <span id="zeno-math-sum">0.5</span><br>Resta: <span id="zeno-math-rem">0.5</span></div></div>
         </div>
         <h5 style="color:var(--amb); margin-top:25px;">Paradoja 2: Aquiles y la Tortuga</h5>
+        <p style="font-size:13px; color:var(--txt); margin-bottom: 8px;">Esta es, sin duda, la paradoja más famosa de la antigüedad. Imaginate una carrera entre Aquiles, el héroe griego mítico conocido como "el de los pies ligeros", y una tortuga. Como Aquiles es mucho más rápido, le da una ventaja inicial a su rival. Zenón sostiene que cuando Aquiles llega al punto donde estaba la tortuga, ella ya avanzó un poquito. Cuando el héroe cubre esa nueva distancia, la tortuga avanzó otro poco. Así, Aquiles siempre se está acercando, pero bajo la lupa del infinito actual, la tortuga siempre estará una fracción de distancia adelante.</p>
         <div class="sim-container">
           <div class="sim-canvas-box"><canvas id="achillesCanvas" width="300" height="100"></canvas></div>
           <div class="sim-controls"><input type="range" id="ach-slider" class="sim-slider" min="0" max="8" value="0"><div class="sim-math">Brecha: <span id="ach-gap">100.00</span></div></div>
@@ -241,15 +243,7 @@
           </div>
           <div style="background:#4A4A62;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
             <p style="margin:0 0 10px 0"><strong style="color:#fff">Paso 2: Aplicar fórmula del límite de la suma</strong></p>
-            <p style="margin:0;color:#FFD93D">Para una razón $|r| < 1$, la suma infinita es: $S_{\infty} = \frac{a_1}{1 - r}$</p>
-            <p style="margin:0;color:#FFD93D">Aquí el primer término es $a_1 = \frac{1}{2}$ y la razón geométrica es $r = \frac{1}{2}$</p>
-          </div>
-          <div style="background:#4A4A62;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
-            <p style="margin:0 0 10px 0"><strong style="color:#fff">Paso 3: Calcular el resultado final</strong></p>
-            <p style="margin:0;color:#FFD93D">$S_{\infty} = \frac{\frac{1}{2}}{1 - \frac{1}{2}} = \frac{\frac{1}{2}}{\frac{1}{2}} = 1$</p>
-          </div>
-          <div style="background:#4A5C4A;padding:12px;border-radius:4px;border-left:3px solid #5CB85C;font-family:Georgia,serif;font-size:13px;line-height:1.8">
-            <p style="margin:0;color:#FFFFFF"><strong>Conclusión "escolar":</strong> "Mirá, Zenón, la suma de infinitos términos cada vez más pequeños no da infinito, converge exactamente a 1. ¡El corredor sí llega a la meta!"</p>
+            <p style="margin:0;color:#FFD93D">Para una razón $|r| < 1$, la suma infinita es: $S_{\infty} = \frac{a_1}{1 - r} = \frac{1/2}{1 - 1/2} = 1$</p>
           </div>
         </div>
         <div class="step" style="border-color:var(--red);background:#FDF2F2">
@@ -257,16 +251,16 @@
           <p style="font-size: 13px; color: var(--txt);"><strong>¿Por qué esa fórmula moderna NO refuta el argumento filosófico de Zenón?</strong> (Pista ontológica: calcular hacia dónde <em>tiende</em> una suma infinita matemática, ¿es lo mismo que <em>completar físicamente</em> una infinidad de pasos uno tras otro en la realidad?).</p>
         </div>
         <div class="step" style="border-color:var(--amb);background:#FFF8F0; border-width: 2px;">
-          <strong style="color:var(--amb)">🔥 Misión 3 — Producción con IA: La Nueva Paradoja de Elea</strong>
-          <p style="font-size: 13.5px; color: var(--neg);">Para apropiarse del concepto de <em>infinito actual vs. potencial</em>, van a diseñar una <strong>microsecuencia didáctica</strong> basada en la creación de una "fábula moderna" al estilo de Zenón. El objetivo es que sus futuros alumnos de secundaria experimenten la parálisis lógica del infinito.</p>
+          <strong style="color:var(--amb)">🔥 Misión 3 — Producción con IA: Las otras paradojas de Elea</strong>
+          <p style="font-size: 13.5px; color: var(--neg);">Zenón formuló más de 40 paradojas, aunque nos llegaron pocas. <strong>Paso 1:</strong> Investiguen rápidamente de qué tratan la <em>Paradoja de la Flecha</em> o la <em>Paradoja del Estadio</em>. <strong>Paso 2:</strong> Para apropiarse del concepto de <em>infinito actual vs. potencial</em>, van a diseñar una <strong>microsecuencia didáctica</strong> basada en la creación de una "fábula moderna" inspirada en alguna de esas otras paradojas o inventando una nueva.</p>
           <p style="font-size: 13.5px; color: var(--neg); margin-top: 8px;">Abran una IA Generativa (ChatGPT, Gemini, Claude) y utilicen la técnica de <em>Prompt Engineering</em>. Copien, adapten y ejecuten el siguiente prompt estructurado:</p>
           <div style="background:#fff; border:1px dashed var(--amb); padding:12px; border-radius:6px; margin: 10px 0; font-family: monospace; font-size: 12.5px; color: var(--txt); line-height: 1.5;">
             <strong>[ROL]</strong> Actuá como un experto en didáctica de la matemática y escritor de relatos históricos.<br><br>
-            <strong>[CONTEXTO]</strong> Estamos estudiando el "horror infiniti" de los griegos y las paradojas de Zenón (Dicotomía, Aquiles y la Tortuga) que demuestran que, si el espacio es infinitamente divisible, el movimiento es imposible.<br><br>
-            <strong>[ACTIVIDAD]</strong> Escribí una microsecuencia de 15 minutos que incluya una FÁBULA NUEVA y original (protagonizada por personajes cotidianos o estudiantes) donde intentar hacer una tarea simple se vuelve imposible debido a la división infinita del tiempo o la distancia. Luego, agregá 2 preguntas de debate para la clase.<br><br>
+            <strong>[CONTEXTO]</strong> Estamos estudiando el "horror infiniti" de los griegos y las paradojas de Zenón (específicamente la de la Flecha en vuelo o la del Estadio) que demuestran las contradicciones lógicas del espacio y el tiempo continuos o discretos.<br><br>
+            <strong>[ACTIVIDAD]</strong> Escribí una microsecuencia de 15 minutos que incluya una FÁBULA NUEVA y original (protagonizada por personajes cotidianos o estudiantes de secundaria) inspirada en la paradoja elegida, donde una tarea cotidiana resulta lógicamente imposible. Luego, agregá 2 preguntas de debate para la clase.<br><br>
             <strong>[DESTINATARIOS]</strong> Estudiantes de 6.° año de escuela secundaria (17 años). El tono debe ser atrapante, un poco irónico, que genere "desesperación lógica".
           </div>
-          <p style="font-size: 13.5px; color: var(--neg); margin-top: 8px;"><strong>Su tarea docente:</strong> Lean lo que genera la IA, corrijan las "alucinaciones", ajusten la pertinencia pedagógica y entreguen el texto final depurado. Esta será su primera herramienta para enseñar el concepto de límite.</p>
+          <p style="font-size: 13.5px; color: var(--neg); margin-top: 8px;"><strong>Su tarea docente:</strong> Lean lo que genera la IA, corrijan las "alucinaciones", ajusten la pertinencia pedagógica y entreguen el texto final depurado. Esta será su primera herramienta para debatir el infinito en clase.</p>
         </div>
       </div>
     </div>
@@ -278,8 +272,8 @@
       <div class="act-head" style="background:var(--med)"><h3>Los dos problemas que esperaban respuesta</h3></div>
       <div class="act-body">
         <p>Después de Aristóteles, la matemática se paralizó. El rigor exigió evitar el infinito a toda costa. Pero la realidad del Renacimiento (Kepler, Galileo, Descartes) empezó a presionar: necesitaban resolver dos problemas físicos concretos:</p>
-        <div class="problema-card"><h4>① El Problema de la Tangente (Derivada)</h4><p>Dada una curva cualquiera, encontrar la <strong>recta tangente</strong> en un punto. Esencial para calcular: la velocidad instantánea de un proyectil o la dirección de la luz refractada.</p></div>
-        <div class="problema-card"><h4>② El Problema del Área (Integral)</h4><p>Dada una curva, encontrar el <strong>área bajo ella</strong>. Esencial para: calcular el trabajo realizado por una fuerza variable o el espacio recorrido con velocidad cambiante.</p></div>
+        <div class="problema-card"><h4>① El Problema de la Tangente (Derivada)</h4><p>Dada una curva cualquiera, encontrar la <strong>recta tangente</strong> en un punto.</p></div>
+        <div class="problema-card"><h4>② El Problema del Área (Integral)</h4><p>Dada una curva, encontrar el <strong>área bajo ella</strong>.</p></div>
         <p style="margin-top:15px; font-size:13px; font-weight:bold; color:var(--med);">Mañana (Clase 14) veremos cómo Cavalieri y Fermat decidieron ensuciarse las manos y atacar estos dos problemas violando el rigor griego.</p>
       </div>
     </div>
@@ -329,7 +323,7 @@
       <div class="lect">
         <div class="lect-head" style="background:var(--vcl);border-color:var(--vio)"><h3 style="color:var(--vio)">Ataque al problema de la tangente</h3></div>
         <div class="lect-body">
-          <p>Al mismo tiempo que Cavalieri trabajaba en Bolonia, en Toulouse <strong>Pierre de Fermat</strong> (1607-1665) —el "príncipe de los aficionados", un abogado que hacía matemática los fines de semana— atacaba el problema de la tangente con una idea genial.</p>
+          <p>Al mismo tiempo que Cavalieri trabajaba en Bolonia, en Toulouse <strong>Pierre de Fermat</strong> (1607-1665) atacaba el problema de la tangente con una idea genial.</p>
           <p>Si tengo una curva $y = f(x)$ y quiero la tangente en el punto $(x, f(x))$, tomo un segundo punto cercano $(x+E, f(x+E))$ donde $E$ es <strong>"una cantidad muy pequeña"</strong>. La pendiente de la secante entre ambos puntos es:</p>
           <p style="text-align:center;font-size:15px;margin:15px 0">$\text{pendiente} = \dfrac{f(x+E) - f(x)}{E}$</p>
           <p>El truco: <strong>tras simplificar la expresión, hace $E = 0$ y obtiene la pendiente de la tangente</strong>. A esto lo llamó "método de adigualdad" (<em>adaequalitas</em>): tratar dos cantidades como casi iguales, para luego declarar a $E$ insignificante.</p>
@@ -363,10 +357,6 @@
               <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="100">
               <div id="fermat-math-box" class="sim-math"><div id="fermat-formula"></div><div id="fermat-conclusion"></div></div>
             </div>
-          </div>
-          <div class="note nv" style="margin-top:15px">
-            <span class="ni">🤔</span>
-            <div><strong style="color:var(--vio)">Contradicción Lógica</strong><p style="font-size:13px">Fermat asume que E no es cero para dividir, pero luego decreta que E es cero para obtener la tangente. Un salto de fe heurístico que funcionará durante 150 años.</p></div>
           </div>
         </div>
       </div>
@@ -420,20 +410,12 @@
               <h4>🇬🇧 Isaac Newton (1643-1727)</h4>
               <p><strong>Enfoque físico.</strong> Una curva es la trayectoria de un punto en movimiento. La pendiente es la <em>velocidad</em>; el área, la <em>distancia recorrida</em>.</p>
               <p><strong>Vocabulario:</strong> "fluentes" y "fluxiones". Anota con un punto sobre la letra: $\dot{x}$, $\dot{y}$.</p>
-              <p><strong>Cronología:</strong> Desarrolla el cálculo entre 1665-1666 durante el cierre de Cambridge por la peste. <strong>No publica</strong>.</p>
             </div>
             <div class="disputa-col leibniz">
               <h4>🇩🇪 Gottfried W. Leibniz (1646-1716)</h4>
               <p><strong>Enfoque algebraico.</strong> Una curva es una sucesión de incrementos infinitesimales. La pendiente, un cociente de diferenciales; el área, una suma.</p>
               <p><strong>Vocabulario:</strong> "diferenciales" ($dx$, $dy$) e "integrales" ($\int$). Es la notación que usamos hoy.</p>
-              <p><strong>Cronología:</strong> Trabaja entre 1673-1676. <strong>Publica primero</strong>, en 1684 en las <em>Acta Eruditorum</em>.</p>
             </div>
-          </div>
-          <h5 style="color:var(--nav);margin-top:20px">La disputa: ¿quién plagió a quién?</h5>
-          <p>Como Leibniz publicó antes pero Newton había trabajado antes, surgió una guerra de prioridad de décadas. En 1712, la <strong>Royal Society de Londres</strong> —presidida por el propio Newton— constituyó una comisión "imparcial". El veredicto, escrito en gran parte por Newton mismo, acusó a Leibniz de plagio. Hoy se acepta que <strong>ambos desarrollaron el cálculo de forma independiente</strong>. La amargura hizo que durante un siglo Inglaterra (con notación poco práctica) se atrasara respecto del continente europeo. <span style="font-size:13px;color:var(--txt)">(Boyer, 1986, pp. 437-460)</span></p>
-          <div class="note nb" style="margin-top:15px">
-            <span class="ni">💡</span>
-            <div><strong style="color:var(--med);display:block;margin-bottom:4px">El Teorema Fundamental — lo que ambos descubrieron</strong><span style="font-size:13px;line-height:1.6">Si $F(x) = \int_a^x f(t)\,dt$, entonces $F'(x) = f(x)$.<br>Traducido: <em>el área acumulada bajo una curva es la "antiderivada" de la curva</em>. Calcular áreas y calcular tangentes son dos caras de la misma moneda. Esta es la idea que cambió la matemática para siempre.</span></div>
           </div>
         </div>
       </div>
@@ -444,38 +426,13 @@
       <div class="lect">
         <div class="lect-head" style="background:#FDF2F2;border-color:var(--red)"><h3 style="color:var(--red)">Berkeley y los "fantasmas de cantidades desvanecidas" (1734)</h3></div>
         <div class="lect-body">
-          <p>El cálculo de Newton y Leibniz funcionaba. Resolvía problemas que la matemática griega no podía siquiera plantear. Pero su fundamento lógico era, suavemente dicho, <strong>un desastre</strong>. ¿Qué es exactamente un infinitesimal? ¿Es cero, o no es cero? Si dividimos por él, no puede ser cero. Si lo descartamos al final, sí lo es. La contradicción que Fermat había escondido seguía ahí, ahora multiplicada por toda una teoría.</p>
-          <p>En 1734, el obispo irlandés <strong>George Berkeley</strong> (1685-1753), filósofo y crítico mordaz, publicó <em>The Analyst, or A Discourse Addressed to an Infidel Mathematician</em>. El "matemático infiel" al que se dirigía era el astrónomo Edmond Halley, que se había burlado de la teología. Berkeley contraatacó atacando la lógica del cálculo:</p>
+          <p>El cálculo de Newton y Leibniz funcionaba, pero su fundamento lógico era un desastre. ¿Qué es exactamente un infinitesimal? ¿Es cero, o no es cero?</p>
           <div class="cita-hist" style="border-left-color:var(--red);">
             <div class="cita-label" style="background:var(--red); color:#fff">George Berkeley — The Analyst, 1734</div>
-            <p><em>"¿Y qué son estas fluxiones? Las velocidades de incrementos evanescentes. ¿Y qué son estos incrementos evanescentes? No son cantidades finitas, ni cantidades infinitamente pequeñas, ni siquiera nada. ¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?"</em></p>
+            <p><em>"¿Y qué son estas fluxiones? Las velocidades de incrementos evanescentes. ¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?"</em></p>
             <p class="cita-autor">— George Berkeley, <em>The Analyst</em>, §35, 1734.</p>
           </div>
-          <p>El golpe fue devastador. Berkeley no era matemático, pero su argumento era lógicamente impecable: <strong>el cálculo era una técnica que daba resultados correctos partiendo de premisas contradictorias</strong>. Según Klimovsky, Berkeley demostró que el cálculo funcionaba por una compensación de errores. La matemática estuvo "herida" de muerte en sus bases por un siglo. <span style="font-size:13px;color:var(--txt)">(Klimovsky y Boido, 2005, pp. 89-95)</span></p>
-          <div class="note na">
-            <span class="ni">⏳</span>
-            <div><strong style="color:var(--amb);display:block;margin-bottom:4px">El problema que resolveremos en Semana 8</strong><span style="font-size:13px;line-height:1.6">La respuesta a Berkeley tomó <strong>más de 100 años</strong>. Cauchy (1821) y Weierstrass (1860s) reemplazaron el infinitesimal por un concepto riguroso: el <strong>límite</strong>, con su definición $\epsilon-\delta$. Eso es lo que abordaremos la próxima semana, cerrando el Eje 3.</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sec">
-      <div class="sec-label"><span style="background:var(--med)">📝 Taller de Diseño Didáctico</span><hr></div>
-      <div class="act-box" style="border-color:var(--med)">
-        <div class="act-head" style="background:var(--med)"><h3>Introducir el límite en 6.° año sin reproducir el "salto de fe"</h3></div>
-        <div class="act-body">
-          <p style="margin-bottom: 15px; font-size: 13.5px; color: var(--neg);">Trabajo en parejas. Diseñen la <strong>apertura</strong> de una clase sobre "Introducción al Límite" para alumnos del último año de secundaria. Tomen como base la tensión histórica que vimos en estas tres clases. <strong>Yves Chevallard</strong> advierte que al enseñar Límite, la escuela aplica una <em>descontextualización</em> brutal. El alumno opera algoritmos sin conocer la "Guerra del Cálculo". Su tarea es evitar esa despersonalización.</p>
-          <div class="step" style="border-color:var(--med);background:var(--pale)">
-            <strong style="color:var(--nav)">Condiciones innegociables</strong>
-            <ul style="font-size: 13px; color: var(--txt); line-height: 1.6; margin-left: 20px; margin-top: 5px;">
-              <li>No arrancar con fórmulas algorítmicas (factorear, $\epsilon-\delta$).</li>
-              <li>Partir de un problema real (Zenón, la velocidad instantánea, el área bajo una parábola).</li>
-              <li>Usar al menos una TIC: Desmos o GeoGebra para que los alumnos vean el "acercamiento" sin llegar (infinito potencial).</li>
-              <li>Hacer alguna referencia histórica explícita (Cavalieri, Fermat, Newton o Leibniz).</li>
-            </ul>
-          </div>
-          <p style="font-size: 12.5px; color: #666; font-style: italic; margin-top: 10px;">Extensión: máximo 250 palabras. Lo leerán en el cierre.</p>
+          <p>Berkeley demostró que el cálculo funcionaba por una compensación de errores. La matemática estuvo "herida" de muerte en sus bases por un siglo. <span style="font-size:13px;color:var(--txt)">(Klimovsky y Boido, 2005, pp. 89-95)</span></p>
         </div>
       </div>
     </div>
@@ -487,39 +444,18 @@
         <p style="font-size: 13.5px; color: var(--neg); margin-bottom: 12px;"><strong>Reflexión escrita (150-250 palabras):</strong><br><em>"Funciona, pero no se entiende: la tensión entre eficacia operativa y rigor lógico"</em></p>
         <div class="reg-consigna" style="border-left-color:var(--amb); background: #fff;">
           <strong>Consigna:</strong>
-          <p style="margin-top: 10px; font-size: 13px; color: var(--txt); line-height: 1.6;">Durante 150 años (de Cavalieri en 1635 a Cauchy en 1821), el cálculo funcionó sin fundamentación lógica clara. Newton y Leibniz operaban con infinitesimales que eran cero y no-cero a la vez. Berkeley los llamó "fantasmas". Pero los resultados eran correctos y permitieron construir la física moderna.<br><br>
-          <strong>Como docente de secundaria, analizá esta tensión:</strong><br>
-          <strong>(a)</strong> ¿Qué priorizás al enseñar el concepto de límite por primera vez: la <em>intuición utilitaria</em> (Cavalieri, Newton — que funciona pero "miente") o el <em>rigor formal</em> ($\epsilon-\delta$ — que es honesto pero bloquea)?<br>
-          <strong>(b)</strong> Fundamentá tu respuesta citando explícitamente a <strong>Brousseau</strong> (obstáculo epistemológico) o <strong>Chevallard</strong> (transposición didáctica).<br>
-          <strong>(c)</strong> Hacé al menos una referencia histórica situada (nombre + obra + año).</p>
+          <p style="margin-top: 10px; font-size: 13px; color: var(--txt); line-height: 1.6;">Como docente de secundaria, analizá esta tensión:<br>
+          <strong>(a)</strong> ¿Qué priorizás al enseñar el concepto de límite por primera vez: la <em>intuición utilitaria</em> (Newton) o el <em>rigor formal</em> (Cauchy)?<br>
+          <strong>(b)</strong> Fundamentá tu respuesta citando a <strong>Brousseau</strong> o <strong>Chevallard</strong>.<br>
+          <strong>(c)</strong> Hacé al menos una referencia histórica situada.</p>
         </div>
         <div class="reg-plazo"><span style="font-size:19px">⏰</span><span>Plazo: <strong>Miércoles 23:59 hs</strong> en la plataforma virtual.</span></div>
       </div>
     </div>
 
-    <div class="sec">
-      <div class="sec-label"><span style="background:var(--grn)">📅 Cierre — La Gran Línea</span><hr></div>
-      <div class="act-box" style="border-color:var(--grn)">
-        <div class="act-head" style="background:var(--grn)"><h3>Últimos nodos del Eje 3 (parte 1)</h3></div>
-        <div class="act-body">
-          <p>Para cerrar la semana, terminen de cargar en el Genially los nodos restantes:</p>
-          <div style="background: var(--gris); padding: 18px; border-radius: 6px; border: 1px solid var(--bd); margin-top:10px">
-            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 5 — Newton (1666) y Leibniz (1684)</strong><br><span style="color: var(--txt); font-size: 13px;">El nacimiento del cálculo. Dos enfoques, una sola idea: el Teorema Fundamental.</span></div>
-            <div style="margin-bottom: 0;"><strong style="color: var(--nav); font-size: 14px;">NODO 6 — Berkeley (1734)</strong><br><span style="color: var(--txt); font-size: 13px;">Los "fantasmas de cantidades desvanecidas". La crítica filosófica que dejó al cálculo sin fundamentos por más de un siglo.</span></div>
-          </div>
-          <p style="margin-top:14px;font-size:13px;color:var(--txt);font-style:italic">La próxima semana (Semana 8) cerramos el Eje 3 con Cauchy y Weierstrass: la respuesta rigurosa a Berkeley.</p>
-        </div>
-      </div>
-    </div>
-
     <div class="srcs">
       <h5>Bibliografía / Fuentes (Clase 15)</h5>
-      <p>Berkeley, G. (1734). <em>The Analyst</em>. Londres.</p>
-      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 437-490.</p>
-      <p>Brousseau, G. (1983). <em>Los obstáculos epistemológicos y los problemas en matemáticas</em>. RDM, 4(2).</p>
-      <p>Chevallard, Y. (1997). <em>La transposición didáctica</em>. Buenos Aires: Aique.</p>
-      <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 89-95.</p>
-      <p>Mankiewicz, R. (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós, pp. 156-172.</p>
+      <p>Berkeley, G. (1734). <em>The Analyst</em>. Londres. · Boyer, C. (1986). <em>Historia de la matemática</em>. · Chevallard, Y. (1997). <em>La transposición didáctica</em>. · Klimovsky, G. y Boido, G. (2005).</p>
     </div>
   </div>
 </div>
@@ -619,8 +555,24 @@ function initAchillesSim() {
     let posA = 0, posT = 100;
     for(let i=1; i<=n; i++) { let gap = posT - posA; posA = posT; posT += (gap/2); }
     let sc = 280 / 200.0;
-    ctx.fillStyle = '#1A6B3A'; ctx.fillRect(10 + posT*sc - 8, 65, 16, 12);
-    ctx.fillStyle = '#2E6DA4'; ctx.fillRect(10 + posA*sc - 6, 50, 12, 27);
+    
+    ctx.font = '24px Arial';
+    ctx.textAlign = 'center';
+    
+    // Tortuga espejada para que mire a la derecha
+    ctx.save();
+    ctx.translate(10 + posT*sc, 78);
+    ctx.scale(-1, 1);
+    ctx.fillText('🐢', 0, 0);
+    ctx.restore();
+    
+    // Aquiles espejado para que mire a la derecha
+    ctx.save();
+    ctx.translate(10 + posA*sc, 78);
+    ctx.scale(-1, 1);
+    ctx.fillText('🏃', 0, 0);
+    ctx.restore();
+    
     document.getElementById('ach-gap').innerText = (posT - posA).toFixed(2);
   }
   slider.oninput = draw; draw();
