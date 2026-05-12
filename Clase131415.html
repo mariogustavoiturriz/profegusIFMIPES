@@ -345,7 +345,7 @@
           <!-- ── EJEMPLO OCULTO — Ctrl+V para mostrar ── -->
           <div style="position:relative; margin-bottom:9px;">
             <div class="hidden-hint">
-              <span>🔒</span> Resolución oculta — <strong>Ctrl+V</strong> para mostrar/ocultar
+              <span>🔒</span> Resolución oculta — <strong>...</strong> para mostrar/ocultar
             </div>
             <div id="fermat-ejemplo" style="display:none; border-radius:6px; padding:11px 15px; border-left:3px solid var(--vio); background:var(--vcl);">
               <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:4px">Ejemplo histórico: la tangente a $y = x^2$</strong>
@@ -370,20 +370,46 @@
     <div class="sec">
       <div class="sec-label"><span style="background:var(--vio)">🖥️ Laboratorio Visual</span><hr></div>
       <div class="act-box" style="border-color:var(--vio)">
-        <div class="act-head" style="background:var(--vio)"><h3>Fermat en acción: visualizar el "pecado"</h3></div>
+        <div class="act-head" style="background:var(--vio)"><h3>Fermat en acción: la secante que se convierte en tangente</h3></div>
         <div class="act-body">
-          <p style="font-size:13px">Movamos el deslizador para variar el valor de $E$. Cuando $E$ es grande, la recta roja (secante) está lejos de la tangente real. A medida que $E$ se acerca a cero, la secante se vuelve tangente. Pero <strong>en el límite $E = 0$, la fórmula no se puede calcular</strong>: aparece $0/0$. Ese es el fantasma.</p>
-          <div class="sim-container">
-            <div class="sim-canvas-box"><canvas id="fermatCanvas" width="250" height="200"></canvas></div>
-            <div class="sim-controls">
-              <label>Valor de E (incremento): <span id="fermat-e-val">1.0</span></label>
-              <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="100">
-              <div id="fermat-math-box" class="sim-math"><div id="fermat-formula"></div><div id="fermat-conclusion"></div></div>
+          <p style="font-size:13px;margin-bottom:14px">El punto <strong style="color:#1A6B3A">P = (1, 1)</strong> está fijo sobre $y = x^2$. El punto <strong style="color:#D9534F">Q = (1+E, (1+E)²)</strong> se mueve según el valor de $E$. La recta <span style="color:#D9534F;font-weight:700">roja</span> pasa por P y Q (secante). La recta <span style="color:#1A6B3A;font-weight:700">verde</span> es la tangente real en P. Arrastrá el deslizador hacia la izquierda y observá qué pasa cuando $E \to 0$.</p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+
+            <!-- Canvas -->
+            <div style="flex:1;min-width:280px;background:#FAFBFC;border:1px solid var(--bd);border-radius:8px;padding:8px;text-align:center;">
+              <canvas id="fermatCanvas" width="380" height="280" style="max-width:100%;border-radius:4px;"></canvas>
+            </div>
+
+            <!-- Panel derecho -->
+            <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:12px;">
+
+              <div style="background:var(--vcl);border:1px solid var(--vio);border-radius:8px;padding:14px;">
+                <label style="font-size:12px;font-weight:700;color:var(--vio);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:8px">Valor de E</label>
+                <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="160" style="margin:0 0 8px 0">
+                <div style="text-align:center;font-size:28px;font-weight:900;color:var(--vio);font-family:Georgia,serif;" id="fermat-e-val">1.60</div>
+              </div>
+
+              <div id="fermat-estado" style="border-radius:8px;padding:14px;border:2px solid var(--grn);background:var(--gcl);">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--grn)">Estado lógico</div>
+                <div id="fermat-legal" style="font-size:13px;color:var(--neg);line-height:1.6;"></div>
+              </div>
+
+              <div style="background:var(--gris);border-radius:8px;padding:14px;border:1px solid var(--bd);">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--nav)">Cálculo de la pendiente</div>
+                <div id="fermat-formula" style="font-family:Georgia,serif;font-size:13px;color:var(--neg);line-height:1.9;"></div>
+                <div id="fermat-conclusion" style="font-size:12px;color:var(--txt);margin-top:6px;font-style:italic;border-top:1px solid var(--bd);padding-top:6px;"></div>
+              </div>
+
             </div>
           </div>
-          <div class="note nv" style="margin-top:15px">
-            <span class="ni">🤔</span>
-            <div><strong style="color:var(--vio)">Contradicción Lógica</strong><p style="font-size:13px">Fermat asume que E no es cero para dividir, pero luego decreta que E es cero para obtener la tangente. Un salto de fe heurístico que funcionará durante 150 años.</p></div>
+
+          <div class="note nv" style="margin-top:16px">
+            <span class="ni">👻</span>
+            <div>
+              <strong style="color:var(--vio)">El fantasma aparece en $E = 0$</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Cuando $E$ es distinto de cero, dividir es legal. Pero si $E = 0$, la fórmula da $\frac{0}{0}$: indeterminado. Fermat "salta" ese momento — declara que la pendiente es 2 y descarta el problema. Berkeley, en 1734, llamará a ese salto <em>"los fantasmas de cantidades desvanecidas"</em>.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -394,12 +420,12 @@
       <div class="act-box" style="border-color:var(--grn)">
         <div class="act-head" style="background:var(--grn)"><h3>Volcado de nodos en Genially</h3></div>
         <div class="act-body">
-          <p style="margin-bottom: 15px;">Aprovechamos los últimos minutos para abrir el nuevo tramo en el Genially colectivo. Dejen plasmados los primeros nodos del Eje 3:</p>
-          <div style="background: var(--gris); padding: 18px; border-radius: 6px; border: 1px solid var(--bd);">
-            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 1 — Zenón de Elea (s. V a.C.)</strong><br><span style="color: var(--txt); font-size: 13px;">Las paradojas. El infinito entra en escena y paraliza la matemática del movimiento.</span></div>
-            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 2 — Aristóteles (s. IV a.C.)</strong><br><span style="color: var(--txt); font-size: 13px;">Infinito potencial sí, infinito actual no. Dogma durante dos milenios.</span></div>
-            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 3 — Cavalieri (1635)</strong><br><span style="color: var(--txt); font-size: 13px;">Los indivisibles. El área como "suma de infinitas líneas". La heurística vence al rigor.</span></div>
-            <div style="margin-bottom: 0;"><strong style="color: var(--nav); font-size: 14px;">NODO 4 — Fermat (1636)</strong><br><span style="color: var(--txt); font-size: 13px;">El método de adigualdad. Dividir por $E$ y luego hacerlo cero. Contradicción operativa.</span></div>
+          <p style="margin-bottom:15px;">Aprovechamos los últimos minutos para abrir el nuevo tramo en el Genially colectivo. Dejen plasmados los primeros nodos del Eje 3:</p>
+          <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd);">
+            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 1 — Zenón de Elea (s. V a.C.)</strong><br><span style="color:var(--txt);font-size:13px;">Las paradojas. El infinito entra en escena y paraliza la matemática del movimiento.</span></div>
+            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 2 — Aristóteles (s. IV a.C.)</strong><br><span style="color:var(--txt);font-size:13px;">Infinito potencial sí, infinito actual no. Dogma durante dos milenios.</span></div>
+            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 3 — Cavalieri (1635)</strong><br><span style="color:var(--txt);font-size:13px;">Los indivisibles. El área como "suma de infinitas líneas". La heurística vence al rigor.</span></div>
+            <div style="margin-bottom:0;"><strong style="color:var(--nav);font-size:14px;">NODO 4 — Fermat (1636)</strong><br><span style="color:var(--txt);font-size:13px;">El método de adigualdad. Dividir por $E$ y luego hacerlo cero. Contradicción operativa.</span></div>
           </div>
           <p style="margin-top:14px;font-size:13px;font-style:italic;color:var(--txt)">Mañana sumamos los nodos finales: Newton, Leibniz y Berkeley.</p>
         </div>
@@ -670,36 +696,159 @@ function initAchillesSim() {
   slider.oninput=draw; draw();
 }
 
-/* ── Simulador Fermat — secante/tangente ── */
 function initFermatSim() {
   const canvas = document.getElementById('fermatCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   const slider = document.getElementById('fermat-slider');
+
+  const W = 380, H = 280;
+  canvas.width = W; canvas.height = H;
+
+  // Sistema de coordenadas: origen en (60, 240), 80px por unidad
+  const ox = 60, oy = 240, sc = 80;
+
+  function toC(x, y) { return [ox + x*sc, oy - y*sc]; }
+
   function draw() {
-    let e=slider.value/100;
-    document.getElementById('fermat-e-val').innerText=e.toFixed(2);
-    ctx.clearRect(0,0,250,200);
-    ctx.strokeStyle='#2E6DA4'; ctx.beginPath();
-    for(let x=0;x<=3;x+=0.1){
-      let px=10+x*70; let py=180-(x*x)*15;
-      if(x==0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
-    } ctx.stroke();
-    let m=e==0?2:((Math.pow(1+e,2)-1)/e);
-    ctx.strokeStyle='#D9534F'; ctx.setLineDash([5,5]);
-    ctx.beginPath(); ctx.moveTo(10,180-(1-m)*15); ctx.lineTo(220,180-(1+m*2)*15); ctx.stroke();
-    ctx.setLineDash([]);
-    const formula=document.getElementById('fermat-formula');
-    const concl  =document.getElementById('fermat-conclusion');
-    if(e>0){
-      formula.innerHTML='m = ( (1+E)&sup2; - 1 ) / E = '+(2+e).toFixed(2);
-      concl.innerText='E \u2260 0: Legal dividir.';
-    } else {
-      formula.innerHTML='m = 0/0';
-      concl.innerText='Error: Fermat dice m=2.';
+    const E = slider.value / 100;
+    document.getElementById('fermat-e-val').innerText = E.toFixed(2);
+
+    ctx.clearRect(0, 0, W, H);
+
+    // ── Ejes ──
+    ctx.strokeStyle = '#C5D2DC'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(ox, 12); ctx.lineTo(ox, H - 8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(8, oy); ctx.lineTo(W - 8, oy); ctx.stroke();
+
+    // Flechas
+    ctx.fillStyle = '#C5D2DC';
+    ctx.beginPath(); ctx.moveTo(ox, 10); ctx.lineTo(ox-4, 18); ctx.lineTo(ox+4, 18); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(W-6, oy); ctx.lineTo(W-14, oy-4); ctx.lineTo(W-14, oy+4); ctx.fill();
+
+    // Labels ejes
+    ctx.fillStyle = '#888'; ctx.font = '11px Arial'; ctx.textAlign = 'center';
+    ctx.fillText('x', W - 4, oy + 4);
+    ctx.fillText('y', ox + 4, 10);
+
+    // Ticks y números
+    for(let i = 1; i <= 3; i++) {
+      let [tx] = toC(i, 0);
+      ctx.fillStyle = '#aaa'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(tx, oy - 3); ctx.lineTo(tx, oy + 3); ctx.stroke();
+      ctx.fillStyle = '#888'; ctx.textAlign = 'center';
+      ctx.fillText(i, tx, oy + 13);
+      let [, ty] = toC(0, i);
+      ctx.beginPath(); ctx.moveTo(ox - 3, ty); ctx.lineTo(ox + 3, ty); ctx.stroke();
+      ctx.fillStyle = '#888'; ctx.textAlign = 'right';
+      ctx.fillText(i, ox - 6, ty + 4);
     }
+
+    // ── Parábola y = x² ──
+    ctx.strokeStyle = '#2E6DA4'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+    ctx.beginPath();
+    for(let x = 0; x <= 3; x += 0.02) {
+      let [cx, cy] = toC(x, x * x);
+      if(cy < -10 || cy > H + 10) { ctx.moveTo(cx, cy); continue; }
+      if(x === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+    }
+    ctx.stroke();
+
+    // Label curva
+    let [lx, ly] = toC(1.75, 1.75 * 1.75);
+    ctx.fillStyle = '#2E6DA4'; ctx.font = 'italic bold 12px Georgia';
+    ctx.textAlign = 'left'; ctx.fillText('y = x²', lx + 6, ly - 6);
+
+    // ── Tangente real en P(1,1): y = 2x − 1 ──
+    ctx.strokeStyle = '#1A6B3A'; ctx.lineWidth = 1.8; ctx.setLineDash([7, 4]);
+    let [tAx, tAy] = toC(0.1, 2*0.1 - 1);
+    let [tBx, tBy] = toC(2.4, 2*2.4 - 1);
+    ctx.beginPath(); ctx.moveTo(tAx, tAy); ctx.lineTo(tBx, tBy); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#1A6B3A'; ctx.font = '11px Arial'; ctx.textAlign = 'left';
+    ctx.fillText('tangente real (m = 2)', tBx - 148, tBy - 7);
+
+    // ── Punto P = (1, 1) fijo ──
+    let [ppx, ppy] = toC(1, 1);
+    ctx.fillStyle = '#1A6B3A';
+    ctx.beginPath(); ctx.arc(ppx, ppy, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center';
+    ctx.fillText('P', ppx, ppy + 4);
+    ctx.fillStyle = '#1A6B3A'; ctx.font = 'bold 12px Arial'; ctx.textAlign = 'right';
+    ctx.fillText('P (1, 1)', ppx - 10, ppy - 9);
+
+    const qx = 1 + E;
+    const qy = qx * qx;
+
+    if(E > 0.02) {
+      // ── Secante PQ ──
+      const m = (qy - 1) / (qx - 1); // = 2 + E exactamente
+      const xA = 0, yA = 1 + m * (xA - 1);
+      const xB = 3, yB = 1 + m * (xB - 1);
+      let [sAx, sAy] = toC(xA, yA);
+      let [sBx, sBy] = toC(xB, yB);
+      ctx.strokeStyle = '#D9534F'; ctx.lineWidth = 2.2; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(sAx, sAy); ctx.lineTo(sBx, sBy); ctx.stroke();
+
+      // ── Punto Q ──
+      let [qqx, qqy] = toC(qx, qy);
+      ctx.fillStyle = '#D9534F';
+      ctx.beginPath(); ctx.arc(qqx, qqy, 6, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 10px Arial'; ctx.textAlign = 'center';
+      ctx.fillText('Q', qqx, qqy + 4);
+      ctx.fillStyle = '#D9534F'; ctx.font = 'bold 11px Arial'; ctx.textAlign = 'left';
+      ctx.fillText(`Q (${qx.toFixed(2)}, ${qy.toFixed(2)})`, qqx + 9, qqy - 8);
+
+      // ── Segmento E en el eje x ──
+      let [p0x] = toC(1, 0); let [p1x] = toC(qx, 0);
+      ctx.strokeStyle = '#C85C00'; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(p0x, oy); ctx.lineTo(p1x, oy); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#C85C00'; ctx.font = 'bold 11px Arial'; ctx.textAlign = 'center';
+      ctx.fillText(`E`, (p0x + p1x) / 2, oy + 16);
+
+      // ── Panel estado: legal ──
+      const estado = document.getElementById('fermat-estado');
+      estado.style.borderColor = '#1A6B3A'; estado.style.background = '#DFF0E9';
+      document.getElementById('fermat-legal').innerHTML =
+        `✅ <strong>E = ${E.toFixed(2)} ≠ 0</strong><br>Dividir por E es legal.<br>La secante <span style="color:#D9534F">roja</span> se acerca a la tangente <span style="color:#1A6B3A">verde</span>.`;
+
+      document.getElementById('fermat-formula').innerHTML =
+        `m = <sup>(${qy.toFixed(3)} − 1)</sup>/<sub>(${qx.toFixed(3)} − 1)</sub>`
+        + `<br>= <sup>${(qy-1).toFixed(3)}</sup>/<sub>${(E).toFixed(3)}</sub>`
+        + `<br>= <strong>${m.toFixed(4)}</strong>`;
+      document.getElementById('fermat-conclusion').innerHTML =
+        `= 2 + E = 2 + ${E.toFixed(2)} = ${m.toFixed(4)}<br>La pendiente "correcta" aparece con el término extra E.`;
+
+    } else {
+      // ── E ≈ 0: el fantasma ──
+      ctx.strokeStyle = '#D9534F'; ctx.lineWidth = 2.2; ctx.setLineDash([]);
+      let [tAx2, tAy2] = toC(0.1, 2*0.1 - 1);
+      let [tBx2, tBy2] = toC(2.4, 2*2.4 - 1);
+      ctx.beginPath(); ctx.moveTo(tAx2, tAy2); ctx.lineTo(tBx2, tBy2); ctx.stroke();
+
+      // Punto Q colapsado en P
+      let [qqx, qqy] = toC(1, 1);
+      ctx.fillStyle = '#D9534F'; ctx.globalAlpha = 0.4;
+      ctx.beginPath(); ctx.arc(qqx, qqy, 8, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+
+      const estado = document.getElementById('fermat-estado');
+      estado.style.borderColor = '#D9534F'; estado.style.background = '#FDF2F2';
+      document.getElementById('fermat-legal').innerHTML =
+        `⚠️ <strong>E = 0</strong><br>P y Q son el mismo punto.<br><em>"El fantasma de las cantidades desvanecidas"</em> — Berkeley, 1734.`;
+
+      document.getElementById('fermat-formula').innerHTML =
+        `m = <sup>(1 − 1)</sup>/<sub>(1 − 1)</sub> = <strong style="color:#D9534F">0/0 ⚠️</strong>`;
+      document.getElementById('fermat-conclusion').innerHTML =
+        `Indeterminado. Fermat declara "la pendiente es 2" y descarta el problema. Berkeley lo llamará ilógico 98 años después.`;
+    }
+
+    if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([canvas.parentElement]);
   }
-  slider.oninput=draw; draw();
+
+  slider.oninput = draw;
+  draw();
 }
 </script>
 </body>
