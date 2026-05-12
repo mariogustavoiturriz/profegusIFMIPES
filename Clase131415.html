@@ -106,6 +106,17 @@
   .sim-controls { flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: center; }
   .sim-slider { width: 100%; margin: 15px 0; cursor: pointer; }
   .sim-math { background: var(--gris); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 14px; }
+
+  /* ── Toggle oculto ── */
+  .hidden-hint {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--vcl); border: 1px dashed var(--vio);
+    border-radius: 6px; padding: 4px 12px;
+    font-size: 11px; color: var(--vio); opacity: .75;
+    margin-bottom: 6px; user-select: none;
+  }
+  .hidden-hint span { font-size: 13px; }
+
   @media(max-width:600px){
     .disputa-grid{grid-template-columns:1fr}
     .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
@@ -146,6 +157,7 @@
 
 <div class="wrap">
 
+<!-- ══════════════════ INICIO ══════════════════ -->
 <div id="pane-inicio" class="pane on">
   <div class="act-box" style="border:2px solid var(--amb)">
     <div class="act-head" style="background:var(--amb)"><h3>🎯 Mapa de Navegación: Eje 3</h3></div>
@@ -171,6 +183,7 @@
   </div>
 </div>
 
+<!-- ══════════════════ CLASE 13 ══════════════════ -->
 <div id="pane-c13" class="pane">
   <div class="clase-banner">
     <div class="clase-banner-top">
@@ -243,7 +256,7 @@
           </div>
           <div style="background:#4A4A62;padding:12px;border-radius:4px;margin-bottom:12px;font-family:Georgia,serif;font-size:13px;line-height:2">
             <p style="margin:0 0 10px 0"><strong style="color:#fff">Paso 2: Aplicar fórmula del límite de la suma</strong></p>
-            <p style="margin:0;color:#FFD93D">Para una razón $|r| < 1$, la suma infinita es: $S_{\infty} = \frac{a_1}{1 - r} = \frac{1/2}{1 - 1/2} = 1$</p>
+            <p style="margin:0;color:#FFD93D">Para una razón $|r| &lt; 1$, la suma infinita es: $S_{\infty} = \frac{a_1}{1 - r} = \frac{1/2}{1 - 1/2} = 1$</p>
           </div>
         </div>
         <div class="step" style="border-color:var(--red);background:#FDF2F2">
@@ -285,6 +298,7 @@
   </div>
 </div>
 
+<!-- ══════════════════ CLASE 14 ══════════════════ -->
 <div id="pane-c14" class="pane">
   <div class="locked-pane" id="lock-c14"><div class="locked-icon">🔒</div><h2>Clase 14 bloqueada</h2><p>Se habilitará el martes 12 de Mayo.</p></div>
   <div class="real-content" id="content-c14" style="display:none;">
@@ -323,18 +337,27 @@
       <div class="lect">
         <div class="lect-head" style="background:var(--vcl);border-color:var(--vio)"><h3 style="color:var(--vio)">Ataque al problema de la tangente</h3></div>
         <div class="lect-body">
-          <p>Al mismo tiempo que Cavalieri trabajaba en Bolonia, en Toulouse <strong>Pierre de Fermat</strong> (1607-1665) atacaba el problema de la tangente con una idea genial.</p>
+          <p>Al mismo tiempo que Cavalieri trabajaba en Bolonia, en Toulouse <strong>Pierre de Fermat</strong> (1607-1665) —el "príncipe de los aficionados", un abogado que hacía matemática los fines de semana— atacaba el problema de la tangente con una idea genial.</p>
           <p>Si tengo una curva $y = f(x)$ y quiero la tangente en el punto $(x, f(x))$, tomo un segundo punto cercano $(x+E, f(x+E))$ donde $E$ es <strong>"una cantidad muy pequeña"</strong>. La pendiente de la secante entre ambos puntos es:</p>
           <p style="text-align:center;font-size:15px;margin:15px 0">$\text{pendiente} = \dfrac{f(x+E) - f(x)}{E}$</p>
           <p>El truco: <strong>tras simplificar la expresión, hace $E = 0$ y obtiene la pendiente de la tangente</strong>. A esto lo llamó "método de adigualdad" (<em>adaequalitas</em>): tratar dos cantidades como casi iguales, para luego declarar a $E$ insignificante.</p>
-          <div class="step" style="border-color:var(--vio);background:var(--vcl)">
-            <strong style="color:var(--vio)">Ejemplo histórico: la tangente a $y = x^2$</strong>
-            <p style="font-size:13px;color:var(--txt);margin-top:8px">
-            Pendiente secante: $\dfrac{(x+E)^2 - x^2}{E} = \dfrac{x^2 + 2xE + E^2 - x^2}{E} = \dfrac{2xE + E^2}{E} = 2x + E$<br><br>
-            <strong>Ahora "olvidamos" a $E$ (lo igualamos a 0):</strong> pendiente tangente $= 2x$.<br><br>
-            <em>El resultado es correcto. Pero, ¿en qué momento $E$ dejó de ser cero (cuando dividimos por él) y pasó a ser cero (cuando lo descartamos al final)?</em>
-            </p>
+
+          <!-- ── EJEMPLO OCULTO — Ctrl+V para mostrar ── -->
+          <div style="position:relative; margin-bottom:9px;">
+            <div class="hidden-hint">
+              <span>🔒</span> Resolución oculta — <strong>Ctrl+V</strong> para mostrar/ocultar
+            </div>
+            <div id="fermat-ejemplo" style="display:none; border-radius:6px; padding:11px 15px; border-left:3px solid var(--vio); background:var(--vcl);">
+              <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:4px">Ejemplo histórico: la tangente a $y = x^2$</strong>
+              <p style="font-size:13px;color:var(--txt);margin-top:8px">
+                Pendiente secante: $\dfrac{(x+E)^2 - x^2}{E} = \dfrac{x^2 + 2xE + E^2 - x^2}{E} = \dfrac{2xE + E^2}{E} = 2x + E$<br><br>
+                <strong>Ahora "olvidamos" a $E$ (lo igualamos a 0):</strong> pendiente tangente $= 2x$.<br><br>
+                <em>El resultado es correcto. Pero, ¿en qué momento $E$ dejó de ser cero (cuando dividimos por él) y pasó a ser cero (cuando lo descartamos al final)?</em>
+              </p>
+            </div>
           </div>
+          <!-- ── FIN EJEMPLO OCULTO ── -->
+
           <div class="note nv">
             <span class="ni">🤔</span>
             <div><strong style="color:var(--vio);display:block;margin-bottom:4px">El problema lógico</strong><span style="font-size:13px;line-height:1.6">Fermat necesita que $E$ sea distinto de cero para dividir; luego necesita que sea cero para limpiar el resultado. <strong>Es contradictorio.</strong> Pero el método <em>funciona</em>. Igual que Cavalieri, los matemáticos prefirieron el resultado a la fundamentación. <span style="color:var(--txt)">(Boyer, 1986, pp. 421-428)</span></span></div>
@@ -357,6 +380,10 @@
               <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="100">
               <div id="fermat-math-box" class="sim-math"><div id="fermat-formula"></div><div id="fermat-conclusion"></div></div>
             </div>
+          </div>
+          <div class="note nv" style="margin-top:15px">
+            <span class="ni">🤔</span>
+            <div><strong style="color:var(--vio)">Contradicción Lógica</strong><p style="font-size:13px">Fermat asume que E no es cero para dividir, pero luego decreta que E es cero para obtener la tangente. Un salto de fe heurístico que funcionará durante 150 años.</p></div>
           </div>
         </div>
       </div>
@@ -388,6 +415,7 @@
   </div>
 </div>
 
+<!-- ══════════════════ CLASE 15 ══════════════════ -->
 <div id="pane-c15" class="pane">
   <div class="locked-pane" id="lock-c15"><div class="locked-icon">🔒</div><h2>Clase 15 bloqueada</h2><p>Se habilitará el miércoles 13 de Mayo.</p></div>
   <div class="real-content" id="content-c15" style="display:none;">
@@ -410,12 +438,20 @@
               <h4>🇬🇧 Isaac Newton (1643-1727)</h4>
               <p><strong>Enfoque físico.</strong> Una curva es la trayectoria de un punto en movimiento. La pendiente es la <em>velocidad</em>; el área, la <em>distancia recorrida</em>.</p>
               <p><strong>Vocabulario:</strong> "fluentes" y "fluxiones". Anota con un punto sobre la letra: $\dot{x}$, $\dot{y}$.</p>
+              <p><strong>Cronología:</strong> Desarrolla el cálculo entre 1665-1666 durante el cierre de Cambridge por la peste. <strong>No publica</strong>.</p>
             </div>
             <div class="disputa-col leibniz">
               <h4>🇩🇪 Gottfried W. Leibniz (1646-1716)</h4>
               <p><strong>Enfoque algebraico.</strong> Una curva es una sucesión de incrementos infinitesimales. La pendiente, un cociente de diferenciales; el área, una suma.</p>
               <p><strong>Vocabulario:</strong> "diferenciales" ($dx$, $dy$) e "integrales" ($\int$). Es la notación que usamos hoy.</p>
+              <p><strong>Cronología:</strong> Trabaja entre 1673-1676. <strong>Publica primero</strong>, en 1684 en las <em>Acta Eruditorum</em>.</p>
             </div>
+          </div>
+          <h5 style="color:var(--nav);margin-top:20px">La disputa: ¿quién plagió a quién?</h5>
+          <p>Como Leibniz publicó antes pero Newton había trabajado antes, surgió una guerra de prioridad de décadas. En 1712, la <strong>Royal Society de Londres</strong> —presidida por el propio Newton— constituyó una comisión "imparcial". El veredicto, escrito en gran parte por Newton mismo, acusó a Leibniz de plagio. Hoy se acepta que <strong>ambos desarrollaron el cálculo de forma independiente</strong>. La amargura hizo que durante un siglo Inglaterra (con notación poco práctica) se atrasara respecto del continente europeo. <span style="font-size:13px;color:var(--txt)">(Boyer, 1986, pp. 437-460)</span></p>
+          <div class="note nb" style="margin-top:15px">
+            <span class="ni">💡</span>
+            <div><strong style="color:var(--med);display:block;margin-bottom:4px">El Teorema Fundamental — lo que ambos descubrieron</strong><span style="font-size:13px;line-height:1.6">Si $F(x) = \int_a^x f(t)\,dt$, entonces $F'(x) = f(x)$.<br>Traducido: <em>el área acumulada bajo una curva es la "antiderivada" de la curva</em>. Calcular áreas y calcular tangentes son dos caras de la misma moneda. Esta es la idea que cambió la matemática para siempre.</span></div>
           </div>
         </div>
       </div>
@@ -426,13 +462,38 @@
       <div class="lect">
         <div class="lect-head" style="background:#FDF2F2;border-color:var(--red)"><h3 style="color:var(--red)">Berkeley y los "fantasmas de cantidades desvanecidas" (1734)</h3></div>
         <div class="lect-body">
-          <p>El cálculo de Newton y Leibniz funcionaba, pero su fundamento lógico era un desastre. ¿Qué es exactamente un infinitesimal? ¿Es cero, o no es cero?</p>
+          <p>El cálculo de Newton y Leibniz funcionaba. Resolvía problemas que la matemática griega no podía siquiera plantear. Pero su fundamento lógico era, suavemente dicho, <strong>un desastre</strong>. ¿Qué es exactamente un infinitesimal? ¿Es cero, o no es cero? Si dividimos por él, no puede ser cero. Si lo descartamos al final, sí lo es. La contradicción que Fermat había escondido seguía ahí, ahora multiplicada por toda una teoría.</p>
+          <p>En 1734, el obispo irlandés <strong>George Berkeley</strong> (1685-1753), filósofo y crítico mordaz, publicó <em>The Analyst, or A Discourse Addressed to an Infidel Mathematician</em>. El "matemático infiel" al que se dirigía era el astrónomo Edmond Halley, que se había burlado de la teología. Berkeley contraatacó atacando la lógica del cálculo:</p>
           <div class="cita-hist" style="border-left-color:var(--red);">
             <div class="cita-label" style="background:var(--red); color:#fff">George Berkeley — The Analyst, 1734</div>
-            <p><em>"¿Y qué son estas fluxiones? Las velocidades de incrementos evanescentes. ¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?"</em></p>
+            <p><em>"¿Y qué son estas fluxiones? Las velocidades de incrementos evanescentes. ¿Y qué son estos incrementos evanescentes? No son cantidades finitas, ni cantidades infinitamente pequeñas, ni siquiera nada. ¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?"</em></p>
             <p class="cita-autor">— George Berkeley, <em>The Analyst</em>, §35, 1734.</p>
           </div>
-          <p>Berkeley demostró que el cálculo funcionaba por una compensación de errores. La matemática estuvo "herida" de muerte en sus bases por un siglo. <span style="font-size:13px;color:var(--txt)">(Klimovsky y Boido, 2005, pp. 89-95)</span></p>
+          <p>El golpe fue devastador. Berkeley no era matemático, pero su argumento era lógicamente impecable: <strong>el cálculo era una técnica que daba resultados correctos partiendo de premisas contradictorias</strong>. Según Klimovsky, Berkeley demostró que el cálculo funcionaba por una compensación de errores. La matemática estuvo "herida" de muerte en sus bases por un siglo. <span style="font-size:13px;color:var(--txt)">(Klimovsky y Boido, 2005, pp. 89-95)</span></p>
+          <div class="note na">
+            <span class="ni">⏳</span>
+            <div><strong style="color:var(--amb);display:block;margin-bottom:4px">El problema que resolveremos en Semana 8</strong><span style="font-size:13px;line-height:1.6">La respuesta a Berkeley tomó <strong>más de 100 años</strong>. Cauchy (1821) y Weierstrass (1860s) reemplazaron el infinitesimal por un concepto riguroso: el <strong>límite</strong>, con su definición $\epsilon-\delta$. Eso es lo que abordaremos la próxima semana, cerrando el Eje 3.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--med)">📝 Taller de Diseño Didáctico</span><hr></div>
+      <div class="act-box" style="border-color:var(--med)">
+        <div class="act-head" style="background:var(--med)"><h3>Introducir el límite en 6.° año sin reproducir el "salto de fe"</h3></div>
+        <div class="act-body">
+          <p style="margin-bottom: 15px; font-size: 13.5px; color: var(--neg);">Trabajo en parejas. Diseñen la <strong>apertura</strong> de una clase sobre "Introducción al Límite" para alumnos del último año de secundaria. Tomen como base la tensión histórica que vimos en estas tres clases. <strong>Yves Chevallard</strong> advierte que al enseñar Límite, la escuela aplica una <em>descontextualización</em> brutal. El alumno opera algoritmos sin conocer la "Guerra del Cálculo". Su tarea es evitar esa despersonalización.</p>
+          <div class="step" style="border-color:var(--med);background:var(--pale)">
+            <strong style="color:var(--nav)">Condiciones innegociables</strong>
+            <ul style="font-size: 13px; color: var(--txt); line-height: 1.6; margin-left: 20px; margin-top: 5px;">
+              <li>No arrancar con fórmulas algorítmicas (factorear, $\epsilon-\delta$).</li>
+              <li>Partir de un problema real (Zenón, la velocidad instantánea, el área bajo una parábola).</li>
+              <li>Usar al menos una TIC: Desmos o GeoGebra para que los alumnos vean el "acercamiento" sin llegar (infinito potencial).</li>
+              <li>Hacer alguna referencia histórica explícita (Cavalieri, Fermat, Newton o Leibniz).</li>
+            </ul>
+          </div>
+          <p style="font-size: 12.5px; color: #666; font-style: italic; margin-top: 10px;">Extensión: máximo 250 palabras. Lo leerán en el cierre.</p>
         </div>
       </div>
     </div>
@@ -444,23 +505,44 @@
         <p style="font-size: 13.5px; color: var(--neg); margin-bottom: 12px;"><strong>Reflexión escrita (150-250 palabras):</strong><br><em>"Funciona, pero no se entiende: la tensión entre eficacia operativa y rigor lógico"</em></p>
         <div class="reg-consigna" style="border-left-color:var(--amb); background: #fff;">
           <strong>Consigna:</strong>
-          <p style="margin-top: 10px; font-size: 13px; color: var(--txt); line-height: 1.6;">Como docente de secundaria, analizá esta tensión:<br>
-          <strong>(a)</strong> ¿Qué priorizás al enseñar el concepto de límite por primera vez: la <em>intuición utilitaria</em> (Newton) o el <em>rigor formal</em> (Cauchy)?<br>
-          <strong>(b)</strong> Fundamentá tu respuesta citando a <strong>Brousseau</strong> o <strong>Chevallard</strong>.<br>
-          <strong>(c)</strong> Hacé al menos una referencia histórica situada.</p>
+          <p style="margin-top: 10px; font-size: 13px; color: var(--txt); line-height: 1.6;">Durante 150 años (de Cavalieri en 1635 a Cauchy en 1821), el cálculo funcionó sin fundamentación lógica clara. Newton y Leibniz operaban con infinitesimales que eran cero y no-cero a la vez. Berkeley los llamó "fantasmas". Pero los resultados eran correctos y permitieron construir la física moderna.<br><br>
+          <strong>Como docente de secundaria, analizá esta tensión:</strong><br>
+          <strong>(a)</strong> ¿Qué priorizás al enseñar el concepto de límite por primera vez: la <em>intuición utilitaria</em> (Cavalieri, Newton — que funciona pero "miente") o el <em>rigor formal</em> ($\epsilon-\delta$ — que es honesto pero bloquea)?<br>
+          <strong>(b)</strong> Fundamentá tu respuesta citando explícitamente a <strong>Brousseau</strong> (obstáculo epistemológico) o <strong>Chevallard</strong> (transposición didáctica).<br>
+          <strong>(c)</strong> Hacé al menos una referencia histórica situada (nombre + obra + año).</p>
         </div>
         <div class="reg-plazo"><span style="font-size:19px">⏰</span><span>Plazo: <strong>Miércoles 23:59 hs</strong> en la plataforma virtual.</span></div>
       </div>
     </div>
 
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">📅 Cierre — La Gran Línea</span><hr></div>
+      <div class="act-box" style="border-color:var(--grn)">
+        <div class="act-head" style="background:var(--grn)"><h3>Últimos nodos del Eje 3 (parte 1)</h3></div>
+        <div class="act-body">
+          <p>Para cerrar la semana, terminen de cargar en el Genially los nodos restantes:</p>
+          <div style="background: var(--gris); padding: 18px; border-radius: 6px; border: 1px solid var(--bd); margin-top:10px">
+            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 5 — Newton (1666) y Leibniz (1684)</strong><br><span style="color: var(--txt); font-size: 13px;">El nacimiento del cálculo. Dos enfoques, una sola idea: el Teorema Fundamental.</span></div>
+            <div style="margin-bottom: 0;"><strong style="color: var(--nav); font-size: 14px;">NODO 6 — Berkeley (1734)</strong><br><span style="color: var(--txt); font-size: 13px;">Los "fantasmas de cantidades desvanecidas". La crítica filosófica que dejó al cálculo sin fundamentos por más de un siglo.</span></div>
+          </div>
+          <p style="margin-top:14px;font-size:13px;color:var(--txt);font-style:italic">La próxima semana (Semana 8) cerramos el Eje 3 con Cauchy y Weierstrass: la respuesta rigurosa a Berkeley.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="srcs">
       <h5>Bibliografía / Fuentes (Clase 15)</h5>
-      <p>Berkeley, G. (1734). <em>The Analyst</em>. Londres. · Boyer, C. (1986). <em>Historia de la matemática</em>. · Chevallard, Y. (1997). <em>La transposición didáctica</em>. · Klimovsky, G. y Boido, G. (2005).</p>
+      <p>Berkeley, G. (1734). <em>The Analyst</em>. Londres.</p>
+      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 437-490.</p>
+      <p>Brousseau, G. (1983). <em>Los obstáculos epistemológicos y los problemas en matemáticas</em>. RDM, 4(2).</p>
+      <p>Chevallard, Y. (1997). <em>La transposición didáctica</em>. Buenos Aires: Aique.</p>
+      <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 89-95.</p>
+      <p>Mankiewicz, R. (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós, pp. 156-172.</p>
     </div>
   </div>
 </div>
 
-</div>
+</div><!-- /wrap -->
 
 <script>
 window.showTab = function(id) {
@@ -477,45 +559,66 @@ window.showTab = function(id) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const hoy = new Date();
-    const fC14 = new Date(2026, 4, 12); 
-    const fC15 = new Date(2026, 4, 13);
-    if (hoy >= fC14) unlockPane('c14');
-    if (hoy >= fC15) unlockPane('c15');
+  const hoy = new Date();
+  const fC14 = new Date(2026, 4, 12);
+  const fC15 = new Date(2026, 4, 13);
+  if (hoy >= fC14) unlockPane('c14');
+  if (hoy >= fC15) unlockPane('c15');
 });
 
 function unlockPane(id) {
-    const btn = document.getElementById('btn-' + id);
-    const lock = document.getElementById('lock-' + id);
-    const content = document.getElementById('content-' + id);
-    if(btn) btn.classList.remove('locked');
-    if(lock) lock.style.display = 'none';
-    if(content) content.style.display = 'block';
-    if(window.MathJax && MathJax.typesetPromise && content) setTimeout(() => MathJax.typesetPromise([content]), 100);
+  const btn     = document.getElementById('btn-'     + id);
+  const lock    = document.getElementById('lock-'    + id);
+  const content = document.getElementById('content-' + id);
+  if(btn)     btn.classList.remove('locked');
+  if(lock)    lock.style.display  = 'none';
+  if(content) content.style.display = 'block';
+  if(window.MathJax && MathJax.typesetPromise && content)
+    setTimeout(() => MathJax.typesetPromise([content]), 100);
+}
+
+function showToast(msg, color) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:' + color + ';color:#fff;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:opacity .3s;font-family:sans-serif;font-size:14px';
+  document.body.appendChild(t);
+  setTimeout(() => t.style.opacity = '0', 2000);
+  setTimeout(() => t.remove(), 2500);
 }
 
 document.addEventListener('keydown', (e) => {
+
+  /* ── Ctrl+Shift+U — desbloqueo docente ── */
   if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
     unlockPane('c14'); unlockPane('c15');
     alert('🔓 Desbloqueo de Cátedra Activado');
   }
+
+  /* ── Ctrl+M — mostrar/ocultar solución Misión 1 (Zenón) ── */
   if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
     e.preventDefault();
-    let proof = document.getElementById('mision1-proof');
-    if (proof) {
-      let isHidden = proof.style.display === 'none';
-      proof.style.display = isHidden ? 'block' : 'none';
-      if (isHidden && window.MathJax) MathJax.typesetPromise([proof]);
-      let toast = document.createElement('div');
-      toast.innerHTML = isHidden ? '🎯 Solución matemática activada' : '🙈 Solución matemática oculta';
-      toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:var(--vio); color:white; padding:12px 24px; border-radius:8px; font-weight:bold; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.15); transition: opacity 0.3s;';
-      document.body.appendChild(toast);
-      setTimeout(() => toast.style.opacity = '0', 2000);
-      setTimeout(() => toast.remove(), 2500);
-    }
+    const proof = document.getElementById('mision1-proof');
+    if (!proof) return;
+    const show = proof.style.display === 'none';
+    proof.style.display = show ? 'block' : 'none';
+    if (show && window.MathJax) MathJax.typesetPromise([proof]);
+    showToast(show ? '🎯 Solución Zenón visible' : '🙈 Solución Zenón oculta', '#4A1A7B');
   }
+
+  /* ── Ctrl+V — mostrar/ocultar ejemplo Fermat ── */
+  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'v') {
+    e.preventDefault();
+    const ejemplo = document.getElementById('fermat-ejemplo');
+    if (!ejemplo) return;
+    const show = ejemplo.style.display === 'none';
+    ejemplo.style.display = show ? 'block' : 'none';
+    if (show && window.MathJax) MathJax.typesetPromise([ejemplo]);
+    showToast(show ? '📐 Resolución de Fermat visible' : '🙈 Resolución de Fermat oculta', '#4A1A7B');
+  }
+
 });
 
+/* ── Simulador Zenón — Dicotomía ── */
 function initZenoSim() {
   const canvas = document.getElementById('zenoCanvas');
   if(!canvas) return;
@@ -524,89 +627,79 @@ function initZenoSim() {
   function draw() {
     let n = parseInt(slider.value);
     ctx.clearRect(0,0,300,100);
-    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(10, 50); ctx.lineTo(290, 50); ctx.stroke();
-    let currentX = 10, sum = 0, w = 280;
-    for(let i=1; i<=n; i++) {
-        let step = w / 2;
-        sum += Math.pow(0.5, i);
-        ctx.fillStyle = i%2===0 ? '#2E6DA4' : '#C85C00';
-        ctx.fillRect(currentX, 40, step, 20);
-        currentX += step; w /= 2;
+    ctx.strokeStyle='#ccc'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(10,50); ctx.lineTo(290,50); ctx.stroke();
+    let currentX=10, sum=0, w=280;
+    for(let i=1;i<=n;i++){
+      let step=w/2; sum+=Math.pow(0.5,i);
+      ctx.fillStyle=i%2===0?'#2E6DA4':'#C85C00';
+      ctx.fillRect(currentX,40,step,20);
+      currentX+=step; w/=2;
     }
-    ctx.fillStyle = '#D9534F';
-    ctx.beginPath(); ctx.arc(currentX, 35, 6, 0, 7); ctx.fill();
-    document.getElementById('zeno-math-sum').innerText = sum.toFixed(4);
-    document.getElementById('zeno-math-rem').innerText = (1 - sum).toFixed(4);
+    ctx.fillStyle='#D9534F';
+    ctx.beginPath(); ctx.arc(currentX,35,6,0,7); ctx.fill();
+    document.getElementById('zeno-math-sum').innerText=sum.toFixed(4);
+    document.getElementById('zeno-math-rem').innerText=(1-sum).toFixed(4);
   }
-  slider.oninput = draw; draw();
+  slider.oninput=draw; draw();
 }
 
+/* ── Simulador Aquiles y la Tortuga ── */
 function initAchillesSim() {
   const canvas = document.getElementById('achillesCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   const slider = document.getElementById('ach-slider');
   function draw() {
-    let n = parseInt(slider.value);
+    let n=parseInt(slider.value);
     ctx.clearRect(0,0,300,100);
-    ctx.strokeStyle = '#ccc'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(10, 80); ctx.lineTo(290, 80); ctx.stroke();
-    let posA = 0, posT = 100;
-    for(let i=1; i<=n; i++) { let gap = posT - posA; posA = posT; posT += (gap/2); }
-    let sc = 280 / 200.0;
-    
-    ctx.font = '24px Arial';
-    ctx.textAlign = 'center';
-    
-    // Tortuga espejada para que mire a la derecha
+    ctx.strokeStyle='#ccc'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(10,80); ctx.lineTo(290,80); ctx.stroke();
+    let posA=0, posT=100;
+    for(let i=1;i<=n;i++){ let gap=posT-posA; posA=posT; posT+=gap/2; }
+    let sc=280/200.0;
+    ctx.font='24px Arial'; ctx.textAlign='center';
     ctx.save();
-    ctx.translate(10 + posT*sc, 78);
-    ctx.scale(-1, 1);
-    ctx.fillText('🐢', 0, 0);
-    ctx.restore();
-    
-    // Aquiles espejado para que mire a la derecha
+    ctx.translate(10+posT*sc,78); ctx.scale(-1,1);
+    ctx.fillText('🐢',0,0); ctx.restore();
     ctx.save();
-    ctx.translate(10 + posA*sc, 78);
-    ctx.scale(-1, 1);
-    ctx.fillText('🏃', 0, 0);
-    ctx.restore();
-    
-    document.getElementById('ach-gap').innerText = (posT - posA).toFixed(2);
+    ctx.translate(10+posA*sc,78); ctx.scale(-1,1);
+    ctx.fillText('🏃',0,0); ctx.restore();
+    document.getElementById('ach-gap').innerText=(posT-posA).toFixed(2);
   }
-  slider.oninput = draw; draw();
+  slider.oninput=draw; draw();
 }
 
+/* ── Simulador Fermat — secante/tangente ── */
 function initFermatSim() {
   const canvas = document.getElementById('fermatCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   const slider = document.getElementById('fermat-slider');
   function draw() {
-    let e = slider.value / 100;
-    document.getElementById('fermat-e-val').innerText = e.toFixed(2);
+    let e=slider.value/100;
+    document.getElementById('fermat-e-val').innerText=e.toFixed(2);
     ctx.clearRect(0,0,250,200);
-    ctx.strokeStyle = '#2E6DA4'; ctx.beginPath();
-    for(let x=0; x<=3; x+=0.1) {
-      let px = 10 + x*70; let py = 180 - (x*x)*15;
-      if(x==0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    ctx.strokeStyle='#2E6DA4'; ctx.beginPath();
+    for(let x=0;x<=3;x+=0.1){
+      let px=10+x*70; let py=180-(x*x)*15;
+      if(x==0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
     } ctx.stroke();
-    let m = e == 0 ? 2 : ((Math.pow(1+e,2)-1)/e);
-    ctx.strokeStyle = '#D9534F'; ctx.setLineDash([5,5]);
-    ctx.beginPath(); ctx.moveTo(10, 180 - (1-m)*15); ctx.lineTo(220, 180 - (1+m*2)*15); ctx.stroke();
+    let m=e==0?2:((Math.pow(1+e,2)-1)/e);
+    ctx.strokeStyle='#D9534F'; ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.moveTo(10,180-(1-m)*15); ctx.lineTo(220,180-(1+m*2)*15); ctx.stroke();
     ctx.setLineDash([]);
-    let formula = document.getElementById('fermat-formula');
-    let concl = document.getElementById('fermat-conclusion');
-    if(e > 0) {
-      formula.innerHTML = 'm = ( (1+E)&sup2; - 1 ) / E = ' + (2+e).toFixed(2);
-      concl.innerText = "E \u2260 0: Legal dividir.";
+    const formula=document.getElementById('fermat-formula');
+    const concl  =document.getElementById('fermat-conclusion');
+    if(e>0){
+      formula.innerHTML='m = ( (1+E)&sup2; - 1 ) / E = '+(2+e).toFixed(2);
+      concl.innerText='E \u2260 0: Legal dividir.';
     } else {
-      formula.innerHTML = "m = 0/0";
-      concl.innerText = "Error: Fermat dice m=2.";
+      formula.innerHTML='m = 0/0';
+      concl.innerText='Error: Fermat dice m=2.';
     }
   }
-  slider.oninput = draw; draw();
+  slider.oninput=draw; draw();
 }
 </script>
 </body>
