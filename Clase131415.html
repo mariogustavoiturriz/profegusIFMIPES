@@ -237,7 +237,7 @@
       <div class="act-head" style="background:var(--amb)"><h3>Las Paradojas en Acción</h3></div>
       <div class="act-body">
         <h5 style="color:var(--amb);">Paradoja 1: La Dicotomía</h5>
-        <p style="font-size:13px; color:var(--txt); margin-bottom: 8px;">Antes de usar el simulador, pongámonos en contexto. Zenón, defendiendo la filosofía estática de su maestro Parménides (quien afirmaba que el cambio era una pura ilusión), planteó este escenario para demostrar que el movimiento es un absurdo lógico. Argumentaba que, si querés ir de un punto A a un punto B, primero tenés que llegar a la mitad del camino. Pero para llegar a esa mitad, tenés que recorrer la mitad de esa mitad (un cuarto), y así ad infinitum. Como es imposible completar una infinidad de pasos en un tiempo finito, el movimiento ni siquiera puede empezar.</p>
+        <p style="font-size:13px; color:var(--txt); margin-bottom: 8px;">Zenón argumentaba que para ir de un punto A a un punto B, primero tenés que llegar a la mitad del camino. Pero para llegar a esa mitad, tenés que recorrer la mitad de esa mitad (un cuarto), y así ad infinitum. Como es imposible completar una infinidad de pasos en un tiempo finito, el movimiento ni siquiera puede empezar.</p>
         <p style="font-size:13px; font-style:italic;">"Para llegar de A a B, debés cruzar infinitas mitades. Como son infinitas, nunca llegás."</p>
         <div class="sim-container">
           <div class="sim-canvas-box"><canvas id="zenoCanvas" width="300" height="100"></canvas></div>
@@ -308,12 +308,28 @@
 <div id="pane-c14" class="pane">
   <div class="locked-pane" id="lock-c14"><div class="locked-icon">🔒</div><h2>Clase 14 bloqueada</h2><p>Se habilitará el martes 12 de Mayo.</p></div>
   <div class="real-content" id="content-c14" style="display:none;">
+    
     <div class="clase-banner">
       <div class="clase-banner-top">
         <div class="cb-num" style="background:var(--grn)">14</div>
         <div class="cb-info"><h2>El Salto Heurístico: Cavalieri y Fermat atacan los dos problemas</h2><p>Martes 12 de Mayo (80 min)</p></div>
       </div>
-      <div class="cb-obj" style="border-top-color:var(--grn)"><p style="color:var(--grn)"><strong>Objetivo:</strong> Analizar la tensión entre <strong>Heurística y Rigor</strong>. Ver cómo Cavalieri (1635) y Fermat (1636) rompieron el rigor griego para atacar los dos problemas que dejamos planteados ayer, aceptando el costo lógico de operar con cantidades "imposibles".</p></div>
+      <div class="cb-obj" style="border-top-color:var(--grn)"><p style="color:var(--grn)"><strong>Objetivo:</strong> Analizar la tensión entre <strong>Heurística y Rigor</strong>. Ver cómo Cavalieri (1635) y Fermat (1636) rompieron el rigor griego aceptando el costo lógico de operar con cantidades infinitesimales.</p></div>
+    </div>
+
+    <!-- EL PUENTE EPISTEMOLÓGICO -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--amb)">🔗 El Puente Epistemológico</span><hr></div>
+      <div class="act-box" style="border-color:var(--amb)">
+        <div class="act-head" style="background:var(--amb)"><h3>De la fobia griega al pragmatismo moderno</h3></div>
+        <div class="act-body">
+          <p style="font-size:14px; color:var(--txt);">Ayer vimos cómo el <strong>infinito</strong> aterrorizaba a los griegos. Zenón usó el <em>"infinitamente pequeño"</em> como arma para destruir la posibilidad del movimiento. Hoy veremos cómo los modernos usaron ese mismo monstruo para calcular lo imposible.</p>
+          <div class="note na" style="background:#FFF8F0; border-left-color:var(--amb);">
+            <span class="ni">💡</span>
+            <div><strong style="color:var(--amb);display:block;margin-bottom:4px">La revelación del Eje 3</strong><p style="margin-bottom: 0; font-size: 13px; line-height: 1.6; color: var(--txt);">El infinito de Zenón y la tendencia a cero (el límite) son las dos caras de la misma moneda. Los matemáticos del s. XVII decidieron operar con ellos sin pedir permiso a la lógica.</p></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="sec">
@@ -321,19 +337,11 @@
       <div class="lect">
         <div class="lect-head" style="background:var(--gcl);border-color:var(--grn)"><h3 style="color:var(--grn)">Ataque al problema del área</h3></div>
         <div class="lect-body">
-          <p>Saltamos del siglo III a.C. al siglo XVII. <strong>Bonaventura Cavalieri</strong> (1598-1647), alumno de Galileo, publica en Bolonia <em>Geometria indivisibilibus continuorum nova quadam ratione promota</em> en 1635. La obra es revolucionaria —y herética desde el rigor griego.</p>
-          <p>Cavalieri afirma, sin disculparse, que una superficie está <strong>"compuesta de infinitas líneas"</strong> (indivisibles), y un sólido está compuesto de infinitas superficies. Para calcular el área bajo una curva, suma "todas las ordenadas" que la forman. Este es, esencialmente, el primer borrador del concepto de integral. <span style="font-size:13px;color:var(--txt)">(Boyer, 1986, pp. 414-419)</span></p>
-          <div class="cita-hist" style="border-left-color:var(--amb);">
-            <div class="cita-label" style="background:var(--amb); color:#fff">El argumento que escandaliza</div>
-            <p><em>"Las áreas son a las áreas como las sumas de todas sus líneas paralelas equidistantes son entre sí; y los volúmenes son a los volúmenes como las sumas de todos sus planos paralelos equidistantes."</em></p>
-            <p class="cita-autor">— Bonaventura Cavalieri, <em>Geometria indivisibilibus</em>, Libro II, 1635.</p>
-          </div>
+          <p><strong>Bonaventura Cavalieri</strong> (1598-1647) publica en 1635 su obra sobre los "indivisibles". Afirma que una superficie está <strong>"compuesta de infinitas líneas"</strong>. Para calcular el área bajo una curva, suma "todas las ordenadas" que la forman.</p>
           <div class="note na">
             <span class="ni">😱</span>
-            <div><strong style="color:var(--amb);display:block;margin-bottom:4px">La objeción de los puristas</strong><p style="margin-bottom: 0; font-size: 13px; line-height: 1.6; color: var(--txt);">Una línea no tiene grosor. Sumar infinitas líneas de "área cero" debería dar cero. Cavalieri respondió con la frase que define el espíritu del XVII: <em>"El rigor es un asunto para la filosofía, no para las matemáticas."</em> Es una declaración de guerra contra el modelo griego. <span style="color:#888">(Mankiewicz, 2000, p. 140)</span></p></div>
+            <div><strong style="color:var(--amb);display:block;margin-bottom:4px">La objeción lógica</strong><p style="margin-bottom: 0; font-size: 13px; line-height: 1.6; color: var(--txt);">Una línea geométrica tiene grosor cero. Multiplicar infinito por cero ($\infty \cdot 0$) es un absurdo. Cavalieri respondió: <em>"El rigor es un asunto para la filosofía, no para las matemáticas."</em></p></div>
           </div>
-          <h5 style="color:var(--grn);margin-top:20px">Lo que Cavalieri pudo calcular</h5>
-          <p>Con su método (hoy llamado <em>Principio de Cavalieri</em>), demostró que el área bajo $y = x^n$ entre $0$ y $a$ es $\frac{a^{n+1}}{n+1}$ para varios valores de $n$. Era exactamente el resultado correcto, obtenido por un camino "sucio". <em>Funcionaba.</em> Y eso bastó para los matemáticos del Renacimiento.</p>
         </div>
       </div>
     </div>
@@ -343,30 +351,19 @@
       <div class="lect">
         <div class="lect-head" style="background:var(--vcl);border-color:var(--vio)"><h3 style="color:var(--vio)">Ataque al problema de la tangente</h3></div>
         <div class="lect-body">
-          <p>Al mismo tiempo que Cavalieri trabajaba en Bolonia, en Toulouse <strong>Pierre de Fermat</strong> (1607-1665) —el "príncipe de los aficionados", un abogado que hacía matemática los fines de semana— atacaba el problema de la tangente con una idea genial.</p>
-          <p>Si tengo una curva $y = f(x)$ y quiero la tangente en el punto $(x, f(x))$, tomo un segundo punto cercano $(x+E, f(x+E))$ donde $E$ es <strong>"una cantidad muy pequeña"</strong>. La pendiente de la secante entre ambos puntos es:</p>
-          <p style="text-align:center;font-size:15px;margin:15px 0">$\text{pendiente} = \dfrac{f(x+E) - f(x)}{E}$</p>
-          <p>El truco: <strong>tras simplificar la expresión, hace $E = 0$ y obtiene la pendiente de la tangente</strong>. A esto lo llamó "método de adigualdad" (<em>adaequalitas</em>): tratar dos cantidades como casi iguales, para luego declarar a $E$ insignificante.</p>
-
-          <!-- ── EJEMPLO OCULTO ── -->
-          <div style="position:relative; margin-bottom:9px;">
-            <button onclick="toggleFermat()" style="background:var(--vio); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:10px; font-size:13px; transition:background 0.2s;">👁️ Mostrar/Ocultar Ejemplo Histórico</button>
+          <p><strong>Pierre de Fermat</strong> (1607-1665) tomaba un segundo punto cercano en la curva desplazado por $E$, donde $E$ es un infinitesimal. Tras simplificar algebraicamente, Fermat decreta que $E = 0$. A esto lo llamó "método de adigualdad": tratar a $E$ como si existiera para poder dividir, y luego descartarlo.</p>
+          
+          <div style="margin:15px 0">
+            <button onclick="toggleFermat()" style="background:var(--vio); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:10px; font-size:13px; transition:background 0.2s;">👁️ Mostrar/Ocultar Ejemplo de la Parábola</button>
             <div id="fermat-ejemplo" style="display:none; border-radius:6px; padding:11px 15px; border-left:3px solid var(--vio); background:var(--vcl);">
-              <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:4px">Ejemplo histórico: la tangente a $y = x^2$</strong>
-              <p style="font-size:13px;color:var(--txt);margin-top:8px">
-                Pendiente secante: $\dfrac{(x+E)^2 - x^2}{E} = \dfrac{x^2 + 2xE + E^2 - x^2}{E} = \dfrac{2xE + E^2}{E} = 2x + E$<br><br>
-                <strong>Ahora "olvidamos" a $E$ (lo igualamos a 0):</strong> pendiente tangente $= 2x$.<br><br>
-                <em>El resultado es correcto. Pero, ¿en qué momento $E$ dejó de ser cero (cuando dividimos por él) y pasó a ser cero (cuando lo descartamos al final)?</em>
-              </p>
+              <p style="font-size:13px;color:var(--txt);">Para $y = x^2$, la pendiente es: $\dfrac{(x+E)^2 - x^2}{E} = 2x + E$. Si hacemos $E = 0$, la pendiente de la tangente es $2x$.</p>
             </div>
           </div>
-          <!-- ── FIN EJEMPLO OCULTO ── -->
 
           <div class="note nv">
             <span class="ni">🤔</span>
-            <div><strong style="color:var(--vio);display:block;margin-bottom:4px">El problema lógico</strong><span style="font-size:13px;line-height:1.6">Fermat necesita que $E$ sea distinto de cero para dividir; luego necesita que sea cero para limpiar el resultado. <strong>Es contradictorio.</strong> Pero el método <em>funciona</em>. Igual que Cavalieri, los matemáticos prefirieron el resultado a la fundamentación. <span style="color:var(--txt)">(Boyer, 1986, pp. 421-428)</span></span></div>
+            <div><strong style="color:var(--vio);display:block;margin-bottom:4px">La contradicción</strong><span style="font-size:13px;line-height:1.6">Fermat necesita que $E \neq 0$ para poder dividir; luego necesita que sea cero para dar la respuesta final. Es un truco que funciona pero carece de base lógica sólida.</span></div>
           </div>
-          <p>Este fantasma —el infinitesimal que es cero y no-cero a la vez— será el blanco de la crítica de Berkeley en 1734. Lo veremos mañana.</p>
         </div>
       </div>
     </div>
@@ -376,43 +373,25 @@
       <div class="act-box" style="border-color:var(--vio)">
         <div class="act-head" style="background:var(--vio)"><h3>Fermat en acción: la secante que se convierte en tangente</h3></div>
         <div class="act-body">
-          <p style="font-size:13px;margin-bottom:14px">El punto <strong style="color:#1A6B3A">P = (1, 1)</strong> está fijo sobre $y = x^2$. El punto <strong style="color:#D9534F">Q = (1+E, (1+E)²)</strong> se mueve según el valor de $E$. La recta <span style="color:#D9534F;font-weight:700">roja</span> pasa por P y Q (secante). La recta <span style="color:#1A6B3A;font-weight:700">verde</span> es la tangente real en P. Arrastrá el deslizador hacia la izquierda y observá qué pasa cuando $E \to 0$.</p>
-
           <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
-
-            <!-- Canvas -->
-            <div style="flex:1;min-width:280px;background:#FAFBFC;border:1px solid var(--bd);border-radius:8px;padding:8px;text-align:center;">
+            <div style="flex:1.5;min-width:300px;background:#FAFBFC;border:1px solid var(--bd);border-radius:8px;padding:12px;text-align:center;">
               <canvas id="fermatCanvas" width="380" height="280" style="max-width:100%;border-radius:4px;"></canvas>
             </div>
-
-            <!-- Panel derecho -->
-            <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:12px;">
-
+            <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:12px;">
               <div style="background:var(--vcl);border:1px solid var(--vio);border-radius:8px;padding:14px;">
-                <label style="font-size:12px;font-weight:700;color:var(--vio);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:8px">Valor de E</label>
-                <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="160" style="margin:0 0 8px 0">
-                <div style="text-align:center;font-size:28px;font-weight:900;color:var(--vio);font-family:Georgia,serif;" id="fermat-e-val">1.60</div>
+                <label style="font-size:11px;font-weight:700;color:var(--vio);text-transform:uppercase;display:block;margin-bottom:4px">Valor de E (Incremento)</label>
+                <input type="range" id="fermat-slider" class="sim-slider" min="0" max="200" value="160">
+                <div style="text-align:center;font-size:26px;font-weight:900;color:var(--vio);" id="fermat-e-val">1.60</div>
               </div>
-
               <div id="fermat-estado" style="border-radius:8px;padding:14px;border:2px solid var(--grn);background:var(--gcl);">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--grn)">Estado lógico</div>
-                <div id="fermat-legal" style="font-size:13px;color:var(--neg);line-height:1.6;"></div>
+                <div style="font-size:11px;font-weight:700;color:var(--grn);text-transform:uppercase;margin-bottom:4px">Estado lógico</div>
+                <div id="fermat-legal" style="font-size:13px;color:var(--neg);"></div>
               </div>
-
               <div style="background:var(--gris);border-radius:8px;padding:14px;border:1px solid var(--bd);">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--nav)">Cálculo de la pendiente</div>
-                <div id="fermat-formula" style="font-family:Georgia,serif;font-size:13px;color:var(--neg);line-height:1.9;"></div>
-                <div id="fermat-conclusion" style="font-size:12px;color:var(--txt);margin-top:6px;font-style:italic;border-top:1px solid var(--bd);padding-top:6px;"></div>
+                <div style="font-size:11px;font-weight:700;color:var(--nav);text-transform:uppercase;margin-bottom:4px">Cálculo de la pendiente</div>
+                <div id="fermat-formula" style="font-family:Georgia,serif;font-size:13px;line-height:1.6;"></div>
+                <div id="fermat-conclusion" style="font-size:12px;color:var(--txt);margin-top:6px;border-top:1px solid var(--bd);padding-top:6px;"></div>
               </div>
-
-            </div>
-          </div>
-
-          <div class="note nv" style="margin-top:16px">
-            <span class="ni">👻</span>
-            <div>
-              <strong style="color:var(--vio)">El fantasma aparece en $E = 0$</strong>
-              <p style="font-size:13px;margin-top:4px;line-height:1.6">Cuando $E$ es distinto de cero, dividir es legal. Pero si $E = 0$, la fórmula da $\frac{0}{0}$: indeterminado. Fermat "salta" ese momento — declara que la pendiente es 2 y descarta el problema. Berkeley, en 1734, llamará a ese salto <em>"los fantasmas de cantidades desvanecidas"</em>.</p>
             </div>
           </div>
         </div>
@@ -420,27 +399,22 @@
     </div>
 
     <div class="sec">
-      <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea — Apertura Eje 3</span><hr></div>
+      <div class="sec-label"><span style="background:var(--grn)">📅 Cierre — La Gran Línea</span><hr></div>
       <div class="act-box" style="border-color:var(--grn)">
-        <div class="act-head" style="background:var(--grn)"><h3>Volcado de nodos en Genially</h3></div>
+        <div class="act-head" style="background:var(--grn)"><h3>Nodos del Eje 3</h3></div>
         <div class="act-body">
-          <p style="margin-bottom:15px;">Aprovechamos los últimos minutos para abrir el nuevo tramo en el Genially colectivo. Dejen plasmados los primeros nodos del Eje 3:</p>
           <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd);">
-            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 1 — Zenón de Elea (s. V a.C.)</strong><br><span style="color:var(--txt);font-size:13px;">Las paradojas. El infinito entra en escena y paraliza la matemática del movimiento.</span></div>
-            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 2 — Aristóteles (s. IV a.C.)</strong><br><span style="color:var(--txt);font-size:13px;">Infinito potencial sí, infinito actual no. Dogma durante dos milenios.</span></div>
-            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);"><strong style="color:var(--nav);font-size:14px;">NODO 3 — Cavalieri (1635)</strong><br><span style="color:var(--txt);font-size:13px;">Los indivisibles. El área como "suma de infinitas líneas". La heurística vence al rigor.</span></div>
-            <div style="margin-bottom:0;"><strong style="color:var(--nav);font-size:14px;">NODO 4 — Fermat (1636)</strong><br><span style="color:var(--txt);font-size:13px;">El método de adigualdad. Dividir por $E$ y luego hacerlo cero. Contradicción operativa.</span></div>
+            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 1 — Zenón de Elea (s. V a.C.)</strong><br><span style="color: var(--txt); font-size: 13px;">Las paradojas paralizan la matemática del movimiento por 2000 años.</span></div>
+            <div style="margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--bd);"><strong style="color: var(--nav); font-size: 14px;">NODO 2 — Cavalieri (1635)</strong><br><span style="color: var(--txt); font-size: 13px;">Los indivisibles. La heurística vence al rigor por necesidad operativa.</span></div>
+            <div style="margin-bottom: 0;"><strong style="color: var(--nav); font-size: 14px;">NODO 3 — Fermat (1636)</strong><br><span style="color: var(--txt); font-size: 13px;">Método de adigualdad. El infinitesimal como herramienta "fantasmagórica".</span></div>
           </div>
-          <p style="margin-top:14px;font-size:13px;font-style:italic;color:var(--txt)">Mañana sumamos los nodos finales: Newton, Leibniz y Berkeley.</p>
         </div>
       </div>
     </div>
 
     <div class="srcs">
-      <h5>Bibliografía / Fuentes (Clase 14)</h5>
-      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 414-428.</p>
-      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza.</p>
-      <p>Mankiewicz, R. (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós, pp. 138-145.</p>
+      <h5>Bibliografía (Clase 14)</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. · Kline, M. (1992). <em>El pensamiento matemático</em>.</p>
     </div>
   </div>
 </div>
@@ -497,16 +471,18 @@
           <div id="newton-laboratorio" style="display:none;">
             <div style="background:#FFF8F0; border-left:4px solid var(--amb); padding:12px 16px; border-radius:6px; margin-bottom:15px;">
               <strong style="color:var(--amb); font-size:14px; display:block; margin-bottom:4px;">📜 El asedio de Portsmouth (1666)</strong>
+              <p style="font-size:13px; color:var(--txt); margin:0; line-height:1.6;">La Royal Navy te encomienda la defensa del puerto. Sir Isaac Newton te entrega un pergamino con sus nuevas "fluxiones" (derivadas) para calcular la trayectoria.<br><strong>Tu misión:</strong> Hundir el galeón pirata al menos <strong>4 veces en 5 intentos</strong>. Ajustá el ángulo del cañón. ¡Ojo! En los últimos ataques el enemigo avanzará hacia la costa: ¡no dejes que desembarquen! El clima del Canal de la Mancha es inestable (viento aleatorio). La trayectoria se dibuja en vivo tras el disparo.</p>
+            </div>
           <div class="sim-container" style="align-items:flex-start;">
             <div class="sim-canvas-box" style="flex:1.5; position:relative;">
               <canvas id="newtonCanvas" width="400" height="250" style="max-width:100%; border-radius: 4px; background:#FAFBFC; border: 1px solid var(--bd); width:100%; height:auto; display:block;"></canvas>
               <!-- Overlay para mensajes de victoria/derrota -->
-              <div id="newton-msg" style="position:absolute; top:30%; left:50%; transform:translate(-50%, -50%); font-size:24px; font-weight:900; color:#D9534F; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff; opacity:0; transition:opacity 0.3s; pointer-events:none;"></div>
+              <div id="newton-msg" style="position:absolute; top:30%; left:50%; transform:translate(-50%, -50%); font-size:24px; font-weight:900; color:#D9534F; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff; opacity:0; transition:opacity 0.3s; pointer-events:none; text-align:center;"></div>
             </div>
             <div class="sim-controls" style="flex:1; background:var(--gris); padding:15px; border-radius:8px; border:1px solid var(--bd);">
               
               <div style="display:flex; justify-content:space-between; align-items:center; background:#EAF5EC; border:1px solid var(--grn); padding:8px 12px; border-radius:6px; margin-bottom:15px;">
-                <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/2</div>
+                <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/4</div>
                 <div style="font-size:12px; font-weight:bold; color:var(--slate);">TIROS: <span id="newton-shots">0</span>/5</div>
               </div>
 
@@ -569,6 +545,15 @@
         <div class="act-head" style="background:var(--med)"><h3>Introducir el límite sin reproducir el "salto de fe"</h3></div>
         <div class="act-body">
           <p style="margin-bottom: 15px; font-size: 13.5px; color: var(--neg);">Trabajo en parejas (20 minutos). Tomen como base la tensión histórica que vimos en estas tres clases. <strong>Yves Chevallard</strong> advierte que al enseñar Límite, la escuela aplica una <em>descontextualización</em> brutal. El alumno opera algoritmos sin conocer el drama de la "Guerra del Cálculo". Su tarea hoy es dar el primer paso para evitar esa despersonalización.</p>
+          
+          <div class="note ng" style="background:#EAF5EC; border-left-color:var(--grn); margin-bottom: 15px;">
+            <span class="ni">🔄</span>
+            <div>
+              <strong style="color:var(--grn);display:block;margin-bottom:4px">La Inversión Curricular (Chevallard en estado puro)</strong>
+              <p style="margin-bottom: 0; font-size: 13px; line-height: 1.6; color: var(--txt);">Piensen en esto: históricamente, primero se inventó la Integral (Cavalieri), luego la Derivada (Newton/Leibniz), y recién 150 años después el Límite (Cauchy). Sin embargo, el currículum escolar lo enseña exactamente al revés: <strong>Límite $\to$ Derivada $\to$ Integral</strong>. Al invertir el orden, la escuela presenta una matemática "limpia" y axiomática desde el día uno, ocultando el caos, los fantasmas y el motor físico que le dio origen. ¡Esa es la transposición didáctica operando!</p>
+            </div>
+          </div>
+
           <div class="step" style="border-color:var(--med);background:var(--pale)">
             <strong style="color:var(--nav)">Consigna Express (El Gancho Epistemológico)</strong>
             <p style="font-size: 13px; color: var(--txt); line-height: 1.6; margin-top: 5px;">Diseñen ÚNICAMENTE la "Pregunta Disparadora" o el "Conflicto Cognitivo" inicial con el que abrirían la clase de límite en 6.° año, para que los alumnos sientan el mismo "horror" de Fermat, Leibniz o Newton.<br><br>
@@ -640,7 +625,6 @@ window.showTab = function(id) {
   if(id === 'c13') { 
     setTimeout(initZenoSim, 100); 
     setTimeout(initAchillesSim, 150); 
-    setTimeout(initStadiumSim, 200);
   }
   if(id === 'c14') setTimeout(initFermatSim, 100);
   if(id === 'c15') setTimeout(initNewtonSim, 100);
@@ -805,7 +789,7 @@ function initFermatSim() {
       let [, ty] = toC(0, i);
       ctx.beginPath(); ctx.moveTo(ox - 3, ty); ctx.lineTo(ox + 3, ty); ctx.stroke();
       ctx.fillStyle = '#888'; ctx.textAlign = 'right';
-      ctx.fillText(i, ox - 6, ty + 4);
+      ctx.fillText(i, ox - 12, ty + 4);
     }
 
     // ── Parábola y = x² ──
@@ -847,10 +831,10 @@ function initFermatSim() {
     if(E > 0.02) {
       // ── Secante PQ ──
       const m = (qy - 1) / (qx - 1); // = 2 + E exactamente
-      const xA = 0, yA = 1 + m * (xA - 1);
-      const xB = 3, yB = 1 + m * (xB - 1);
-      let [sAx, sAy] = toC(xA, yA);
-      let [sBx, sBy] = toC(xB, yB);
+      const xA = 0, yB = 1 + m * (xA - 1);
+      const xC = 3, yD = 1 + m * (xC - 1);
+      let [sAx, sAy] = toC(xA, yB);
+      let [sBx, sBy] = toC(xC, yD);
       ctx.strokeStyle = '#D9534F'; ctx.lineWidth = 2.2; ctx.setLineDash([]);
       ctx.beginPath(); ctx.moveTo(sAx, sAy); ctx.lineTo(sBx, sBy); ctx.stroke();
 
@@ -877,8 +861,11 @@ function initFermatSim() {
         `= 2 + E = 2 + ${E.toFixed(2)} = ${m.toFixed(4)}<br>La pendiente "correcta" aparece con el término extra E.`;
 
     } else {
-      formula.innerHTML = "m = 0/0";
-      concl.innerText = "Error: Fermat dice m=2.";
+      document.getElementById('fermat-estado').style.borderColor = 'var(--red)';
+      document.getElementById('fermat-estado').style.background = '#FDF2F2';
+      document.getElementById('fermat-legal').innerHTML = `👻 <strong>E = 0</strong><br>¡Indeterminación 0/0!`;
+      document.getElementById('fermat-formula').innerHTML = "m = 0/0";
+      document.getElementById('fermat-conclusion').innerText = "Fermat dice m=2.";
     }
   }
   slider.oninput = draw; draw();
@@ -900,7 +887,6 @@ function initNewtonSim() {
   let animId;
   let fireTimeout;
   let isFiring = false;
-  let isPreparingToFire = false;
   let t = 0;
   let V0 = 110; // Velocidad inicial
   let g = 40;   // Gravedad visual
@@ -912,18 +898,22 @@ function initNewtonSim() {
   let shipT = 0;
   let gameStatus = "PLAYING"; 
   let impactInfo = null;
-  let initialTargetX = 215 + Math.random() * 155; // Aleatorio entre 215 y 370 (mitad para atrás)
-  let targetXDist = initialTargetX;
+  let posShot1 = 200 + Math.random() * 170;
+  let posShot2 = 200 + Math.random() * 170;
+  while(Math.abs(posShot1 - posShot2) < 40) { posShot2 = 200 + Math.random() * 170; }
+  let targetXDist = posShot1;
 
   function showMessage(text, color) {
-      msgBox.innerText = text;
+      msgBox.innerHTML = text;
       msgBox.style.color = color || '#D9534F';
       msgBox.style.opacity = 1;
   }
   
   function showReadyMessage() {
       if(gameStatus === "PLAYING") {
-          showMessage((shots + 1) + "° Disparo", '#1B3A6B');
+          let legend = (shots + 1) + "° Disparo";
+          if(shots >= 4) legend += "<br><small style='font-size:14px; font-weight:700;'>¡NO DEJES QUE LLEGUE A LA COSTA!</small>";
+          showMessage(legend, '#1B3A6B');
       }
   }
 
@@ -931,10 +921,12 @@ function initNewtonSim() {
       clearTimeout(fireTimeout);
       sliderAng.value = 90;
       shots = 0; hits = 0; wind = 0; shipT = 0;
-      initialTargetX = 215 + Math.random() * 155; 
-      targetXDist = initialTargetX;
+      posShot1 = 200 + Math.random() * 170;
+      posShot2 = 200 + Math.random() * 170;
+      while(Math.abs(posShot1 - posShot2) < 40) { posShot2 = 200 + Math.random() * 170; }
+      targetXDist = posShot1;
       gameStatus = "PLAYING";
-      isFiring = false; isPreparingToFire = false; t = 0; trail = []; impactInfo = null;
+      isFiring = false; t = 0; trail = []; impactInfo = null;
       updateUI();
       msgBox.style.opacity = 0;
       showReadyMessage();
@@ -949,20 +941,13 @@ function initNewtonSim() {
 
   function loop() {
     if (gameStatus === "PLAYING") {
-       if (shots < 3) {
-           // Primeros 3 disparos: el barco oscila adelante y atrás
+       if (shots < 4) {
+           // Primeros 4 disparos: el barco oscila de izquierda a derecha
            shipT += 0.02;
            targetXDist = 280 + Math.sin(shipT) * 60;
-       } else if (shots === 3) {
-           // Cuarto tiro: se acerca a la costa
-           targetXDist -= 0.32;
-           if (targetXDist <= 40) {
-               gameStatus = "LOST";
-               showMessage("¡DERROTA!<br>Invasión pirata.", "#D9534F");
-           }
        } else if (shots >= 4) {
-           // Quinto tiro: un 50% más rápido (0.32 * 1.5 = 0.48)
-           targetXDist -= 0.48;
+           // Quinto tiro (último): se acerca a la costa un 20% más lento (0.48 * 0.8 = 0.384)
+           targetXDist -= 0.384;
            if (targetXDist <= 40) {
                gameStatus = "LOST";
                showMessage("¡DERROTA!<br>Invasión pirata.", "#D9534F");
@@ -1003,18 +988,19 @@ function initNewtonSim() {
 
            if (hits >= 4) {
                gameStatus = "WON";
-               showMessage("¡VICTORIA! Puerto a salvo.", "#1A6B3A");
+               showMessage("¡VICTORIA!<br>Puerto a salvo.", "#1A6B3A");
            } else if (shots >= 5) {
                gameStatus = "LOST";
-               showMessage("¡DERROTA! Los piratas ganan.", "#D9534F");
+               showMessage("¡DERROTA!<br>Los piratas ganan.", "#D9534F");
            } else {
                showMessage(hit ? "💥 ¡IMPACTO!" : "💦 ¡AGUA!", hit ? "#D9534F" : "#1A2C3A");
-               // A partir del tiro 4 (shots >= 3), viento aleatorio y barco al horizonte
-               if (shots >= 1 && gameStatus === "PLAYING") {
+               // A partir del tiro 4 (shots >= 3), viento aleatorio
+               if (shots >= 3 && gameStatus === "PLAYING") {
                    wind = Math.floor(Math.random() * 11) - 5;
                }
-               if (shots === 3 && gameStatus === "PLAYING") {
-                   targetXDist = 380; // Aparece en el horizonte derecho para el nivel 4
+               // Para el último intento (shots === 4), el barco va al horizonte
+               if (shots === 4 && gameStatus === "PLAYING") {
+                   targetXDist = 380; // Aparece en el horizonte derecho
                }
                
                // Blanquear trayectoria luego del mensaje de impacto (2 segundos)
@@ -1059,9 +1045,16 @@ function initNewtonSim() {
     
     // Viento visual
     if(wind !== 0) {
-       ctx.fillStyle = wind > 0 ? 'rgba(200, 92, 0, 0.7)' : 'rgba(46, 109, 164, 0.7)';
-       ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
-       ctx.fillText(wind > 0 ? '🌬️ Viento a favor ➔' : '⬅ 🌬️ Viento en contra', 200, 30);
+       ctx.save(); ctx.translate(200, 35);
+       ctx.fillStyle = wind > 0 ? 'var(--amb)' : 'var(--med)';
+       ctx.font = 'bold 11px Arial'; ctx.textAlign = 'center';
+       ctx.fillText('🌬️ VIENTO (Fluxión x_ext)', 0, -15);
+       // Flecha vector
+       ctx.strokeStyle = ctx.fillStyle; ctx.lineWidth = 2;
+       ctx.beginPath(); ctx.moveTo(-wind*5, 0); ctx.lineTo(wind*5, 0); ctx.stroke();
+       ctx.beginPath(); ctx.moveTo(wind*5, 0); 
+       ctx.lineTo(wind*5 - (wind>0?5:-5), -3); ctx.lineTo(wind*5 - (wind>0?5:-5), 3); ctx.fill();
+       ctx.restore();
     }
     
     // Barco Galeón (Doble vela)
