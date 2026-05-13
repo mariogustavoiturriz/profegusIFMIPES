@@ -1013,7 +1013,7 @@ function initNewtonSim() {
            } else {
                showMessage(hit ? "💥 ¡IMPACTO!" : "💦 ¡AGUA!", hit ? "#D9534F" : "#1A2C3A");
                // A partir del tiro 4 (shots >= 3), viento aleatorio y barco al horizonte
-               if (shots >= 3 && gameStatus === "PLAYING") {
+               if (shots >= 1 && gameStatus === "PLAYING") {
                    wind = Math.floor(Math.random() * 11) - 5;
                }
                if (shots === 3 && gameStatus === "PLAYING") {
