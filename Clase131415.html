@@ -26,9 +26,11 @@
   .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--amb);position:relative}
   .top-info{display:flex;align-items:center;gap:20px}
   .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
-  .top-r{font-size:11px;opacity:.65;text-align:right}
+  .top-r{font-size:11px;opacity:.65;text-align:right; display:flex; align-items:center; gap:12px;}
   .btn-back {background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.3); transition: background 0.2s;}
   .btn-back:hover { background: rgba(255,255,255,0.25); }
+  .btn-profe {background: transparent; border: 1px solid rgba(255,255,255,0.5); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: background 0.2s;}
+  .btn-profe:hover {background: rgba(255,255,255,0.15);}
   .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--amb)}
   .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
   .subbar-title{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
@@ -135,7 +137,10 @@
       <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
     </div>
   </div>
-  <div class="top-r">Ciclo Lectivo 2026</div>
+  <div class="top-r">
+    <span>Ciclo Lectivo 2026</span>
+    <button onclick="toggleModoProfe()" id="btn-modo-profe" class="btn-profe">🔐 Modo Profe</button>
+  </div>
 </div>
 
 <div class="subbar">
@@ -247,6 +252,7 @@
         <div class="step" style="border-color:var(--nav);background:var(--pale); margin-top:25px;">
           <strong style="color:var(--nav)">Misión 1 — La refutación "escolar" moderna</strong>
           <p style="font-size: 13px; color: var(--txt);">Ustedes son profesores de matemática actuales. Utilicen la teoría de <strong>límite de series geométricas</strong> para "demostrarle" a Zenón que se equivoca calculando el límite a infinito.</p>
+          <button onclick="toggleSolucion()" style="background:var(--vio); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px; font-size:13px; transition:background 0.2s;">👁️ Mostrar/Ocultar Solución Matemática</button>
         </div>
         <div id="mision1-proof" style="display:none;background:#333333;color:#FFFFFF;border-radius:6px;border-left:4px solid var(--amb);padding:16px;margin:12px 0">
           <p style="font-size:12px;font-weight:700;color:var(--amb);margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px">📐 Solución Moderna Oculta (Ctrl+M para ocultar)</p>
@@ -342,11 +348,9 @@
           <p style="text-align:center;font-size:15px;margin:15px 0">$\text{pendiente} = \dfrac{f(x+E) - f(x)}{E}$</p>
           <p>El truco: <strong>tras simplificar la expresión, hace $E = 0$ y obtiene la pendiente de la tangente</strong>. A esto lo llamó "método de adigualdad" (<em>adaequalitas</em>): tratar dos cantidades como casi iguales, para luego declarar a $E$ insignificante.</p>
 
-          <!-- ── EJEMPLO OCULTO — Ctrl+V para mostrar ── -->
+          <!-- ── EJEMPLO OCULTO ── -->
           <div style="position:relative; margin-bottom:9px;">
-            <div class="hidden-hint">
-              <span>🔒</span> Resolución oculta — <strong>...</strong> para mostrar/ocultar
-            </div>
+            <button onclick="toggleFermat()" style="background:var(--vio); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:10px; font-size:13px; transition:background 0.2s;">👁️ Mostrar/Ocultar Ejemplo Histórico</button>
             <div id="fermat-ejemplo" style="display:none; border-radius:6px; padding:11px 15px; border-left:3px solid var(--vio); background:var(--vcl);">
               <strong style="display:block;font-size:13px;color:var(--vio);margin-bottom:4px">Ejemplo histórico: la tangente a $y = x^2$</strong>
               <p style="font-size:13px;color:var(--txt);margin-top:8px">
@@ -483,6 +487,61 @@
       </div>
     </div>
 
+    <!-- SIMULADOR NEWTON -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--slate)">🖥️ Laboratorio Visual</span><hr></div>
+      <div class="act-box" style="border-color:var(--slate)">
+        <div class="act-head" style="background:var(--slate)"><h3>El Cañón de Newton: Balística y Fluxiones</h3></div>
+        <div class="act-body">
+          <button onclick="toggleNewton()" style="background:var(--slate); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:10px; font-size:13px; transition:background 0.2s;">👁️ Mostrar/Ocultar Laboratorio de Balística</button>
+          <div id="newton-laboratorio" style="display:none;">
+            <div style="background:#FFF8F0; border-left:4px solid var(--amb); padding:12px 16px; border-radius:6px; margin-bottom:15px;">
+              <strong style="color:var(--amb); font-size:14px; display:block; margin-bottom:4px;">📜 El asedio de Portsmouth (1666)</strong>
+          <div class="sim-container" style="align-items:flex-start;">
+            <div class="sim-canvas-box" style="flex:1.5; position:relative;">
+              <canvas id="newtonCanvas" width="400" height="250" style="max-width:100%; border-radius: 4px; background:#FAFBFC; border: 1px solid var(--bd); width:100%; height:auto; display:block;"></canvas>
+              <!-- Overlay para mensajes de victoria/derrota -->
+              <div id="newton-msg" style="position:absolute; top:30%; left:50%; transform:translate(-50%, -50%); font-size:24px; font-weight:900; color:#D9534F; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff; opacity:0; transition:opacity 0.3s; pointer-events:none;"></div>
+            </div>
+            <div class="sim-controls" style="flex:1; background:var(--gris); padding:15px; border-radius:8px; border:1px solid var(--bd);">
+              
+              <div style="display:flex; justify-content:space-between; align-items:center; background:#EAF5EC; border:1px solid var(--grn); padding:8px 12px; border-radius:6px; margin-bottom:15px;">
+                <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/2</div>
+                <div style="font-size:12px; font-weight:bold; color:var(--slate);">TIROS: <span id="newton-shots">0</span>/5</div>
+              </div>
+
+              <label style="font-size:12px; font-weight:bold; color:var(--slate); text-transform:uppercase;">Ángulo: <span id="newton-ang-val" style="color:var(--nav); font-size:14px;">90°</span></label>
+              <input type="range" id="newton-angle" class="sim-slider" min="0" max="90" value="90" style="margin-top:5px; margin-bottom:15px;">
+              
+              <div style="font-size:12px; font-weight:bold; color:var(--slate); text-transform:uppercase; margin-bottom:15px;">Viento actual: <span id="newton-wind-val" style="color:var(--amb); font-size:14px;">0</span> <span style="text-transform:lowercase">m/s²</span></div>
+              
+              <div style="display:flex; gap:10px; margin-bottom:15px;">
+                <button id="newton-fire" style="flex:1; background:var(--red); color:#fff; border:none; padding:10px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.2s;">🔥 Disparar</button>
+                <button id="newton-reset" style="background:#666; color:#fff; border:none; padding:10px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.2s;">🔄 Reiniciar</button>
+              </div>
+
+              <div class="sim-math" style="background:#fff; border:1px solid var(--bd); border-radius:6px; padding:10px; margin-top:0;" id="newton-math-box">
+                <strong style="color:var(--nav); font-size:11px; display:block; border-bottom:1px solid var(--bd); margin-bottom:6px; padding-bottom:4px; text-transform:uppercase;">Telemetría (t = <span id="newton-t-val" style="color:var(--red);">0.00</span> s)</strong>
+                <div style="font-family:Georgia,serif; font-size:12px; line-height:1.7; display:flex; justify-content:space-between;">
+                  <div>
+                    <span style="color:var(--slate); font-weight:bold; font-size:10px;">FLUENTES</span><br>
+                    $x = $ <span id="newton-x">0.0</span><br>
+                    $y = $ <span id="newton-y">0.0</span>
+                  </div>
+                  <div>
+                    <span style="color:var(--red); font-weight:bold; font-size:10px;">FLUXIONES</span><br>
+                    $\dot{x} = $ <span id="newton-vx">0.0</span><br>
+                    $\dot{y} = $ <span id="newton-vy">0.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div> <!-- Cierre del div newton-laboratorio -->
+        </div>
+      </div>
+    </div>
+
     <div class="sec">
       <div class="sec-label"><span style="background:var(--red)">⚠️ La crítica epistemológica</span><hr></div>
       <div class="lect">
@@ -507,19 +566,18 @@
     <div class="sec">
       <div class="sec-label"><span style="background:var(--med)">📝 Taller de Diseño Didáctico</span><hr></div>
       <div class="act-box" style="border-color:var(--med)">
-        <div class="act-head" style="background:var(--med)"><h3>Introducir el límite en 6.° año sin reproducir el "salto de fe"</h3></div>
+        <div class="act-head" style="background:var(--med)"><h3>Introducir el límite sin reproducir el "salto de fe"</h3></div>
         <div class="act-body">
-          <p style="margin-bottom: 15px; font-size: 13.5px; color: var(--neg);">Trabajo en parejas. Diseñen la <strong>apertura</strong> de una clase sobre "Introducción al Límite" para alumnos del último año de secundaria. Tomen como base la tensión histórica que vimos en estas tres clases. <strong>Yves Chevallard</strong> advierte que al enseñar Límite, la escuela aplica una <em>descontextualización</em> brutal. El alumno opera algoritmos sin conocer la "Guerra del Cálculo". Su tarea es evitar esa despersonalización.</p>
+          <p style="margin-bottom: 15px; font-size: 13.5px; color: var(--neg);">Trabajo en parejas (20 minutos). Tomen como base la tensión histórica que vimos en estas tres clases. <strong>Yves Chevallard</strong> advierte que al enseñar Límite, la escuela aplica una <em>descontextualización</em> brutal. El alumno opera algoritmos sin conocer el drama de la "Guerra del Cálculo". Su tarea hoy es dar el primer paso para evitar esa despersonalización.</p>
           <div class="step" style="border-color:var(--med);background:var(--pale)">
-            <strong style="color:var(--nav)">Condiciones innegociables</strong>
-            <ul style="font-size: 13px; color: var(--txt); line-height: 1.6; margin-left: 20px; margin-top: 5px;">
-              <li>No arrancar con fórmulas algorítmicas (factorear, $\epsilon-\delta$).</li>
-              <li>Partir de un problema real (Zenón, la velocidad instantánea, el área bajo una parábola).</li>
-              <li>Usar al menos una TIC: Desmos o GeoGebra para que los alumnos vean el "acercamiento" sin llegar (infinito potencial).</li>
-              <li>Hacer alguna referencia histórica explícita (Cavalieri, Fermat, Newton o Leibniz).</li>
-            </ul>
+            <strong style="color:var(--nav)">Consigna Express (El Gancho Epistemológico)</strong>
+            <p style="font-size: 13px; color: var(--txt); line-height: 1.6; margin-top: 5px;">Diseñen ÚNICAMENTE la "Pregunta Disparadora" o el "Conflicto Cognitivo" inicial con el que abrirían la clase de límite en 6.° año, para que los alumnos sientan el mismo "horror" de Fermat, Leibniz o Newton.<br><br>
+            <strong>Condiciones:</strong><br>
+            1. Prohibido usar fórmulas algorítmicas de entrada.<br>
+            2. Debe plantear una paradoja o problema físico/geométrico real (ej: tangente, área, velocidad).<br>
+            <em>Nota: La planificación de la secuencia completa y la integración TIC (GeoGebra/Desmos) la dejaremos para el Trabajo Final Integrador (TFI).</em></p>
           </div>
-          <p style="font-size: 12.5px; color: #666; font-style: italic; margin-top: 10px;">Extensión: máximo 250 palabras. Lo leerán en el cierre.</p>
+          <p style="font-size: 12.5px; color: #666; font-style: italic; margin-top: 10px;">Extensión: máximo 100 palabras. Se compartirá en el plenario de cierre.</p>
         </div>
       </div>
     </div>
@@ -579,8 +637,13 @@ window.showTab = function(id) {
   document.getElementById('pane-' + id).classList.add('on');
   if (btn) btn.classList.add('active');
   window.scrollTo(0, 0);
-  if(id === 'c13') { setTimeout(initZenoSim, 100); setTimeout(initAchillesSim, 150); }
+  if(id === 'c13') { 
+    setTimeout(initZenoSim, 100); 
+    setTimeout(initAchillesSim, 150); 
+    setTimeout(initStadiumSim, 200);
+  }
   if(id === 'c14') setTimeout(initFermatSim, 100);
+  if(id === 'c15') setTimeout(initNewtonSim, 100);
   if(window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 200);
 };
 
@@ -593,58 +656,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function unlockPane(id) {
-  const btn     = document.getElementById('btn-'     + id);
-  const lock    = document.getElementById('lock-'    + id);
-  const content = document.getElementById('content-' + id);
-  if(btn)     btn.classList.remove('locked');
-  if(lock)    lock.style.display  = 'none';
-  if(content) content.style.display = 'block';
-  if(window.MathJax && MathJax.typesetPromise && content)
-    setTimeout(() => MathJax.typesetPromise([content]), 100);
+    const btn = document.getElementById('btn-' + id);
+    const lock = document.getElementById('lock-' + id);
+    const content = document.getElementById('content-' + id);
+    if(btn) btn.classList.remove('locked');
+    if(lock) lock.style.display = 'none';
+    if(content) content.style.display = 'block';
+    if(window.MathJax && MathJax.typesetPromise && content) setTimeout(() => MathJax.typesetPromise([content]), 100);
 }
 
-function showToast(msg, color) {
-  const t = document.createElement('div');
-  t.textContent = msg;
-  t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:' + color + ';color:#fff;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:opacity .3s;font-family:sans-serif;font-size:14px';
-  document.body.appendChild(t);
-  setTimeout(() => t.style.opacity = '0', 2000);
-  setTimeout(() => t.remove(), 2500);
+function toggleModoProfe() {
+  unlockPane('c14');
+  unlockPane('c15');
+  const btn = document.getElementById('btn-modo-profe');
+  if(btn) {
+      btn.innerHTML = '🔓 Modo Profe Activado';
+      btn.style.background = 'rgba(255,255,255,0.2)';
+  }
 }
 
 document.addEventListener('keydown', (e) => {
-
-  /* ── Ctrl+Shift+U — desbloqueo docente ── */
-  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
-    unlockPane('c14'); unlockPane('c15');
-    alert('🔓 Desbloqueo de Cátedra Activado');
-  }
-
-  /* ── Ctrl+M — mostrar/ocultar solución Misión 1 (Zenón) ── */
-  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'm') {
+  // Atajo para Modo Profe: Ctrl + Alt + U (o Ctrl + Shift + U)
+  if (e.ctrlKey && (e.altKey || e.shiftKey) && e.key.toLowerCase() === 'u') {
     e.preventDefault();
-    const proof = document.getElementById('mision1-proof');
-    if (!proof) return;
-    const show = proof.style.display === 'none';
-    proof.style.display = show ? 'block' : 'none';
-    if (show && window.MathJax) MathJax.typesetPromise([proof]);
-    showToast(show ? '🎯 Solución Zenón visible' : '🙈 Solución Zenón oculta', '#4A1A7B');
+    toggleModoProfe();
   }
-
-  /* ── Ctrl+V — mostrar/ocultar ejemplo Fermat ── */
-  if (e.ctrlKey && !e.shiftKey && e.key.toLowerCase() === 'v') {
-    e.preventDefault();
-    const ejemplo = document.getElementById('fermat-ejemplo');
-    if (!ejemplo) return;
-    const show = ejemplo.style.display === 'none';
-    ejemplo.style.display = show ? 'block' : 'none';
-    if (show && window.MathJax) MathJax.typesetPromise([ejemplo]);
-    showToast(show ? '📐 Resolución de Fermat visible' : '🙈 Resolución de Fermat oculta', '#4A1A7B');
-  }
-
 });
 
-/* ── Simulador Zenón — Dicotomía ── */
+function toggleSolucion() {
+  let proof = document.getElementById('mision1-proof');
+  if (proof) {
+    let isHidden = proof.style.display === 'none';
+    proof.style.display = isHidden ? 'block' : 'none';
+    if (isHidden && window.MathJax) MathJax.typesetPromise([proof]);
+  }
+}
+
+function toggleFermat() {
+  let proof = document.getElementById('fermat-ejemplo');
+  if (proof) {
+    let isHidden = proof.style.display === 'none';
+    proof.style.display = isHidden ? 'block' : 'none';
+    if (isHidden && window.MathJax) MathJax.typesetPromise([proof]);
+  }
+}
+
+function toggleNewton() {
+  let sim = document.getElementById('newton-laboratorio');
+  if (sim) {
+    let isHidden = sim.style.display === 'none';
+    sim.style.display = isHidden ? 'block' : 'none';
+  }
+}
+
 function initZenoSim() {
   const canvas = document.getElementById('zenoCanvas');
   if(!canvas) return;
@@ -799,14 +863,6 @@ function initFermatSim() {
       ctx.fillStyle = '#D9534F'; ctx.font = 'bold 11px Arial'; ctx.textAlign = 'left';
       ctx.fillText(`Q (${qx.toFixed(2)}, ${qy.toFixed(2)})`, qqx + 9, qqy - 8);
 
-      // ── Segmento E en el eje x ──
-      let [p0x] = toC(1, 0); let [p1x] = toC(qx, 0);
-      ctx.strokeStyle = '#C85C00'; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
-      ctx.beginPath(); ctx.moveTo(p0x, oy); ctx.lineTo(p1x, oy); ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle = '#C85C00'; ctx.font = 'bold 11px Arial'; ctx.textAlign = 'center';
-      ctx.fillText(`E`, (p0x + p1x) / 2, oy + 16);
-
       // ── Panel estado: legal ──
       const estado = document.getElementById('fermat-estado');
       estado.style.borderColor = '#1A6B3A'; estado.style.background = '#DFF0E9';
@@ -821,34 +877,288 @@ function initFermatSim() {
         `= 2 + E = 2 + ${E.toFixed(2)} = ${m.toFixed(4)}<br>La pendiente "correcta" aparece con el término extra E.`;
 
     } else {
-      // ── E ≈ 0: el fantasma ──
-      ctx.strokeStyle = '#D9534F'; ctx.lineWidth = 2.2; ctx.setLineDash([]);
-      let [tAx2, tAy2] = toC(0.1, 2*0.1 - 1);
-      let [tBx2, tBy2] = toC(2.4, 2*2.4 - 1);
-      ctx.beginPath(); ctx.moveTo(tAx2, tAy2); ctx.lineTo(tBx2, tBy2); ctx.stroke();
-
-      // Punto Q colapsado en P
-      let [qqx, qqy] = toC(1, 1);
-      ctx.fillStyle = '#D9534F'; ctx.globalAlpha = 0.4;
-      ctx.beginPath(); ctx.arc(qqx, qqy, 8, 0, Math.PI * 2); ctx.fill();
-      ctx.globalAlpha = 1;
-
-      const estado = document.getElementById('fermat-estado');
-      estado.style.borderColor = '#D9534F'; estado.style.background = '#FDF2F2';
-      document.getElementById('fermat-legal').innerHTML =
-        `⚠️ <strong>E = 0</strong><br>P y Q son el mismo punto.<br><em>"El fantasma de las cantidades desvanecidas"</em> — Berkeley, 1734.`;
-
-      document.getElementById('fermat-formula').innerHTML =
-        `m = <sup>(1 − 1)</sup>/<sub>(1 − 1)</sub> = <strong style="color:#D9534F">0/0 ⚠️</strong>`;
-      document.getElementById('fermat-conclusion').innerHTML =
-        `Indeterminado. Fermat declara "la pendiente es 2" y descarta el problema. Berkeley lo llamará ilógico 98 años después.`;
+      formula.innerHTML = "m = 0/0";
+      concl.innerText = "Error: Fermat dice m=2.";
     }
+  }
+  slider.oninput = draw; draw();
+}
 
-    if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([canvas.parentElement]);
+// SIMULADOR: CAÑON DE NEWTON
+let newtonInitDone = false;
+function initNewtonSim() {
+  if (newtonInitDone) return;
+  const canvas = document.getElementById('newtonCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  const sliderAng = document.getElementById('newton-angle');
+  const btnFire = document.getElementById('newton-fire');
+  const btnReset = document.getElementById('newton-reset');
+  const msgBox = document.getElementById('newton-msg');
+  
+  let animId;
+  let fireTimeout;
+  let isFiring = false;
+  let isPreparingToFire = false;
+  let t = 0;
+  let V0 = 110; // Velocidad inicial
+  let g = 40;   // Gravedad visual
+  
+  let shots = 0;
+  let hits = 0;
+  let wind = 0;
+  let trail = [];
+  let shipT = 0;
+  let gameStatus = "PLAYING"; 
+  let impactInfo = null;
+  let initialTargetX = 215 + Math.random() * 155; // Aleatorio entre 215 y 370 (mitad para atrás)
+  let targetXDist = initialTargetX;
+
+  function showMessage(text, color) {
+      msgBox.innerText = text;
+      msgBox.style.color = color || '#D9534F';
+      msgBox.style.opacity = 1;
+  }
+  
+  function showReadyMessage() {
+      if(gameStatus === "PLAYING") {
+          showMessage((shots + 1) + "° Disparo", '#1B3A6B');
+      }
   }
 
-  slider.oninput = draw;
-  draw();
+  function resetGame() {
+      clearTimeout(fireTimeout);
+      sliderAng.value = 90;
+      shots = 0; hits = 0; wind = 0; shipT = 0;
+      initialTargetX = 215 + Math.random() * 155; 
+      targetXDist = initialTargetX;
+      gameStatus = "PLAYING";
+      isFiring = false; isPreparingToFire = false; t = 0; trail = []; impactInfo = null;
+      updateUI();
+      msgBox.style.opacity = 0;
+      showReadyMessage();
+  }
+
+  function updateUI() {
+      document.getElementById('newton-shots').innerText = shots;
+      document.getElementById('newton-hits').innerText = hits;
+      document.getElementById('newton-wind-val').innerText = wind;
+      document.getElementById('newton-ang-val').innerText = sliderAng.value + '°';
+  }
+
+  function loop() {
+    if (gameStatus === "PLAYING") {
+       if (shots === 2) {
+           // Tercer tiro: oscila adelante y atrás en la mitad trasera
+           shipT += 0.02;
+           targetXDist = (initialTargetX > 300 ? initialTargetX - 60 : initialTargetX) + Math.sin(shipT) * 60;
+       } else if (shots === 3) {
+           // Cuarto tiro: se acerca a la costa
+           targetXDist -= 0.4;
+           if (targetXDist <= 40) {
+               gameStatus = "LOST";
+               showMessage("¡DERROTA! Los piratas invadieron el puerto.", "#D9534F");
+           }
+       } else if (shots >= 4) {
+           // Quinto tiro: un 50% más rápido (0.4 * 1.5 = 0.6)
+           targetXDist -= 0.6;
+           if (targetXDist <= 40) {
+               gameStatus = "LOST";
+               showMessage("¡DERROTA! Los piratas invadieron el puerto.", "#D9534F");
+           }
+       } else {
+           // Primer y segundo tiro: estático
+           targetXDist = initialTargetX;
+       }
+    }
+
+    let angleRad = parseInt(sliderAng.value) * Math.PI / 180;
+    let vx0 = V0 * Math.cos(angleRad);
+    let vy0 = V0 * Math.sin(angleRad);
+    
+    let x = 0, y = 0, vx = vx0, vy = vy0;
+
+    if (isFiring) {
+       t += 0.03;
+       x = vx0 * t + 0.5 * wind * t * t;
+       y = vy0 * t - 0.5 * g * t * t;
+       vx = vx0 + wind * t;
+       vy = vy0 - g * t;
+       
+       trail.push({x: x, y: y});
+       
+       // Impacto
+       if (y <= 0 && t > 0.1) {
+           y = 0;
+           isFiring = false;
+           shots++;
+           
+           const ox = 30; const sx = 0.9;
+           let bx = ox + x * sx;
+           let targetCanvasX = ox + targetXDist * sx;
+           
+           // Margen de colisión de 25px
+           let hit = Math.abs(bx - targetCanvasX) < 25;
+           if (hit) hits++;
+           
+           impactInfo = { x: bx, y: 210, hit: hit, timer: 60 };
+
+           if (hits >= 2) {
+               gameStatus = "WON";
+               showMessage("¡VICTORIA! Puerto a salvo.", "#1A6B3A");
+           } else if (shots >= 5) {
+               gameStatus = "LOST";
+               showMessage("¡DERROTA! Los piratas ganan.", "#D9534F");
+           } else {
+               showMessage(hit ? "💥 ¡IMPACTO!" : "💦 ¡AGUA!", hit ? "#D9534F" : "#1A2C3A");
+               // A partir del tiro 4 (shots >= 3), viento aleatorio y barco al horizonte
+               if (shots >= 3 && gameStatus === "PLAYING") {
+                   wind = Math.floor(Math.random() * 11) - 5;
+               }
+               if (shots === 3 && gameStatus === "PLAYING") {
+                   targetXDist = 380; // Aparece en el horizonte derecho para el nivel 4
+               }
+               
+               // Blanquear trayectoria luego del mensaje de impacto (2 segundos)
+               setTimeout(() => {
+                   if (gameStatus === "PLAYING") {
+                       trail = [];
+                       impactInfo = null;
+                       showReadyMessage();
+                   }
+               }, 2000);
+           }
+           updateUI();
+       }
+    } else {
+        document.getElementById('newton-ang-val').innerText = sliderAng.value + '°';
+    }
+    
+    // Telemetría
+    document.getElementById('newton-t-val').innerText = t.toFixed(2);
+    document.getElementById('newton-x').innerText = x.toFixed(1);
+    document.getElementById('newton-y').innerText = y.toFixed(1);
+    document.getElementById('newton-vx').innerText = vx.toFixed(1);
+    document.getElementById('newton-vy').innerText = vy.toFixed(1);
+    
+    drawCanvas(x, y, vx, vy, angleRad);
+    
+    animId = requestAnimationFrame(loop);
+  }
+  
+  function drawCanvas(x, y, vx, vy, angleRad) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const ox = 30, oy = 210;
+    const sx = 0.9, sy = 0.9; 
+    
+    // Ejes y Mar
+    ctx.strokeStyle = '#C5D2DC'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(ox, 10); ctx.lineTo(ox, oy - 15); ctx.stroke(); 
+    ctx.beginPath(); ctx.moveTo(10, oy); ctx.lineTo(390, oy); ctx.stroke();
+    ctx.fillStyle = 'rgba(46, 109, 164, 0.2)';
+    ctx.fillRect(ox + 30, oy, 360, 40);
+    
+    // Viento visual
+    if(wind !== 0) {
+       ctx.fillStyle = wind > 0 ? 'rgba(200, 92, 0, 0.7)' : 'rgba(46, 109, 164, 0.7)';
+       ctx.font = 'bold 14px Arial'; ctx.textAlign = 'center';
+       ctx.fillText(wind > 0 ? '🌬️ Viento a favor ➔' : '⬅ 🌬️ Viento en contra', 200, 30);
+    }
+    
+    // Barco Galeón (Doble vela)
+    let targetCanvasX = ox + targetXDist * sx;
+    let targetCanvasY = oy;
+    ctx.fillStyle = '#5C4033'; ctx.fillRect(targetCanvasX - 22, targetCanvasY - 14, 44, 14); 
+    ctx.fillStyle = '#8B4513'; ctx.beginPath(); ctx.moveTo(targetCanvasX-22, targetCanvasY-14); ctx.lineTo(targetCanvasX-32, targetCanvasY-14); ctx.lineTo(targetCanvasX-22, targetCanvasY); ctx.fill();
+    
+    // Mástiles
+    ctx.fillStyle = '#000'; 
+    ctx.fillRect(targetCanvasX - 8, targetCanvasY - 45, 3, 31); // Mástil 1
+    ctx.fillRect(targetCanvasX + 8, targetCanvasY - 35, 2, 21); // Mástil 2
+    
+    // Velas
+    ctx.fillStyle = '#eee'; 
+    ctx.beginPath(); ctx.moveTo(targetCanvasX - 8, targetCanvasY - 42); ctx.lineTo(targetCanvasX + 10, targetCanvasY - 25); ctx.lineTo(targetCanvasX - 8, targetCanvasY - 25); ctx.fill(); // Vela 1
+    ctx.beginPath(); ctx.moveTo(targetCanvasX + 8, targetCanvasY - 32); ctx.lineTo(targetCanvasX + 22, targetCanvasY - 18); ctx.lineTo(targetCanvasX + 8, targetCanvasY - 18); ctx.fill(); // Vela 2
+    
+    // Ojos/Detalles
+    ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(targetCanvasX - 10, targetCanvasY - 7, 2, 0, Math.PI*2); ctx.arc(targetCanvasX + 10, targetCanvasY - 7, 2, 0, Math.PI*2); ctx.fill();
+    
+    // Cañón (30% más chico, sin ruedas)
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.rotate(-angleRad);
+    ctx.fillStyle = '#3A4F6A'; 
+    ctx.fillRect(0, -5.6, 21, 11.2); // Tubo (30x16 -> 21x11.2)
+    ctx.fillStyle = '#1A2C3A'; 
+    ctx.beginPath(); ctx.moveTo(0, -6); ctx.lineTo(-6, 0); ctx.lineTo(0, 6); ctx.fill(); // Soporte base fijo
+    ctx.restore();
+    
+    // Animación de impacto
+    if (impactInfo && impactInfo.timer > 0) {
+        impactInfo.timer--;
+        if (impactInfo.hit) {
+            ctx.fillStyle = '#C85C00'; ctx.beginPath(); ctx.arc(impactInfo.x, impactInfo.y, 25, 0, Math.PI*2); ctx.fill();
+        } else {
+            ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(impactInfo.x, impactInfo.y, 15, 0, Math.PI*2); ctx.fill();
+        }
+    }
+    
+    // Traza de la bala (fluente)
+    if (trail.length > 0) {
+        ctx.strokeStyle = 'rgba(170, 170, 170, 0.8)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        for(let i=0; i<trail.length; i++) {
+            let px = ox + trail[i].x * sx;
+            let py = oy - trail[i].y * sy;
+            if(i===0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke(); ctx.setLineDash([]);
+    }
+    
+    // Bala en vuelo
+    if (isFiring) {
+        let bx = ox + x * sx;
+        let by = oy - y * sy;
+        
+        ctx.fillStyle = '#1A2C3A';
+        ctx.beginPath(); ctx.arc(bx, by, 6, 0, Math.PI * 2); ctx.fill();
+        
+        // Vector Fluxión (Tangente) - 30% más largo (0.3 -> 0.39)
+        ctx.strokeStyle = '#D9534F'; ctx.lineWidth = 2.5;
+        let vecEndX = bx + vx * 0.39; 
+        let vecEndY = by - vy * 0.39;
+        ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(vecEndX, vecEndY); ctx.stroke();
+        
+        let headAngle = Math.atan2(vecEndY - by, vecEndX - bx);
+        ctx.beginPath();
+        ctx.moveTo(vecEndX, vecEndY);
+        ctx.lineTo(vecEndX - 8 * Math.cos(headAngle - 0.4), vecEndY - 8 * Math.sin(headAngle - 0.4));
+        ctx.lineTo(vecEndX - 8 * Math.cos(headAngle + 0.4), vecEndY - 8 * Math.sin(headAngle + 0.4));
+        ctx.fillStyle = '#D9534F'; ctx.fill();
+    }
+  }
+  
+  btnFire.onclick = () => {
+    if(!isFiring && gameStatus === "PLAYING") {
+      t = 0;
+      trail = [];
+      impactInfo = null;
+      isFiring = true;
+      msgBox.style.opacity = 0;
+    }
+  };
+  
+  btnReset.onclick = () => {
+     resetGame();
+  };
+  
+  updateUI();
+  showReadyMessage();
+  newtonInitDone = true;
+  loop();
 }
 </script>
 </body>
