@@ -949,7 +949,7 @@ function initNewtonSim() {
 
   function loop() {
     if (gameStatus === "PLAYING") {
-       if (shots === 0) {
+       if (shots === 0 or shots === 1 or shots === 2) {
            // Tercer tiro: oscila adelante y atrás en la mitad trasera
            shipT += 0.02;
            targetXDist = (initialTargetX > 300 ? initialTargetX - 60 : initialTargetX) + Math.sin(shipT) * 60;
