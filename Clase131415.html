@@ -483,6 +483,7 @@
               
               <div style="display:flex; justify-content:space-between; align-items:center; background:#EAF5EC; border:1px solid var(--grn); padding:8px 12px; border-radius:6px; margin-bottom:15px;">
                 <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/4</div>
+                <div style="font-size:12px; font-weight:bold; color:var(--red);">⏳ TIEMPO: <span id="newton-timer">10</span>s</div>
                 <div style="font-size:12px; font-weight:bold; color:var(--slate);">TIROS: <span id="newton-shots">0</span>/5</div>
               </div>
 
@@ -898,10 +899,12 @@ function initNewtonSim() {
   let shipT = 0;
   let gameStatus = "PLAYING"; 
   let impactInfo = null;
-  let posShot1 = 200 + Math.random() * 170;
-  let posShot2 = 200 + Math.random() * 170;
-  while(Math.abs(posShot1 - posShot2) < 40) { posShot2 = 200 + Math.random() * 170; }
-  let targetXDist = posShot1;
+  let targetXDist = 280;
+
+  // NUEVAS VARIABLES TIEMPO
+  let timeLeft = 10;
+  let lastFrameTime = performance.now();
+  let isTimerActive = true;
 
   function showMessage(text, color) {
       msgBox.innerHTML = text;
@@ -921,12 +924,12 @@ function initNewtonSim() {
       clearTimeout(fireTimeout);
       sliderAng.value = 90;
       shots = 0; hits = 0; wind = 0; shipT = 0;
-      posShot1 = 200 + Math.random() * 170;
-      posShot2 = 200 + Math.random() * 170;
-      while(Math.abs(posShot1 - posShot2) < 40) { posShot2 = 200 + Math.random() * 170; }
-      targetXDist = posShot1;
+      targetXDist = 280;
       gameStatus = "PLAYING";
       isFiring = false; t = 0; trail = []; impactInfo = null;
+      timeLeft = 10;
+      isTimerActive = true;
+      lastFrameTime = performance.now();
       updateUI();
       msgBox.style.opacity = 0;
       showReadyMessage();
@@ -940,10 +943,44 @@ function initNewtonSim() {
   }
 
   function loop() {
+    let now = performance.now();
+    let dt = (now - lastFrameTime) / 1000;
+    if(dt > 0.1) dt = 0.1; // Evitar saltos al cambiar de pestaña
+    lastFrameTime = now;
+
+    // Lógica del Reloj
+    if (gameStatus === "PLAYING" && !isFiring && isTimerActive) {
+        timeLeft -= dt;
+        if (timeLeft <= 0) {
+            timeLeft = 0;
+            isTimerActive = false;
+            shots++;
+            showMessage("¡TIEMPO AGOTADO!<br>Pierdes turno.", "#D9534F");
+            
+            if (shots >= 5 && hits < 4) {
+                gameStatus = "LOST";
+                setTimeout(() => showMessage("¡DERROTA!<br>Los piratas ganan.", "#D9534F"), 2000);
+            } else {
+                setTimeout(() => {
+                    if (gameStatus === "PLAYING") {
+                        if (shots >= 1) wind = Math.floor(Math.random() * 11) - 5;
+                        if (shots === 4) targetXDist = 380;
+                        timeLeft = 10;
+                        lastFrameTime = performance.now();
+                        isTimerActive = true;
+                        showReadyMessage();
+                    }
+                }, 2000);
+            }
+            updateUI();
+        }
+    }
+
     if (gameStatus === "PLAYING") {
        if (shots < 4) {
-           // Primeros 4 disparos: el barco oscila de izquierda a derecha
-           shipT += 0.02;
+           // Primeros 4 disparos: el barco oscila incrementando velocidad (-30%, -20%, -10%, 0%)
+           let speedMult = 0.7 + (shots * 0.1);
+           shipT += 0.02 * speedMult;
            targetXDist = 280 + Math.sin(shipT) * 60;
        } else if (shots >= 4) {
            // Quinto tiro (último): se acerca a la costa un 20% más lento (0.48 * 0.8 = 0.384)
@@ -994,8 +1031,8 @@ function initNewtonSim() {
                showMessage("¡DERROTA!<br>Los piratas ganan.", "#D9534F");
            } else {
                showMessage(hit ? "💥 ¡IMPACTO!" : "💦 ¡AGUA!", hit ? "#D9534F" : "#1A2C3A");
-               // A partir del tiro 4 (shots >= 3), viento aleatorio
-               if (shots >= 3 && gameStatus === "PLAYING") {
+               // A partir del tiro 2 (shots >= 1), viento aleatorio
+               if (shots >= 1 && gameStatus === "PLAYING") {
                    wind = Math.floor(Math.random() * 11) - 5;
                }
                // Para el último intento (shots === 4), el barco va al horizonte
@@ -1003,11 +1040,14 @@ function initNewtonSim() {
                    targetXDist = 380; // Aparece en el horizonte derecho
                }
                
-               // Blanquear trayectoria luego del mensaje de impacto (2 segundos)
+               // Blanquear trayectoria y reset timer
                setTimeout(() => {
                    if (gameStatus === "PLAYING") {
                        trail = [];
                        impactInfo = null;
+                       timeLeft = 10;
+                       lastFrameTime = performance.now();
+                       isTimerActive = true;
                        showReadyMessage();
                    }
                }, 2000);
@@ -1019,6 +1059,7 @@ function initNewtonSim() {
     }
     
     // Telemetría
+    document.getElementById('newton-timer').innerText = Math.ceil(timeLeft);
     document.getElementById('newton-t-val').innerText = t.toFixed(2);
     document.getElementById('newton-x').innerText = x.toFixed(1);
     document.getElementById('newton-y').innerText = y.toFixed(1);
@@ -1132,7 +1173,8 @@ function initNewtonSim() {
   }
   
   btnFire.onclick = () => {
-    if(!isFiring && gameStatus === "PLAYING") {
+    if(!isFiring && gameStatus === "PLAYING" && isTimerActive) {
+      isTimerActive = false;
       t = 0;
       trail = [];
       impactInfo = null;
@@ -1148,6 +1190,7 @@ function initNewtonSim() {
   updateUI();
   showReadyMessage();
   newtonInitDone = true;
+  lastFrameTime = performance.now();
   loop();
 }
 </script>
