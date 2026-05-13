@@ -471,7 +471,7 @@
           <div id="newton-laboratorio" style="display:none;">
             <div style="background:#FFF8F0; border-left:4px solid var(--amb); padding:12px 16px; border-radius:6px; margin-bottom:15px;">
               <strong style="color:var(--amb); font-size:14px; display:block; margin-bottom:4px;">📜 El asedio de Portsmouth (1666)</strong>
-              <p style="font-size:13px; color:var(--txt); margin:0; line-height:1.6;">La Royal Navy te encomienda la defensa del puerto. Sir Isaac Newton te entrega un pergamino con sus nuevas "fluxiones" (derivadas) para calcular la trayectoria.<br><strong>Tu misión:</strong> Hundir el galeón pirata al menos <strong>4 veces en 5 intentos</strong>. Ajustá el ángulo del cañón. ¡Ojo! En los últimos ataques el enemigo avanzará hacia la costa: ¡no dejes que desembarquen! El clima del Canal de la Mancha es inestable (viento aleatorio). La trayectoria se dibuja en vivo tras el disparo.</p>
+              <p style="font-size:13px; color:var(--txt); margin:0; line-height:1.6;">La Royal Navy te encomienda la defensa del puerto. Sir Isaac Newton te entrega un pergamino con sus nuevas "fluxiones" (derivadas) para calcular la trayectoria.<br><strong>Tu misión:</strong> Hundir el galeón pirata <strong>5 veces en 5 intentos</strong> (perdés si errás algún tiro). Ajustá el ángulo del cañón. ¡Ojo! En los últimos ataques el enemigo avanzará hacia la costa: ¡no dejes que desembarquen! El clima del Canal de la Mancha es inestable (viento aleatorio). La trayectoria se dibuja en vivo tras el disparo.</p>
             </div>
           <div class="sim-container" style="align-items:flex-start;">
             <div class="sim-canvas-box" style="flex:1.5; position:relative;">
@@ -482,8 +482,8 @@
             <div class="sim-controls" style="flex:1; background:var(--gris); padding:15px; border-radius:8px; border:1px solid var(--bd);">
               
               <div style="display:flex; justify-content:space-between; align-items:center; background:#EAF5EC; border:1px solid var(--grn); padding:8px 12px; border-radius:6px; margin-bottom:15px;">
-                <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/4</div>
-                <div style="font-size:12px; font-weight:bold; color:var(--red);">⏳ TIEMPO: <span id="newton-timer">10</span>s</div>
+                <div style="font-size:12px; font-weight:bold; color:var(--grn);">🎯 ACIERTOS: <span id="newton-hits">0</span>/5</div>
+                <div style="font-size:12px; font-weight:bold; color:var(--red);">⏳ TIEMPO: <span id="newton-timer">20</span>s</div>
                 <div style="font-size:12px; font-weight:bold; color:var(--slate);">TIROS: <span id="newton-shots">0</span>/5</div>
               </div>
 
@@ -902,7 +902,7 @@ function initNewtonSim() {
   let targetXDist = 280;
 
   // NUEVAS VARIABLES TIEMPO
-  let timeLeft = 10;
+  let timeLeft = 20;
   let lastFrameTime = performance.now();
   let isTimerActive = true;
 
@@ -927,7 +927,7 @@ function initNewtonSim() {
       targetXDist = 280;
       gameStatus = "PLAYING";
       isFiring = false; t = 0; trail = []; impactInfo = null;
-      timeLeft = 10;
+      timeLeft = 20;
       isTimerActive = true;
       lastFrameTime = performance.now();
       updateUI();
@@ -955,23 +955,8 @@ function initNewtonSim() {
             timeLeft = 0;
             isTimerActive = false;
             shots++;
-            showMessage("¡TIEMPO AGOTADO!<br>Pierdes turno.", "#D9534F");
-            
-            if (shots >= 5 && hits < 4) {
-                gameStatus = "LOST";
-                setTimeout(() => showMessage("¡DERROTA!<br>Los piratas ganan.", "#D9534F"), 2000);
-            } else {
-                setTimeout(() => {
-                    if (gameStatus === "PLAYING") {
-                        if (shots >= 1) wind = Math.floor(Math.random() * 11) - 5;
-                        if (shots === 4) targetXDist = 380;
-                        timeLeft = 10;
-                        lastFrameTime = performance.now();
-                        isTimerActive = true;
-                        showReadyMessage();
-                    }
-                }, 2000);
-            }
+            gameStatus = "LOST";
+            showMessage("¡TIEMPO AGOTADO!<br>Los piratas ganan.", "#D9534F");
             updateUI();
         }
     }
@@ -983,8 +968,8 @@ function initNewtonSim() {
            shipT += 0.02 * speedMult;
            targetXDist = 280 + Math.sin(shipT) * 60;
        } else if (shots >= 4) {
-           // Quinto tiro (último): se acerca a la costa un 20% más lento (0.48 * 0.8 = 0.384)
-           targetXDist -= 0.384;
+           // Quinto tiro (último): se acerca a la costa un 10% más lento que 0.48 (0.48 * 0.9 = 0.432)
+           targetXDist -= 0.432;
            if (targetXDist <= 40) {
                gameStatus = "LOST";
                showMessage("¡DERROTA!<br>Invasión pirata.", "#D9534F");
@@ -1023,14 +1008,14 @@ function initNewtonSim() {
            
            impactInfo = { x: bx, y: 210, hit: hit, timer: 60 };
 
-           if (hits >= 4) {
+           if (!hit) {
+               gameStatus = "LOST";
+               showMessage("💦 ¡AGUA!<br>Los piratas ganan.", "#D9534F");
+           } else if (hits >= 5) {
                gameStatus = "WON";
                showMessage("¡VICTORIA!<br>Puerto a salvo.", "#1A6B3A");
-           } else if (shots >= 5) {
-               gameStatus = "LOST";
-               showMessage("¡DERROTA!<br>Los piratas ganan.", "#D9534F");
            } else {
-               showMessage(hit ? "💥 ¡IMPACTO!" : "💦 ¡AGUA!", hit ? "#D9534F" : "#1A2C3A");
+               showMessage("💥 ¡IMPACTO!", "#D9534F");
                // A partir del tiro 2 (shots >= 1), viento aleatorio
                if (shots >= 1 && gameStatus === "PLAYING") {
                    wind = Math.floor(Math.random() * 11) - 5;
@@ -1045,7 +1030,7 @@ function initNewtonSim() {
                    if (gameStatus === "PLAYING") {
                        trail = [];
                        impactInfo = null;
-                       timeLeft = 10;
+                       timeLeft = 20;
                        lastFrameTime = performance.now();
                        isTimerActive = true;
                        showReadyMessage();
