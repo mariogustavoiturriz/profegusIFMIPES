@@ -443,12 +443,14 @@
               <p><strong>Enfoque físico.</strong> Una curva es la trayectoria de un punto en movimiento. La pendiente es la <em>velocidad</em>; el área, la <em>distancia recorrida</em>.</p>
               <p><strong>Vocabulario:</strong> "fluentes" y "fluxiones". Anota con un punto sobre la letra: $\dot{x}$, $\dot{y}$.</p>
               <p><strong>Cronología:</strong> Desarrolla el cálculo entre 1665-1666 durante el cierre de Cambridge por la peste. <strong>No publica</strong>.</p>
+              <p style="font-size:11.5px; color:var(--txt); margin-top:8px; border-top:1px solid var(--bd); padding-top:6px;"><strong>Fuente Histórica:</strong> <em>"Considero a las cantidades matemáticas no como formadas por partes muy pequeñas, sino como descritas por un movimiento continuo."</em><br>— Newton, I. <em>De quadratura curvarum</em> (1704).</p>
             </div>
             <div class="disputa-col leibniz">
               <h4>🇩🇪 Gottfried W. Leibniz (1646-1716)</h4>
               <p><strong>Enfoque algebraico.</strong> Una curva es una sucesión de incrementos infinitesimales. La pendiente, un cociente de diferenciales; el área, una suma.</p>
               <p><strong>Vocabulario:</strong> "diferenciales" ($dx$, $dy$) e "integrales" ($\int$). Es la notación que usamos hoy.</p>
               <p><strong>Cronología:</strong> Trabaja entre 1673-1676. <strong>Publica primero</strong>, en 1684 en las <em>Acta Eruditorum</em>.</p>
+              <p style="font-size:11.5px; color:var(--txt); margin-top:8px; border-top:1px solid var(--bd); padding-top:6px;"><strong>Fuente Histórica:</strong> <em>"Un nuevo método para los máximos y los mínimos, así como para las tangentes, que no se detiene ante cantidades fraccionarias o irracionales."</em><br>— Leibniz, G. W. <em>Nova Methodus pro Maximis et Minimis</em> (1684).</p>
             </div>
           </div>
           <h5 style="color:var(--nav);margin-top:20px">La disputa: ¿quién plagió a quién?</h5>
@@ -581,7 +583,6 @@
           <strong>(b)</strong> Fundamentá tu respuesta citando explícitamente a <strong>Brousseau</strong> (obstáculo epistemológico) o <strong>Chevallard</strong> (transposición didáctica).<br>
           <strong>(c)</strong> Hacé al menos una referencia histórica situada (nombre + obra + año).</p>
         </div>
-        <div class="reg-plazo"><span style="font-size:19px">⏰</span><span>Plazo: <strong>Miércoles 23:59 hs</strong> en la plataforma virtual.</span></div>
       </div>
     </div>
 
@@ -601,13 +602,14 @@
     </div>
 
     <div class="srcs">
-      <h5>Bibliografía / Fuentes (Clase 15)</h5>
-      <p>Berkeley, G. (1734). <em>The Analyst</em>. Londres.</p>
+      <h5>Bibliografía / Fuentes Primarias y Secundarias (Clase 15)</h5>
+      <p>Berkeley, G. (1734). <em>The Analyst, or A Discourse Addressed to an Infidel Mathematician</em>. Londres: J. Tonson.</p>
       <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 437-490.</p>
       <p>Brousseau, G. (1983). <em>Los obstáculos epistemológicos y los problemas en matemáticas</em>. RDM, 4(2).</p>
       <p>Chevallard, Y. (1997). <em>La transposición didáctica</em>. Buenos Aires: Aique.</p>
       <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 89-95.</p>
-      <p>Mankiewicz, R. (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós, pp. 156-172.</p>
+      <p>Leibniz, G. W. (1684). <em>Nova Methodus pro Maximis et Minimis</em>. En <em>Acta Eruditorum</em>, Leipzig.</p>
+      <p>Newton, I. (1704). <em>Tractatus de quadratura curvarum</em>. En <em>Opticks</em>. Londres: Sam. Smith and Benj. Walford.</p>
     </div>
   </div>
 </div>
@@ -927,7 +929,7 @@ function initNewtonSim() {
       targetXDist = 280;
       gameStatus = "PLAYING";
       isFiring = false; t = 0; trail = []; impactInfo = null;
-      timeLeft = 30;
+      timeLeft = 20;
       isTimerActive = true;
       lastFrameTime = performance.now();
       updateUI();
