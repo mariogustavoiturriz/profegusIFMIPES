@@ -481,6 +481,8 @@
               <canvas id="newtonCanvas" width="400" height="250" style="max-width:100%; border-radius: 4px; background:#FAFBFC; border: 1px solid var(--bd); width:100%; height:auto; display:block;"></canvas>
               <!-- Overlay para mensajes de victoria/derrota -->
               <div id="newton-msg" style="position:absolute; top:30%; left:50%; transform:translate(-50%, -50%); font-size:24px; font-weight:900; color:#D9534F; text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff; opacity:0; transition:opacity 0.3s; pointer-events:none; text-align:center;"></div>
+              <!-- Botón de inicio -->
+              <button id="newton-start" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:var(--grn); color:#fff; border:none; padding:12px 24px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: background 0.2s;">▶ EMPEZAR</button>
             </div>
             <div class="sim-controls" style="flex:1; background:var(--gris); padding:15px; border-radius:8px; border:1px solid var(--bd);">
               
@@ -887,6 +889,7 @@ function initNewtonSim() {
   const btnFire = document.getElementById('newton-fire');
   const btnReset = document.getElementById('newton-reset');
   const msgBox = document.getElementById('newton-msg');
+  const btnStart = document.getElementById('newton-start');
   
   let animId;
   let fireTimeout;
@@ -900,14 +903,14 @@ function initNewtonSim() {
   let wind = 0;
   let trail = [];
   let shipT = 0;
-  let gameStatus = "PLAYING"; 
+  let gameStatus = "WAITING"; 
   let impactInfo = null;
   let targetXDist = 280;
 
   // NUEVAS VARIABLES TIEMPO
   let timeLeft = 20;
   let lastFrameTime = performance.now();
-  let isTimerActive = true;
+  let isTimerActive = false;
 
   function showMessage(text, color) {
       msgBox.innerHTML = text;
@@ -928,14 +931,13 @@ function initNewtonSim() {
       sliderAng.value = 90;
       shots = 0; hits = 0; wind = 0; shipT = 0;
       targetXDist = 280;
-      gameStatus = "PLAYING";
+      gameStatus = "WAITING";
       isFiring = false; t = 0; trail = []; impactInfo = null;
       timeLeft = 20;
-      isTimerActive = true;
-      lastFrameTime = performance.now();
+      isTimerActive = false;
+      btnStart.style.display = "block";
       updateUI();
       msgBox.style.opacity = 0;
-      showReadyMessage();
   }
 
   function updateUI() {
@@ -1175,8 +1177,15 @@ function initNewtonSim() {
      resetGame();
   };
   
+  btnStart.onclick = () => {
+      gameStatus = "PLAYING";
+      isTimerActive = true;
+      lastFrameTime = performance.now();
+      btnStart.style.display = "none";
+      showReadyMessage();
+  };
+  
   updateUI();
-  showReadyMessage();
   newtonInitDone = true;
   lastFrameTime = performance.now();
   loop();
