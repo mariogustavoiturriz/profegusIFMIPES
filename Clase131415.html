@@ -949,27 +949,24 @@ function initNewtonSim() {
 
   function loop() {
     if (gameStatus === "PLAYING") {
-       if (shots === 0 or shots === 1 or shots === 2) {
-           // Tercer tiro: oscila adelante y atrás en la mitad trasera
+       if (shots < 3) {
+           // Primeros 3 disparos: el barco oscila adelante y atrás
            shipT += 0.02;
-           targetXDist = (initialTargetX > 300 ? initialTargetX - 60 : initialTargetX) + Math.sin(shipT) * 60;
+           targetXDist = 280 + Math.sin(shipT) * 60;
        } else if (shots === 3) {
            // Cuarto tiro: se acerca a la costa
-           targetXDist -= 0.4;
+           targetXDist -= 0.32;
            if (targetXDist <= 40) {
                gameStatus = "LOST";
-               showMessage("¡DERROTA! Los piratas invadieron el puerto.", "#D9534F");
+               showMessage("¡DERROTA!<br>Invasión pirata.", "#D9534F");
            }
        } else if (shots >= 4) {
-           // Quinto tiro: un 50% más rápido (0.4 * 1.5 = 0.6)
-           targetXDist -= 0.6;
+           // Quinto tiro: un 50% más rápido (0.32 * 1.5 = 0.48)
+           targetXDist -= 0.48;
            if (targetXDist <= 40) {
                gameStatus = "LOST";
-               showMessage("¡DERROTA! Los piratas invadieron el puerto.", "#D9534F");
+               showMessage("¡DERROTA!<br>Invasión pirata.", "#D9534F");
            }
-       } else {
-           // Primer y segundo tiro: estático
-           targetXDist = initialTargetX;
        }
     }
 
