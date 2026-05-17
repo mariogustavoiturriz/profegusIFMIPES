@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 8 · Eje 3: Cauchy, Weierstrass y la Definición ε-δ · IPESfa 2026</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']] } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root {
+    --nav:#1B3A6B; --med:#2E6DA4; --cl:#D6E4F0; --pale:#EDF4FB;
+    --grn:#1A6B3A; --gcl:#DFF0E9; --amb:#C85C00; --acl:#FFF3E0;
+    --vio:#4A1A7B; --vcl:#EDE7F6; --slate:#3A4F6A; --red:#D9534F;
+    --teal:#00858A; --tcl:#E0F5F5;
+    --gris:#F3F6F9; --bd:#C5D2DC; --txt:#4A5E70; --neg:#1A2C3A; --bco:#FFFFFF;
+    --r:8px; --sh:0 2px 8px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+  .top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--teal)}
+  .top-info{display:flex;align-items:center;gap:20px}
+  .top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+  .top-r{font-size:11px;opacity:.65;text-align:right;display:flex;align-items:center;gap:12px}
+  .btn-back{background:rgba(255,255,255,0.15);color:#fff;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:bold;font-size:13px;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,0.3);transition:background .2s}
+  .btn-back:hover{background:rgba(255,255,255,0.25)}
+  .btn-profe{background:transparent;border:1px solid rgba(255,255,255,0.5);color:#fff;padding:4px 10px;border-radius:4px;font-size:11px;cursor:pointer;transition:background .2s}
+  .btn-profe:hover{background:rgba(255,255,255,0.15)}
+  .btn-toggle{color:#fff;border:none;padding:8px 14px;border-radius:6px;font-weight:bold;cursor:pointer;font-size:13px;transition:background .2s;margin-bottom:10px;background:var(--vio)}
+  .btn-toggle:hover{filter:brightness(1.15)}
+  .subbar{background:var(--nav);border-top:1px solid rgba(255,255,255,.1);padding:10px 24px 12px;border-bottom:3px solid var(--teal)}
+  .subbar-pre{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+  .subbar-title{font-size:16px;font-weight:700;color:#fff;line-height:1.3}
+  .subbar-title span{font-weight:400;color:var(--tcl)}
+  .hero{background:linear-gradient(135deg,#0D2A50 0%,var(--slate) 60%,#1A4A4A 100%);color:#fff;padding:28px 28px 20px}
+  .hero h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#A8E6CF}
+  .hero-sub{font-size:13px;opacity:.82}
+  .tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;overflow-x:auto;padding:0 16px}
+  .tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 16px;white-space:nowrap;transition:all .15s;margin-bottom:-2px;letter-spacing:.2px}
+  .tab-btn:hover:not(.locked){color:var(--teal)}
+  .tab-btn.active{color:var(--teal);border-bottom-color:var(--teal)}
+  .tab-btn.locked{opacity:.4;cursor:not-allowed;background:#fafafa;color:#999}
+  .tab-btn.locked::after{content:" 🔒";font-size:11px}
+  .wrap{margin:0 auto;padding:24px 28px 60px;width:100%}
+  .pane{display:none;animation:fadeIn .3s ease}
+  .pane.on{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .clase-banner{border-radius:var(--r);margin-bottom:20px;overflow:hidden}
+  .clase-banner-top{display:flex;align-items:stretch;min-height:60px}
+  .cb-num{background:var(--teal);color:#fff;font-size:28px;font-weight:900;width:66px;display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;flex-direction:column;line-height:1.1}
+  .cb-info{background:var(--slate);flex:1;padding:14px 18px}
+  .cb-info h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:3px}
+  .cb-info p{font-size:12px;color:var(--cl);margin:0}
+  .cb-obj{background:var(--tcl);padding:12px 18px;border-top:1px solid var(--bd)}
+  .cb-obj p{font-size:13px;color:var(--teal);line-height:1.55}
+  .sec{margin-bottom:22px}
+  .sec-label{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .sec-label span{background:var(--nav);color:#fff;border-radius:20px;padding:2px 12px;font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+  .sec-label hr{flex:1;border:none;border-top:2px solid var(--bd)}
+  .act-box{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .act-head{background:var(--nav);padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .act-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
+  .act-body{padding:16px 20px}
+  .act-body p{font-size:13.5px;line-height:1.7;margin-bottom:10px}
+  .lect{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+  .lect-head{background:var(--pale);padding:11px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .lect-head h3{font-size:14px;font-weight:700;color:var(--nav);margin:0;flex:1}
+  .lect-body{padding:16px 20px}
+  .lect-body p{font-size:13.5px;line-height:1.75;margin-bottom:11px;color:var(--neg)}
+  .lect-body h5{font-size:13px;font-weight:700;color:var(--nav);margin:14px 0 6px;border-left:3px solid var(--med);padding-left:8px}
+  .step{background:var(--gris);border-radius:6px;padding:11px 15px;margin-bottom:9px;border-left:3px solid var(--med)}
+  .step strong{display:block;font-size:13px;color:var(--nav);margin-bottom:4px}
+  .step p{font-size:13px;line-height:1.65;margin-top:5px}
+  .note{border-radius:var(--r);padding:12px 16px;font-size:13.5px;margin:12px 0;display:flex;gap:10px;align-items:flex-start}
+  .ni{font-size:18px;flex-shrink:0;margin-top:2px}
+  .nb{background:var(--pale);border-left:4px solid var(--med)}
+  .ng{background:var(--gcl);border-left:4px solid var(--grn)}
+  .na{background:var(--acl);border-left:4px solid var(--amb)}
+  .nv{background:var(--vcl);border-left:4px solid var(--vio)}
+  .nt{background:var(--tcl);border-left:4px solid var(--teal)}
+  .srcs{background:var(--gris);border-radius:var(--r);padding:13px 17px;border:1px solid var(--bd);margin-top:16px}
+  .srcs h5{font-size:11px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+  .srcs p{font-size:11.5px;color:var(--txt);margin-bottom:5px;padding-left:18px;text-indent:-18px;line-height:1.5}
+  .cita-hist{background:#1A1A2E;color:#E0E0E0;padding:20px 24px;border-radius:var(--r);font-family:Georgia,serif;font-size:14px;line-height:1.8;margin:16px 0;border-left:4px solid var(--amb);position:relative}
+  .cita-hist p{color:#E0E0E0 !important}
+  .cita-hist .cita-autor{text-align:right;font-size:12px;color:#aaa;margin-top:10px;font-style:italic}
+  .cita-hist .cita-label{position:absolute;top:-10px;left:18px;background:var(--amb);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;font-family:Arial,sans-serif}
+  .registro{background:#FFFDF3;border:2px solid var(--amb);border-radius:var(--r);padding:20px 22px;margin-bottom:14px}
+  .registro h3{color:var(--amb);font-size:15px;margin-bottom:8px}
+  .reg-consigna{background:#fff;border-radius:6px;padding:13px 15px;font-size:13.5px;font-style:italic;color:var(--neg);margin-bottom:12px;border-left:3px solid var(--amb);line-height:1.7}
+  .reg-plazo{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.7);border-radius:6px;padding:9px 13px;font-size:13px;margin-top:12px}
+  .locked-pane{text-align:center;padding:60px 20px;color:var(--txt);background:#f8fafc;border:2px dashed var(--bd);border-radius:var(--r);margin-top:20px}
+  .locked-pane h2{font-size:20px;color:var(--slate);margin-bottom:10px}
+  .locked-icon{font-size:40px;opacity:.5;margin-bottom:15px}
+  .sim-container{display:flex;flex-wrap:wrap;gap:20px;background:#fff;padding:15px;border-radius:8px;border:1px solid var(--bd);margin-top:15px}
+  .sim-canvas-box{flex:1;min-width:260px;text-align:center;background:#FAFBFC;border:1px solid #ddd;border-radius:6px;padding:8px}
+  .sim-controls{flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .sim-slider{width:100%;margin:8px 0;cursor:pointer}
+  /* Portrait card */
+  .portrait-card{display:flex;gap:20px;align-items:flex-start;background:var(--bco);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+  .portrait-card img{width:110px;height:140px;object-fit:cover;border-radius:6px;border:3px solid var(--bd);flex-shrink:0;filter:grayscale(20%)}
+  .portrait-card .portrait-info{flex:1}
+  .portrait-card h4{font-size:16px;color:var(--nav);margin-bottom:4px}
+  .portrait-card .portrait-dates{font-size:12px;color:var(--txt);margin-bottom:8px;font-style:italic}
+  .portrait-card p{font-size:13.5px;color:var(--neg);line-height:1.7}
+  /* Formal definition box */
+  .def-box{background:#0D2A50;color:#A8E6CF;border-radius:var(--r);padding:20px 24px;margin:16px 0;font-family:Georgia,serif;font-size:15px;line-height:2;border:2px solid var(--teal)}
+  .def-box .def-label{display:inline-block;background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;margin-bottom:10px}
+  .def-box .def-part{color:#FFD93D}
+  .def-box .def-note{font-size:12px;color:rgba(168,230,207,.7);margin-top:8px;font-style:italic;font-family:Arial,sans-serif}
+  /* Weierstrass monster bar */
+  .monster-bar{height:14px;border-radius:7px;overflow:hidden;display:flex;margin:6px 0;border:1px solid var(--bd)}
+  .monster-smooth{background:var(--grn);height:100%;transition:width .3s}
+  .monster-rough{background:var(--red);height:100%;transition:width .3s}
+  /* Timeline */
+  .timeline{position:relative;padding-left:28px;margin:16px 0}
+  .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--bd)}
+  .tl-item{position:relative;margin-bottom:14px}
+  .tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid #fff;box-shadow:0 0 0 2px var(--teal)}
+  .tl-item strong{font-size:13px;color:var(--nav)}
+  .tl-item p{font-size:12.5px;color:var(--txt);margin-top:2px}
+  /* Ed panel */
+  .ed-status-box{border-radius:8px;padding:14px;border:2px solid var(--grn);background:var(--gcl);font-size:13px;line-height:1.6}
+  .ed-formal-box{background:var(--gris);border-radius:8px;padding:12px;border:1px solid var(--bd);font-family:Georgia,serif;font-size:12.5px;line-height:1.8;color:var(--neg)}
+  @media(max-width:600px){
+    .portrait-card{flex-direction:column}
+    .portrait-card img{width:80px;height:100px}
+    .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+    .wrap{padding:14px 10px 40px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-info">
+    <a href="index.html" class="btn-back">← Volver al Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
+  </div>
+  <div class="top-r">
+    <span>Ciclo Lectivo 2026</span>
+    <button onclick="toggleModoProfe()" id="btn-modo-profe" class="btn-profe">🔐 Modo Profe</button>
+  </div>
+</div>
+
+<div class="subbar">
+  <p class="subbar-pre">Semana 8 · Cierre del Eje 3</p>
+  <p class="subbar-title">La Domesticación del Infinito <span>— Cauchy, Weierstrass y la Definición ε-δ</span></p>
+</div>
+
+<div class="hero">
+  <h1>La Respuesta que Tardó 87 Años</h1>
+  <p class="hero-sub">En 1734, Berkeley dejó al cálculo sin fundamentos. Los matemáticos siguieron usándolo — funcionaba para la física, para la astronomía, para la ingeniería. Pero la pregunta quedó flotando: ¿por qué funciona? Esta semana, Cauchy y Weierstrass dan la respuesta. No con intuición. Con lógica pura.</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="window.showTab('inicio')" id="btn-inicio">Inicio</button>
+  <button class="tab-btn" onclick="window.showTab('c16')" id="btn-c16">Clase 16 · Lunes</button>
+  <button class="tab-btn locked" onclick="window.showTab('c17')" id="btn-c17">Clase 17 · Martes</button>
+  <button class="tab-btn locked" onclick="window.showTab('c18')" id="btn-c18">Clase 18 · Miércoles</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════ INICIO ══════════════════ -->
+<div id="pane-inicio" class="pane on">
+  <div class="act-box" style="border:2px solid var(--teal)">
+    <div class="act-head" style="background:var(--teal)"><h3>🎯 Mapa de Navegación: Cierre del Eje 3</h3></div>
+    <div class="act-body">
+      <p style="font-size:15px;line-height:1.7">Esta semana cerramos el arco que arrancó en la Semana 7. Tenemos la herramienta (el cálculo de Newton-Leibniz), tenemos el ataque (Berkeley 1734), y esta semana llegamos a la defensa. Pero la defensa no fue rápida ni sencilla — tardó casi un siglo y requirió repensar desde cero qué significa que una función "se acerque" a un valor.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px">
+        <div class="note nt"><span class="ni">📐</span><div><strong style="display:block;margin-bottom:4px;color:var(--teal)">Lunes: Cauchy (1821)</strong><span style="font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La <strong>aritmetización del análisis</strong>: eliminar los infinitesimales reemplazándolos por aproximaciones.</span></div></div>
+        <div class="note nv"><span class="ni">⚡</span><div><strong style="display:block;margin-bottom:4px;color:var(--vio)">Martes: Weierstrass y ε-δ</strong><span style="font-size:13px">La formalización cuantitativa. El reto ε-δ interactivo. Los "monstruos": funciones continuas pero no derivables en ningún punto.</span></div></div>
+        <div class="note ng"><span class="ni">🏫</span><div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Miércoles: El límite en la enseñanza</strong><span style="font-size:13px">Las tres concepciones históricas del límite y sus consecuencias para el aula. Taller de diseño + Bitácora 4. Cierre del Eje 3.</span></div></div>
+      </div>
+      <div class="note na" style="margin-top:20px">
+        <span class="ni">🔗</span>
+        <div>
+          <strong style="display:block;margin-bottom:4px;color:var(--amb)">Hilo conductor de las tres clases</strong>
+          <p style="font-size:13px;margin:0;line-height:1.6">El arco completo del Eje 3 se lee así: <strong>Zenón paraliza</strong> (s. V a.C.) → <strong>Aristóteles congela</strong> (s. IV a.C.) → <strong>Cavalieri y Fermat atacan sin fundamento</strong> (1635-36) → <strong>Newton y Leibniz construyen el cálculo</strong> (1666-84) → <strong>Berkeley lo desmonta lógicamente</strong> (1734) → <strong>Cauchy redefine sin infinitesimales</strong> (1821) → <strong>Weierstrass lo formaliza con ε-δ</strong> (1860s). Esta semana: los dos últimos eslabones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 16 ══════════════════ -->
+<div id="pane-c16" class="pane">
+  <div class="clase-banner">
+    <div class="clase-banner-top">
+      <div class="cb-num" style="background:var(--teal)">16</div>
+      <div class="cb-info"><h2>La Respuesta a Berkeley: Cauchy y la Rigorización del Cálculo</h2><p>Lunes 18 de Mayo · Encuentro 19 (120 min)</p></div>
+    </div>
+    <div class="cb-obj"><p><strong>Objetivo:</strong> Comprender cómo Cauchy (1821) eliminó la contradicción del infinitesimal reemplazándolo por la noción de <em>límite como proceso de aproximación cuantitativa</em>. Identificar el alcance y los límites de ese programa: Cauchy rigoriza el cálculo, pero la <em>aritmetización</em> plena del análisis — la eliminación de toda referencia geométrica e intuitiva — sería obra de Weierstrass, Dedekind y Cantor décadas después.</p></div>
+  </div>
+
+  <!-- APERTURA -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--red)">🔥 El hilo que dejamos la semana pasada</span><hr></div>
+    <div class="act-box" style="border-color:var(--red)">
+      <div class="act-head" style="background:var(--red)"><h3>Berkeley hizo la pregunta. ¿Quién respondió?</h3></div>
+      <div class="act-body">
+        <div class="timeline">
+          <div class="tl-item"><strong>1634-1684: El cálculo funciona.</strong><p>Cavalieri, Fermat, Newton, Leibniz. 50 años de resultados correctos sobre bases contradictorias.</p></div>
+          <div class="tl-item"><strong>1734: Berkeley publica <em>The Analyst</em>.</strong><p>El cálculo opera con "fantasmas de cantidades desvanecidas". Nadie puede responder el ataque.</p></div>
+          <div class="tl-item"><strong>1734–1821: El siglo de las aplicaciones.</strong><p>Euler, Lagrange, Laplace, Fourier. Todos usan el cálculo para física, astronomía, calor. Nadie fundamenta. Funciona — ¿y? (Kline, 1992, pp. 948-951)</p></div>
+          <div class="tl-item" style="--color:var(--teal)"><strong style="color:var(--teal)">1821: Augustin-Louis Cauchy publica el <em>Cours d'analyse</em>.</strong><p>La primera respuesta seria. Sin infinitesimales. Sin metáforas de movimiento. Con definiciones.</p></div>
+        </div>
+        <div class="note na">
+          <span class="ni">⏳</span>
+          <div><strong style="color:var(--amb)">87 años de deuda intelectual</strong><p style="font-size:13px;margin:0;line-height:1.6">La distancia entre el ataque de Berkeley y la respuesta de Cauchy no es una distracción histórica: es un dato epistemológico de primer orden. La matemática más exitosa de la historia —el cálculo de Newton y Leibniz— funcionó durante casi un siglo sin que nadie pudiera justificar los fundamentos sobre los que operaba. Como señala Kline, los matemáticos del siglo XVIII "estaban más interesados en desarrollar el cálculo que en justificarlo lógicamente" (Kline, 1992, p. 949). La eficacia operativa y el rigor lógico pueden disociarse por generaciones enteras.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAUCHY -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--teal)">📖 Augustin-Louis Cauchy (1789–1857)</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--tcl);border-color:var(--teal)"><h3 style="color:var(--teal)">El ingeniero que reformó el análisis</h3></div>
+      <div class="lect-body">
+        <div class="portrait-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Augustin-Louis_Cauchy_1901.jpg/220px-Augustin-Louis_Cauchy_1901.jpg" alt="Retrato de Augustin-Louis Cauchy" onerror="this.style.display='none'">
+          <div class="portrait-info">
+            <h4>Augustin-Louis Cauchy</h4>
+            <div class="portrait-dates">París, 1789 – Sceaux, 1857</div>
+            <p>Ingeniero de formación, profesor de la <em>École Polytechnique</em>. Hombre de profundas convicciones religiosas y, paradójicamente, de extremo rigor matemático. Publicó más de 800 artículos — récord en la historia de la matemática — y reformó el análisis en dos obras monumentales: el <em>Cours d'analyse</em> (1821) y el <em>Résumé des leçons sur le calcul infinitésimal</em> (1823). (Boyer, 1986, pp. 525-542)</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:flex-start;margin:16px 0;flex-wrap:wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Cauchy_Cours_d%27analyse_1821.jpg/220px-Cauchy_Cours_d%27analyse_1821.jpg" alt="Portada del Cours d'analyse 1821" onerror="this.style.display='none'" style="width:130px;border-radius:6px;border:3px solid var(--bd);flex-shrink:0">
+          <div style="flex:1">
+            <h5 style="color:var(--teal);border-color:var(--teal)">El <em>Cours d'Analyse</em> (1821) — La obra bisagra</h5>
+            <p>Publicado en París, este texto inaugura el análisis matemático moderno. Su objetivo declarado era "dar al cálculo el rigor que se exige en geometría." La estrategia de Cauchy fue radical: <strong>eliminar los infinitesimales como objetos matemáticos</strong> y reemplazarlos por el concepto de <em>límite como proceso</em>. La geometría deja de ser el fundamento. El álgebra y la aritmética toman su lugar. (Boyer, 1986, p. 527)</p>
+            <p>La obra abre con la declaración de intenciones que define una época: "En cuanto a los métodos, he tratado de darles todo el rigor que se exige en geometría, de modo que nunca sea necesario recurrir a razonamientos sacados de la oscuridad de los infinitamente pequeños." (Cauchy, 1821, Préface)</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--teal);border-color:var(--teal)">La definición verbal del límite</h5>
+        <p>Cauchy no escribe todavía la fórmula ε-δ. Pero escribe algo que, por primera vez, captura la idea correcta:</p>
+        <div class="cita-hist" style="border-left-color:var(--teal)">
+          <div class="cita-label" style="background:var(--teal)">Cauchy — Cours d'Analyse, 1821</div>
+          <p><em>"Cuando los valores sucesivos atribuidos a una variable se aproximan indefinidamente a un valor fijo, de tal manera que al final difieran de él tan poco como se desee, este último valor se llama el <strong>límite</strong> de todos los demás."</em></p>
+          <p class="cita-autor">— Augustin-Louis Cauchy, <em>Cours d'analyse</em>, Préliminaires, 1821.</p>
+        </div>
+
+        <div class="note nt" style="margin-top:16px">
+          <span class="ni">💡</span>
+          <div>
+            <strong style="color:var(--teal);display:block;margin-bottom:4px">La ruptura con Leibniz</strong>
+            <p style="font-size:13px;margin:0;line-height:1.6">Para Leibniz, el infinitesimal $dx$ era un objeto real — una cantidad "infinitamente pequeña". Para Cauchy, no existe tal objeto. El límite no es el resultado de "hacer algo cero": es el valor que <em>se aproxima indefinidamente</em> sin ser necesariamente alcanzado. Este desplazamiento ontológico — de los objetos a los procesos — es el núcleo de la revolución de Cauchy. (Kline, 1992, pp. 950-955)</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--teal);border-color:var(--teal)">Un ejemplo concreto: el límite que no depende del valor en el punto</h5>
+        <p>Consideremos la función $f(x) = \dfrac{x^2 - 1}{x - 1}$. Esta función <strong>no está definida en $x = 1$</strong> (división por cero). Pero para todo $x \neq 1$:</p>
+        <p style="text-align:center;font-size:16px;margin:14px 0">$f(x) = \dfrac{x^2-1}{x-1} = \dfrac{(x-1)(x+1)}{x-1} = x+1$</p>
+        <p>Entonces <strong>el límite</strong> cuando $x \to 1$ es $2$, aunque $f(1)$ no exista. Esta distinción — entre el límite y el valor de la función — es la innovación conceptual de Cauchy que Berkeley no podía atacar. (Mankiewicz, 2000, pp. 175-180)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULADOR CAUCHY -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--teal)">🖥️ Simulador: El Corredor de Cauchy</span><hr></div>
+    <div class="act-box" style="border-color:var(--teal)">
+      <div class="act-head" style="background:var(--teal)"><h3>El límite como aproximación bilateral</h3></div>
+      <div class="act-body">
+        <p style="font-size:13px;margin-bottom:14px">Arrastrá el deslizador hacia la derecha para acercar $x$ a $1$ simultáneamente desde la izquierda (punto <span style="color:#D9534F;font-weight:700">rojo</span>) y desde la derecha (punto <span style="color:#4A1A7B;font-weight:700">violeta</span>). El punto <span style="color:#1A6B3A;font-weight:700">verde hueco</span> en $(1, 2)$ es el límite — existe aunque la función <em>no esté definida ahí</em>.</p>
+        <div class="sim-container">
+          <div class="sim-canvas-box">
+            <canvas id="cauchyCanvas" width="380" height="280" style="max-width:100%;border-radius:4px"></canvas>
+          </div>
+          <div class="sim-controls">
+            <div style="background:var(--tcl);border:1px solid var(--teal);border-radius:8px;padding:14px">
+              <label style="font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:8px">Acercamiento a x = 1</label>
+              <input type="range" id="cauchy-slider" class="sim-slider" min="1" max="99" value="10">
+              <div style="text-align:center;font-size:11px;color:var(--teal);margin-top:4px">← lejos &nbsp;&nbsp;&nbsp; muy cerca →</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="background:#FDF2F2;border:1px solid var(--red);border-radius:6px;padding:10px;font-size:12px;text-align:center">
+                <div style="font-weight:700;color:var(--red);margin-bottom:4px">← Izquierda</div>
+                <div>x = <strong id="cauchy-xl">0.10</strong></div>
+                <div>f(x) = <strong id="cauchy-fxl">1.10</strong></div>
+              </div>
+              <div style="background:var(--vcl);border:1px solid var(--vio);border-radius:6px;padding:10px;font-size:12px;text-align:center">
+                <div style="font-weight:700;color:var(--vio);margin-bottom:4px">Derecha →</div>
+                <div>x = <strong id="cauchy-xr">1.90</strong></div>
+                <div>f(x) = <strong id="cauchy-fxr">2.90</strong></div>
+              </div>
+            </div>
+            <div id="cauchy-status" style="border-radius:8px;padding:12px;border:2px solid var(--amb);background:var(--acl);font-size:13px;line-height:1.6">
+              ⏳ Mové el deslizador para acercar x a 1…
+            </div>
+          </div>
+        </div>
+        <div class="note nt" style="margin-top:14px">
+          <span class="ni">🔑</span>
+          <div>
+            <strong style="color:var(--teal)">La innovación conceptual</strong>
+            <p style="font-size:13px;margin-top:4px;line-height:1.6">El límite no pregunta qué vale $f(1)$. Pregunta: ¿a qué valor se aproximan $f(x)$ cuando $x$ se acerca a $1$ <em>desde cualquier dirección</em>? Si ambas aproximaciones coinciden, el límite existe. Berkeley no podía atacar esto: no hay ningún infinitesimal "cero y no-cero al mismo tiempo" en esta definición.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EL PROGRAMA DE CAUCHY -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--nav)">📖 El programa de Cauchy: rigorizar el cálculo</span><hr></div>
+    <div class="lect">
+      <div class="lect-head" style="background:var(--pale);border-color:var(--nav)"><h3 style="color:var(--nav)">Tres principios para un análisis sin fantasmas</h3></div>
+      <div class="lect-body">
+        <p>La contribución de Cauchy no fue solo definir el límite. Fue reorganizar el análisis entero sobre nuevas bases. Su programa tenía tres principios articulados, que Boyer (1986, pp. 530-538) identifica con precisión:</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0">
+          <div style="background:var(--tcl);border-left:4px solid var(--teal);border-radius:6px;padding:14px">
+            <strong style="color:var(--teal);display:block;margin-bottom:6px;font-size:13px">1. Eliminar los infinitesimales como objetos</strong>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.5">El $dx$ de Leibniz dejó de ser una "cantidad infinitamente pequeña" para convertirse en una notación que alude a un proceso de aproximación. No hay objeto: hay proceso. (Boyer, 1986, p. 530)</p>
+          </div>
+          <div style="background:var(--vcl);border-left:4px solid var(--vio);border-radius:6px;padding:14px">
+            <strong style="color:var(--vio);display:block;margin-bottom:6px;font-size:13px">2. Definir antes de demostrar</strong>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.5">Lagrange, Euler y Laplace demostraban teoremas sin haber definido rigurosamente sus conceptos centrales. Cauchy invierte el orden: sin definición precisa de límite y continuidad, no hay demostración válida. (Kline, 1992, p. 952)</p>
+          </div>
+          <div style="background:var(--gcl);border-left:4px solid var(--grn);border-radius:6px;padding:14px">
+            <strong style="color:var(--grn);display:block;margin-bottom:6px;font-size:13px">3. El límite como criterio unificador</strong>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.5">Derivada, integral, continuidad, serie convergente: todos estos conceptos quedan redefinidos en términos de límite. El límite se vuelve el concepto fundante del análisis. (Boyer, 1986, pp. 532-536)</p>
+          </div>
+        </div>
+        <div class="note na" style="margin-top:6px">
+          <span class="ni">⚠️</span>
+          <div>
+            <strong style="color:var(--amb)">Una precisión histórica importante</strong>
+            <p style="font-size:13px;margin-top:4px;line-height:1.6">El término <em>Arithmetisierung der Analysis</em> ("aritmetización del análisis") fue acuñado por Felix Klein hacia 1895 para referirse al programa de Weierstrass, Dedekind y Cantor — no al de Cauchy. Cauchy <strong>rigoriza</strong> el cálculo, pero su definición verbal del límite todavía contiene lenguaje dinámico ("se aproximan indefinidamente") que Weierstrass considerará impreciso. La <em>aritmetización plena</em> — la eliminación de toda referencia al movimiento, la geometría o la intuición — es obra de los años 1860-1880. (Kline, 1992, pp. 973-975; Boyer, 1986, pp. 546-550)</p>
+          </div>
+        </div>
+        <p style="margin-top:12px">La distinción importa para la clase de mañana: la definición ε-δ de Weierstrass no es una "versión más formal" de lo que Cauchy hizo. Es un programa diferente con una ontología diferente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAN LINEA -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea — Nodo 7</span><hr></div>
+    <div class="act-box" style="border-color:var(--grn)">
+      <div class="act-head" style="background:var(--grn)"><h3>Nuevo nodo en el Genially colectivo</h3></div>
+      <div class="act-body">
+        <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd)">
+          <div><strong style="color:var(--nav);font-size:14px">NODO 7 — Augustin-Louis Cauchy (1821)</strong><br><span style="color:var(--txt);font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La aritmetización del análisis: eliminar los infinitesimales. La respuesta (incompleta) a Berkeley.</span></div>
+        </div>
+        <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">Mañana completamos el Nodo 8 con Weierstrass y la definición formal ε-δ.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="srcs">
+    <h5>Bibliografía / Fuentes (Clase 16)</h5>
+    <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 525-542 (Cauchy y la rigorización del análisis).</p>
+    <p>Cauchy, A.-L. (1821). <em>Cours d'analyse de l'École Royale Polytechnique</em>. París. (Préface y Préliminaires: definición de límite y variable).</p>
+    <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza, pp. 948-960 (el siglo de aplicaciones sin fundamentos; el programa de Cauchy).</p>
+    <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 102-108 (la rigorización del análisis).</p>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 17 ══════════════════ -->
+<div id="pane-c17" class="pane">
+  <div class="locked-pane" id="lock-c17"><div class="locked-icon">🔒</div><h2>Clase 17 bloqueada</h2><p>Se habilitará el martes 19 de Mayo.</p></div>
+  <div class="real-content" id="content-c17" style="display:none">
+
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--vio)">17</div>
+        <div class="cb-info"><h2>Weierstrass y el Lenguaje del Rigor: La Definición ε-δ y los Monstruos</h2><p>Martes 19 de Mayo · Encuentro 20 (80 min)</p></div>
+      </div>
+      <div class="cb-obj"><p style="color:var(--vio)"><strong>Objetivo:</strong> Comprender la estructura lógica de la definición ε-δ del límite y analizar el impacto epistemológico de los "monstruos de Weierstrass" — funciones que destruyeron la intuición del siglo XIX.</p></div>
+    </div>
+
+    <!-- WEIERSTRASS -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--vio)">📖 Karl Weierstrass (1815–1897)</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:var(--vcl);border-color:var(--vio)"><h3 style="color:var(--vio)">El profesor de provincia que formalizó el análisis</h3></div>
+        <div class="lect-body">
+          <div class="portrait-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Karl_Weierstrass.jpg/220px-Karl_Weierstrass.jpg" alt="Retrato de Karl Weierstrass" onerror="this.style.display='none'">
+            <div class="portrait-info">
+              <h4>Karl Theodor Wilhelm Weierstrass</h4>
+              <div class="portrait-dates">Westfalia, 1815 – Berlín, 1897</div>
+              <p>Paradoja histórica: el matemático que inventó el rigor moderno pasó los primeros catorce años de su carrera enseñando en un <em>Gymnasium</em> (escuela secundaria) de una ciudad de provincia, sin acceso a universidades ni colegas matemáticos. Sus trabajos fundamentales circularon durante años solo en forma de cartas y notas de clase. Cuando finalmente llegó a Berlín (1856), ya era famoso sin haber publicado casi nada. (Kline, 1992, pp. 973-974)</p>
+            </div>
+          </div>
+
+          <h5 style="color:var(--vio);border-color:var(--vio)">La insatisfacción con Cauchy</h5>
+          <p>La definición verbal de Cauchy — "se aproxima indefinidamente" — seguía siendo imprecisa. ¿Cuánto es "indefinidamente"? ¿Con qué velocidad? Weierstrass identificó el problema: <strong>la definición verbal usa palabras que contienen tiempo y movimiento</strong> (acercarse, aproximar, tender). Un límite no debería depender de ningún proceso dinámico — es un enunciado estático sobre números.</p>
+          <p>Su programa fue radical: <strong>eliminar todo rastro de intuición dinámica</strong> del análisis. El límite no sería "el valor al que se acerca f(x)". Sería una afirmación cuantificada sobre distancias. (Boyer, 1986, pp. 546-550)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEFINICION ε-δ -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--vio)">📐 La Definición Formal</span><hr></div>
+      <div class="act-box" style="border-color:var(--vio)">
+        <div class="act-head" style="background:var(--vio)"><h3>El lenguaje que reemplazó la intuición</h3></div>
+        <div class="act-body">
+          <div class="def-box">
+            <span class="def-label">Definición Formal — Weierstrass, 1860s</span>
+            <p>$\displaystyle\lim_{x \to a} f(x) = L$</p>
+            <p style="margin-top:10px"><span class="def-part">$\forall \varepsilon > 0,$</span> $\exists\, \delta > 0 :$ <span class="def-part">$0 < |x - a| < \delta$</span> $\Rightarrow$ <span class="def-part">$|f(x) - L| < \varepsilon$</span></p>
+            <div class="def-note">ε (epsilon): el tamaño del "pasillo" en y que el escéptico elige como desafío | δ (delta): el tamaño del "pasillo" en x que el matemático puede encontrar como respuesta</div>
+          </div>
+
+          <button class="btn-toggle" onclick="toggleEdExplicacion()" style="background:var(--vio);margin-top:6px">👁️ Desglose parte por parte</button>
+          <div id="ed-explicacion" style="display:none;margin-top:12px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+              <div style="background:#F3EEF9;border-left:3px solid var(--vio);border-radius:6px;padding:12px">
+                <strong style="color:var(--vio);font-size:13px">$\forall \varepsilon > 0$ — "Para todo ε mayor que cero"</strong>
+                <p style="font-size:12.5px;color:var(--txt);margin-top:6px;line-height:1.5">El escéptico elige cualquier margen de tolerancia en $y$, por pequeño que sea. No importa cuánto lo achique: la condición debe cumplirse.</p>
+              </div>
+              <div style="background:#EEF4FF;border-left:3px solid var(--med);border-radius:6px;padding:12px">
+                <strong style="color:var(--med);font-size:13px">$\exists\, \delta > 0$ — "Existe un δ mayor que cero"</strong>
+                <p style="font-size:12.5px;color:var(--txt);margin-top:6px;line-height:1.5">El matemático responde encontrando un margen en $x$ que "funcione". No necesita decir cuál es — solo probar que existe.</p>
+              </div>
+              <div style="background:#EDF7F1;border-left:3px solid var(--grn);border-radius:6px;padding:12px">
+                <strong style="color:var(--grn);font-size:13px">$0 < |x-a| < \delta \Rightarrow |f(x)-L| < \varepsilon$</strong>
+                <p style="font-size:12.5px;color:var(--txt);margin-top:6px;line-height:1.5">Si $x$ está dentro del pasillo δ alrededor de $a$, entonces $f(x)$ cae dentro del pasillo ε alrededor de $L$. Sin infinitesimales. Sin movimiento. Solo números y distancias.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="note nv" style="margin-top:14px">
+            <span class="ni">🎮</span>
+            <div>
+              <strong style="color:var(--vio)">El juego del escéptico y el matemático</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Una forma de leer la definición: <em>el escéptico desafía al matemático</em> diciéndole "yo quiero que f(x) esté a menos de ε de L". El matemático responde encontrando un δ tal que, si x está a menos de δ de a, la condición se cumple. Si el matemático puede responder <strong>cualquier desafío</strong> del escéptico, el límite existe. (Klimovsky y Boido, 2005, pp. 109-114)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMULADOR ε-δ -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--vio)">🖥️ Simulador: El Reto ε-δ</span><hr></div>
+      <div class="act-box" style="border-color:var(--vio)">
+        <div class="act-head" style="background:var(--vio)"><h3>Probá si tu δ responde el desafío ε — función $f(x) = x^2$, límite en $x=1$, $L=1$</h3></div>
+        <div class="act-body">
+          <p style="font-size:13px;margin-bottom:14px">La banda <span style="color:#1A6B3A;font-weight:700">verde horizontal</span> es el desafío ε (margen en y). La banda <span style="color:#C85C00;font-weight:700">naranja vertical</span> es tu respuesta δ (margen en x). El tramo de parábola dentro de la banda naranja cambia a <span style="color:#1A6B3A;font-weight:700">verde</span> si tu δ funciona, o a <span style="color:#D9534F;font-weight:700">rojo</span> si la parábola se sale del margen ε.</p>
+          <div class="sim-container">
+            <div class="sim-canvas-box">
+              <canvas id="edCanvas" width="380" height="280" style="max-width:100%;border-radius:4px"></canvas>
+            </div>
+            <div class="sim-controls">
+              <div style="background:var(--gcl);border:1px solid var(--grn);border-radius:8px;padding:12px">
+                <label style="font-size:11px;font-weight:700;color:var(--grn);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:4px">Desafío: ε = <span id="eps-val">0.50</span></label>
+                <input type="range" id="eps-slider" class="sim-slider" min="5" max="80" value="50">
+                <div style="font-size:11px;color:var(--grn);text-align:center">El escéptico fija este margen en y</div>
+              </div>
+              <div style="background:var(--acl);border:1px solid var(--amb);border-radius:8px;padding:12px">
+                <label style="font-size:11px;font-weight:700;color:var(--amb);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:4px">Tu respuesta: δ = <span id="delta-val">0.30</span></label>
+                <input type="range" id="delta-slider" class="sim-slider" min="2" max="80" value="30">
+                <div style="font-size:11px;color:var(--amb);text-align:center">Vos ajustás este margen en x</div>
+              </div>
+              <div id="ed-status" class="ed-status-box">
+                Ajustá los deslizadores para ver si tu δ funciona…
+              </div>
+              <div id="ed-formal" class="ed-formal-box">
+                La definición formal aparecerá acá con los valores actuales.
+              </div>
+            </div>
+          </div>
+          <div class="step" style="border-color:var(--vio);background:var(--vcl);margin-top:14px">
+            <strong style="color:var(--vio)">Misión: Encontrá el δ óptimo para f(x) = x²</strong>
+            <p style="font-size:13px;color:var(--txt);margin-top:4px">Para $f(x)=x^2$ y límite en $x=1$: $|x^2-1| = |x-1|\cdot|x+1|$. Si $|x-1| < \delta \leq 1$, entonces $|x+1| < 3$. Por lo tanto $|x^2-1| < 3\delta$. Para que $3\delta < \varepsilon$: necesitás $\delta < \varepsilon/3$. Verificalo con el simulador.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONSTRUOS -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--red)">👾 Los Monstruos de Weierstrass</span><hr></div>
+      <div class="lect">
+        <div class="lect-head" style="background:#FDF2F2;border-color:var(--red)"><h3 style="color:var(--red)">La función que destruyó la intuición</h3></div>
+        <div class="lect-body">
+          <p>En 1872, Weierstrass presentó ante la Academia de Berlín un objeto matemático que escandalizó a sus contemporáneos: una función que era <strong>continua en todos los puntos reales</strong> (sin saltos, sin agujeros, "dibujable" en teoría) pero <strong>no derivable en ningún punto</strong> (sin tangente en absolutamente ningún lugar).</p>
+
+          <div class="cita-hist" style="border-left-color:var(--red)">
+            <div class="cita-label" style="background:var(--red)">La reacción de los matemáticos</div>
+            <p><em>"La mayoría de matemáticos pensaba que una función continua tenía que tener derivada excepto quizás en puntos aislados. Weierstrass destruyó esta creencia con un contraejemplo. El efecto fue electrizante."</em></p>
+            <p class="cita-autor">— Morris Kline, <em>El pensamiento matemático de la Antigüedad a nuestros días</em>, 1992, p. 972.</p>
+          </div>
+
+          <p>Charles Hermite, uno de los más grandes analistas del siglo XIX, escribió que las funciones de Weierstrass eran "una lamentable plaga que aflige a la matemática". Henri Poincaré las llamó "monstruos". El problema era profundo: <strong>la continuidad, que siempre se había asociado a suavidad, podía coexistir con una rugosidad infinita</strong>. (Boyer, 1986, pp. 548-549)</p>
+
+          <h5 style="color:var(--red);border-color:var(--red)">La fórmula del monstruo</h5>
+          <p>La función de Weierstrass se define como una suma infinita:</p>
+          <p style="text-align:center;font-size:16px;margin:14px 0">$W(x) = \displaystyle\sum_{n=0}^{\infty} a^n \cos(b^n \pi x)$</p>
+          <p>donde $0 < a < 1$, $b$ es un entero impar, y $ab > 1 + \frac{3\pi}{2}$. Los valores típicos: $a = 0{,}5$, $b = 13$. Cada término agrega oscilaciones de mayor frecuencia. El resultado: infinitamente rugosa a cualquier escala de zoom — exactamente como un fractal. (Kline, 1992, p. 972)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIMULADOR WEIERSTRASS -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--red)">🖥️ Simulador: Construí el Monstruo</span><hr></div>
+      <div class="act-box" style="border-color:var(--red)">
+        <div class="act-head" style="background:var(--red)"><h3>La función de Weierstrass: de suave a monstruo en 7 pasos</h3></div>
+        <div class="act-body">
+          <p style="font-size:13px;margin-bottom:12px">Aumentá el número de términos $N$ de la suma $W(x) = \sum_{n=0}^{N}(0{,}5)^n\cos(13^n\pi x)$. Con $N=0$: una ola suave. A partir de $N=4$: el monstruo emerge. A partir de $N=5$: el canvas mismo ya no puede representar las oscilaciones — un reflejo de lo que les pasó a los matemáticos del siglo XIX.</p>
+          <div style="background:#1A1A2E;border-radius:8px;padding:12px;margin-bottom:12px">
+            <canvas id="weierCanvas" width="380" height="200" style="max-width:100%;border-radius:4px;display:block;margin:0 auto"></canvas>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <div style="flex:1;min-width:200px">
+              <label style="font-size:12px;font-weight:700;color:var(--nav);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:6px">Número de términos N = <span id="weier-n-val" style="color:var(--red);font-size:16px">0</span></label>
+              <input type="range" id="weier-slider" class="sim-slider" min="0" max="7" value="0" style="margin:0">
+            </div>
+            <div style="flex:1;min-width:200px">
+              <div style="font-size:11px;font-weight:700;color:var(--grn);margin-bottom:4px;text-transform:uppercase">Suavidad</div>
+              <div class="monster-bar"><div id="weier-smooth" class="monster-smooth" style="width:100%"></div></div>
+              <div style="font-size:11px;font-weight:700;color:var(--red);margin-top:8px;margin-bottom:4px;text-transform:uppercase">Monstruosidad</div>
+              <div class="monster-bar"><div id="weier-monster" class="monster-rough" style="width:0%"></div></div>
+            </div>
+          </div>
+          <div class="note na" style="margin-top:14px">
+            <span class="ni">🔬</span>
+            <div>
+              <strong style="color:var(--amb)">¿Por qué a partir de N=5 el canvas se "distorsiona"?</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Con 3000 puntos de muestreo, el canvas puede representar frecuencias de hasta 1500 ciclos por unidad. El término $n=5$ de la función tiene $13^5 = 371.293$ oscilaciones por unidad — unas 250 veces más de lo que el pixel puede capturar. El alias gráfico que ves <em>es</em> la respuesta visual correcta a una función infinitamente rugosa. Los matemáticos del siglo XIX experimentaron algo análogo con su intuición.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAN LINEA -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea — Nodo 8</span><hr></div>
+      <div class="act-box" style="border-color:var(--grn)">
+        <div class="act-head" style="background:var(--grn)"><h3>Cierre del Eje 3 en el Genially</h3></div>
+        <div class="act-body">
+          <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd)">
+            <div><strong style="color:var(--nav);font-size:14px">NODO 8 — Karl Weierstrass (1860s-1872)</strong><br><span style="color:var(--txt);font-size:13px">La definición ε-δ: eliminar tiempo y movimiento del análisis. Los "monstruos": funciones continuas pero no derivables en ningún punto. El fin de la intuición como fundamento.</span></div>
+          </div>
+          <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">Mañana: debate didáctico, Bitácora 4 y anticipo del Eje 4 (Cantor, Russell, Gödel).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="srcs">
+      <h5>Bibliografía / Fuentes (Clase 17)</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 546-555.</p>
+      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza, pp. 970-975.</p>
+      <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 109-118.</p>
+      <p>Rey Pastor, J. y Babini, J. (2000). <em>Historia de la matemática</em>, vol. 2. Barcelona: Gedisa, pp. 112-118.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CLASE 18 ══════════════════ -->
+<div id="pane-c18" class="pane">
+  <div class="locked-pane" id="lock-c18"><div class="locked-icon">🔒</div><h2>Clase 18 bloqueada</h2><p>Se habilitará el miércoles 20 de Mayo.</p></div>
+  <div class="real-content" id="content-c18" style="display:none">
+
+    <div class="clase-banner">
+      <div class="clase-banner-top">
+        <div class="cb-num" style="background:var(--grn)">18</div>
+        <div class="cb-info"><h2>El límite en la enseñanza: tres concepciones históricas, una decisión didáctica</h2><p>Miércoles 20 de Mayo · Encuentro 21 (80 min)</p></div>
+      </div>
+      <div class="cb-obj"><p style="color:var(--grn)"><strong>Objetivo:</strong> Analizar las tres concepciones históricas del límite —cinético-heurística, aproximativo-verbal y formal-cuantitativa— y sus consecuencias para la enseñanza en la escuela secundaria. Diseñar una apertura de clase que incorpore la dimensión histórica del concepto. Entrega de Bitácora 4.</p></div>
+    </div>
+
+    <!-- LAS TRES CONCEPCIONES -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--nav)">📖 Las tres concepciones históricas del límite</span><hr></div>
+      <div class="act-box" style="border:2px solid var(--nav)">
+        <div class="act-head"><h3>La escuela hereda tres siglos de debate — y raramente lo dice</h3></div>
+        <div class="act-body">
+          <p>La historia que recorrimos en las últimas dos semanas produjo tres concepciones distintas del límite, cada una con su ontología propia. No son versiones "más o menos rigurosas" de la misma idea: son respuestas diferentes al mismo problema, con supuestos filosóficos diferentes.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0">
+            <div style="background:var(--gcl);border-left:4px solid var(--grn);border-radius:6px;padding:14px">
+              <strong style="color:var(--grn);font-size:13px;display:block;margin-bottom:4px">Concepción cinético-heurística</strong>
+              <span style="font-size:11px;color:var(--txt);display:block;margin-bottom:8px">Newton, Leibniz, s. XVII-XVIII</span>
+              <p style="font-size:12.5px;color:var(--txt);line-height:1.5">El límite como resultado de un movimiento o proceso dinámico: "la función <em>tiende a</em> L", "el valor <em>se acerca</em>". Lenguaje cinético. Eficaz para conectar con la física. Es exactamente lo que Berkeley atacó: implica un infinitesimal que "se anula" sin explicar cómo.</p>
+            </div>
+            <div style="background:var(--tcl);border-left:4px solid var(--teal);border-radius:6px;padding:14px">
+              <strong style="color:var(--teal);font-size:13px;display:block;margin-bottom:4px">Concepción aproximativo-verbal</strong>
+              <span style="font-size:11px;color:var(--txt);display:block;margin-bottom:8px">Cauchy, 1821</span>
+              <p style="font-size:12.5px;color:var(--txt);line-height:1.5">El límite definido a través de la aproximación arbitraria: "tan pequeña como se desee". Elimina el infinitesimal como objeto pero conserva lenguaje temporal ("se aproximan sucesivamente"). Más rigurosa que la primera — pero Weierstrass mostrará que sigue siendo imprecisa.</p>
+            </div>
+            <div style="background:var(--vcl);border-left:4px solid var(--vio);border-radius:6px;padding:14px">
+              <strong style="color:var(--vio);font-size:13px;display:block;margin-bottom:4px">Concepción formal-cuantitativa (ε-δ)</strong>
+              <span style="font-size:11px;color:var(--txt);display:block;margin-bottom:8px">Weierstrass, 1860s</span>
+              <p style="font-size:12.5px;color:var(--txt);line-height:1.5">El límite como enunciado estático sobre distancias: sin tiempo, sin movimiento, sin intuición geométrica. Solo cuantificadores y desigualdades. El precio: exige un nivel de abstracción lógica que la concepción cinética no requería.</p>
+            </div>
+          </div>
+          <div class="note nb" style="margin-top:4px">
+            <span class="ni">📐</span>
+            <div>
+              <strong style="color:var(--med)">Lo que hace la escuela — y lo que omite</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Los libros de texto del nivel secundario suelen presentar la concepción cinético-heurística ("la función se acerca a L") y, eventualmente, la definición ε-δ — saltando sobre Cauchy y borrando la historia que va del uno al otro. Chevallard (1997, Cap. 3) nombra este mecanismo con precisión: la <em>descontextualización</em> elimina el problema que le dio origen al saber, y la <em>despersonalización</em> borra a los autores y las fechas. El alumno recibe el límite como si hubiera existido siempre en esa forma, sin la crisis de Berkeley, sin el siglo de aplicaciones sin fundamentos, sin el debate sobre qué significa "aproximarse". Lo que se pierde no es solo historia: es el problema que da sentido al concepto. (Chevallard, 1997, pp. 67-76)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TALLER -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--med)">📝 Taller de Diseño Didáctico</span><hr></div>
+      <div class="act-box" style="border-color:var(--med)">
+        <div class="act-head" style="background:var(--med)"><h3>Diseñar la apertura al límite sin reproducir la "limpieza" escolar</h3></div>
+        <div class="act-body">
+          <p style="font-size:13.5px;margin-bottom:15px">Trabajo individual o en parejas (20 min). Diseñen la <strong>apertura de clase</strong> (los primeros 10 minutos) de una introducción al límite para 6.° año de secundaria. El objetivo es que los alumnos sientan la tensión histórica antes de recibir cualquier definición.</p>
+          <div class="step" style="border-color:var(--med);background:var(--pale)">
+            <strong style="color:var(--nav)">Condiciones</strong>
+            <ul style="font-size:13px;color:var(--txt);line-height:1.6;margin-left:18px;margin-top:5px">
+              <li>No arrancar con fórmulas. La definición ε-δ no aparece en la apertura.</li>
+              <li>Usar el simulador del Corredor de Cauchy (o similar en Desmos/GeoGebra) como punto de partida visual.</li>
+              <li>Incluir una referencia histórica explícita: nombrar al menos a Cauchy o a Berkeley.</li>
+              <li>Plantear la pregunta disparadora en términos de una paradoja o problema concreto.</li>
+            </ul>
+          </div>
+          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+            <strong style="color:var(--grn)">Pregunta de reflexión docente</strong>
+            <p style="font-size:13px;color:var(--txt);margin-top:4px">"Cuando enseñás el límite por primera vez, ¿estás enseñando la concepción cinético-heurística, la aproximativo-verbal de Cauchy o la formal-cuantitativa de Weierstrass? ¿Lo sabés conscientemente? ¿Lo saben tus alumnos?" Esta pregunta, formulada explícitamente en clase, es ya un acto de visibilización del saber histórico que la transposición escolar habitualmente borra.</p>
+          </div>
+          <p style="font-size:12.5px;color:#666;font-style:italic;margin-top:10px">Extensión: máximo 200 palabras. Lo leeremos en el plenario de cierre.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BITACORA -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--amb)">📔 Entrega Evaluativa</span><hr></div>
+      <div class="registro" style="background:#FFF8F0;border-color:var(--amb)">
+        <h3 style="color:var(--amb)">📤 Bitácora de Aprendizaje 4</h3>
+        <p style="font-size:13.5px;color:var(--neg);margin-bottom:12px"><strong>Reflexión escrita (150-250 palabras):</strong><br><em>"La tensión entre intuición y rigor en la enseñanza del límite"</em></p>
+        <div class="reg-consigna" style="border-left-color:var(--amb);background:#fff">
+          <strong>Consigna:</strong>
+          <p style="margin-top:10px;font-size:13px;color:var(--txt);line-height:1.6">Esta semana recorrimos el arco completo de la formalización del límite: desde la concepción cinético-heurística de Newton-Leibniz hasta la definición ε-δ de Weierstrass (1860s), pasando por la rigorización verbal de Cauchy (1821) y los "monstruos" que destruyeron la intuición del siglo XIX.<br><br>
+          <strong>Como docente de secundaria en formación, desarrollá los siguientes puntos:</strong><br><br>
+          <strong>(a)</strong> ¿Qué concepción del límite enseñarías primero — la cinético-heurística, la aproximativo-verbal o la formal ε-δ? Justificá tu elección a partir de las características matemáticas e históricas de cada una, no de una preferencia personal.<br><br>
+          <strong>(b)</strong> ¿Qué pierde la comprensión del límite cuando se enseña solo desde la concepción cinético-heurística? ¿Y qué pierde cuando se presenta directamente la definición ε-δ sin pasar por la historia que la generó? Respondé con argumentos matemáticos e históricos, no con afirmaciones generales sobre "facilitar" o "dificultar".<br><br>
+          <strong>(c)</strong> Citá al menos una fuente de la bibliografía del curso (Boyer, Kline, Klimovsky y Boido, o Mankiewicz) que sostenga o matice alguno de tus argumentos anteriores. La cita tiene que ser funcional al argumento — no decorativa.<br><br>
+          <strong>(d)</strong> Reflexioná brevemente: ¿los "monstruos de Weierstrass" —funciones continuas pero no derivables en ningún punto— tienen lugar en la escuela secundaria? ¿En qué momento, con qué propósito y a qué costo?</p>
+        </div>
+        <div class="reg-plazo"><span style="font-size:19px">⏰</span><span>Plazo: <strong>Miércoles 23:59 hs</strong> en la plataforma virtual.</span></div>
+      </div>
+    </div>
+
+    <!-- CIERRE DEL EJE 3 -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--grn)">🏁 Cierre del Eje 3</span><hr></div>
+      <div class="act-box" style="border:2px solid var(--grn)">
+        <div class="act-head" style="background:var(--grn)"><h3>El arco completo: de Zenón a Weierstrass</h3></div>
+        <div class="act-body">
+          <p style="font-size:13.5px;margin-bottom:16px">En el Genially, el Eje 3 cierra con los 8 nodos completos. Lean el arco de corrido una vez antes de entrar al Eje 4:</p>
+          <div style="background:var(--gris);border-radius:8px;padding:18px;border:1px solid var(--bd)">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N1 · Zenón (s. V a.C.)</strong><br>El infinito paraliza.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N2 · Aristóteles (s. IV a.C.)</strong><br>El infinito actual, prohibido.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N3 · Cavalieri (1635)</strong><br>Heurística ilegal. Funciona.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N4 · Fermat (1636)</strong><br>La adigualdad: E cero y no-cero.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N5 · Newton-Leibniz (1666-84)</strong><br>El cálculo. Teorema Fundamental.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--bd);padding-left:10px"><strong style="color:var(--nav)">N6 · Berkeley (1734)</strong><br>Los fantasmas. El rigor explotado.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--teal);padding-left:10px"><strong style="color:var(--teal)">N7 · Cauchy (1821)</strong><br>El límite como proceso. Sin infinitesimales.</div>
+              <div style="font-size:12px;color:var(--txt);border-left:3px solid var(--vio);padding-left:10px"><strong style="color:var(--vio)">N8 · Weierstrass (1860s)</strong><br>ε-δ. Los monstruos. El rigor completo.</div>
+            </div>
+          </div>
+          <div class="note nb" style="margin-top:16px">
+            <span class="ni">🔭</span>
+            <div>
+              <strong style="color:var(--med)">Lo que viene: Eje 4</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Weierstrass cerró el problema del cálculo. Pero abrió otro, más profundo: si la intuición no es confiable, ¿en qué se apoya la matemática? La respuesta intentó venir de la teoría de conjuntos. Y ahí apareció Cantor, y con él el infinito actual que Aristóteles había prohibido. La semana que viene: la paradoja de Russell y el colapso del programa logicista.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ LANZAMIENTO EJE 4 ══ -->
+    <div class="sec">
+      <div class="sec-label"><span style="background:var(--vio)">🚀 Lanzamiento — Eje 4</span><hr></div>
+      <div class="act-box" style="border:2px solid var(--vio)">
+        <div class="act-head" style="background:var(--vio)"><h3>La Expedición Docente: el Eje 4 en sus manos</h3></div>
+        <div class="act-body">
+
+          <p style="font-size:14px;line-height:1.7;margin-bottom:18px">Hasta acá, yo traje el contenido y ustedes lo analizaron. A partir de ahora, el régimen cambia. Cada uno recibe un nodo del Eje 4 que <strong>no vamos a trabajar juntos en clase</strong>. Lo van a construir solos, con bibliografía y con preguntas de andamiaje. En la Semana 10 van a enseñárselo a los otros dos.</p>
+
+          <div style="background:#0D2A50;border-radius:var(--r);padding:20px 24px;margin-bottom:18px">
+            <p style="color:rgba(168,230,207,.7);font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px">Los tres nodos</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+              <div style="background:rgba(255,255,255,.06);border-left:3px solid #A8E6CF;border-radius:6px;padding:14px">
+                <strong style="color:#A8E6CF;font-size:13px;display:block;margin-bottom:6px">NODO A — Cantor</strong>
+                <p style="color:rgba(255,255,255,.75);font-size:12.5px;line-height:1.5">Obligó a la matemática a contar lo que no se puede contar. El infinito actual, que Aristóteles prohibió, finalmente entra — y resulta que hay infinitos más grandes que otros.</p>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border-left:3px solid #FFD93D;border-radius:6px;padding:14px">
+                <strong style="color:#FFD93D;font-size:13px;display:block;margin-bottom:6px">NODO B — Russell y Hilbert</strong>
+                <p style="color:rgba(255,255,255,.75);font-size:12.5px;line-height:1.5">El edificio de Cantor se derrumbó por un barbero. Hilbert quiso reconstruirlo desde los cimientos con tres condiciones: completitud, consistencia, decidibilidad.</p>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border-left:3px solid #FF9F9F;border-radius:6px;padding:14px">
+                <strong style="color:#FF9F9F;font-size:13px;display:block;margin-bottom:6px">NODO C — Gödel y Noether</strong>
+                <p style="color:rgba(255,255,255,.75);font-size:12.5px;line-height:1.5">Gödel demostró que Hilbert no podía ganar: ningún sistema suficientemente potente puede ser completo y consistente a la vez. Noether encontró una salida hacia la estructura.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px">
+            <div style="background:var(--gcl);border-left:4px solid var(--grn);border-radius:6px;padding:14px">
+              <strong style="color:var(--grn);font-size:13px;display:block;margin-bottom:8px">📅 Semana 9 — Comprensión autónoma</strong>
+              <p style="font-size:13px;color:var(--txt);line-height:1.55">Tres encuentros con andamiaje de preguntas. No hay clase magistral. El docente funciona como interlocutor: hace preguntas, no da respuestas. Reciben su Ficha el lunes.</p>
+            </div>
+            <div style="background:var(--vcl);border-left:4px solid var(--vio);border-radius:6px;padding:14px">
+              <strong style="color:var(--vio);font-size:13px;display:block;margin-bottom:8px">📅 Semana 10 — Mini-clase</strong>
+              <p style="font-size:13px;color:var(--txt);line-height:1.55">Cada uno da una mini-clase de <strong>20-25 minutos</strong> a los otros dos. Los compañeros hacen el rol de alumnos. La mini-clase es el insumo directo del TFI.</p>
+            </div>
+          </div>
+
+          <div style="background:var(--gris);border:1px solid var(--bd);border-radius:var(--r);padding:18px">
+            <p style="font-size:12px;font-weight:700;color:var(--nav);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Criterios para la mini-clase (Semana 10)</p>
+            <ol style="margin-left:18px;font-size:13.5px;color:var(--neg);line-height:1.9">
+              <li><strong>Núcleo conceptual:</strong> el nodo explicado con claridad, sin fórmulas como punto de entrada.</li>
+              <li><strong>Dos conexiones explícitas</strong> con los Ejes 1-3 del curso. No alcanza mencionarlos — hay que argumentar la conexión.</li>
+              <li><strong>Un obstáculo:</strong> qué dificultad genera este concepto, histórica o didácticamente.</li>
+              <li><strong>Una entrada al tema para secundaria:</strong> puede ser una pregunta, un problema o un conflicto cognitivo. No necesita estar desarrollada del todo.</li>
+              <li><strong>Una fuente de la bibliografía del curso</strong> usada con criterio: citada en contexto, explicando qué aporta al argumento — no como decoración.</li>
+            </ol>
+            <div class="note na" style="margin-top:12px;margin-bottom:0">
+              <span class="ni">⚠️</span>
+              <div><p style="font-size:13px;margin:0;line-height:1.6">Sobre el criterio 5: en este curso hemos citado a Brousseau y a Chevallard muchas veces. A partir de ahora, si aparecen en una presentación, tienen que poder responder: ¿qué parte específica del argumento no funcionaría sin esa cita? Si la respuesta es "ninguna", la cita sobra.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="srcs">
+      <h5>Bibliografía / Fuentes (Clase 18)</h5>
+      <p>Boyer, C. (1986). <em>Historia de la matemática</em>. Madrid: Alianza, pp. 525-555 (rigorización del análisis; Cauchy y Weierstrass).</p>
+      <p>Chevallard, Y. (1997). <em>La transposición didáctica</em>. Buenos Aires: Aique, pp. 67-76 (descontextualización y despersonalización del saber matemático).</p>
+      <p>Kline, M. (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza, pp. 948-975.</p>
+      <p>Klimovsky, G. y Boido, G. (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z, pp. 102-118.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+window.showTab = function(id) {
+  const btn = document.getElementById('btn-' + id);
+  if(btn && btn.classList.contains('locked')) return;
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pane-' + id).classList.add('on');
+  if(btn) btn.classList.add('active');
+  window.scrollTo(0,0);
+  if(id === 'c16') setTimeout(initCauchySim, 120);
+  if(id === 'c17') { setTimeout(initEpsilonDeltaSim, 120); setTimeout(initWeierstrassSim, 200); }
+  if(window.MathJax && MathJax.typesetPromise) setTimeout(() => MathJax.typesetPromise(), 250);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date();
+  if(hoy >= new Date(2026,4,19)) unlockPane('c17');
+  if(hoy >= new Date(2026,4,20)) unlockPane('c18');
+});
+
+function unlockPane(id) {
+  const btn=document.getElementById('btn-'+id);
+  const lock=document.getElementById('lock-'+id);
+  const content=document.getElementById('content-'+id);
+  if(btn) btn.classList.remove('locked');
+  if(lock) lock.style.display='none';
+  if(content) content.style.display='block';
+  if(window.MathJax && MathJax.typesetPromise && content)
+    setTimeout(()=>MathJax.typesetPromise([content]),150);
+}
+
+function toggleModoProfe() {
+  unlockPane('c17'); unlockPane('c18');
+  const btn=document.getElementById('btn-modo-profe');
+  if(btn){btn.innerHTML='🔓 Modo Profe Activado';btn.style.background='rgba(255,255,255,0.2)';}
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&e.altKey&&e.key.toLowerCase()==='u'){e.preventDefault();toggleModoProfe();}
+});
+
+function toggleEdExplicacion() {
+  const el=document.getElementById('ed-explicacion');
+  if(!el) return;
+  const show=el.style.display==='none';
+  el.style.display=show?'block':'none';
+  if(show&&window.MathJax) MathJax.typesetPromise([el]);
+}
+
+// ══════════════════════════════════════════════
+// SIMULADOR 1: El Corredor de Cauchy
+// f(x) = (x²-1)/(x-1) = x+1 para x≠1, límite en x=1 es L=2
+// ══════════════════════════════════════════════
+function initCauchySim() {
+  const canvas=document.getElementById('cauchyCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const slider=document.getElementById('cauchy-slider');
+  const W=380, H=280, ox=70, oy=210, sc=90;
+  canvas.width=W; canvas.height=H;
+  function toC(x,y){return [ox+x*sc, oy-y*sc];}
+
+  function draw(){
+    const prox=slider.value/100; // 0.01 to 0.99
+    const gap=1.5*(1-prox); // 1.5→0 as prox→1
+
+    ctx.clearRect(0,0,W,H);
+
+    // Ejes
+    ctx.strokeStyle='#C5D2DC';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(ox,10);ctx.lineTo(ox,H-8);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(8,oy);ctx.lineTo(W-8,oy);ctx.stroke();
+    ctx.fillStyle='#C5D2DC';
+    ctx.beginPath();ctx.moveTo(ox,8);ctx.lineTo(ox-4,16);ctx.lineTo(ox+4,16);ctx.fill();
+    ctx.beginPath();ctx.moveTo(W-6,oy);ctx.lineTo(W-14,oy-4);ctx.lineTo(W-14,oy+4);ctx.fill();
+    ctx.fillStyle='#888';ctx.font='11px Arial';ctx.textAlign='center';
+    ctx.fillText('x',W-4,oy+4);ctx.fillText('y',ox+5,9);
+
+    for(let i=0;i<=2;i++){
+      const [tx]=toC(i,0);const[,ty]=toC(0,i+1);
+      ctx.fillStyle='#aaa';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(tx,oy-3);ctx.lineTo(tx,oy+3);ctx.stroke();
+      ctx.fillStyle='#888';ctx.textAlign='center';ctx.fillText(i,tx,oy+13);
+      if(i>0){
+        ctx.beginPath();ctx.moveTo(ox-3,ty);ctx.lineTo(ox+3,ty);ctx.stroke();
+        ctx.textAlign='right';ctx.fillText(i+1,ox-6,ty+4);
+      }
+    }
+
+    // Función f(x)=x+1 (dos segmentos, hueco en x=1)
+    ctx.strokeStyle='#2E6DA4';ctx.lineWidth=2.5;ctx.setLineDash([]);
+    // Segmento izquierdo [0, ~0.96]
+    ctx.beginPath();
+    const[s0x,s0y]=toC(0,1);ctx.moveTo(s0x,s0y);
+    const[s1x,s1y]=toC(0.96,1.96);ctx.lineTo(s1x,s1y);
+    ctx.stroke();
+    // Segmento derecho [~1.04, 2.5]
+    ctx.beginPath();
+    const[s2x,s2y]=toC(1.04,2.04);ctx.moveTo(s2x,s2y);
+    const[s3x,s3y]=toC(2.3,3.3);
+    if(s3y>0) ctx.lineTo(s3x,s3y); else ctx.lineTo(s3x,2);
+    ctx.stroke();
+
+    // Label curva
+    ctx.fillStyle='#2E6DA4';ctx.font='italic 12px Georgia';ctx.textAlign='left';
+    const[lx,ly]=toC(1.6,2.6);ctx.fillText('f(x)=(x²−1)/(x−1)',lx-60,ly-6);
+
+    // Límite: hueco en (1,2)
+    const[hx,hy]=toC(1,2);
+    ctx.strokeStyle='#1A6B3A';ctx.lineWidth=2.5;ctx.fillStyle='#fff';
+    ctx.beginPath();ctx.arc(hx,hy,8,0,Math.PI*2);ctx.fill();ctx.stroke();
+    ctx.fillStyle='#1A6B3A';ctx.font='bold 11px Arial';ctx.textAlign='left';
+    ctx.fillText('L = 2',hx+12,hy-8);
+
+    // Punto izquierdo
+    const xL=Math.max(0.05,1-gap);
+    const fxL=xL+1;
+    const[lpx,lpy]=toC(xL,fxL);
+    ctx.fillStyle='#D9534F';
+    ctx.beginPath();ctx.arc(lpx,lpy,6,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='rgba(217,83,79,0.35)';ctx.setLineDash([3,3]);
+    ctx.beginPath();ctx.moveTo(lpx,lpy);ctx.lineTo(lpx,oy);ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Punto derecho
+    const xR=Math.min(2.2,1+gap);
+    const fxR=xR+1;
+    const[rpx,rpy]=toC(xR,fxR);
+    ctx.fillStyle='#4A1A7B';
+    ctx.beginPath();ctx.arc(rpx,rpy,6,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='rgba(74,26,123,0.35)';ctx.setLineDash([3,3]);
+    ctx.beginPath();ctx.moveTo(rpx,rpy);ctx.lineTo(rpx,oy);ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Update panel
+    document.getElementById('cauchy-xl').innerText=xL.toFixed(4);
+    document.getElementById('cauchy-fxl').innerText=fxL.toFixed(4);
+    document.getElementById('cauchy-xr').innerText=xR.toFixed(4);
+    document.getElementById('cauchy-fxr').innerText=fxR.toFixed(4);
+
+    const bothClose=gap<0.12;
+    const st=document.getElementById('cauchy-status');
+    if(bothClose){
+      st.innerHTML=`✅ Ambos valores convergen a <strong>2</strong>.<br>El límite existe y vale 2, aunque <em>f(1) no esté definida</em>.`;
+      st.style.background='#DFF0E9';st.style.borderColor='#1A6B3A';
+    } else {
+      st.innerHTML=`⏳ Seguí moviendo el deslizador hacia la derecha…<br>¿A dónde se acercan los dos puntos?`;
+      st.style.background='var(--acl)';st.style.borderColor='var(--amb)';
+    }
+  }
+
+  slider.oninput=draw; draw();
+}
+
+// ══════════════════════════════════════════════
+// SIMULADOR 2: El Reto ε-δ
+// f(x) = x², límite en x=1, L=1
+// ══════════════════════════════════════════════
+function initEpsilonDeltaSim() {
+  const canvas=document.getElementById('edCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const epsSlider=document.getElementById('eps-slider');
+  const deltaSlider=document.getElementById('delta-slider');
+  const W=380, H=280, ox=60, oy=240, sc=80;
+  canvas.width=W; canvas.height=H;
+  function toC(x,y){return [ox+x*sc, oy-y*sc];}
+
+  function draw(){
+    const eps=epsSlider.value/100;
+    const delta=deltaSlider.value/100;
+
+    ctx.clearRect(0,0,W,H);
+
+    // ε-band (horizontal, alrededor de y=1) verde
+    const[,yPl]=toC(0,1+eps);const[,yMn]=toC(0,1-eps);
+    ctx.fillStyle='rgba(26,107,58,0.1)';
+    ctx.fillRect(ox,yPl,W-ox-4,yMn-yPl);
+    ctx.strokeStyle='rgba(26,107,58,0.55)';ctx.lineWidth=1.5;ctx.setLineDash([6,3]);
+    ctx.beginPath();ctx.moveTo(ox,yPl);ctx.lineTo(W-6,yPl);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(ox,yMn);ctx.lineTo(W-6,yMn);ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle='#1A6B3A';ctx.font='bold 10px Arial';ctx.textAlign='right';
+    ctx.fillText(`1+ε`,ox-3,yPl+4);
+    ctx.fillText(`1−ε`,ox-3,yMn+4);
+
+    // δ-band (vertical, alrededor de x=1) naranja
+    const[xPl]=toC(1+delta,0);const[xMn]=toC(1-delta,0);
+    ctx.fillStyle='rgba(200,92,0,0.08)';
+    ctx.fillRect(xMn,8,xPl-xMn,H-16);
+    ctx.strokeStyle='rgba(200,92,0,0.55)';ctx.lineWidth=1.5;ctx.setLineDash([6,3]);
+    ctx.beginPath();ctx.moveTo(xMn,8);ctx.lineTo(xMn,H-8);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(xPl,8);ctx.lineTo(xPl,H-8);ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle='#C85C00';ctx.font='bold 10px Arial';ctx.textAlign='center';
+    ctx.fillText(`1−δ`,xMn,H-2);
+    ctx.fillText(`1+δ`,xPl,H-2);
+
+    // Ejes (sobre las bandas)
+    ctx.strokeStyle='#8099B0';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(ox,8);ctx.lineTo(ox,H-12);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(8,oy);ctx.lineTo(W-8,oy);ctx.stroke();
+    ctx.fillStyle='#888';ctx.font='11px Arial';ctx.textAlign='center';
+    ctx.fillText('x',W-4,oy+4);ctx.fillText('y',ox+4,9);
+    for(let i=1;i<=3;i++){
+      const[tx]=toC(i,0);const[,ty]=toC(0,i);
+      ctx.lineWidth=1;ctx.strokeStyle='#aaa';
+      ctx.beginPath();ctx.moveTo(tx,oy-3);ctx.lineTo(tx,oy+3);ctx.stroke();
+      ctx.fillStyle='#888';ctx.textAlign='center';ctx.fillText(i,tx,oy+13);
+      ctx.beginPath();ctx.moveTo(ox-3,ty);ctx.lineTo(ox+3,ty);ctx.stroke();
+      ctx.textAlign='right';ctx.fillText(i,ox-6,ty+4);
+    }
+
+    // Parábola y=x²
+    ctx.strokeStyle='#2E6DA4';ctx.lineWidth=2.5;ctx.setLineDash([]);
+    ctx.beginPath();
+    for(let x=0;x<=2.5;x+=0.02){
+      const[cx,cy]=toC(x,x*x);
+      if(cy<-10||cy>H+10){ctx.moveTo(cx,cy);continue;}
+      if(x===0) ctx.moveTo(cx,cy); else ctx.lineTo(cx,cy);
+    }
+    ctx.stroke();
+    const[llx,lly]=toC(1.75,1.75*1.75);
+    ctx.fillStyle='#2E6DA4';ctx.font='italic bold 12px Georgia';ctx.textAlign='left';
+    ctx.fillText('y=x²',llx+6,lly-5);
+
+    // Verificar validez: max desviación dentro del pasillo δ
+    const maxDev=Math.max(Math.abs((1+delta)*(1+delta)-1),Math.abs((1-delta)*(1-delta)-1));
+    const isValid=maxDev<=eps+0.001;
+
+    // Segmento de curva dentro del pasillo δ (resaltado)
+    const segColor=isValid?'rgba(26,107,58,0.85)':'rgba(217,83,79,0.85)';
+    ctx.strokeStyle=segColor;ctx.lineWidth=5;ctx.setLineDash([]);
+    ctx.beginPath();
+    const xStart=Math.max(0.01,1-delta);const xEnd=1+delta;
+    for(let x=xStart;x<=xEnd;x+=0.01){
+      const[cx,cy]=toC(x,x*x);
+      if(x===xStart) ctx.moveTo(cx,cy); else ctx.lineTo(cx,cy);
+    }
+    ctx.stroke();
+
+    // Punto (1,1)
+    const[ppx,ppy]=toC(1,1);
+    ctx.fillStyle='#1A6B3A';ctx.beginPath();ctx.arc(ppx,ppy,7,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 10px Arial';ctx.textAlign='center';
+    ctx.fillText('L',ppx,ppy+4);
+
+    // Leyendas bandas
+    ctx.fillStyle='rgba(26,107,58,0.8)';ctx.font='bold 10px Arial';ctx.textAlign='right';
+    ctx.fillText('← banda ε →',W-8,yPl-3);
+    ctx.fillStyle='rgba(200,92,0,0.8)';ctx.textAlign='center';
+    ctx.fillText('banda δ',ox+(xPl-ox)/2+20,oy+22);
+
+    // Actualizar panel
+    document.getElementById('eps-val').innerText=eps.toFixed(2);
+    document.getElementById('delta-val').innerText=delta.toFixed(2);
+    const optDelta=Math.min(1,eps/3);
+    const st=document.getElementById('ed-status');
+    if(isValid){
+      st.innerHTML=`✅ <strong>¡Funciona!</strong> Para ε = ${eps.toFixed(2)}, tu δ = ${delta.toFixed(2)} es válido.<br>El tramo verde de la parábola queda <em>dentro</em> de la banda ε.`;
+      st.style.borderColor='#1A6B3A';st.style.background='#DFF0E9';
+    } else {
+      st.innerHTML=`⚠️ <strong>No alcanza.</strong> Para ε = ${eps.toFixed(2)}, tu δ = ${delta.toFixed(2)} es demasiado grande.<br>El tramo rojo sale de la banda ε. Probá con δ ≤ <strong>${optDelta.toFixed(3)}</strong>.`;
+      st.style.borderColor='#D9534F';st.style.background='#FDF2F2';
+    }
+    document.getElementById('ed-formal').innerHTML=
+      `∀ε = ${eps.toFixed(2)} > 0, ∃δ = ${delta.toFixed(2)} > 0 tal que:<br>`+
+      `si 0 < |x − 1| < ${delta.toFixed(2)},<br>`+
+      `entonces |x² − 1| < ${eps.toFixed(2)}<br>`+
+      `<span style="color:${isValid?'#1A6B3A':'#D9534F'};font-weight:700">${isValid?'✅ Condición satisfecha':'⚠️ Condición NO satisfecha'}</span>`;
+    if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([document.getElementById('ed-formal')]);
+  }
+
+  epsSlider.oninput=draw; deltaSlider.oninput=draw; draw();
+}
+
+// ══════════════════════════════════════════════
+// SIMULADOR 3: El Monstruo de Weierstrass
+// W(x) = Σ (0.5)^n * cos(13^n * π * x)
+// ══════════════════════════════════════════════
+function initWeierstrassSim() {
+  const canvas=document.getElementById('weierCanvas');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const slider=document.getElementById('weier-slider');
+  const W=380, H=200, a=0.5, b=13;
+  canvas.width=W; canvas.height=H;
+
+  function draw(){
+    const N=parseInt(slider.value);
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#1A1A2E';ctx.fillRect(0,0,W,H);
+
+    const nSamples=3000;
+    const xMin=-1, xMax=1;
+    const vals=new Array(nSamples);
+    for(let i=0;i<nSamples;i++){
+      const x=xMin+(xMax-xMin)*i/(nSamples-1);
+      let w=0;
+      for(let n=0;n<=N;n++) w+=Math.pow(a,n)*Math.cos(Math.pow(b,n)*Math.PI*x);
+      vals[i]=w;
+    }
+
+    let maxV=-Infinity, minV=Infinity;
+    for(let i=0;i<nSamples;i++){
+      if(vals[i]>maxV) maxV=vals[i];
+      if(vals[i]<minV) minV=vals[i];
+    }
+    const range=Math.max(Math.abs(maxV),Math.abs(minV),0.5);
+
+    // Curva
+    const curveColor = N<=1 ? '#A8E6CF' : N<=3 ? '#FFD93D' : '#FF6B6B';
+    ctx.strokeStyle=curveColor;ctx.lineWidth=1.5;
+    ctx.beginPath();
+    for(let i=0;i<nSamples;i++){
+      const px=i*(W/nSamples);
+      const py=H/2-(vals[i]/range)*(H/2-18);
+      if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+
+    // Línea central
+    ctx.strokeStyle='rgba(255,255,255,0.12)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+
+    // Info superior
+    ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(0,0,W,22);
+    ctx.fillStyle=curveColor;ctx.font='bold 11px Arial';ctx.textAlign='left';
+    ctx.fillText(`N=${N}  →  W(x) = Σ (0.5)ⁿ cos(13ⁿπx),  n=0..${N}`,8,15);
+
+    // Barra inferior de estado
+    let barMsg, barColor;
+    if(N===0){
+      barMsg='N=0: Solo cos(πx) — función suave, derivable en todo punto';barColor='rgba(26,107,58,0.9)';
+    } else if(N<=2){
+      barMsg=`N=${N}: Primeras arrugas — ¿sigue siendo derivable en todos lados?`;barColor='rgba(200,92,0,0.9)';
+    } else if(N<=4){
+      barMsg=`N=${N}: El monstruo emerge — rugosidad visible a cualquier escala`;barColor='rgba(180,30,30,0.9)';
+    } else {
+      barMsg=`N=${N}: El canvas ya no puede representarlo — como la intuición del siglo XIX`;barColor='rgba(80,0,80,0.9)';
+    }
+    ctx.fillStyle=barColor;ctx.fillRect(0,H-22,W,22);
+    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font=N>=5?'bold 11px Arial':'12px Arial';
+    ctx.fillText(barMsg,W/2,H-6);
+
+    // Barras de suavidad / monstruosidad
+    const smoothPct=Math.max(0,100-N*16);
+    const monsterPct=Math.min(100,N*16);
+    document.getElementById('weier-n-val').innerText=N;
+    document.getElementById('weier-smooth').style.width=smoothPct+'%';
+    document.getElementById('weier-monster').style.width=monsterPct+'%';
+  }
+
+  slider.oninput=draw; draw();
+}
+</script>
+</body>
+</html>
