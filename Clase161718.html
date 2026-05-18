@@ -358,6 +358,118 @@
     </div>
   </div>
 
+  <!-- LABORATORIO HISTÓRICO -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--amb)">⚙️ Laboratorio Histórico (35 min)</span><hr></div>
+    <div class="act-box" style="border:2px solid var(--amb)">
+      <div class="act-head" style="background:var(--amb)"><h3>El asistente de Cauchy — París, enero de 1822</h3></div>
+      <div class="act-body">
+
+        <!-- Escenario epistolar -->
+        <div style="background:#1A1A2E;color:#E0E0E0;padding:20px 24px;border-radius:var(--r);font-family:Georgia,serif;font-size:13.5px;line-height:1.8;margin-bottom:18px;border-left:4px solid var(--amb)">
+          <p style="color:#FFD93D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;font-family:Arial,sans-serif">París · École Polytechnique · 15 de enero de 1822</p>
+          <p>Sois asistentes de Cauchy. Esa mañana llegaron tres consultas urgentes de la Administración de <em>Ponts et Chaussées</em> —la oficina estatal de ingeniería de puentes y caminos. Cada una involucra una función que modela una propiedad estructural crítica, pero que <strong style="color:#A8E6CF">no está definida en el punto exacto</strong> que el ingeniero necesita evaluar.</p>
+          <p style="margin-top:10px">Cauchy ojea los papeles y antes de irse a clase les dice: <em>"La pregunta no es si la fórmula existe en ese punto. La pregunta es si los valores de la función <strong style="color:#A8E6CF">se aproximan a algo concreto</strong> cuando uno se acerca a ese punto desde cualquier dirección. Si se aproximan, el ingeniero puede trabajar con ese límite. Si no se aproximan, el proyecto tiene un problema real que ninguna fórmula alternativa puede ocultar."</em></p>
+          <p style="margin-top:10px;color:rgba(255,255,255,.5);font-size:12px;font-family:Arial,sans-serif">Investiguen los tres casos. Tienen 30 minutos antes del plenario.</p>
+        </div>
+
+        <!-- Instrucciones GeoGebra -->
+        <div style="background:var(--pale);border-radius:6px;padding:13px 16px;margin-bottom:18px;border:1px solid var(--bd)">
+          <strong style="color:var(--nav);font-size:11px;display:block;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase">Instrucciones — GeoGebra Classic (geogebra.org/classic)</strong>
+          <ol style="font-size:12.5px;color:var(--txt);line-height:1.8;margin-left:18px">
+            <li>Ingresá la función en el campo de entrada (barra inferior).</li>
+            <li>Hacé zoom sobre el punto problemático con la rueda del mouse para observar el comportamiento local.</li>
+            <li>Abrí la <strong>Hoja de Cálculo</strong> (Menú Ver → Hoja de Cálculo). En columna A escribí valores de x que se acerquen al punto desde ambos lados: dos decimales, tres decimales, cuatro. En columna B escribí <code style="background:var(--gris);padding:1px 5px;border-radius:3px">=f(A1)</code> y arrastrá la fórmula hacia abajo.</li>
+            <li>La pregunta clave: ¿los valores de $f(x)$ se acercan a un número fijo —o no?</li>
+          </ol>
+        </div>
+
+        <!-- Tres casos -->
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:18px">
+
+          <!-- Caso 1 -->
+          <div style="border-radius:var(--r);overflow:hidden;border:1px solid var(--teal)">
+            <div style="background:var(--teal);padding:10px 16px;display:flex;align-items:center;gap:10px">
+              <span style="background:rgba(255,255,255,.2);color:#fff;font-weight:900;font-size:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+              <div>
+                <strong style="color:#fff;font-size:13px">El arco del puente — Curvatura en el punto de carga máxima</strong>
+                <span style="color:rgba(255,255,255,.7);font-size:11px;display:block">Función: $f(x) = \dfrac{x^3 - 8}{x - 2}$ · Punto problemático: $x = 2$</span>
+              </div>
+            </div>
+            <div style="padding:14px 16px;background:var(--tcl)">
+              <p style="font-size:13px;color:var(--neg);line-height:1.6;margin-bottom:10px">El ingeniero modela la curvatura del arco con esta función. En $x=2$ la fórmula produce $\frac{0}{0}$. ¿La curvatura tiene un valor determinado en ese punto o hay una singularidad estructural?</p>
+              <div style="background:#fff;border-radius:6px;padding:10px 14px;font-size:12.5px;color:var(--txt);line-height:1.7">
+                <strong style="color:var(--teal);display:block;margin-bottom:4px">En GeoGebra:</strong>
+                Escribí <code style="background:var(--gris);padding:1px 5px;border-radius:3px">f(x)=(x^3-8)/(x-2)</code>. Investigá con la hoja de cálculo usando $x = 1.9,\ 1.99,\ 1.999$ y $x = 2.1,\ 2.01,\ 2.001$. ¿A qué número se acercan los valores de $f$?<br><br>
+                <em>Para el plenario: ¿podés verificar el resultado algebraicamente? ¿Qué factorización usarías?</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caso 2 -->
+          <div style="border-radius:var(--r);overflow:hidden;border:1px solid var(--vio)">
+            <div style="background:var(--vio);padding:10px 16px;display:flex;align-items:center;gap:10px">
+              <span style="background:rgba(255,255,255,.2);color:#fff;font-weight:900;font-size:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+              <div>
+                <strong style="color:#fff;font-size:13px">El cable vibrante — Amplitud de oscilación en el punto de anclaje</strong>
+                <span style="color:rgba(255,255,255,.7);font-size:11px;display:block">Función: $g(x) = x^2 \cdot \sin\!\left(\dfrac{1}{x}\right)$ · Punto problemático: $x = 0$</span>
+              </div>
+            </div>
+            <div style="padding:14px 16px;background:var(--vcl)">
+              <p style="font-size:13px;color:var(--neg);line-height:1.6;margin-bottom:10px">La función modela la amplitud de oscilación de un cable bajo vibraciones de frecuencia muy alta cerca del punto de anclaje. En $x=0$ el término $\sin(1/x)$ oscila infinitamente rápido. ¿Eso implica que la función no tiene límite?</p>
+              <div style="background:#fff;border-radius:6px;padding:10px 14px;font-size:12.5px;color:var(--txt);line-height:1.7">
+                <strong style="color:var(--vio);display:block;margin-bottom:4px">En GeoGebra:</strong>
+                Escribí <code style="background:var(--gris);padding:1px 5px;border-radius:3px">g(x)=x^2*sin(1/x)</code>. También graficá las funciones $p(x)=x^2$ y $q(x)=-x^2$. Observá qué relación tienen con $g(x)$. Usá la hoja de cálculo con $x = 0.1,\ 0.01,\ 0.001,\ 0.0001$.<br><br>
+                <em>La respuesta puede sorprenderte. ¿Qué "aprieta" a $g(x)$ hacia un valor fijo aunque oscile?</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caso 3 -->
+          <div style="border-radius:var(--r);overflow:hidden;border:1px solid var(--red)">
+            <div style="background:var(--red);padding:10px 16px;display:flex;align-items:center;gap:10px">
+              <span style="background:rgba(255,255,255,.2);color:#fff;font-weight:900;font-size:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+              <div>
+                <strong style="color:#fff;font-size:13px">La junta de dilatación — Fuerza de fricción en el punto de contacto</strong>
+                <span style="color:rgba(255,255,255,.7);font-size:11px;display:block">Función: $h(x) = \sin\!\left(\dfrac{1}{x}\right)$ · Punto problemático: $x = 0$</span>
+              </div>
+            </div>
+            <div style="padding:14px 16px;background:#FDF2F2">
+              <p style="font-size:13px;color:var(--neg);line-height:1.6;margin-bottom:10px">La función modela la fuerza de fricción en una junta de dilatación a medida que las oscilaciones se vuelven más rápidas. El ingeniero necesita saber si esa fuerza converge a algún valor en el punto límite.</p>
+              <div style="background:#fff;border-radius:6px;padding:10px 14px;font-size:12.5px;color:var(--txt);line-height:1.7">
+                <strong style="color:var(--red);display:block;margin-bottom:4px">En GeoGebra:</strong>
+                Escribí <code style="background:var(--gris);padding:1px 5px;border-radius:3px">h(x)=sin(1/x)</code>. Observá la gráfica cerca de $x=0$ con zoom progresivo. Usá la hoja de cálculo con los mismos valores que el Caso 2.<br><br>
+                <em>¿Los valores de la tabla se acercan a algo? ¿Qué le dirías al ingeniero sobre este puente?</em>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Consigna escrita -->
+        <div style="background:#FFFDF3;border:2px solid var(--amb);border-radius:var(--r);padding:16px 18px;margin-bottom:14px">
+          <strong style="color:var(--amb);font-size:13px;display:block;margin-bottom:8px">✏️ Consigna escrita (10 min) — La respuesta al ingeniero</strong>
+          <p style="font-size:13px;color:var(--neg);line-height:1.6;margin-bottom:10px">Para cada uno de los tres casos, escribí un párrafo breve respondiendo al ingeniero de <em>Ponts et Chaussées</em>. La respuesta debe:</p>
+          <ul style="font-size:13px;color:var(--txt);line-height:1.8;margin-left:18px">
+            <li>Decir si el límite existe o no, y con qué valor.</li>
+            <li>Usar el lenguaje de Cauchy — sin fórmulas como punto de partida, con lenguaje de aproximación: "los valores de la función se acercan a...", "por mucho que se reduzca el intervalo..."</li>
+            <li>Decir qué puede o no puede hacer el ingeniero a partir de ese resultado.</li>
+          </ul>
+        </div>
+
+        <!-- Pregunta de debate -->
+        <div class="note nv">
+          <span class="ni">🤔</span>
+          <div>
+            <strong style="color:var(--vio)">Para el plenario: el caso 2 es el más perturbador</strong>
+            <p style="font-size:13px;margin-top:4px;line-height:1.6">$g(x) = x^2 \sin(1/x)$ oscila infinitamente cerca de $x=0$ — al igual que $h(x)$. Pero su límite <em>existe</em> y es $0$. ¿Por qué? La diferencia es que el factor $x^2$ <strong>aplasta</strong> la oscilación: el valor de la función queda siempre entre $-x^2$ y $x^2$, y ambas cotas convergen a cero. Euler no tenía palabras para esto: necesitaba exactamente el concepto de límite que Cauchy estaba construyendo ese año. ¿Cómo habría respondido Euler al ingeniero? ¿Y Cauchy?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- EL PROGRAMA DE CAUCHY -->
   <div class="sec">
     <div class="sec-label"><span style="background:var(--nav)">📖 El programa de Cauchy: rigorizar el cálculo</span><hr></div>
