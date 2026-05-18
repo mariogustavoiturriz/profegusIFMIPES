@@ -260,9 +260,32 @@
         </div>
 
         <h5 style="color:var(--teal);border-color:var(--teal)">Un ejemplo concreto: el límite que no depende del valor en el punto</h5>
-        <p>Consideremos la función $f(x) = \dfrac{x^2 - 1}{x - 1}$. Esta función <strong>no está definida en $x = 1$</strong> (división por cero). Pero para todo $x \neq 1$:</p>
-        <p style="text-align:center;font-size:16px;margin:14px 0">$f(x) = \dfrac{x^2-1}{x-1} = \dfrac{(x-1)(x+1)}{x-1} = x+1$</p>
-        <p>Entonces <strong>el límite</strong> cuando $x \to 1$ es $2$, aunque $f(1)$ no exista. Esta distinción — entre el límite y el valor de la función — es la innovación conceptual de Cauchy que Berkeley no podía atacar. (Mankiewicz, 2000, pp. 175-180)</p>
+        <p>Consideremos $f(x) = \dfrac{x^2 - 1}{x - 1}$. Esta función <strong>no está definida en $x = 1$</strong>: la sustitución directa produce $\frac{0}{0}$, una indeterminación. La pregunta de Cauchy es: ¿a qué valor se aproximan las imágenes de $f$ cuando $x$ se acerca a $1$?</p>
+
+        <p>Para responderla, el razonamiento tiene tres pasos que no deben confundirse:</p>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin:14px 0">
+          <div class="step" style="border-color:var(--teal);background:var(--tcl)">
+            <strong style="color:var(--teal)">Paso 1 — Simplificación algebraica (válida solo para x ≠ 1)</strong>
+            <p style="font-size:13px;color:var(--neg);margin-top:6px">Para todo $x \neq 1$ se puede factorear el numerador: $f(x) = \dfrac{(x-1)(x+1)}{x-1} = x+1$. Esto describe el comportamiento de $f$ en toda vecindad perforada de $x=1$. <strong>No es el límite</strong> — es una equivalencia algebraica que dice: fuera del punto problemático, $f$ y la recta $y=x+1$ son la misma función.</p>
+          </div>
+          <div class="step" style="border-color:var(--nav);background:var(--pale)">
+            <strong style="color:var(--nav)">Paso 2 — El argumento del límite (la innovación de Cauchy)</strong>
+            <p style="font-size:13px;color:var(--neg);margin-top:6px">Cuando $x$ se aproxima a $1$ sin llegar, $f(x) = x+1$ se aproxima a $2$. Podemos hacer $|f(x) - 2| = |(x+1) - 2| = |x-1|$ tan pequeño como queramos tomando $x$ suficientemente cerca de $1$. Eso es, precisamente, lo que Cauchy formaliza: dado cualquier margen de tolerancia, existe una vecindad del punto que garantiza que las imágenes no lo superan.</p>
+          </div>
+          <div class="step" style="border-color:var(--grn);background:var(--gcl)">
+            <strong style="color:var(--grn)">Paso 3 — La separación conceptual que Berkeley no podía atacar</strong>
+            <p style="font-size:13px;color:var(--neg);margin-top:6px">$f(1)$ no existe. El límite vale $2$ de todos modos. El límite no pregunta qué vale la función <em>en</em> el punto — pregunta a qué valor se aproximan los valores de la función cuando el argumento se acerca al punto. Esta separación es la que ningún infinitesimal necesita: no hay cantidad que "se anula" ni "fantasma" alguno.</p>
+          </div>
+        </div>
+
+        <div class="note na" style="margin-top:4px">
+          <span class="ni">⚠️</span>
+          <div>
+            <strong style="color:var(--amb)">El error habitual en la enseñanza</strong>
+            <p style="font-size:13px;margin-top:4px;line-height:1.6">El procedimiento escolar típico —factorear, cancelar, sustituir— presenta el Paso 1 y el Paso 3 saltando el Paso 2. El resultado parece algebraicamente válido pero borra el concepto: el alumno aprende que "el límite se calcula cancelando factores", no que el límite es un enunciado sobre el comportamiento de la función en una vecindad. Esta es exactamente la reducción que Cauchy quiso superar. Un ejemplo que <em>obliga</em> a transitar el Paso 2 sin atajo algebraico es $\displaystyle\lim_{x \to 0} \frac{\sin x}{x} = 1$ — no se puede factorear ni sustituir, y el argumento del límite es ineludible.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
