@@ -207,7 +207,18 @@
       <div class="act-body">
         <div class="timeline">
           <div class="tl-item"><strong>1634-1684: El cálculo funciona.</strong><p>Cavalieri, Fermat, Newton, Leibniz. 50 años de resultados correctos sobre bases contradictorias.</p></div>
-          <div class="tl-item"><strong>1734: Berkeley publica <em>The Analyst</em>.</strong><p>El cálculo opera con "fantasmas de cantidades desvanecidas". Nadie puede responder el ataque.</p></div>
+          <div class="tl-item"><strong>1734: Berkeley publica <em>The Analyst</em>.</strong>
+            <div style="display:flex;gap:12px;align-items:flex-start;margin-top:4px">
+              <p style="flex:1;margin:0">El cálculo opera con "fantasmas de cantidades desvanecidas". Nadie puede responder el ataque — no porque Berkeley se equivoque, sino porque tiene razón.</p>
+              <figure style="margin:0;flex-shrink:0;text-align:center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/George_Berkeley_by_John_Smibert.jpg/220px-George_Berkeley_by_John_Smibert.jpg"
+                     alt="George Berkeley, retrato de John Smibert, c. 1730"
+                     style="width:72px;height:96px;object-fit:cover;border-radius:4px;border:2px solid var(--bd);display:block"
+                     onerror="this.parentElement.style.display='none'">
+                <figcaption style="font-size:9px;color:var(--txt);margin-top:3px;line-height:1.2">Berkeley<br>J. Smibert, c.1730</figcaption>
+              </figure>
+            </div>
+          </div>
           <div class="tl-item"><strong>1734–1821: El siglo de las aplicaciones.</strong><p>Euler, Lagrange, Laplace, Fourier. Todos usan el cálculo para física, astronomía, calor. Nadie fundamenta. Funciona — ¿y? (Kline, 1992, pp. 948-951)</p></div>
           <div class="tl-item" style="--color:var(--teal)"><strong style="color:var(--teal)">1821: Augustin-Louis Cauchy publica el <em>Cours d'analyse</em>.</strong><p>La primera respuesta seria. Sin infinitesimales. Sin metáforas de movimiento. Con definiciones.</p></div>
         </div>
@@ -245,10 +256,22 @@
 
         <h5 style="color:var(--teal);border-color:var(--teal)">La definición verbal del límite</h5>
         <p>Cauchy no escribe todavía la fórmula ε-δ. Pero escribe algo que, por primera vez, captura la idea correcta:</p>
-        <div class="cita-hist" style="border-left-color:var(--teal)">
-          <div class="cita-label" style="background:var(--teal)">Cauchy — Cours d'Analyse, 1821</div>
-          <p><em>"Cuando los valores sucesivos atribuidos a una variable se aproximan indefinidamente a un valor fijo, de tal manera que al final difieran de él tan poco como se desee, este último valor se llama el <strong>límite</strong> de todos los demás."</em></p>
-          <p class="cita-autor">— Augustin-Louis Cauchy, <em>Cours d'analyse</em>, Préliminaires, 1821.</p>
+
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin:16px 0">
+          <div style="flex:1;min-width:260px">
+            <div class="cita-hist" style="border-left-color:var(--teal);margin:0">
+              <div class="cita-label" style="background:var(--teal)">Cauchy — Cours d'Analyse, 1821</div>
+              <p><em>"Cuando los valores sucesivos atribuidos a una variable se aproximan indefinidamente a un valor fijo, de tal manera que al final difieran de él tan poco como se desee, este último valor se llama el <strong>límite</strong> de todos los demás."</em></p>
+              <p class="cita-autor">— Augustin-Louis Cauchy, <em>Cours d'analyse</em>, Préliminaires, 1821.</p>
+            </div>
+          </div>
+          <figure style="margin:0;flex-shrink:0;text-align:center;max-width:220px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Cauchy_th%C3%A9or%C3%A8me_des_valeurs_interm%C3%A9diaires_1.png/600px-Cauchy_th%C3%A9or%C3%A8me_des_valeurs_interm%C3%A9diaires_1.png"
+                 alt="Página interior del Cours d'analyse de Cauchy (1821), teorema de los valores intermedios"
+                 style="max-width:220px;width:100%;border-radius:6px;border:2px solid var(--bd);display:block"
+                 onerror="this.parentElement.style.display='none'">
+            <figcaption style="font-size:10px;color:var(--txt);margin-top:5px;line-height:1.4;text-align:left">Página interior del <em>Cours d'analyse</em> (Cauchy, 1821) mostrando el teorema de los valores intermedios — el mismo estilo tipográfico y argumentativo que usó para definir el límite. Fuente: Wikimedia Commons.</figcaption>
+          </figure>
         </div>
 
         <div class="note nt" style="margin-top:16px">
@@ -348,8 +371,20 @@
             <p style="font-size:12.5px;color:var(--txt);line-height:1.5">El $dx$ de Leibniz dejó de ser una "cantidad infinitamente pequeña" para convertirse en una notación que alude a un proceso de aproximación. No hay objeto: hay proceso. (Boyer, 1986, p. 530)</p>
           </div>
           <div style="background:var(--vcl);border-left:4px solid var(--vio);border-radius:6px;padding:14px">
-            <strong style="color:var(--vio);display:block;margin-bottom:6px;font-size:13px">2. Definir antes de demostrar</strong>
-            <p style="font-size:12.5px;color:var(--txt);line-height:1.5">Lagrange, Euler y Laplace demostraban teoremas sin haber definido rigurosamente sus conceptos centrales. Cauchy invierte el orden: sin definición precisa de límite y continuidad, no hay demostración válida. (Kline, 1992, p. 952)</p>
+            <strong style="color:var(--vio);display:block;margin-bottom:8px;font-size:13px">2. Definir antes de demostrar</strong>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.6;margin-bottom:8px">Los tres grandes del siglo XVIII demostraban resultados correctos sin haber definido sus conceptos centrales:</p>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:8px">
+              <div style="background:rgba(255,255,255,.6);border-radius:4px;padding:8px 10px;font-size:12px;color:var(--neg);line-height:1.5">
+                <strong style="color:var(--vio)">Lagrange</strong> — <em>Théorie des fonctions analytiques</em> (1797). Intentó fundar el cálculo solo en álgebra: definió la derivada como el coeficiente del término lineal en $f(x+h) = f(x) + f'(x)h + \ldots$ Sin usar límites. El problema: nunca especificó cuándo esa serie de Taylor converge, porque convergencia presupone exactamente el límite que evitaba.
+              </div>
+              <div style="background:rgba(255,255,255,.6);border-radius:4px;padding:8px 10px;font-size:12px;color:var(--neg);line-height:1.5">
+                <strong style="color:var(--vio)">Euler</strong> — <em>Institutiones calculi differentialis</em> (1755). Operaba libremente con series divergentes: evaluaba $\frac{1}{1-x}=1+x+x^2+\ldots$ en $x=2$ obteniendo $-1 = 1+2+4+8+\ldots$ Sin una definición de convergencia, no había criterio para saber cuándo detener el proceso.
+              </div>
+              <div style="background:rgba(255,255,255,.6);border-radius:4px;padding:8px 10px;font-size:12px;color:var(--neg);line-height:1.5">
+                <strong style="color:var(--vio)">Laplace</strong> — <em>Mécanique céleste</em> (1799). Usaba expansiones asintóticas —series divergentes cuyas sumas parciales aproximan bien— tratándolas como convergentes. Los resultados físicos eran correctos; la justificación matemática, inexistente.
+              </div>
+            </div>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.5">Cauchy invierte el orden: sin definición precisa de límite y convergencia, ningún resultado de estos tres puede considerarse demostrado. (Kline, 1992, pp. 948-953)</p>
           </div>
           <div style="background:var(--gcl);border-left:4px solid var(--grn);border-radius:6px;padding:14px">
             <strong style="color:var(--grn);display:block;margin-bottom:6px;font-size:13px">3. El límite como criterio unificador</strong>
@@ -375,7 +410,7 @@
       <div class="act-head" style="background:var(--grn)"><h3>Nuevo nodo en el Genially colectivo</h3></div>
       <div class="act-body">
         <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd)">
-          <div><strong style="color:var(--nav);font-size:14px">NODO 7 — Augustin-Louis Cauchy (1821)</strong><br><span style="color:var(--txt);font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La aritmetización del análisis: eliminar los infinitesimales. La respuesta (incompleta) a Berkeley.</span></div>
+          <div><strong style="color:var(--nav);font-size:14px">NODO 7 — Augustin-Louis Cauchy (1821)</strong><br><span style="color:var(--txt);font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La rigorización del cálculo: eliminar los infinitesimales como objetos, definir antes de demostrar, unificar el análisis bajo el concepto de límite. Respuesta (parcial) a Berkeley — la formalización completa será obra de Weierstrass.</span></div>
         </div>
         <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">Mañana completamos el Nodo 8 con Weierstrass y la definición formal ε-δ.</p>
       </div>
