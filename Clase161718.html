@@ -200,7 +200,7 @@
       <div class="cb-num" style="background:var(--teal)">16</div>
       <div class="cb-info"><h2>La Respuesta a Berkeley: Cauchy y la Rigorización del Cálculo</h2><p>Martes 19 de Mayo · Encuentro 19 (80 min) · <em>Clase reprogramada — suspensión del lunes 18/5</em></p></div>
     </div>
-    <div class="cb-obj"><p><strong>Objetivo:</strong> Comprender cómo Cauchy (1821) eliminó la contradicción del infinitesimal reemplazándolo por la noción de <em>límite como proceso de aproximación cuantitativa</em>. Identificar el alcance y los límites de ese programa. <span style="color:var(--amb)"></span></p></div>
+    <div class="cb-obj"><p><strong>Objetivo:</strong> Comprender cómo Cauchy (1821) eliminó la contradicción del infinitesimal reemplazándolo por la noción de <em>límite como proceso de aproximación cuantitativa</em>. Identificar el alcance y los límites de ese programa. <span style="color:var(--amb)">⚠️ El laboratorio histórico "El asistente de Cauchy" (35 min) se pospone a la Clase 18 del lunes 25/5, donde contará con los 120 minutos del encuentro completo.</span></p></div>
   </div>
 
   <!-- APERTURA -->
@@ -362,7 +362,47 @@
     </div>
   </div>
 
-  <!-- LABORATORIO HISTÓRICO -->
+  <!-- ACTIVIDAD BREVE -->
+  <div class="sec">
+    <div class="sec-label"><span style="background:var(--nav)">✏️ Actividad (10 min)</span><hr></div>
+    <div class="act-box" style="border-color:var(--nav)">
+      <div class="act-head"><h3>El límite que no existe — el reverso del simulador</h3></div>
+      <div class="act-body">
+        <p style="font-size:13.5px;margin-bottom:14px">El simulador mostró que $f(x) = \frac{x^2-1}{x-1}$ tiene límite en $x=1$ aunque la fórmula sea indeterminada ahí. Ahora investigamos una función que también es indeterminada en un punto — con un resultado diferente.</p>
+
+        <div style="background:var(--gris);border-radius:var(--r);padding:18px 20px;border:1px solid var(--bd);margin-bottom:14px">
+          <p style="font-size:15px;font-weight:700;text-align:center;margin-bottom:6px">$g(x) = \dfrac{|x|}{x}$</p>
+          <p style="font-size:13px;color:var(--txt);text-align:center">¿Existe $\displaystyle\lim_{x \to 0} g(x)$?</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+          <div style="background:var(--vcl);border-radius:6px;padding:14px;border:1px solid var(--vio)">
+            <strong style="color:var(--vio);font-size:12px;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Desde la izquierda (x &lt; 0)</strong>
+            <p style="font-size:12.5px;color:var(--txt);margin-bottom:8px">Calculá $g(x)$ para $x = -1,\ -0{,}5,\ -0{,}1,\ -0{,}01$</p>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.6">Para $x < 0$: $|x| = -x$, entonces $g(x) = \dfrac{-x}{x} = \ldots$</p>
+          </div>
+          <div style="background:var(--gcl);border-radius:6px;padding:14px;border:1px solid var(--grn)">
+            <strong style="color:var(--grn);font-size:12px;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Desde la derecha (x &gt; 0)</strong>
+            <p style="font-size:12.5px;color:var(--txt);margin-bottom:8px">Calculá $g(x)$ para $x = 1,\ 0{,}5,\ 0{,}1,\ 0{,}01$</p>
+            <p style="font-size:12.5px;color:var(--txt);line-height:1.6">Para $x > 0$: $|x| = x$, entonces $g(x) = \dfrac{x}{x} = \ldots$</p>
+          </div>
+        </div>
+
+        <div style="background:#FFFDF3;border:1px solid var(--amb);border-radius:6px;padding:14px 16px">
+          <strong style="color:var(--amb);font-size:13px;display:block;margin-bottom:8px">Consigna escrita — en lenguaje de Cauchy</strong>
+          <p style="font-size:13px;color:var(--txt);line-height:1.65">Sin usar fórmulas como punto de partida: explicá en una o dos oraciones por qué el límite de $g(x)$ cuando $x \to 0$ <strong>no existe</strong>. Usá el mismo lenguaje de aproximación que Cauchy: "cuando los valores de $x$ se acercan a $0$ desde la izquierda… mientras que desde la derecha…"</p>
+        </div>
+
+        <div class="note nb" style="margin-top:12px;margin-bottom:0">
+          <span class="ni">🔍</span>
+          <div><strong style="color:var(--med)">Conexión con el simulador</strong><p style="font-size:13px;margin:0;line-height:1.6">Tanto $f(x) = \frac{x^2-1}{x-1}$ como $g(x) = \frac{|x|}{x}$ son indeterminadas en el punto problemático. La diferencia es una sola: en $f$, las dos aproximaciones laterales convergen al mismo valor. En $g$, divergen. Eso y solo eso decide si el límite existe.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- LABORATORIO POSTERGADO -->
   <div class="sec">
     <div class="sec-label"><span style="background:var(--amb)">⚙️ Laboratorio Histórico (35 min)</span><hr></div>
     <div class="act-box" style="border:2px solid var(--amb)">
