@@ -160,7 +160,8 @@
 
 <div class="tab-bar">
   <button class="tab-btn active" onclick="window.showTab('inicio')" id="btn-inicio">Inicio</button>
-  <button class="tab-btn" onclick="window.showTab('c17')" id="btn-c17">Clases 16+17 · Miércoles</button>
+  <button class="tab-btn" onclick="window.showTab('c16')" id="btn-c16">Clase 16 · Martes</button>
+  <button class="tab-btn locked" onclick="window.showTab('c17')" id="btn-c17">Clase 17 · Miércoles</button>
   <button class="tab-btn locked" onclick="window.showTab('c18')" id="btn-c18">Clase 18 · Martes 26/5</button>
 </div>
 
@@ -173,8 +174,9 @@
     <div class="act-body">
       <p style="font-size:15px;line-height:1.7">Esta semana cerramos el arco que arrancó en la Semana 7. Tenemos la herramienta (el cálculo de Newton-Leibniz), tenemos el ataque (Berkeley 1734), y esta semana llegamos a la defensa. Pero la defensa no fue rápida ni sencilla — tardó casi un siglo y requirió repensar desde cero qué significa que una función "se acerque" a un valor.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px">
-        <div class="note nt"><span class="ni">📐⚡</span><div><strong style="display:block;margin-bottom:4px;color:var(--teal)">Miércoles 20/5 — Sesión integrada C16+17</strong><span style="font-size:13px">Retoma de Cauchy: tres principios, actividad $|x|/x$. Weierstrass: definición ε-δ, simulador, los monstruos. Gran Línea Nodos 7 y 8.</span></div></div>
-        <div class="note ng"><span class="ni">🏫</span><div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Martes 26/5 — Clase 18 (80 min)</strong><span style="font-size:13px">Las tres concepciones históricas del límite. Taller + Bitácora 4 + Lanzamiento del Eje 4. El laboratorio abre el Encuentro 22 del 1/6.</span></div></div>
+        <div class="note nt"><span class="ni">📐</span><div><strong style="display:block;margin-bottom:4px;color:var(--teal)">Martes 19/5: Cauchy (1821)</strong><span style="font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La rigorización del cálculo: eliminar los infinitesimales reemplazándolos por el concepto de aproximación. <em>Nota: el laboratorio histórico se pospone a la Clase 18.</em></span></div></div>
+        <div class="note nv"><span class="ni">⚡</span><div><strong style="display:block;margin-bottom:4px;color:var(--vio)">Miércoles 20/5: Weierstrass y ε-δ</strong><span style="font-size:13px">La formalización cuantitativa. El reto ε-δ interactivo. Los "monstruos": funciones continuas pero no derivables en ningún punto.</span></div></div>
+        <div class="note ng"><span class="ni">🏫</span><div><strong style="display:block;margin-bottom:4px;color:var(--grn)">Martes 26/5: El límite en la enseñanza (80 min)</strong><span style="font-size:13px">Las tres concepciones del límite. Taller de diseño + Bitácora 4 + Lanzamiento del Eje 4. <em>Nota: el laboratorio histórico abre el Encuentro 22 del lunes 1/6.</em></span></div></div>
       </div>
       <div class="note na" style="margin-top:12px;margin-bottom:0">
         <span class="ni">📅</span>
@@ -558,7 +560,7 @@
             <p style="font-size:13px;margin-top:4px;line-height:1.6">El término <em>Arithmetisierung der Analysis</em> ("aritmetización del análisis") fue acuñado por Felix Klein hacia 1895 para referirse al programa de Weierstrass, Dedekind y Cantor — no al de Cauchy. Cauchy <strong>rigoriza</strong> el cálculo, pero su definición verbal del límite todavía contiene lenguaje dinámico ("se aproximan indefinidamente") que Weierstrass considerará impreciso. La <em>aritmetización plena</em> — la eliminación de toda referencia al movimiento, la geometría o la intuición — es obra de los años 1860-1880. (Kline, 1992, pp. 973-975; Boyer, 1986, pp. 546-550)</p>
           </div>
         </div>
-        <p style="margin-top:12px">La distinción importa para la segunda parte de esta clase: la definición ε-δ de Weierstrass no es una "versión más formal" de lo que Cauchy hizo. Es un programa diferente con una ontología diferente.</p>
+        <p style="margin-top:12px">La distinción importa para la clase de mañana: la definición ε-δ de Weierstrass no es una "versión más formal" de lo que Cauchy hizo. Es un programa diferente con una ontología diferente.</p>
       </div>
     </div>
   </div>
@@ -572,7 +574,7 @@
         <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd)">
           <div><strong style="color:var(--nav);font-size:14px">NODO 7 — Augustin-Louis Cauchy (1821)</strong><br><span style="color:var(--txt);font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La rigorización del cálculo: eliminar los infinitesimales como objetos, definir antes de demostrar, unificar el análisis bajo el concepto de límite. Respuesta (parcial) a Berkeley — la formalización completa será obra de Weierstrass.</span></div>
         </div>
-        <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">El Nodo 8 (Weierstrass) se completa en la segunda parte de este mismo encuentro — ver pestaña C16+17.</p>
+        <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">Mañana completamos el Nodo 8 con Weierstrass y la definición formal ε-δ.</p>
       </div>
     </div>
   </div>
@@ -594,67 +596,12 @@
     <div class="clase-banner">
       <div class="clase-banner-top">
         <div class="cb-num" style="background:var(--vio)">17</div>
-        <div class="cb-info"><h2>Sesión integrada: cierre de Cauchy y Weierstrass</h2><p>Miércoles 20 de Mayo · Encuentro 20 (80 min) · <em>Incluye contenido pendiente de Clase 16</em></p></div>
+        <div class="cb-info"><h2>Weierstrass y el Lenguaje del Rigor: La Definición ε-δ y los Monstruos</h2><p>Miércoles 20 de Mayo · Encuentro 20 (80 min)</p></div>
       </div>
-      <div class="cb-obj"><p style="color:var(--vio)"><strong>Objetivo:</strong> Cerrar el programa de Cauchy con los casos concretos de Lagrange, Euler y Laplace (pendiente del martes). Comprender por qué la definición verbal de Cauchy seguía siendo insuficiente. Trabajar con la definición ε-δ de Weierstrass y el concepto de función continua no derivable. Completar Nodos 7 y 8 de la Gran Línea.</p></div>
+      <div class="cb-obj"><p style="color:var(--vio)"><strong>Objetivo:</strong> Comprender la estructura lógica de la definición ε-δ del límite y analizar el impacto epistemológico de los "monstruos de Weierstrass" — funciones que destruyeron la intuición del siglo XIX.</p></div>
     </div>
 
     <!-- WEIERSTRASS -->
-    <!-- RETOMA CLASE 16 -->
-    <div class="sec">
-      <div class="sec-label"><span style="background:var(--amb)">🔁 Retoma de Clase 16 (~20 min)</span><hr></div>
-
-      <div style="background:var(--acl);border-left:4px solid var(--amb);border-radius:6px;padding:13px 16px;margin-bottom:16px">
-        <strong style="color:var(--amb);display:block;margin-bottom:6px;font-size:13px">Los tres principios del programa de Cauchy — síntesis oral (8 min)</strong>
-        <p style="font-size:13px;color:var(--txt);line-height:1.6;margin-bottom:6px">El detalle está en la Clase 16. El núcleo para retomar:</p>
-        <ul style="font-size:13px;color:var(--txt);line-height:1.8;margin-left:18px">
-          <li><strong>Lagrange</strong> asumió convergencia de series de Taylor sin poder definirla — porque "convergencia" requiere el límite que evitaba.</li>
-          <li><strong>Euler</strong> manipuló series divergentes sin criterio — porque sin límite, no hay forma de saber cuándo detenerse.</li>
-          <li><strong>Laplace</strong> usó expansiones asintóticas como si convergieran — resultados físicos correctos, justificación inexistente.</li>
-        </ul>
-        <p style="font-size:13px;color:var(--amb);margin-top:8px;font-weight:600">La pregunta que abre la segunda parte de esta clase: Cauchy definió el límite. ¿Por qué eso tampoco fue suficiente?</p>
-      </div>
-
-      <div class="act-box" style="border-color:var(--nav)">
-        <div class="act-head"><h3>Actividad — El límite que no existe (10 min)</h3></div>
-        <div class="act-body">
-          <p style="font-size:13.5px;margin-bottom:14px">El simulador del martes mostró que $f(x)=\frac{x^2-1}{x-1}$ tiene límite aunque la fórmula sea indeterminada. Ahora analizamos una función igualmente indeterminada con un resultado diferente.</p>
-
-          <div style="background:var(--gris);border-radius:var(--r);padding:16px 20px;border:1px solid var(--bd);margin-bottom:14px;text-align:center">
-            <p style="font-size:16px;font-weight:700;margin-bottom:4px">$g(x) = \dfrac{|x|}{x}$</p>
-            <p style="font-size:13px;color:var(--txt)">¿Existe $\displaystyle\lim_{x \to 0}\,g(x)$?</p>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
-            <div style="background:var(--vcl);border-radius:6px;padding:13px;border:1px solid var(--vio)">
-              <strong style="color:var(--vio);font-size:12px;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Desde la izquierda (x &lt; 0)</strong>
-              <p style="font-size:12.5px;color:var(--txt);line-height:1.6">Calculá $g(-1),\,g(-0{,}1),\,g(-0{,}01)$.<br>Para $x<0$: $|x|=-x$, entonces $g(x)=\dfrac{-x}{x}=\ldots$</p>
-            </div>
-            <div style="background:var(--gcl);border-radius:6px;padding:13px;border:1px solid var(--grn)">
-              <strong style="color:var(--grn);font-size:12px;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Desde la derecha (x &gt; 0)</strong>
-              <p style="font-size:12.5px;color:var(--txt);line-height:1.6">Calculá $g(1),\,g(0{,}1),\,g(0{,}01)$.<br>Para $x>0$: $|x|=x$, entonces $g(x)=\dfrac{x}{x}=\ldots$</p>
-            </div>
-          </div>
-
-          <div style="background:#FFFDF3;border:1px solid var(--amb);border-radius:6px;padding:12px 15px">
-            <strong style="color:var(--amb);font-size:13px;display:block;margin-bottom:6px">Consigna — en lenguaje de Cauchy</strong>
-            <p style="font-size:13px;color:var(--txt);line-height:1.6">Explicá en una oración por qué el límite <strong>no existe</strong>: "cuando los valores de $x$ se acercan a $0$ desde la izquierda… mientras que desde la derecha…"</p>
-          </div>
-
-          <div class="note nb" style="margin-top:12px;margin-bottom:0">
-            <span class="ni">🔍</span>
-            <div><strong style="color:var(--med)">La diferencia que importa</strong><p style="font-size:13px;margin:0;line-height:1.6">Tanto $f$ como $g$ son indeterminadas en el punto. La diferencia: en $f$ las dos aproximaciones laterales convergen al mismo valor. En $g$, divergen ($-1$ desde la izquierda, $+1$ desde la derecha). Eso y solo eso decide si el límite existe.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BISAGRA -->
-    <div class="note na" style="margin-bottom:6px">
-      <span class="ni">🌉</span>
-      <div><strong style="color:var(--amb)">Por qué Cauchy no fue suficiente — bisagra hacia Weierstrass</strong><p style="font-size:13px;margin-top:4px;line-height:1.6">Cauchy define el límite como "aproximación indefinida". Pero "indefinidamente" todavía contiene tiempo y movimiento implícitos. ¿Cuánto es "tan poco como se desee"? ¿Cómo se prueba formalmente que la aproximación funciona para <em>cualquier</em> margen de tolerancia? La definición verbal no tiene respuesta. Weierstrass la reemplaza con aritmética pura.</p></div>
-    </div>
-
     <div class="sec">
       <div class="sec-label"><span style="background:var(--vio)">📖 Karl Weierstrass (1815–1897)</span><hr></div>
       <div class="lect">
@@ -780,33 +727,34 @@
       </div>
     </div>
 
-    <!-- CONCEPTO MONSTRUO SIN SIMULADOR -->
+    <!-- SIMULADOR WEIERSTRASS -->
     <div class="sec">
-      <div class="sec-label"><span style="background:var(--red)">👾 El Monstruo de Weierstrass — concepto</span><hr></div>
+      <div class="sec-label"><span style="background:var(--red)">🖥️ Simulador: Construí el Monstruo</span><hr></div>
       <div class="act-box" style="border-color:var(--red)">
-        <div class="act-head" style="background:var(--red)"><h3>La función que destruyó la intuición</h3></div>
+        <div class="act-head" style="background:var(--red)"><h3>La función de Weierstrass: de suave a monstruo en 7 pasos</h3></div>
         <div class="act-body">
-          <p style="font-size:13.5px;margin-bottom:12px">La función se define como suma infinita de cosenos de frecuencia creciente:</p>
-          <div class="def-box" style="border-color:var(--red);padding:14px 20px;margin-bottom:14px">
-            <p style="color:#FF9F9F;text-align:center;font-size:16px">$W(x) = \displaystyle\sum_{n=0}^{\infty} \left(\tfrac{1}{2}\right)^n \cos(13^n \pi x)$</p>
-            <div class="def-note">Cada término agrega oscilaciones 13 veces más rápidas que el anterior.</div>
+          <p style="font-size:13px;margin-bottom:12px">Aumentá el número de términos $N$ de la suma $W(x) = \sum_{n=0}^{N}(0{,}5)^n\cos(13^n\pi x)$. Con $N=0$: una ola suave. A partir de $N=4$: el monstruo emerge. A partir de $N=5$: el canvas mismo ya no puede representar las oscilaciones — un reflejo de lo que les pasó a los matemáticos del siglo XIX.</p>
+          <div style="background:#1A1A2E;border-radius:8px;padding:12px;margin-bottom:12px">
+            <canvas id="weierCanvas" width="380" height="200" style="max-width:100%;border-radius:4px;display:block;margin:0 auto"></canvas>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-            <div style="background:var(--gcl);border-left:3px solid var(--grn);border-radius:6px;padding:12px">
-              <strong style="color:var(--grn);font-size:12px;display:block;margin-bottom:6px">Continua en todo punto ✅</strong>
-              <p style="font-size:12.5px;color:var(--txt);line-height:1.55">Cada término es continuo. Su suma también — sin saltos ni agujeros en ningún punto del dominio real.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <div style="flex:1;min-width:200px">
+              <label style="font-size:12px;font-weight:700;color:var(--nav);letter-spacing:.4px;text-transform:uppercase;display:block;margin-bottom:6px">Número de términos N = <span id="weier-n-val" style="color:var(--red);font-size:16px">0</span></label>
+              <input type="range" id="weier-slider" class="sim-slider" min="0" max="7" value="0" style="margin:0">
             </div>
-            <div style="background:#FDF2F2;border-left:3px solid var(--red);border-radius:6px;padding:12px">
-              <strong style="color:var(--red);font-size:12px;display:block;margin-bottom:6px">Derivable en ningún punto ✗</strong>
-              <p style="font-size:12.5px;color:var(--txt);line-height:1.55">Las oscilaciones de alta frecuencia destruyen cualquier recta tangente — en absolutamente cualquier punto, sin excepción.</p>
+            <div style="flex:1;min-width:200px">
+              <div style="font-size:11px;font-weight:700;color:var(--grn);margin-bottom:4px;text-transform:uppercase">Suavidad</div>
+              <div class="monster-bar"><div id="weier-smooth" class="monster-smooth" style="width:100%"></div></div>
+              <div style="font-size:11px;font-weight:700;color:var(--red);margin-top:8px;margin-bottom:4px;text-transform:uppercase">Monstruosidad</div>
+              <div class="monster-bar"><div id="weier-monster" class="monster-rough" style="width:0%"></div></div>
             </div>
           </div>
-          <div style="background:var(--pale);border-radius:6px;padding:11px 14px;font-size:13px;color:var(--txt);border:1px solid var(--bd);margin-bottom:12px">
-            <strong style="color:var(--nav)">Para explorar después (GeoGebra):</strong> tipear <code style="background:var(--gris);padding:1px 5px;border-radius:3px">W(x) = sum((1/2)^n * cos(13^n * pi * x), n, 0, 6)</code> y hacer zoom progresivo sobre cualquier punto. La rugosidad se mantiene a toda escala.
-          </div>
-          <div class="note nv" style="margin-bottom:0">
-            <span class="ni">💥</span>
-            <div><strong style="color:var(--vio)">El impacto</strong><p style="font-size:13px;margin:0;line-height:1.6">Hermite escribió que estas funciones eran "una lamentable plaga". Poincaré las llamó "monstruos". El problema era profundo: la continuidad, que siempre se asoció a suavidad geométrica, podía coexistir con una rugosidad infinita. La intuición visual quedó invalidada como fundamento. (Kline, 1992, p. 972)</p></div>
+          <div class="note na" style="margin-top:14px">
+            <span class="ni">🔬</span>
+            <div>
+              <strong style="color:var(--amb)">¿Por qué a partir de N=5 el canvas se "distorsiona"?</strong>
+              <p style="font-size:13px;margin-top:4px;line-height:1.6">Con 3000 puntos de muestreo, el canvas puede representar frecuencias de hasta 1500 ciclos por unidad. El término $n=5$ de la función tiene $13^5 = 371.293$ oscilaciones por unidad — unas 250 veces más de lo que el pixel puede capturar. El alias gráfico que ves <em>es</em> la respuesta visual correcta a una función infinitamente rugosa. Los matemáticos del siglo XIX experimentaron algo análogo con su intuición.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -814,15 +762,14 @@
 
     <!-- GRAN LINEA -->
     <div class="sec">
-      <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea — Nodos 7 y 8</span><hr></div>
+      <div class="sec-label"><span style="background:var(--grn)">📅 La Gran Línea — Nodo 8</span><hr></div>
       <div class="act-box" style="border-color:var(--grn)">
-        <div class="act-head" style="background:var(--grn)"><h3>Cierre del Eje 3 — dos nodos en un encuentro</h3></div>
+        <div class="act-head" style="background:var(--grn)"><h3>Cierre del Eje 3 en el Genially</h3></div>
         <div class="act-body">
           <div style="background:var(--gris);padding:18px;border-radius:6px;border:1px solid var(--bd)">
-            <div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd)"><strong style="color:var(--nav);font-size:14px">NODO 7 — Augustin-Louis Cauchy (1821)</strong><br><span style="color:var(--txt);font-size:13px">El <em>Cours d'analyse</em> y la definición verbal del límite. La rigorización del cálculo: eliminar los infinitesimales como objetos, definir antes de demostrar. Respuesta parcial a Berkeley — el lenguaje verbal todavía contiene tiempo y movimiento implícitos.</span></div>
-            <div><strong style="color:var(--nav);font-size:14px">NODO 8 — Karl Weierstrass (1860s-1872)</strong><br><span style="color:var(--txt);font-size:13px">La definición ε-δ: eliminar todo rastro de movimiento e intuición del análisis. Los "monstruos": funciones continuas pero no derivables en ningún punto. El fin de la intuición visual como fundamento matemático.</span></div>
+            <div><strong style="color:var(--nav);font-size:14px">NODO 8 — Karl Weierstrass (1860s-1872)</strong><br><span style="color:var(--txt);font-size:13px">La definición ε-δ: eliminar tiempo y movimiento del análisis. Los "monstruos": funciones continuas pero no derivables en ningún punto. El fin de la intuición como fundamento.</span></div>
           </div>
-          <p style="margin-top:14px;font-size:13px;font-style:italic;color:var(--txt)">Martes 26/5 — Clase 18: debate didáctico sobre las tres concepciones del límite, Bitácora 4 y Lanzamiento del Eje 4.</p>
+          <p style="margin-top:12px;font-size:13px;font-style:italic;color:var(--txt)">Mañana: debate didáctico, Bitácora 4 y anticipo del Eje 4 (Cantor, Russell, Gödel).</p>
         </div>
       </div>
     </div>
