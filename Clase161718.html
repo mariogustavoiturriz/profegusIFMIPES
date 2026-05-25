@@ -98,30 +98,25 @@
   .sim-canvas-box{flex:1;min-width:260px;text-align:center;background:#FAFBFC;border:1px solid #ddd;border-radius:6px;padding:8px}
   .sim-controls{flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:10px}
   .sim-slider{width:100%;margin:8px 0;cursor:pointer}
-  /* Portrait card */
   .portrait-card{display:flex;gap:20px;align-items:flex-start;background:var(--bco);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
   .portrait-card img{width:110px;height:140px;object-fit:cover;border-radius:6px;border:3px solid var(--bd);flex-shrink:0;filter:grayscale(20%)}
   .portrait-card .portrait-info{flex:1}
   .portrait-card h4{font-size:16px;color:var(--nav);margin-bottom:4px}
   .portrait-card .portrait-dates{font-size:12px;color:var(--txt);margin-bottom:8px;font-style:italic}
   .portrait-card p{font-size:13.5px;color:var(--neg);line-height:1.7}
-  /* Formal definition box */
   .def-box{background:#0D2A50;color:#A8E6CF;border-radius:var(--r);padding:20px 24px;margin:16px 0;font-family:Georgia,serif;font-size:15px;line-height:2;border:2px solid var(--teal)}
   .def-box .def-label{display:inline-block;background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;margin-bottom:10px}
   .def-box .def-part{color:#FFD93D}
   .def-box .def-note{font-size:12px;color:rgba(168,230,207,.7);margin-top:8px;font-style:italic;font-family:Arial,sans-serif}
-  /* Weierstrass monster bar */
   .monster-bar{height:14px;border-radius:7px;overflow:hidden;display:flex;margin:6px 0;border:1px solid var(--bd)}
   .monster-smooth{background:var(--grn);height:100%;transition:width .3s}
   .monster-rough{background:var(--red);height:100%;transition:width .3s}
-  /* Timeline */
   .timeline{position:relative;padding-left:28px;margin:16px 0}
   .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--bd)}
   .tl-item{position:relative;margin-bottom:14px}
   .tl-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid #fff;box-shadow:0 0 0 2px var(--teal)}
   .tl-item strong{font-size:13px;color:var(--nav)}
   .tl-item p{font-size:12.5px;color:var(--txt);margin-top:2px}
-  /* Ed panel */
   .ed-status-box{border-radius:8px;padding:14px;border:2px solid var(--grn);background:var(--gcl);font-size:13px;line-height:1.6}
   .ed-formal-box{background:var(--gris);border-radius:8px;padding:12px;border:1px solid var(--bd);font-family:Georgia,serif;font-size:12.5px;line-height:1.8;color:var(--neg)}
   @media(max-width:600px){
@@ -1020,8 +1015,12 @@ function toggleModoProfe() {
   if(btn){btn.innerHTML='🔓 Modo Profe Activado';btn.style.background='rgba(255,255,255,0.2)';}
 }
 
+// Cambio solicitado: Ctrl+Shift+U en lugar de Ctrl+Alt+U
 document.addEventListener('keydown',e=>{
-  if(e.ctrlKey&&e.altKey&&e.key.toLowerCase()==='u'){e.preventDefault();toggleModoProfe();}
+  if(e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='u'){
+    e.preventDefault();
+    toggleModoProfe();
+  }
 });
 
 function toggleEdExplicacion() {
@@ -1043,7 +1042,7 @@ function initCauchySim() {
   const slider=document.getElementById('cauchy-slider');
   const W=380, H=280, ox=70, oy=210, sc=90;
   canvas.width=W; canvas.height=H;
-  function toC(x,y){return [ox+x*sc, oy-y*sc];}
+  function toC(x,y){return[ox+x*sc, oy-y*sc];}
 
   function draw(){
     const prox=slider.value/100; // 0.01 to 0.99
@@ -1062,7 +1061,7 @@ function initCauchySim() {
     ctx.fillText('x',W-4,oy+4);ctx.fillText('y',ox+5,9);
 
     for(let i=0;i<=2;i++){
-      const [tx]=toC(i,0);const[,ty]=toC(0,i+1);
+      const[tx]=toC(i,0);const[,ty]=toC(0,i+1);
       ctx.fillStyle='#aaa';ctx.lineWidth=1;
       ctx.beginPath();ctx.moveTo(tx,oy-3);ctx.lineTo(tx,oy+3);ctx.stroke();
       ctx.fillStyle='#888';ctx.textAlign='center';ctx.fillText(i,tx,oy+13);
@@ -1149,7 +1148,7 @@ function initEpsilonDeltaSim() {
   const deltaSlider=document.getElementById('delta-slider');
   const W=380, H=280, ox=60, oy=240, sc=80;
   canvas.width=W; canvas.height=H;
-  function toC(x,y){return [ox+x*sc, oy-y*sc];}
+  function toC(x,y){return[ox+x*sc, oy-y*sc];}
 
   function draw(){
     const eps=epsSlider.value/100;
