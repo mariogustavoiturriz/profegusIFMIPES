@@ -49,62 +49,74 @@
 </header>
 <div class="container">
   
-  <h2 class="section-title">Clases de la Semana</h2>
+  <h2 class="section-title">Semana Actual</h2>
   <div class="grid">
-    <!-- SEMANA 8 (FUTURA / ACTUAL) -->
-    <a href="Clase161718.html" class="card c-futura" data-unlock="2026-05-19T13:10:00-03:00" data-label="Entrar al Cierre del Eje 3">
-      <span class="badge-date">Martes 19 de Mayo</span>
-      <h2>Semana 8: La Rigorización del Análisis</h2>
-      <p>Clases 16, 17 y 18. Cierre del Eje 3. La respuesta a Berkeley: la formalización del límite por Cauchy y Weierstrass, y el debate de la Transposición Didáctica.</p>
-      <div class="btn">Entrar al Cierre del Eje 3</div>
-      
-      <!-- Overlay de Bloqueo (Se maneja por JS) -->
-      <div class="locked-overlay" id="overlay-s8">
-        <div class="locked-icon">🔒</div>
-        <div class="locked-text">Se habilitará el Martes 19/05 a las 13:10 hs</div>
-        <div class="locked-timer" id="timer-s8">Calculando...</div>
-      </div>
+
+    <!-- SEMANA 9 -->
+    <a href="Clase2021.html" class="card c-actual"
+       data-unlock="2026-06-02T08:00:00-03:00"
+       data-label="Entrar a la Semana 9">
+      <span class="badge-date">Martes 2 de Junio</span>
+      <h2>Semana 9: El Infinito y la Crisis de los Fundamentos</h2>
+      <p>Eje 4 — Expedición Docente. Cantor y el infinito actual, Russell-Hilbert y el colapso logicista, Gödel-Noether y el giro estructural. Transposición didáctica para la escuela secundaria.</p>
+      <div class="btn">Entrar a la Semana 9</div>
     </a>
+
   </div>
 
   <h2 class="section-title">Clases Anteriores</h2>
   <div class="grid">
+
+    <!-- SEMANA 8 -->
+    <a href="Clase161718.html" class="card c-pasada">
+      <span class="badge-date">Martes 19 de Mayo</span>
+      <h2>Semana 8: La Rigorización del Análisis</h2>
+      <p>Clases 16, 17 y 18. Cierre del Eje 3. La respuesta a Berkeley: la formalización del límite por Cauchy y Weierstrass, y el debate de la transposición didáctica.</p>
+      <div class="btn">Repasar Semana 8</div>
+    </a>
+
     <a href="Clase131415.html" class="card c-pasada">
       <span class="badge-date">Lunes 11 de Mayo</span>
       <h2>Semana 7: El Infinito y el Cálculo</h2>
       <p>Clases 13, 14 y 15. Apertura del Eje 3. El horror infiniti de Zenón, la heurística de Cavalieri y Fermat, y el nacimiento formal con Newton y Leibniz.</p>
       <div class="btn">Repasar Semana 7</div>
     </a>
+
     <a href="Clase101112.html" class="card c-pasada">
       <span class="badge-date">Lunes 04 de Mayo</span>
       <h2>Semana 6: El mapa completo de los números</h2>
       <p>Cierre del Eje 2. Imaginarios, irracionales y la fundamentación del continuo con Dedekind.</p>
       <div class="btn">Repasar Semana 6</div>
     </a>
+
     <a href="Clase8910.html" class="card c-pasada">
       <span class="badge-date">Lunes 27 de Abril</span>
       <h2>Semana 5: El nacimiento del álgebra</h2>
       <p>La ruptura formal y los números que "no existen". Método Fangcheng y obstáculos epistemológicos.</p>
       <div class="btn">Repasar Semana 5</div>
     </a>
+
     <a href="Clase567.html" class="card c-pasada">
       <span class="badge-date">Lunes 13 de Abril</span>
       <h2>Semanas 3 y 4: El fin de una era</h2>
       <p>Arquímedes, Apolonio y el ocaso de Alejandría. La sistematización de la demostración.</p>
       <div class="btn">Repasar Semanas 3 y 4</div>
     </a>
+
     <a href="Clase234.html" class="card c-pasada">
       <span class="badge-date">Lunes 06 de Abril</span>
       <h2>Semana 2: Del Número al Argumento</h2>
       <p>La crisis pitagórica y los Elementos de Euclides.</p>
       <div class="btn">Repasar Semana 2</div>
     </a>
+
     <a href="clase_1.html" class="card c-pasada">
       <span class="badge-date">Martes 31 de Marzo</span>
       <h2>Semana 1: Desnaturalizar la Matemática</h2>
       <p>Mundos empíricos: Egipto y Babilonia.</p>
       <div class="btn">Repasar Semana 1</div>
     </a>
+
   </div>
 
   <h2 class="section-title">Recursos de Cátedra</h2>
@@ -138,7 +150,7 @@
         btn.classList.add('locked');
         const h = String(unlockTime.getHours()).padStart(2,'0');
         const m = String(unlockTime.getMinutes()).padStart(2,'0');
-        btn.textContent = `🔒 Se habilita a las ${h}:${m}`;
+        btn.textContent = `🔒 Se habilita el ${unlockTime.toLocaleDateString('es-AR', {day:'numeric',month:'long'})} a las ${h}:${m}`;
         card.classList.remove('c-actual');
         card.classList.add('c-futura');
       } else {
