@@ -1,397 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Semana 9 · Cierre y Ensayo · IPESfa 2026</title>
-<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}}</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<style>
-:root{
-  --nav:#1B3A6B;--med:#2E6DA4;--cl:#D6E4F0;--pale:#EDF4FB;
-  --grn:#1A6B3A;--gcl:#DFF0E9;--amb:#C85C00;--acl:#FFF3E0;
-  --vio:#4A1A7B;--vcl:#EDE7F6;--slate:#3A4F6A;--red:#D9534F;
-  --can:#155C36;--cancl:#D5EFE3;
-  --rus:#6B3515;--ruscl:#F2E5D8;
-  --god:#0D1B6B;--godcl:#DCDFF5;
-  --gris:#F3F6F9;--bd:#C5D2DC;--txt:#4A5E70;--neg:#1A2C3A;--bco:#FFFFFF;
-  --r:8px;--sh:0 2px 8px rgba(0,0,0,.08);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;font-size:14px;color:var(--neg);background:#EEF3F7;line-height:1.6}
-
-.top{background:var(--nav);color:#fff;padding:12px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:3px solid var(--amb)}
-.top-info{display:flex;align-items:center;gap:18px}
-.top strong{display:block;font-size:14px}.top small{font-size:11px;opacity:.75}
-.btn-back{background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:5px 11px;border-radius:6px;font-weight:bold;font-size:12px;display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(255,255,255,.3)}
-
-.subbar{background:var(--nav);padding:9px 24px 11px;border-bottom:3px solid var(--amb)}
-.subbar-pre{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.8px;text-transform:uppercase;margin-bottom:2px}
-.subbar-title{font-size:15px;font-weight:700;color:#fff}
-.subbar-title span{font-weight:400;color:var(--acl)}
-
-.tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;padding:0 16px}
-.tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:12px 20px;white-space:nowrap;transition:all .15s;margin-bottom:-2px}
-.tab-btn:hover{color:var(--amb)}
-.tab-btn.active{color:var(--amb);border-bottom-color:var(--amb)}
-
-.wrap{padding:20px 28px 50px}
-.pane{display:none;animation:fadeIn .25s ease}
-.pane.on{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
-
-/* Layout dos columnas lunes */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
-
-/* Bloques de sección */
-.bloque{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:16px}
-.bloque-head{padding:10px 16px;display:flex;align-items:center;gap:10px}
-.bloque-head h3{font-size:13px;font-weight:700;color:#fff;margin:0;flex:1}
-.bloque-time{font-size:11px;color:rgba(255,255,255,.65);background:rgba(0,0,0,.15);padding:2px 8px;border-radius:10px;white-space:nowrap}
-.bloque-body{padding:14px 16px}
-
-/* Checklist de criterios */
-.criterio{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:6px;border:1px solid var(--bd);margin-bottom:8px;background:var(--gris)}
-.c-num{background:var(--nav);color:#fff;font-weight:900;font-size:12px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.c-body strong{display:block;font-size:13px;color:var(--nav);margin-bottom:2px}
-.c-body p{font-size:12px;color:var(--txt);line-height:1.5;margin:0}
-.c-verif{font-size:11px;color:var(--med);margin-top:4px;font-style:italic}
-
-/* Paradoja cards */
-.paradoja-card{border-radius:6px;overflow:hidden;margin-bottom:8px}
-.p-head{padding:8px 12px;font-size:12px;font-weight:700;color:#fff}
-.p-body{padding:10px 12px;background:var(--bco);border:1px solid var(--bd);border-top:none;border-radius:0 0 6px 6px;font-size:12.5px;color:var(--txt);line-height:1.55}
-
-/* Hilo transversal */
-.hilo-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--gris);border-radius:6px;margin-bottom:6px;font-size:12.5px;color:var(--neg)}
-.hilo-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-
-/* Notas */
-.note{border-radius:var(--r);padding:10px 14px;font-size:13px;margin:10px 0;display:flex;gap:8px;align-items:flex-start}
-.ni{font-size:16px;flex-shrink:0;margin-top:1px}
-.na{background:var(--acl);border-left:4px solid var(--amb)}
-.nv{background:var(--vcl);border-left:4px solid var(--vio)}
-.nb{background:var(--pale);border-left:4px solid var(--med)}
-.ng{background:var(--gcl);border-left:4px solid var(--grn)}
-
-/* Martes — ensayo */
-.ensayo-bloque{border-radius:var(--r);overflow:hidden;margin-bottom:14px;border:2px solid var(--bd)}
-.e-head{padding:11px 16px;display:flex;align-items:center;gap:12px}
-.e-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
-.e-head .e-time{font-size:12px;color:rgba(255,255,255,.65);background:rgba(0,0,0,.2);padding:3px 9px;border-radius:10px}
-.e-body{padding:14px 16px;background:var(--bco)}
-
-/* Grilla de feedback */
-.fb-item{display:flex;gap:10px;padding:9px 12px;background:var(--gris);border-radius:6px;margin-bottom:7px;font-size:12.5px;color:var(--neg);line-height:1.5}
-.fb-n{font-weight:700;color:var(--nav);flex-shrink:0;min-width:18px}
-
-/* Cronograma martes */
-.crono-m{border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:18px}
-.crono-row{display:grid;grid-template-columns:90px 1fr 90px;border-bottom:1px solid var(--bd);font-size:12.5px}
-.crono-row:last-child{border-bottom:none}
-.crono-row.hl{background:#FFFDF3}
-.ct{padding:9px 10px;color:var(--slate);font-weight:700;background:var(--gris);display:flex;align-items:center}
-.cc{padding:9px 12px;color:var(--neg);display:flex;align-items:center}
-.ck{padding:9px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center}
-
-/* Viernes */
-.viernes{background:linear-gradient(135deg,#0D1B40,#1A2C1A);border-radius:var(--r);padding:18px 22px;color:#fff;margin-top:14px}
-.viernes h4{color:#FFD93D;font-size:15px;margin-bottom:8px}
-.viernes p{font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:6px}
-
-@media(max-width:700px){
-  .grid-2,.grid-3{grid-template-columns:1fr}
-  .wrap{padding:14px 12px 40px}
-  .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
-  .crono-row{grid-template-columns:80px 1fr}
-  .ck{display:none}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia de la Matemática · IPESfa</title>
+  <style>
+    :root {
+      --nav: #1A2C3A; --teal: #00949A; --amb: #D4873A; 
+      --vio: #3D5A99; --gris: #F3F6F9; --bd: #C5D2DC; --txt: #2C3E50;
+      --bco: #FFFFFF; --r: 12px; --tp: #8E24AA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #EEF3F7; color: var(--txt); line-height: 1.6; font-size: 18px; padding-bottom: 50px; }
+    header { background: var(--nav); color: var(--bco); padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--amb); }
+    header h1 { font-size: 34px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+    header p { opacity: 0.9; font-size: 20px; }
+    .container { width: 95%; max-width: 1200px; margin: 40px auto; }
+    .section-title { font-size: 26px; color: var(--nav); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--bd); text-transform: uppercase; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+    .card {
+      background: var(--bco); border-radius: var(--r); padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08); border-top: 6px solid var(--bd);
+      display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,.1); }
+    .c-pasada { border-top-color: #4A6080; background: #FAFBFC; }
+    .c-actual { border-top-color: var(--teal); background: #F0FAFA; }
+    .c-futura { border-top-color: var(--amb); }
+    .badge-date { font-size: 14px; font-weight: bold; margin-bottom: 10px; display: block; text-transform: uppercase; color: #666; }
+    .c-actual .badge-date { color: var(--teal); }
+    .card h2 { font-size: 22px; color: var(--nav); margin-bottom: 10px; line-height: 1.3; }
+    .card p { font-size: 16px; color: #555; flex-grow: 1; margin-bottom: 20px; }
+    .btn { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; color: white; }
+    .c-pasada .btn { background: #4A6080; }
+    .c-pasada .btn:hover { background: #2C3E50; }
+    .c-actual .btn { background: var(--teal); }
+    .c-actual .btn:hover { background: #007B80; }
+    .c-futura .btn { background: var(--amb); }
+    .locked { background: #E0E0E0 !important; color: #888 !important; border: 1px solid #ccc !important; cursor: not-allowed; box-shadow: none !important; }
+    .card-locked { pointer-events: none; opacity: 0.8; }
+  </style>
 </head>
 <body>
+<header>
+  <h1>Historia de la Matemática</h1>
+  <p>Profesorado de Matemática · 4.° Año | IPESfa "Florentino Ameghino"</p>
+</header>
+<div class="container">
+  
+  <h2 class="section-title">Semana Actual</h2>
+  <div class="grid">
 
-<div class="top">
-  <div class="top-info">
-    <a href="index.html" class="btn-back">← Índice</a>
-    <div>
-      <strong>Historia y Fundamentos de la Matemática</strong>
-      <small>IPESfa · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz · 2026</small>
-    </div>
-  </div>
-  <div style="font-size:11px;opacity:.6">Semana 9 · Enc. 24–25</div>
-</div>
+    <!-- SEMANA 9 -->
+    <a href="Clase2021.html" class="card c-actual"
+       data-unlock="2026-06-08T08:00:00-03:00"
+       data-label="Entrar a la Semana 9">
+      <span class="badge-date">Lunes 8 de Junio</span>
+      <h2>Semana 9: El Infinito y la Crisis de los Fundamentos</h2>
+      <p>Eje 4 — Expedición Docente. Cantor y el infinito actual, Russell-Hilbert y el colapso logicista, Gödel-Noether y el giro estructural. Transposición didáctica para la escuela secundaria.</p>
+      <div class="btn">Entrar a la Semana 9</div>
+    </a>
 
-<div class="subbar">
-  <p class="subbar-pre">Semana 9 · Eje 4</p>
-  <p class="subbar-title">Cierre de propuesta y ensayo general <span>— Lunes y Martes</span></p>
-</div>
-
-<div class="tab-bar">
-  <button class="tab-btn active" onclick="showTab('lunes')" id="btn-lunes">Lunes · 120 min · Cierre</button>
-  <button class="tab-btn" onclick="showTab('martes')" id="btn-martes">Martes · 80 min · Ensayo</button>
-</div>
-
-<div class="wrap">
-
-<!-- ══════ LUNES ══════ -->
-<div id="pane-lunes" class="pane on">
-
-  <!-- BLOQUE 1: 5 CRITERIOS -->
-  <div class="bloque" style="border-top:4px solid var(--nav)">
-    <div class="bloque-head" style="background:var(--nav)">
-      <h3>① Verificación de los 5 criterios</h3>
-      <span class="bloque-time">00:00 – 01:00 · 20 min por nodo</span>
-    </div>
-    <div class="bloque-body">
-      <p style="font-size:12.5px;color:var(--txt);margin-bottom:12px">Cada uno defiende su nodo. Los otros dos verifican por criterio. Un criterio está resuelto cuando quien lo defiende puede responder sin titubear.</p>
-
-      <div class="criterio">
-        <div class="c-num">1</div>
-        <div class="c-body">
-          <strong>Núcleo conceptual</strong>
-          <p>El concepto central explicado sin fórmulas como punto de entrada. Claro para alguien que nunca lo escuchó.</p>
-          <p class="c-verif">→ "Explicáselo a alguien de 15 años, 60 segundos, sin apuntes."</p>
-        </div>
-      </div>
-
-      <div class="criterio">
-        <div class="c-num">2</div>
-        <div class="c-body">
-          <strong>Dos conexiones con los Ejes 1–3</strong>
-          <p>Argumentadas, no mencionadas. Si sacar la conexión no cambia nada en el argumento, es decorativa.</p>
-          <p class="c-verif">→ "¿Qué problema de los Ejes 1-3 hace necesario este nodo?"</p>
-        </div>
-      </div>
-
-      <div class="criterio">
-        <div class="c-num">3</div>
-        <div class="c-body">
-          <strong>El obstáculo</strong>
-          <p>Nombrado con precisión — histórico o didáctico. Con nombre propio, no "es abstracto".</p>
-          <p class="c-verif">→ "¿Por qué Kronecker rechazó a Cantor? ¿Por qué los estudiantes hoy dicen que 0,999…≠ 1?"</p>
-        </div>
-      </div>
-
-      <div class="criterio">
-        <div class="c-num">4</div>
-        <div class="c-body">
-          <strong>La entrada para secundaria</strong>
-          <p>La situación problemática de apertura completamente definida: qué se hace, qué se dice, qué se espera que pase.</p>
-          <p class="c-verif">→ "Describí exactamente los primeros 3 minutos de tu presentación."</p>
-        </div>
-      </div>
-
-      <div class="criterio">
-        <div class="c-num">5</div>
-        <div class="c-body">
-          <strong>Una fuente bibliográfica funcional</strong>
-          <p>Boyer, Kline, Klimovsky-Boido o Mankiewicz. Citada donde sostiene algo, no al final como decoración.</p>
-          <p class="c-verif">→ "¿Qué parte del argumento no funcionaría sin esa cita?"</p>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <!-- BLOQUE 2: PARADOJAS -->
-  <div class="bloque" style="border-top:4px solid var(--amb)">
-    <div class="bloque-head" style="background:var(--amb)">
-      <h3>② Prueba de las paradojas de apertura</h3>
-      <span class="bloque-time">01:00 – 01:30</span>
-    </div>
-    <div class="bloque-body">
-      <p style="font-size:12.5px;color:var(--txt);margin-bottom:12px">Cada uno presenta su situación problemática. Los otros dos responden como estudiantes de secundaria — sin usar el conocimiento del curso. Si no hay tensión genuina, la paradoja necesita ajuste.</p>
+  <h2 class="section-title">Clases Anteriores</h2>
+  <div class="grid">
 
-      <div class="grid-3">
-        <div class="paradoja-card">
-          <div class="p-head" style="background:var(--can)">Nodo A · Cantor</div>
-          <div class="p-body">
-            <strong style="color:var(--can);display:block;margin-bottom:4px">Paradoja de Galileo</strong>
-            Naturales vs. cuadrados. ¿Hay más naturales?<br><br>
-            <em>¿Los otros dos dudan antes de responder? Si responden sin tensión, la paradoja no está generando el obstáculo.</em>
-          </div>
-        </div>
-        <div class="paradoja-card">
-          <div class="p-head" style="background:var(--rus)">Nodo B · Russell</div>
-          <div class="p-body">
-            <strong style="color:var(--rus);display:block;margin-bottom:4px">El barbero de Sevilla</strong>
-            o el catálogo de catálogos.<br><br>
-            <em>¿Los otros dos intentan resolver y no pueden? Cualquier "salida" es una oportunidad didáctica.</em>
-          </div>
-        </div>
-        <div class="paradoja-card">
-          <div class="p-head" style="background:var(--god)">Nodo C · Gödel</div>
-          <div class="p-body">
-            <strong style="color:var(--god);display:block;margin-bottom:4px">Tarjeta de Jourdain</strong>
-            Anverso: "El reverso es verdadero." Reverso: "El anverso es falso."<br><br>
-            <em>¿Los otros dos intentan asignar un valor y descubren el bucle por sí mismos?</em>
-          </div>
-        </div>
-      </div>
+    <!-- SEMANA 8 -->
+    <a href="Clase161718.html" class="card c-pasada">
+      <span class="badge-date">Martes 19 de Mayo</span>
+      <h2>Semana 8: La Rigorización del Análisis</h2>
+      <p>Clases 16, 17 y 18. Cierre del Eje 3. La respuesta a Berkeley: la formalización del límite por Cauchy y Weierstrass, y el debate de la transposición didáctica.</p>
+      <div class="btn">Repasar Semana 8</div>
+    </a>
 
-      <div class="note na">
-        <span class="ni">🎯</span>
-        <div><strong style="color:var(--amb)">Lo que se verifica en este bloque</strong><p style="font-size:12px;margin:0;line-height:1.55">Que la paradoja <em>genera</em> el obstáculo en quien la escucha, antes de que el presentador explique nada. Si el presentador explica demasiado rápido, el obstáculo nunca aparece — y sin obstáculo no hay transposición didáctica, hay exposición.</p></div>
-      </div>
-    </div>
+    <a href="Clase131415.html" class="card c-pasada">
+      <span class="badge-date">Lunes 11 de Mayo</span>
+      <h2>Semana 7: El Infinito y el Cálculo</h2>
+      <p>Clases 13, 14 y 15. Apertura del Eje 3. El horror infiniti de Zenón, la heurística de Cavalieri y Fermat, y el nacimiento formal con Newton y Leibniz.</p>
+      <div class="btn">Repasar Semana 7</div>
+    </a>
+
+    <a href="Clase101112.html" class="card c-pasada">
+      <span class="badge-date">Lunes 04 de Mayo</span>
+      <h2>Semana 6: El mapa completo de los números</h2>
+      <p>Cierre del Eje 2. Imaginarios, irracionales y la fundamentación del continuo con Dedekind.</p>
+      <div class="btn">Repasar Semana 6</div>
+    </a>
+
+    <a href="Clase8910.html" class="card c-pasada">
+      <span class="badge-date">Lunes 27 de Abril</span>
+      <h2>Semana 5: El nacimiento del álgebra</h2>
+      <p>La ruptura formal y los números que "no existen". Método Fangcheng y obstáculos epistemológicos.</p>
+      <div class="btn">Repasar Semana 5</div>
+    </a>
+
+    <a href="Clase567.html" class="card c-pasada">
+      <span class="badge-date">Lunes 13 de Abril</span>
+      <h2>Semanas 3 y 4: El fin de una era</h2>
+      <p>Arquímedes, Apolonio y el ocaso de Alejandría. La sistematización de la demostración.</p>
+      <div class="btn">Repasar Semanas 3 y 4</div>
+    </a>
+
+    <a href="Clase234.html" class="card c-pasada">
+      <span class="badge-date">Lunes 06 de Abril</span>
+      <h2>Semana 2: Del Número al Argumento</h2>
+      <p>La crisis pitagórica y los Elementos de Euclides.</p>
+      <div class="btn">Repasar Semana 2</div>
+    </a>
+
+    <a href="clase_1.html" class="card c-pasada">
+      <span class="badge-date">Martes 31 de Marzo</span>
+      <h2>Semana 1: Desnaturalizar la Matemática</h2>
+      <p>Mundos empíricos: Egipto y Babilonia.</p>
+      <div class="btn">Repasar Semana 1</div>
+    </a>
+
   </div>
 
-  <!-- BLOQUE 3: HILO TRANSVERSAL -->
-  <div class="bloque" style="border-top:4px solid var(--vio)">
-    <div class="bloque-head" style="background:var(--vio)">
-      <h3>③ El hilo transversal — acordar cómo se muestra</h3>
-      <span class="bloque-time">01:30 – 01:50</span>
-    </div>
-    <div class="bloque-body">
-      <p style="font-size:12.5px;color:var(--txt);margin-bottom:12px">Los tres nodos usan el mismo motor lógico. El miércoles eso tiene que ser visible. ¿Cómo?</p>
-
-      <div class="hilo-item"><div class="hilo-dot" style="background:var(--can)"></div><strong>Cantor:</strong>&nbsp;construye un número que escapa a cualquier lista (diagonal)</div>
-      <div class="hilo-item"><div class="hilo-dot" style="background:var(--rus)"></div><strong>Russell:</strong>&nbsp;forma un conjunto que destruye cualquier sistema de comprensión irrestricta (autorreferencia)</div>
-      <div class="hilo-item"><div class="hilo-dot" style="background:var(--god)"></div><strong>Gödel:</strong>&nbsp;construye una proposición que no puede estar en ningún sistema formal completo (autorreferencia aritmética)</div>
-
-      <div style="margin-top:14px;margin-bottom:8px;font-size:12px;font-weight:700;color:var(--nav);letter-spacing:.3px;text-transform:uppercase">Tres opciones — acordar cuál usan</div>
-      <div class="grid-3">
-        <div style="background:var(--gris);border-left:3px solid var(--vio);border-radius:6px;padding:10px 12px;font-size:12px;color:var(--neg)">
-          <strong style="display:block;color:var(--vio);margin-bottom:4px">A — Intro colectiva (3-4 min)</strong>
-          Los tres presentan juntos el arco antes de que cada uno desarrolle su nodo.
-        </div>
-        <div style="background:var(--gris);border-left:3px solid var(--vio);border-radius:6px;padding:10px 12px;font-size:12px;color:var(--neg)">
-          <strong style="display:block;color:var(--vio);margin-bottom:4px">B — Cada nodo abre con el hilo</strong>
-          Cada presentación empieza ubicando el nodo en el arco en una oración.
-        </div>
-        <div style="background:var(--gris);border-left:3px solid var(--vio);border-radius:6px;padding:10px 12px;font-size:12px;color:var(--neg)">
-          <strong style="display:block;color:var(--vio);margin-bottom:4px">C — Cierre colectivo (3-4 min)</strong>
-          Cada uno expone autónomamente. Al final los tres muestran el motor compartido.
-        </div>
-      </div>
-
-      <div class="note nv" style="margin-top:10px">
-        <span class="ni">⚠️</span>
-        <div><strong style="color:var(--vio)">Lo que no puede pasar el miércoles</strong><p style="font-size:12px;margin:0;line-height:1.55">Que los tres nodos parezcan presentaciones independientes sobre tres matemáticos del siglo XIX. El hilo transversal es la diferencia entre "tres temas" y "una tesis sobre la historia del infinito y los fundamentos".</p></div>
-      </div>
-    </div>
+  <h2 class="section-title">Recursos de Cátedra</h2>
+  <div class="grid">
+    <a href="https://mariogustavoiturriz.github.io/profegusPECTIPES/repositorio_herramientas.html" target="_blank" class="card" style="border-top-color: var(--tp); background: #F8F4FA;">
+      <span class="badge-date" style="color: var(--tp);">Material Permanente</span>
+      <h2 style="color: var(--tp);">Caja de Herramientas</h2>
+      <p>Repositorio centralizado con todos los simuladores, aplicaciones y recursos TIC utilizados durante la cursada para la transposición didáctica.</p>
+      <div class="btn" style="background: var(--tp);">Abrir Repositorio ↗</div>
+    </a>
   </div>
 
-  <!-- CIERRE LUNES -->
-  <div class="bloque" style="border-top:4px solid var(--slate)">
-    <div class="bloque-head" style="background:var(--slate)">
-      <h3>④ Cierre</h3>
-      <span class="bloque-time">01:50 – 02:00</span>
-    </div>
-    <div class="bloque-body">
-      <p style="font-size:13px;color:var(--neg)">Cada uno dice en una oración qué cambia en su presentación después del lunes. Una sola cosa — la más importante. Lo que no está resuelto el martes antes del ensayo, no se resuelve el miércoles.</p>
-    </div>
-  </div>
-
-</div>
-
-<!-- ══════ MARTES ══════ -->
-<div id="pane-martes" class="pane">
-
-  <div class="crono-m">
-    <div class="crono-row" style="background:var(--nav)">
-      <div class="ct" style="background:rgba(0,0,0,.2);color:#fff">Horario</div>
-      <div class="cc" style="color:#fff;font-weight:700">Momento</div>
-      <div class="ck" style="color:rgba(255,255,255,.6)">Modo</div>
-    </div>
-    <div class="crono-row">
-      <div class="ct">00:00–00:05</div>
-      <div class="cc"><strong>Encuadre</strong> — roles y protocolo</div>
-      <div class="ck" style="color:var(--slate)">Docente</div>
-    </div>
-    <div class="crono-row hl">
-      <div class="ct">00:05–00:25</div>
-      <div class="cc"><strong>Mini-clase 1</strong> · Nodo A — 20 min exactos, sin interrupciones</div>
-      <div class="ck" style="color:var(--can)">Nodo A</div>
-    </div>
-    <div class="crono-row">
-      <div class="ct">00:25–00:37</div>
-      <div class="cc">Feedback Nodo A — 5 criterios + timing</div>
-      <div class="ck" style="color:var(--nav)">Panel</div>
-    </div>
-    <div class="crono-row hl">
-      <div class="ct">00:37–00:57</div>
-      <div class="cc"><strong>Mini-clase 2</strong> · Nodo B — 20 min exactos</div>
-      <div class="ck" style="color:var(--rus)">Nodo B</div>
-    </div>
-    <div class="crono-row">
-      <div class="ct">00:57–01:09</div>
-      <div class="cc">Feedback Nodo B</div>
-      <div class="ck" style="color:var(--nav)">Panel</div>
-    </div>
-    <div class="crono-row hl">
-      <div class="ct">01:09–01:29</div>
-      <div class="cc"><strong>Mini-clase 3</strong> · Nodo C — 20 min exactos</div>
-      <div class="ck" style="color:var(--god)">Nodo C</div>
-    </div>
-    <div class="crono-row">
-      <div class="ct">01:29–01:41</div>
-      <div class="cc">Feedback Nodo C</div>
-      <div class="ck" style="color:var(--nav)">Panel</div>
-    </div>
-    <div class="crono-row">
-      <div class="ct">01:41–01:50</div>
-      <div class="cc">¿El arco quedó visible? · Decisión final por persona</div>
-      <div class="ck" style="color:var(--vio)">Colectivo</div>
-    </div>
-  </div>
-
-  <!-- PROTOCOLO -->
-  <div class="ensayo-bloque">
-    <div class="e-head" style="background:var(--slate)">
-      <h3>Protocolo del ensayo</h3>
-    </div>
-    <div class="e-body">
-      <div class="grid-2">
-        <div style="background:var(--godcl);border-left:3px solid var(--god);border-radius:6px;padding:12px;font-size:12.5px;color:var(--neg)">
-          <strong style="color:var(--god);display:block;margin-bottom:4px">Quien presenta</strong>
-          Expone 20 minutos sin interrupción. Empieza con la paradoja. Maneja el tiempo solo. El docente indica el fin de tiempo levantando la mano.
-        </div>
-        <div style="background:var(--cancl);border-left:3px solid var(--can);border-radius:6px;padding:12px;font-size:12.5px;color:var(--neg)">
-          <strong style="color:var(--can);display:block;margin-bottom:4px">Quien escucha (× 2)</strong>
-          Actúa como estudiante de secundaria durante los 20 minutos. Responde lo que el presentador pregunta. Al terminar: feedback por criterio, directo y breve.
-        </div>
-      </div>
-      <div class="note nb" style="margin-top:4px">
-        <span class="ni">⏱️</span>
-        <div><strong style="color:var(--med)">El cronómetro es inapelable.</strong><p style="font-size:12px;margin:0;line-height:1.55">Si termina en 12 minutos, hay que expandir. Si a los 20 minutos no llegó al cierre, se corta igual. El objetivo es descubrir los problemas reales de timing y claridad — no que suene bien.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FEEDBACK -->
-  <div class="ensayo-bloque">
-    <div class="e-head" style="background:var(--nav)">
-      <h3>Grilla de feedback — igual para los tres nodos · 12 min por nodo</h3>
-    </div>
-    <div class="e-body">
-      <div class="fb-item"><div class="fb-n">①</div><div><strong>La paradoja de apertura:</strong> ¿Generó tensión o fue una ilustración? ¿El presentador dio tiempo para que el obstáculo apareciera, o explicó demasiado rápido?</div></div>
-      <div class="fb-item"><div class="fb-n">②</div><div><strong>El núcleo conceptual:</strong> ¿Quedó claro qué aporta este nodo al arco del Eje 4? ¿Podrías explicárselo a alguien más al terminar de escuchar?</div></div>
-      <div class="fb-item"><div class="fb-n">③</div><div><strong>Las conexiones con los Ejes 1-3:</strong> ¿Se argumentaron o se mencionaron? ¿Quedó claro por qué ese nodo <em>necesita</em> lo anterior?</div></div>
-      <div class="fb-item"><div class="fb-n">④</div><div><strong>El obstáculo:</strong> ¿Nombrado con precisión? ¿Conectado con una dificultad real de estudiantes de secundaria hoy?</div></div>
-      <div class="fb-item"><div class="fb-n">⑤</div><div><strong>La fuente bibliográfica:</strong> ¿Apareció en el momento justo y sostuvo algo concreto, o sonó decorativa?</div></div>
-      <div class="fb-item" style="background:var(--acl)"><div class="fb-n" style="color:var(--amb)">+</div><div><strong style="color:var(--amb)">Timing:</strong> ¿Cuánto tomó la paradoja? ¿El cierre quedó apurado? ¿Sobró o faltó tiempo en algún momento específico?</div></div>
-    </div>
-  </div>
-
-  <!-- CIERRE MARTES -->
-  <div class="viernes">
-    <h4>📅 El miércoles — una decisión por persona</h4>
-    <p>Al terminar el ensayo, cada uno dice en voz alta qué cambia entre hoy y el miércoles. Una sola cosa, la más importante. Lo que no se ajusta en ese tiempo no era un problema — era una decisión.</p>
-    <p>Al final del ensayo, el docente hace una pregunta: <em>"¿Alguien que no conoce el tema entiende por qué los tres nodos están juntos?"</em> Si la respuesta no es sí sin dudas, ese es el único ajuste que queda pendiente.</p>
-  </div>
-
-</div>
 </div>
 
 <script>
-function showTab(id){
-  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('pane-'+id).classList.add('on');
-  document.getElementById('btn-'+id).classList.add('active');
-  window.scrollTo(0,0);
-}
+  let modoProfe = false;
+  function lockClassesWithTime() {
+    if (modoProfe) return;
+    const now = new Date();
+    document.querySelectorAll('.card[data-unlock]').forEach(card => {
+      const unlockTime = new Date(card.getAttribute('data-unlock'));
+      const btn = card.querySelector('.btn');
+      const label = card.getAttribute('data-label') || 'Abrir';
+      const href = card.getAttribute('data-href-orig') || card.getAttribute('href');
+      if (!card.getAttribute('data-href-orig') && href && href !== '#') {
+        card.setAttribute('data-href-orig', href);
+      }
+      if (now < unlockTime) {
+        card.classList.add('card-locked');
+        card.removeAttribute('href');
+        btn.classList.add('locked');
+        const h = String(unlockTime.getHours()).padStart(2,'0');
+        const m = String(unlockTime.getMinutes()).padStart(2,'0');
+        btn.textContent = `🔒 Se habilita el ${unlockTime.toLocaleDateString('es-AR', {day:'numeric',month:'long'})} a las ${h}:${m}`;
+        card.classList.remove('c-actual');
+        card.classList.add('c-futura');
+      } else {
+        card.classList.remove('card-locked');
+        const orig = card.getAttribute('data-href-orig');
+        if (orig) card.setAttribute('href', orig);
+        btn.classList.remove('locked');
+        btn.innerHTML = label;
+        card.classList.remove('c-futura');
+        card.classList.add('c-actual');
+      }
+    });
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
+      modoProfe = !modoProfe;
+      if (modoProfe) {
+        document.querySelectorAll('.card[data-unlock]').forEach(card => {
+          const btn = card.querySelector('.btn');
+          const orig = card.getAttribute('data-href-orig');
+          card.classList.remove('card-locked');
+          if (orig) card.setAttribute('href', orig);
+          btn.classList.remove('locked');
+          btn.innerHTML = '🔓 Acceso Forzado (Modo Profe)';
+          btn.style.background = '#8E24AA';
+          card.classList.remove('c-futura');
+          card.classList.add('c-actual');
+        });
+        const t = document.createElement('div');
+        t.textContent = '🔓 Modo Profe: Clases desbloqueadas temporalmente';
+        t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#8E24AA;color:white;padding:12px 24px;border-radius:8px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,.2)';
+        document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
+      } else {
+        lockClassesWithTime();
+      }
+    }
+  });
+  window.onload = lockClassesWithTime;
+  setInterval(lockClassesWithTime, 30000);
 </script>
 </body>
 </html>
