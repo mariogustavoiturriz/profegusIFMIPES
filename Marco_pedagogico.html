@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco Pedagógico · Historia y Fundamentos · IPESfa 2026</title>
+<style>
+:root{
+  --nav:#1B3A6B;--med:#2E6DA4;--pale:#EDF4FB;
+  --grn:#1A6B3A;--gcl:#DFF0E9;
+  --amb:#C85C00;--acl:#FFF3E0;
+  --vio:#4A1A7B;--vcl:#EDE7F6;
+  --slate:#3A4F6A;--red:#D9534F;
+  --gris:#F3F6F9;--bd:#C5D2DC;--txt:#4A5E70;--neg:#1A2C3A;--bco:#FFFFFF;
+  --r:8px;--sh:0 2px 8px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+
+.top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:4px solid var(--amb)}
+.top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+.btn-back{background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:bold;font-size:13px;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.3)}
+
+.hero{background:linear-gradient(160deg,#0D1B2E 0%,#1B3A6B 60%,#2C1A00 100%);color:#fff;padding:40px 28px 32px;border-bottom:4px solid var(--amb)}
+.hero-eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.hero h1{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:14px;color:#fff}
+.hero h1 em{color:#FFD180;font-style:normal}
+.hero-sub{font-size:14px;opacity:.82;line-height:1.75;max-width:680px;border-left:3px solid var(--amb);padding-left:16px;margin-top:16px;color:rgba(255,255,255,.9)}
+
+.tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;overflow-x:auto;padding:0 20px}
+.tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 18px;white-space:nowrap;transition:all .15s;margin-bottom:-2px}
+.tab-btn:hover{color:var(--amb)}
+.tab-btn.active{color:var(--amb);border-bottom-color:var(--amb)}
+
+.wrap{padding:28px 28px 70px;max-width:920px}
+.pane{display:none;animation:fadeIn .3s ease}
+.pane.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Secciones */
+.sec{margin-bottom:32px}
+.sec-title{font-size:13px;font-weight:700;color:var(--amb);letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.sec-title::after{content:'';flex:1;border-top:2px solid var(--bd)}
+
+/* Principio cards */
+.principio{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);padding:18px 22px;margin-bottom:12px;border-left:4px solid var(--amb)}
+.principio h4{font-size:14px;font-weight:700;color:var(--nav);margin-bottom:6px}
+.principio p{font-size:13.5px;line-height:1.7;color:var(--txt);margin:0}
+
+/* Los tres momentos */
+.momento{border-radius:var(--r);overflow:hidden;margin-bottom:12px}
+.momento-head{padding:14px 20px;color:#fff;display:flex;align-items:center;gap:14px}
+.momento-num{font-size:28px;font-weight:900;opacity:.6;line-height:1;flex-shrink:0}
+.momento-head h3{font-size:15px;font-weight:700;margin-bottom:2px}
+.momento-head p{font-size:12px;opacity:.75;margin:0}
+.momento-body{padding:16px 20px;background:var(--bco);border:2px solid var(--bd);border-top:none;border-radius:0 0 var(--r) var(--r)}
+.momento-body p{font-size:13.5px;line-height:1.7;color:var(--neg);margin-bottom:8px}
+.momento-body p:last-child{margin-bottom:0}
+.ejemplo{background:var(--gris);border-radius:6px;padding:11px 14px;margin-top:10px;font-size:13px;color:var(--txt);line-height:1.6;border-left:3px solid var(--bd)}
+.ejemplo strong{display:block;font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+
+/* Dispositivos transversales */
+.dispositivo{border-radius:var(--r);overflow:hidden;margin-bottom:14px;border:2px solid var(--bd)}
+.disp-head{padding:13px 18px;display:flex;align-items:center;gap:14px}
+.disp-icon{font-size:22px;flex-shrink:0}
+.disp-head h3{font-size:14px;font-weight:700;color:#fff;margin:0;flex:1}
+.disp-body{padding:14px 18px;background:var(--bco)}
+.disp-body p{font-size:13.5px;line-height:1.7;color:var(--neg);margin-bottom:8px}
+.disp-body p:last-child{margin-bottom:0}
+
+/* Ejes */
+.eje{border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.eje-head{padding:13px 20px;display:flex;align-items:center;gap:16px;color:#fff}
+.eje-num{font-size:24px;font-weight:900;opacity:.5;flex-shrink:0;line-height:1}
+.eje-head h3{font-size:14px;font-weight:700;margin-bottom:2px}
+.eje-head p{font-size:11.5px;opacity:.75;margin:0}
+.eje-body{padding:14px 18px;background:var(--bco);border:2px solid var(--bd);border-top:none;border-radius:0 0 var(--r) var(--r)}
+.eje-body p{font-size:13px;line-height:1.65;color:var(--neg);margin-bottom:6px}
+.eje-fila{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+.eje-col{background:var(--gris);border-radius:6px;padding:10px 12px;font-size:12.5px;color:var(--neg);line-height:1.5}
+.eje-col strong{display:block;font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+
+/* Arco */
+.arco-item{display:flex;gap:0;margin-bottom:0}
+.arco-linea{display:flex;flex-direction:column;align-items:center;margin-right:16px;flex-shrink:0}
+.arco-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:3px solid #fff;box-shadow:0 0 0 2px var(--nav)}
+.arco-seg{width:2px;background:var(--bd);flex:1;min-height:20px}
+.arco-content{padding-bottom:20px;flex:1}
+.arco-content h4{font-size:13.5px;font-weight:700;color:var(--nav);margin-bottom:4px}
+.arco-content p{font-size:12.5px;color:var(--txt);line-height:1.55;margin:0}
+
+/* Notas */
+.note{border-radius:var(--r);padding:12px 16px;font-size:13.5px;margin:14px 0;display:flex;gap:10px;align-items:flex-start}
+.ni{font-size:18px;flex-shrink:0;margin-top:2px}
+.na{background:var(--acl);border-left:4px solid var(--amb)}
+.nv{background:var(--vcl);border-left:4px solid var(--vio)}
+.nb{background:var(--pale);border-left:4px solid var(--med)}
+.ng{background:var(--gcl);border-left:4px solid var(--grn)}
+
+@media(max-width:650px){
+  .wrap{padding:18px 14px 50px}
+  .hero{padding:28px 18px 22px}
+  .eje-fila{grid-template-columns:1fr}
+  .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="index.html" class="btn-back">← Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática</strong>
+      <small>IPESfa "Florentino Ameghino" · Profesorado de Matemática · 4.° Año · Prof. Gustavo Iturriz</small>
+    </div>
+  </div>
+  <div style="font-size:11px;opacity:.6">Ciclo Lectivo 2026</div>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">Marco pedagógico del Taller</p>
+  <h1>Historia de la Matemática<br>como <em>experiencia</em>, no como relato</h1>
+  <p class="hero-sub">El punto de partida de cada clase no es una fecha ni un nombre — es un problema matemático concreto que alguien tuvo que resolver sin saber cómo. La reflexión histórica y epistemológica emerge de ese trabajo. La transposición didáctica cierra cada ciclo: ¿cómo lleva esto al aula de secundaria?</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('apuesta')" id="btn-apuesta">La apuesta pedagógica</button>
+  <button class="tab-btn" onclick="showTab('momentos')" id="btn-momentos">Los tres momentos</button>
+  <button class="tab-btn" onclick="showTab('dispositivos')" id="btn-dispositivos">Dispositivos del curso</button>
+  <button class="tab-btn" onclick="showTab('ejes')" id="btn-ejes">Los cuatro ejes</button>
+  <button class="tab-btn" onclick="showTab('arco')" id="btn-arco">El arco del año</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════ APUESTA ══════ -->
+<div id="pane-apuesta" class="pane on">
+
+  <div class="sec">
+    <div class="sec-title">La idea central</div>
+    <div style="background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);padding:22px 26px;border-left:5px solid var(--amb);margin-bottom:20px">
+      <p style="font-size:15px;line-height:1.8;color:var(--neg)">En este taller los estudiantes no aprenden <em>sobre</em> la historia de la matemática — la <em>atraviesan</em>. Antes de saber que Fermat dividía por E y luego lo hacía cero, calculan la tangente a una parábola con ese mismo procedimiento y se topan con la misma contradicción que Berkeley nombró en 1734. Antes de leer que Cantor demostró que hay infinitos de distinto tamaño, intentan listar todos los números reales entre 0 y 1 y descubren que no pueden. El saber histórico no ilustra la clase — la genera.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">Los cinco principios del taller</div>
+
+    <div class="principio">
+      <h4>1 · El problema primero, el nombre después</h4>
+      <p>Cada clase abre con un problema matemático concreto — no con una introducción biográfica ni una cronología. Los estudiantes trabajan con ese problema antes de saber quién lo planteó y cuándo. El nombre histórico llega cuando ya hay algo que nombrar.</p>
+    </div>
+
+    <div class="principio">
+      <h4>2 · El obstáculo es el contenido</h4>
+      <p>Lo que los matemáticos del pasado no podían resolver no se muestra como una curiosidad histórica — se reproduce como experiencia. La resistencia a aceptar los irracionales, el "fantasma" del infinitesimal, la paradoja del barbero: el estudiante los vive antes de analizarlos. Brousseau llama a esto obstáculo epistemológico: no es ignorancia, es un saber que funcionó bien en otro contexto y aquí falla.</p>
+    </div>
+
+    <div class="principio">
+      <h4>3 · La transposición didáctica no es una moraleja</h4>
+      <p>La pregunta "¿cómo lleva esto al aula?" no aparece al final de cada clase como conclusión — está integrada en el trabajo matemático desde el principio. El estudiante de profesorado trabaja el problema como lo haría un alumno de secundaria, y desde ahí puede diseñar actividades con conocimiento propio del obstáculo, no solo bibliográfico.</p>
+    </div>
+
+    <div class="principio">
+      <h4>4 · Las TIC reconstruyen, no decoran</h4>
+      <p>GeoGebra no ilustra la tangente — permite ver el "pecado" de Fermat cuando E tiende a cero. Desmos no grafica una función — muestra en tiempo real por qué 0,999… es exactamente 1. La herramienta se elige en función del problema histórico, no al revés. Una TIC que no genera tensión cognitiva no pertenece a la clase.</p>
+    </div>
+
+    <div class="principio">
+      <h4>5 · El curso tiene memoria</h4>
+      <p>Cada eje se apoya en el anterior. Los obstáculos se acumulan, no se resuelven y olvidan. La línea de tiempo colectiva (Genially) crece a lo largo del año: los nodos que los estudiantes agregan al terminar cada unidad son la materialización de ese aprendizaje acumulado. El Mentimeter del primer día reaparece el último: la misma pregunta, respondida por otra persona.</p>
+    </div>
+  </div>
+
+  <div class="note na">
+    <span class="ni">📌</span>
+    <div><strong style="color:var(--amb)">Lo que este taller no es</strong><p style="font-size:13px;margin:4px 0 0;line-height:1.65">No es un curso de historia de la matemática con reflexión didáctica al final. No es un curso de didáctica ilustrado con ejemplos históricos. Es un curso donde ambas dimensiones son inseparables desde el primer minuto de cada clase — porque los obstáculos que enfrentaron Cavalieri, Cantor y Russell son los mismos obstáculos que enfrentan los estudiantes de secundaria hoy, con otros nombres y en otro contexto.</p></div>
+  </div>
+</div>
+
+<!-- ══════ MOMENTOS ══════ -->
+<div id="pane-momentos" class="pane">
+
+  <div class="sec">
+    <div class="sec-title">La estructura interna de cada clase</div>
+    <p style="font-size:13.5px;color:var(--txt);margin-bottom:20px;line-height:1.7">Cada clase del taller tiene tres momentos que no siempre ocupan tiempos iguales pero siempre están presentes. El orden importa: lo vivencial primero, lo epistémico después, lo pedagógico al cierre. Invertir el orden convierte el taller en una clase magistral con actividades.</p>
+
+    <div class="momento">
+      <div class="momento-head" style="background:var(--nav)">
+        <div class="momento-num">1</div>
+        <div>
+          <h3>Momento vivencial — Entrar en el problema de la época</h3>
+          <p>Sin contexto previo. El problema primero.</p>
+        </div>
+      </div>
+      <div class="momento-body">
+        <p>El docente presenta un problema matemático concreto sin nombrar quién lo planteó ni en qué siglo. Los estudiantes trabajan con las herramientas disponibles en ese contexto histórico — o con las que tienen hoy, para descubrir las limitaciones de ambas. El objetivo no es llegar a la solución correcta: es <strong>toparse con el obstáculo</strong>. Que algo no cierre, que haya una contradicción, que la intuición falle.</p>
+        <p>Este momento puede durar entre 15 y 40 minutos dependiendo de la complejidad del problema. Lo que no puede abreviarse es la experiencia de la dificultad: si el docente resuelve demasiado rápido, el obstáculo no aparece y el resto de la clase carece de base experiencial.</p>
+        <div class="ejemplo">
+          <strong>Ejemplo — Eje 3 / Fermat</strong>
+          "Calculen la pendiente de la recta tangente a y = x² en el punto x = 1. Tienen esta herramienta: tomen un punto cercano x + E, calculen la pendiente de la secante, y después hagan E = 0." Los estudiantes descubren solos que E tiene que ser ≠ 0 para dividir y = 0 para limpiar. Eso es el problema. Fermat aparece después.
+        </div>
+        <div class="ejemplo">
+          <strong>Ejemplo — Eje 4 / Cantor</strong>
+          "¿Hay más números naturales o más cuadrados perfectos? Justificá." Antes de cualquier referencia a la teoría de conjuntos, la intuición dice que hay más naturales. El apareamiento uno a uno contradice esa intuición. La contradicción es el punto de entrada, no la resolución.
+        </div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-head" style="background:var(--slate)">
+        <div class="momento-num">2</div>
+        <div>
+          <h3>Momento epistémico — Nombrar lo que pasó</h3>
+          <p>El nombre histórico llega cuando hay algo que nombrar.</p>
+        </div>
+      </div>
+      <div class="momento-body">
+        <p>Recién aquí aparece el contexto histórico: quién planteó este problema, en qué siglo, con qué herramientas conceptuales y en qué disputa intelectual. El nombre propio y la fecha no son decoración — son la respuesta a "¿y a alguien más le pasó esto?" La respuesta es sí: a Fermat, a Russell, a Cantor. Y les costó siglos o décadas superarlo.</p>
+        <p>En este momento entran también las referencias teóricas: <strong>Bachelard</strong> para nombrar el obstáculo epistemológico, <strong>Brousseau</strong> para conectarlo con el aula, <strong>Klimovsky y Boido</strong> o <strong>Kline</strong> para la precisión histórica. Las citas son funcionales: aparecen para nombrar con más precisión lo que ya se vivió, no para introducir un tema.</p>
+        <div class="ejemplo">
+          <strong>Ejemplo — Eje 3 / Berkeley</strong>
+          Después de que los estudiantes identificaron la contradicción de Fermat, aparece la cita de Berkeley (1734): "¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?" El impacto de la cita depende de que la contradicción ya haya sido vivida. Sin el Momento 1, la cita es solo retórica.
+        </div>
+      </div>
+    </div>
+
+    <div class="momento">
+      <div class="momento-head" style="background:var(--amb)">
+        <div class="momento-num">3</div>
+        <div>
+          <h3>Momento pedagógico — Del pasado al aula de hoy</h3>
+          <p>La transposición no es una moraleja — es un diseño.</p>
+        </div>
+      </div>
+      <div class="momento-body">
+        <p>El cierre de cada clase conecta el obstáculo histórico con la práctica docente: ¿dónde aparece este mismo obstáculo en los estudiantes de secundaria de hoy? ¿Qué creencia previa (sobre los números, el infinito, la demostración) reproduce, sin saberlo, la resistencia de Kronecker a Cantor o la intuición de Zenón sobre el movimiento?</p>
+        <p>Este momento produce algo concreto: una pregunta que podría abrir una clase, una situación que genera conflicto cognitivo, una actividad con GeoGebra o Desmos que permite que el obstáculo aparezca antes de que el concepto sea definido. No es una reflexión abstracta — es un borrador de práctica docente.</p>
+        <div class="ejemplo">
+          <strong>Ejemplo — Eje 2 / Números negativos</strong>
+          Después de recorrer 1500 años de resistencia a los negativos (de Diofanto a Hamilton), la pregunta pedagógica es: "¿Qué modelo usarías para introducir la multiplicación de negativos en 1° año? ¿Patrones numéricos, propiedad distributiva, deuda/haber? ¿Cuál tiene más honestidad epistemológica?" El debate es genuino porque viene de haber vivido el obstáculo histórico.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note nv">
+    <span class="ni">⚠️</span>
+    <div><strong style="color:var(--vio)">La tensión que hay que sostener</strong><p style="font-size:13px;margin:4px 0 0;line-height:1.65">El riesgo permanente del taller es que el Momento 1 sea tan rico que el Momento 3 quede como postdata. Cuando el tiempo aprieta — y en un año lectivo siempre aprieta — la transposición didáctica es lo primero que se sacrifica. La forma de evitarlo no es reducir el Momento 1: es diseñar el Momento 3 desde el principio, como parte integral de la clase, no como cierre opcional.</p></div>
+  </div>
+</div>
+
+<!-- ══════ DISPOSITIVOS ══════ -->
+<div id="pane-dispositivos" class="pane">
+
+  <div class="sec">
+    <div class="sec-title">Dispositivos que atraviesan todo el año</div>
+    <p style="font-size:13.5px;color:var(--txt);margin-bottom:20px;line-height:1.7">El taller tiene cuatro dispositivos estructurales que no pertenecen a una clase ni a un eje — atraviesan el curso entero y le dan continuidad y memoria.</p>
+
+    <div class="dispositivo">
+      <div class="disp-head" style="background:var(--vio)">
+        <span class="disp-icon">🗳️</span>
+        <h3>Mentimeter de apertura y cierre — "¿La matemática se descubre o se inventa?"</h3>
+      </div>
+      <div class="disp-body">
+        <p>La primera actividad del año (Clase 0) es una votación anónima en Mentimeter: <em>"¿La matemática se descubre o se inventa?"</em> No hay respuesta correcta. Las respuestas se muestran en tiempo real y se guardan como registro del punto de partida.</p>
+        <p>La misma encuesta reaparece en la última clase del año, sin previo aviso. La comparación entre ambas nubes de palabras es el cierre del arco: ¿qué cambió en la imagen de la matemática después de un año de recorrer sus crisis, sus paradojas y sus tradiciones no europeas? Si la respuesta no cambió en nada, el taller no funcionó. Si cambió, ¿en qué dirección y por qué?</p>
+        <p style="font-size:12.5px;color:var(--txt);font-style:italic">Referencia en el curso: Clase 0 (apertura) y Clase 5 del TFI (cierre definitivo del año).</p>
+      </div>
+    </div>
+
+    <div class="dispositivo">
+      <div class="disp-head" style="background:var(--grn)">
+        <span class="disp-icon">📅</span>
+        <h3>Línea de tiempo colectiva — La Gran Línea (Genially)</h3>
+      </div>
+      <div class="disp-body">
+        <p>Desde el primer eje, los estudiantes construyen en Genially una línea de tiempo colectiva que crece a lo largo del año. Al final de cada unidad agregan los nodos que acaban de trabajar: Eudoxo, Cavalieri, Fermat, Newton, Leibniz, Berkeley, Cauchy, Weierstrass, Cantor, Russell, Gödel, Noether.</p>
+        <p>No es un producto decorativo — es un índice visual de lo que el curso está construyendo. Cada nodo tiene: nombre, fecha, aporte principal, obstáculo que generó, y conexión con el nodo siguiente. Al final del año, la línea de tiempo es la única "síntesis" del curso que no necesita ser explicada porque fue construida por quienes la recorrieron.</p>
+        <p>Los estudiantes no agregan nodos porque el docente lo pide — los agregan porque sin ese nodo la línea queda con un salto. La continuidad de la línea es la evidencia de que el arco histórico fue comprendido como tal.</p>
+        <p style="font-size:12.5px;color:var(--txt);font-style:italic">Se inicia en el Eje 1 y se completa con el último nodo del Eje 4. El TFI puede agregar nodos de tradiciones no europeas como extensión opcional de la línea.</p>
+      </div>
+    </div>
+
+    <div class="dispositivo">
+      <div class="disp-head" style="background:var(--med)">
+        <span class="disp-icon">📔</span>
+        <h3>Bitácoras de aprendizaje — La voz del docente en formación</h3>
+      </div>
+      <div class="disp-body">
+        <p>Cuatro bitácoras a lo largo del año (una cada dos ejes aproximadamente). Cada una tiene una consigna específica que conecta lo trabajado en el taller con la práctica docente: no es un resumen del contenido sino una reflexión situada. Un ejemplo típico: <em>"Elegí un concepto que trabajamos estas semanas y describí con precisión qué creencia previa de un estudiante de secundaria entraría en tensión con él."</em></p>
+        <p>Las bitácoras tienen longitud acotada (150-300 palabras) y al menos una referencia bibliográfica funcional. No son diarios de aprendizaje genéricos: cada consigna pide una posición, no una descripción. La diferencia entre "el límite es difícil de enseñar" (descripción) y "el límite activa en los estudiantes la misma resistencia aristotélica al infinito actual que Berkeley nombró en 1734" (posición con argumento histórico) es exactamente la brecha que el taller busca cerrar.</p>
+        <p style="font-size:12.5px;color:var(--txt);font-style:italic">Entregas: al cierre del Eje 1, Eje 2, Eje 3 y Eje 4. La cuarta puede coincidir con el lanzamiento del TFI.</p>
+      </div>
+    </div>
+
+    <div class="dispositivo">
+      <div class="disp-head" style="background:var(--amb)">
+        <span class="disp-icon">📐</span>
+        <h3>Trabajo Final Integrador — Una tradición que la escuela no enseña</h3>
+      </div>
+      <div class="disp-body">
+        <p>El TFI cierra el año con la pregunta que lo abrió, vuelta del revés: si la matemática es una construcción histórica y cultural, ¿por qué la escuela enseña solo una de sus tradiciones? Cada estudiante elige una tradición matemática que el eje griego-europeo dejó afuera — árabe, china, maya, inca, mexica, colonial latinoamericana — y produce un trabajo que integra rigor histórico, análisis epistemológico y diseño didáctico.</p>
+        <p>El TFI no es una monografía de investigación: es una propuesta profesional. Tiene que incluir una situación problemática concreta para secundaria que use la tradición como punto de entrada a un concepto del currículum, y tiene que poder defenderse oralmente ante el panel. La defensa empieza con esa situación problemática — no con una introducción biográfica.</p>
+        <p style="font-size:12.5px;color:var(--txt);font-style:italic">Se desarrolla en las últimas 4-5 clases del año. La defensa oral incluye preguntas cruzadas entre estudiantes y un cierre con el Mentimeter del Día 1.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ EJES ══════ -->
+<div id="pane-ejes" class="pane">
+
+  <div class="sec">
+    <div class="sec-title">Los cuatro ejes y su lógica interna</div>
+    <p style="font-size:13.5px;color:var(--txt);margin-bottom:20px;line-height:1.7">Cada eje trabaja una crisis o transformación central en la historia de la matemática. Todos comparten la misma estructura: el problema de la época como entrada, el obstáculo epistemológico como núcleo, y la transposición didáctica como salida.</p>
+
+    <div class="eje">
+      <div class="eje-head" style="background:var(--nav)">
+        <div class="eje-num">1</div>
+        <div>
+          <h3>La primera fractura — Cuando calcular dejó de ser suficiente</h3>
+          <p>Egipto · Mesopotamia · Grecia · Euclides · √2 · La necesidad de demostrar</p>
+        </div>
+      </div>
+      <div class="eje-body">
+        <p><strong>El problema de la época:</strong> medir y repartir con exactitud — y que esa exactitud sea confiable para otros. La matemática egipcia y babilónica funcionaba sin demostrar. La matemática griega inventó la necesidad de demostrar. ¿Por qué? ¿Qué cambió en la cultura griega que no estaba en Egipto?</p>
+        <p><strong>El obstáculo:</strong> la conmensurabilidad. Si todo número es razón de enteros, la diagonal de un cuadrado de lado 1 no puede existir. Pero existe. El colapso de la intuición pitagórica es el primer gran obstáculo de la historia matemática — y se reproduce en el aula cuando un estudiante dice que √2 "no es un número de verdad".</p>
+        <div class="eje-fila">
+          <div class="eje-col"><strong>Vivencial</strong>Buscar una fracción p/q tal que (p/q)² = 2. Descubrir que no existe. Demostración por el absurdo.</div>
+          <div class="eje-col"><strong>Epistémico</strong>La polis griega, la demostración como forma de convencer en el ágora. Euclides como sistematizador. El quinto postulado.</div>
+          <div class="eje-col"><strong>Pedagógico</strong>¿Por qué demostrar en la escuela? Análisis de manuales: ¿piden demostrar o verificar? Diseño de actividades que generen incertidumbre matemática.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eje">
+      <div class="eje-head" style="background:var(--slate)">
+        <div class="eje-num">2</div>
+        <div>
+          <h3>La expansión traumática del número</h3>
+          <p>Irracionales · Negativos · Imaginarios · 2000 años de resistencia</p>
+        </div>
+      </div>
+      <div class="eje-body">
+        <p><strong>El problema de la época:</strong> resolver ecuaciones que tienen soluciones que "no deberían existir". Los negativos como "raíces falsas" (Descartes). Los imaginarios como "cantidades imposibles" (Cardano). La resistencia no era ignorancia — era coherencia con la intuición geométrica de número.</p>
+        <p><strong>El obstáculo:</strong> la independencia progresiva de la matemática respecto de la intuición geométrica y física. Un número que no puede representarse como longitud, área o volumen, ¿es un número? La misma pregunta que los estudiantes de hoy frente a √-1.</p>
+        <div class="eje-fila">
+          <div class="eje-col"><strong>Vivencial</strong>Resolver x³ = 15x + 4 con la fórmula de Cardano. Toparse con √-121 en un camino que da un resultado real. ¿Qué está pasando?</div>
+          <div class="eje-col"><strong>Epistémico</strong>Línea de tiempo del número: de los naturales a los complejos. La regla de signos como obstáculo histórico y cognitivo. Dedekind y la completitud.</div>
+          <div class="eje-col"><strong>Pedagógico</strong>¿Cuándo introducir los imaginarios? ¿Con la historia o sin ella? Diseño de consigna introductoria para 5° año usando la historia como punto de entrada.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eje">
+      <div class="eje-head" style="background:var(--amb)">
+        <div class="eje-num">3</div>
+        <div>
+          <h3>El escándalo del infinito — La matematización del movimiento</h3>
+          <p>Zenón · Cavalieri · Fermat · Newton · Leibniz · Berkeley · Cauchy · Weierstrass</p>
+        </div>
+      </div>
+      <div class="eje-body">
+        <p><strong>El problema de la época:</strong> calcular la velocidad instantánea de un proyectil, el área bajo una curva. La física del siglo XVII presionaba con preguntas que la matemática griega no podía responder sin tocar el infinito — y el infinito era tabú.</p>
+        <p><strong>El obstáculo:</strong> el infinitesimal que es cero y no es cero a la vez. Fermat divide por E y luego lo hace cero. Funciona. Berkeley lo llama "fantasma de cantidades desvanecidas". La solución formal (Cauchy, Weierstrass, definición ε-δ) llega 150 años después. ¿Es necesario enseñar esa definición en secundaria?</p>
+        <div class="eje-fila">
+          <div class="eje-col"><strong>Vivencial</strong>Paradojas de Zenón con simuladores. Método de adigualdad de Fermat para la tangente a y = x². La contradicción lógica en acto.</div>
+          <div class="eje-col"><strong>Epistémico</strong>Newton vs. Leibniz. La crítica de Berkeley. La definición ε-δ como respuesta tardía. Aritmetización del análisis (Weierstrass).</div>
+          <div class="eje-col"><strong>Pedagógico</strong>¿Intuición del movimiento o rigor formal en la enseñanza del límite? Diseño de secuencia introductoria al límite para secundaria con TIC.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eje">
+      <div class="eje-head" style="background:var(--vio)">
+        <div class="eje-num">4</div>
+        <div>
+          <h3>La crisis de los fundamentos — El giro estructural</h3>
+          <p>Cantor · Russell · Hilbert · Gödel · Noether</p>
+        </div>
+      </div>
+      <div class="eje-body">
+        <p><strong>El problema de la época:</strong> si la matemática puede construir distintos infinitos, ¿sobre qué se apoya? El programa de Hilbert: demostrar que la matemática es completa, consistente y decidible. Gödel (1931): en cualquier sistema suficientemente poderoso hay verdades que no se pueden demostrar. El sueño duró tres años.</p>
+        <p><strong>El obstáculo:</strong> la autorreferencia. El mismo motor lógico (la diagonal de Cantor, la paradoja de Russell, la proposición de Gödel) recorre los tres nodos. La tarjeta de Jourdain y el mazo numerado de Veritasium son herramientas didácticas para que ese motor se viva antes de formalizarse.</p>
+        <div class="eje-fila">
+          <div class="eje-col"><strong>Vivencial</strong>Paradoja de Galileo. El barbero de Sevilla. La tarjeta de Jourdain. Cada paradoja instala el obstáculo de la autorreferencia en un contexto diferente.</div>
+          <div class="eje-col"><strong>Epistémico</strong>El argumento diagonal de Cantor. La carta de Russell a Frege. El programa de Hilbert y su colapso. Noether: del objeto a la estructura.</div>
+          <div class="eje-col"><strong>Pedagógico</strong>¿Qué imagen de la matemática transmite la escuela? ¿Infalible o construida? Diseño de mini-clases sobre cada nodo para secundaria.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note nb">
+    <span class="ni">🔗</span>
+    <div><strong style="color:var(--med)">La conexión entre ejes no es decorativa</strong><p style="font-size:13px;margin:4px 0 0;line-height:1.65">El Eje 2 presupone el Eje 1: sin la demostración griega, no hay "irracionales" — hay longitudes que no se pueden medir con razones. El Eje 3 presupone el Eje 2: el cálculo de Newton y Leibniz funciona gracias a que el continuo está completo (Dedekind). El Eje 4 presupone el Eje 3: la teoría de conjuntos de Cantor nace de necesitar hablar del conjunto de todos los números reales como objeto terminado. El arco no es una lista de temas — es una cadena de consecuencias.</p></div>
+  </div>
+</div>
+
+<!-- ══════ ARCO ══════ -->
+<div id="pane-arco" class="pane">
+
+  <div class="sec">
+    <div class="sec-title">El arco del año — De la primera pregunta a la última</div>
+    <p style="font-size:13.5px;color:var(--txt);margin-bottom:24px;line-height:1.7">El curso empieza y termina con la misma pregunta — pero quien la responde al final es una persona distinta a quien la respondió al principio. El arco no es el recorrido histórico: es la transformación en la imagen de la matemática.</p>
+
+    <div style="padding-left:4px">
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--vio)"></div><div class="arco-seg"></div></div>
+        <div class="arco-content">
+          <h4>Clase 0 — La pregunta que abre el curso</h4>
+          <p>Mentimeter: <em>"¿La matemática se descubre o se inventa?"</em> Las respuestas se guardan. No se debaten todavía — se registran como punto de partida. El primer texto que se trabaja es Babini: la matemática como producto cultural, no como conjunto de verdades eternas. La ilusión de transparencia se nombra antes de comenzar a romperla.</p>
+        </div>
+      </div>
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--nav)"></div><div class="arco-seg"></div></div>
+        <div class="arco-content">
+          <h4>Ejes 1 y 2 — La primera mitad: el número y la prueba</h4>
+          <p>De Egipto a los complejos. La matemática como herramienta práctica que se vuelve argumento lógico (Eje 1) y como sistema numérico que se expande traumáticamente durante 2000 años (Eje 2). Al terminar esta mitad: Jornada de Recapitulación. Coevaluación de Bitácoras 1-3. Pitch de proyectos TFI.</p>
+        </div>
+      </div>
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--amb)"></div><div class="arco-seg"></div></div>
+        <div class="arco-content">
+          <h4>Eje 3 — El infinito y el cálculo</h4>
+          <p>El mayor obstáculo epistemológico del curso: dos siglos de cálculo funcionando sin fundamento. Zenón paraliza, Cavalieri y Fermat avanzan violando el rigor, Newton y Leibniz construyen la herramienta más poderosa de la modernidad, Berkeley la dinamita filosóficamente, Cauchy y Weierstrass la reconstruyen sobre el límite. Al final: ¿qué queda de todo eso en la enseñanza escolar del límite?</p>
+        </div>
+      </div>
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--vio)"></div><div class="arco-seg"></div></div>
+        <div class="arco-content">
+          <h4>Eje 4 — Los fundamentos y el giro estructural</h4>
+          <p>Cantor, Russell, Gödel, Noether. La crisis más profunda de la historia matemática — y la que más cerca está de la pregunta inicial: ¿qué tipo de certeza puede dar la matemática? Los estudiantes preparan y exponen mini-clases para secundaria sobre cada nodo. El Eje 4 es el más exigente en términos de transposición didáctica porque los conceptos son los más alejados del currículum escolar.</p>
+        </div>
+      </div>
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--grn)"></div><div class="arco-seg"></div></div>
+        <div class="arco-content">
+          <h4>TFI — La vuelta del revés</h4>
+          <p>Si la matemática es una construcción histórica y cultural, ¿por qué la escuela enseña solo una de sus tradiciones? El TFI vuelve la pregunta del revés: árabe, china, maya, inca, mexica, colonial latinoamericana. Cuatro clases de producción en clase, entrega, defensa oral. La defensa incluye la pregunta colectiva: <em>"¿La historia de la matemática que enseñamos representa la matemática de la humanidad?"</em></p>
+        </div>
+      </div>
+
+      <div class="arco-item">
+        <div class="arco-linea"><div class="arco-dot" style="background:var(--vio)"></div></div>
+        <div class="arco-content">
+          <h4>Última clase — La misma pregunta, otra persona</h4>
+          <p>Mentimeter de cierre: <em>"¿La matemática se descubre o se inventa?"</em> La nube de palabras de hoy se compara con la del Día 0. Si cambió algo — en la dirección, en la certeza, en la complejidad de la respuesta — el arco se completó. Si no cambió nada, la conversación no terminó: ¿por qué no?</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="note ng">
+    <span class="ni">🏁</span>
+    <div><strong style="color:var(--grn)">Lo que el arco produce</strong><p style="font-size:13px;margin:4px 0 0;line-height:1.65">Un futuro docente que recorrió este arco no tiene solo más información sobre la historia de la matemática. Tiene una imagen distinta de qué es la matemática: falible, construida históricamente, culturalmente situada, capaz de crisis profundas y de recuperarse de ellas. Esa imagen es lo que va a transmitir — con o sin intención — cada vez que entre a un aula de secundaria.</p></div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pane-'+id).classList.add('on');
+  document.getElementById('btn-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
