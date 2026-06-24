@@ -24,37 +24,36 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
 .hero-sub{font-size:13px;opacity:.75;line-height:1.6}
 .wrap{padding:22px 28px 60px;max-width:960px}
 
-/* Secciones */
 .sec{margin-bottom:32px}
 .sec-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .sec-title h2{font-size:13px;font-weight:700;color:var(--amb);letter-spacing:.8px;text-transform:uppercase}
 .sec-title::after{content:'';flex:1;border-top:2px solid var(--bd)}
 
-/* Libro card */
+/* Libro con link — tarjeta */
 .libro{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);padding:16px 20px;margin-bottom:10px;display:flex;gap:16px;align-items:flex-start;border-left:4px solid var(--bd)}
 .libro-icon{font-size:22px;flex-shrink:0;margin-top:2px}
 .libro-body{flex:1}
 .libro-ref{font-size:13.5px;color:var(--neg);line-height:1.6;margin-bottom:4px}
 .libro-ref strong{color:var(--nav)}
-.libro-ref em{color:var(--neg)}
 .libro-uso{font-size:12px;color:var(--txt);line-height:1.5;margin:0}
 .libro-eje{display:inline-block;background:var(--gris);border:1px solid var(--bd);border-radius:10px;padding:1px 8px;font-size:11px;font-weight:700;color:var(--slate);margin-top:5px}
+.libro-link{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;font-weight:700;text-decoration:none}
 
 /* Recurso digital */
 .recurso{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);padding:13px 18px;margin-bottom:8px;display:flex;gap:14px;align-items:center;border-left:4px solid var(--med);text-decoration:none;color:inherit;transition:box-shadow .15s}
 .recurso:hover{box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .recurso-icon{font-size:20px;flex-shrink:0}
-.recurso-body{flex:1}
 .recurso-body h4{font-size:13.5px;font-weight:700;color:var(--nav);margin-bottom:2px}
 .recurso-body p{font-size:12px;color:var(--txt);margin:0}
 .recurso-url{font-size:11px;color:var(--med);font-family:monospace;margin-top:3px;display:block}
 .recurso-arrow{font-size:14px;color:var(--bd);flex-shrink:0}
-
-/* Grid 2 col para digitales */
 .rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-/* Tag de eje */
-.tag{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700;color:#fff;margin-left:6px;vertical-align:middle}
+/* Lista sin link */
+.lista-simple{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);padding:16px 20px}
+.lista-item{padding:9px 0;border-bottom:1px solid var(--bd);font-size:13px;color:var(--txt);line-height:1.55}
+.lista-item:last-child{border-bottom:none;padding-bottom:0}
+.lista-item strong{color:var(--nav)}
 
 @media(max-width:650px){
   .rec-grid{grid-template-columns:1fr}
@@ -78,22 +77,22 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
 
 <div class="hero">
   <h1>📚 Caja de Biblioteca</h1>
-  <p class="hero-sub">Bibliografía completa del curso, fuentes primarias usadas en clase, recursos para el TFI y herramientas digitales.</p>
+  <p class="hero-sub">Bibliografía del curso y recursos digitales. Los que tienen link se pueden leer en línea. Los que no, están en la lista al final.</p>
 </div>
 
 <div class="wrap">
 
-<!-- HISTORIA DE LA MATEMÁTICA -->
+<!-- CON ACCESO EN LÍNEA -->
 <div class="sec">
-  <div class="sec-title"><h2>Historia de la Matemática</h2></div>
+  <div class="sec-title"><h2>Con acceso en línea</h2></div>
 
   <div class="libro" style="border-left-color:var(--nav)">
     <span class="libro-icon">📘</span>
     <div class="libro-body">
       <p class="libro-ref"><strong>Boyer, C.</strong> (1986). <em>Historia de la Matemática</em>. Madrid: Alianza Editorial.</p>
-      <p class="libro-uso">El texto de referencia histórica más completo del curso. Capítulos sobre matemática griega, árabe, china y la crisis de los fundamentos. Se cita en todos los ejes.</p>
-      <span class="libro-eje">Ejes 1–4</span> <span class="libro-eje">TFI Plan A</span>
-      <a href="https://archive.org/details/boyer-carl-historia-de-la-matematica" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Leer en Archive.org</a>
+      <p class="libro-uso">Referencia histórica principal del curso. Cubre matemática griega, árabe, china y la crisis de los fundamentos.</p>
+      <div><span class="libro-eje">Ejes 1–4</span> <span class="libro-eje">TFI Plan A</span></div>
+      <a href="https://archive.org/details/boyer-carl-historia-de-la-matematica" target="_blank" class="libro-link" style="color:var(--med)">↗ Archive.org — acceso libre</a>
     </div>
   </div>
 
@@ -101,9 +100,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
     <span class="libro-icon">📘</span>
     <div class="libro-body">
       <p class="libro-ref"><strong>Kline, M.</strong> (1992). <em>El pensamiento matemático de la Antigüedad a nuestros días</em>. Madrid: Alianza Editorial.</p>
-      <p class="libro-uso">Referencia central para el Eje 3 (infinito y cálculo) y el Eje 4 (crisis de fundamentos). Introduce el concepto de "horror infiniti". Más denso que Boyer, más preciso en los argumentos matemáticos.</p>
-      <span class="libro-eje">Ejes 3–4</span> <span class="libro-eje">TFI Plan A</span>
-      <a href="https://archive.org/details/morris-kline-el-pensamiento-matematico-d" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Leer en Archive.org</a>
+      <p class="libro-uso">Central para el Eje 3 y el Eje 4. Introduce el "horror infiniti". Más preciso que Boyer en los argumentos matemáticos.</p>
+      <div><span class="libro-eje">Ejes 3–4</span> <span class="libro-eje">TFI Plan A</span></div>
+      <a href="https://archive.org/details/morris-kline-el-pensamiento-matematico-d" target="_blank" class="libro-link" style="color:var(--med)">↗ Archive.org — acceso libre</a>
     </div>
   </div>
 
@@ -111,44 +110,12 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
     <span class="libro-icon">📗</span>
     <div class="libro-body">
       <p class="libro-ref"><strong>Rey Pastor, J. y Babini, J.</strong> (2000). <em>Historia de la Matemática</em>. Vol. 1 y 2. Barcelona: Gedisa.</p>
-      <p class="libro-uso">El texto con el que abre el curso (Babini). La matemática como producto cultural vivo. Perspectiva latinoamericana — los autores son argentinos. Referencia para el TFI Plan B.</p>
-      <span class="libro-eje">Clase 0</span> <span class="libro-eje">TFI Plan B</span>
-      <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
-        <a href="https://drive.google.com/file/d/1ZgOuEINlnR-GB_XvHq2qgtippLbDafp5/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Vol. 1 — Google Drive</a>
-        <a href="https://drive.google.com/file/d/1NyoCDp7PmloGIqqKa411P6QhnbD9F-Rd/view?usp=drive_link" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Vol. 2 — Google Drive</a>
+      <p class="libro-uso">El texto con el que abre el curso (Babini). Perspectiva latinoamericana. Referencia para el TFI Plan B.</p>
+      <div><span class="libro-eje">Clase 0</span> <span class="libro-eje">TFI Plan B</span></div>
+      <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+        <a href="https://drive.google.com/file/d/1ZgOuEINlnR-GB_XvHq2qgtippLbDafp5/view?usp=drive_link" target="_blank" class="libro-link" style="color:var(--grn)">↗ Vol. 1 — Google Drive</a>
+        <a href="https://drive.google.com/file/d/1NyoCDp7PmloGIqqKa411P6QhnbD9F-Rd/view?usp=drive_link" target="_blank" class="libro-link" style="color:var(--grn)">↗ Vol. 2 — Google Drive</a>
       </div>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--nav)">
-    <span class="libro-icon">📙</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Mankiewicz, R.</strong> (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós.</p>
-      <p class="libro-uso">La referencia más accesible del curso. Buena cobertura de matemática árabe, china y algo de precolombina. Útil para el TFI cuando Boyer y Kline cubren poco.</p>
-      <span class="libro-eje">Ejes 1–4</span> <span class="libro-eje">TFI</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--nav)">
-    <span class="libro-icon">📕</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Serrano, G.</strong> (2009). <em>Matemática en su salsa</em>. Buenos Aires: Lugar Editorial.</p>
-      <p class="libro-uso">Divulgación matemática con perspectiva histórica. Lectura accesible para complementar los textos más densos.</p>
-      <span class="libro-eje">Complementaria</span>
-    </div>
-  </div>
-</div>
-
-<!-- DIDÁCTICA Y EPISTEMOLOGÍA -->
-<div class="sec">
-  <div class="sec-title"><h2>Epistemología y Didáctica</h2></div>
-
-  <div class="libro" style="border-left-color:var(--amb)">
-    <span class="libro-icon">📒</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Brousseau, G.</strong> (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques</em>, 4(2), 165–198.</p>
-      <p class="libro-uso">El concepto de obstáculo epistemológico: no es ignorancia, es un saber que funcionó en otro contexto y aquí falla. Referencia obligatoria para las bitácoras y el TFI. Se cita en todos los ejes.</p>
-      <span class="libro-eje">Todos los ejes</span> <span class="libro-eje">Bitácoras</span> <span class="libro-eje">TFI</span>
     </div>
   </div>
 
@@ -156,19 +123,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
     <span class="libro-icon">📒</span>
     <div class="libro-body">
       <p class="libro-ref"><strong>Chevallard, Y.</strong> (1997). <em>La transposición didáctica. Del saber sabio al saber enseñado</em>. Buenos Aires: Aique.</p>
-      <p class="libro-uso">La transposición didáctica, la descontextualización y la despersonalización del saber. Marco para pensar qué se pierde cuando la historia de la matemática entra al aula. Referencia obligatoria para el TFI.</p>
-      <span class="libro-eje">Todos los ejes</span> <span class="libro-eje">TFI</span>
-      <a href="https://archive.org/details/chevalard-y.-la-trasposicion-didactica" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Leer en Archive.org</a>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--amb)">
-    <span class="libro-icon">📒</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Klimovsky, G. y Boido, G.</strong> (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z Editora.</p>
-      <p class="libro-uso">Filosofía de la matemática en clave accesible. Referencia central para el Eje 4 (Gödel, Russell, Hilbert). Cubre la significación filosófica de la incompletitud. Edición de 2005, ISBN 950-534-796-0.</p>
-      <span class="libro-eje">Eje 4</span>
-      <a href="https://www.scribd.com/document/326798108/Klimovsky-Gregorio-Boido-Guillermo-Las-Desventuras-Del-Conocimiento-Matematico-Filosofia-de-La-Matematica-Ed-Az" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--txt);font-weight:700;text-decoration:none">↗ Ver en Scribd (requiere cuenta)</a>
+      <p class="libro-uso">La transposición didáctica, la descontextualización y la despersonalización del saber. Referencia obligatoria para las Bitácoras y el TFI.</p>
+      <div><span class="libro-eje">Todos los ejes</span> <span class="libro-eje">TFI</span></div>
+      <a href="https://archive.org/details/chevalard-y.-la-trasposicion-didactica" target="_blank" class="libro-link" style="color:var(--med)">↗ Archive.org — acceso libre</a>
     </div>
   </div>
 
@@ -176,239 +133,70 @@ body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);bac
     <span class="libro-icon">📒</span>
     <div class="libro-body">
       <p class="libro-ref"><strong>Lakatos, I.</strong> (1978). <em>Pruebas y refutaciones. La lógica del descubrimiento matemático</em>. Madrid: Alianza Editorial.</p>
-      <p class="libro-uso">La matemática como proceso vivo de conjeturas y refutaciones. Complementa a Brousseau y Chevallard con una perspectiva filosófica sobre el saber matemático en construcción.</p>
-      <span class="libro-eje">Complementaria</span>
-      <a href="https://archive.org/details/pruebas-y-refutaciones-imre-lakatos" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--med);font-weight:700;text-decoration:none">↗ Leer en Archive.org</a>
+      <p class="libro-uso">La matemática como proceso vivo de conjeturas y refutaciones. Complementa a Brousseau y Chevallard.</p>
+      <div><span class="libro-eje">Complementaria</span></div>
+      <a href="https://archive.org/details/pruebas-y-refutaciones-imre-lakatos" target="_blank" class="libro-link" style="color:var(--med)">↗ Archive.org — acceso libre</a>
     </div>
   </div>
 
   <div class="libro" style="border-left-color:var(--amb)">
     <span class="libro-icon">📒</span>
     <div class="libro-body">
-      <p class="libro-ref"><strong>Fischbein, E.</strong> (1987). <em>Intuition in Science and Mathematics</em>. Dordrecht: Reidel. · <strong>Tall, D. y Vinner, S.</strong> (1981). Concept image and concept definition. <em>Educational Studies in Mathematics</em>, 12, 151–169.</p>
-      <p class="libro-uso">Base empírica para entender por qué el infinito y los irracionales generan dificultades persistentes en estudiantes de secundaria. Fischbein: modelos tacitus. Tall y Vinner: imagen vs. definición de concepto.</p>
-      <span class="libro-eje">Ejes 2–4</span>
+      <p class="libro-ref"><strong>Klimovsky, G. y Boido, G.</strong> (2005). <em>Las desventuras del conocimiento matemático</em>. Buenos Aires: A-Z Editora.</p>
+      <p class="libro-uso">Filosofía de la matemática. Referencia central para el Eje 4 (Gödel, Russell, Hilbert). ISBN 978-950-534-796-4.</p>
+      <div><span class="libro-eje">Eje 4</span></div>
+      <a href="https://www.scribd.com/document/326798108/Klimovsky-Gregorio-Boido-Guillermo-Las-Desventuras-Del-Conocimiento-Matematico-Filosofia-de-La-Matematica-Ed-Az" target="_blank" class="libro-link" style="color:var(--txt)">↗ Scribd — requiere cuenta gratuita</a>
     </div>
+  </div>
+</div>
+
+<!-- SIN ACCESO LIBRE -->
+<div class="sec">
+  <div class="sec-title"><h2>Bibliografía sin acceso libre en línea</h2></div>
+  <div class="lista-simple">
+    <div class="lista-item"><strong>Brousseau, G.</strong> (1983). Los obstáculos epistemológicos y los problemas en matemáticas. <em>Recherches en Didactique des Mathématiques</em>, 4(2), 165–198. · <em>Todos los ejes · Bitácoras · TFI</em></div>
+    <div class="lista-item"><strong>Mankiewicz, R.</strong> (2000). <em>Historia de las matemáticas. Del cálculo al caos</em>. Barcelona: Paidós. · <em>Ejes 1–4 · TFI</em></div>
+    <div class="lista-item"><strong>Serrano, G.</strong> (2009). <em>Matemática en su salsa</em>. Buenos Aires: Lugar Editorial. · <em>Complementaria</em></div>
+    <div class="lista-item"><strong>Fischbein, E.</strong> (1987). <em>Intuition in Science and Mathematics</em>. Dordrecht: Reidel. · <strong>Tall, D. y Vinner, S.</strong> (1981). Concept image and concept definition. <em>Educational Studies in Mathematics</em>, 12, 151–169. · <em>Ejes 2–4</em></div>
+    <div class="lista-item" style="color:var(--slate);font-style:italic;font-size:12px">TFI Plan B: Urton & Brezine (2005) Science 309 · León-Portilla (1968) UNAM · Grattan-Guinness ed. (1994) Routledge</div>
   </div>
 </div>
 
 <!-- FUENTES PRIMARIAS -->
 <div class="sec">
   <div class="sec-title"><h2>Fuentes primarias usadas en clase</h2></div>
-
-  <div class="libro" style="border-left-color:var(--slate)">
-    <span class="libro-icon">📜</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Galilei, G.</strong> (1638). <em>Discorsi e dimostrazioni matematiche intorno a due nuove scienze</em>. Primera Jornada.</p>
-      <p class="libro-uso">La paradoja de los cuadrados perfectos. Salviati concluye que los atributos "mayor", "menor" e "igual" no son aplicables a cantidades infinitas. Punto de entrada al Eje 4, Nodo Cantor.</p>
-      <span class="libro-eje">Eje 4 · Cantor</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--slate)">
-    <span class="libro-icon">📜</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Berkeley, G.</strong> (1734). <em>The Analyst, or A Discourse Addressed to an Infidel Mathematician</em>. London. §35.</p>
-      <p class="libro-uso">"¿No podríamos llamarlos los fantasmas de cantidades desvanecidas?" La crítica filosófica que dejó al cálculo sin fundamentos por más de un siglo. Cita central del Eje 3.</p>
-      <span class="libro-eje">Eje 3 · Berkeley</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--slate)">
-    <span class="libro-icon">📜</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Frege, G.</strong> (1903). <em>Grundgesetze der Arithmetik</em>, vol. II. Apéndice.</p>
-      <p class="libro-uso">"Difícilmente puede ocurrirle algo más indeseable a un escritor científico que ver sacudido uno de los fundamentos de su edificio, una vez terminada la obra." El reconocimiento público de la paradoja de Russell.</p>
-      <span class="libro-eje">Eje 4 · Russell</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--slate)">
-    <span class="libro-icon">📜</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Hilbert, D.</strong> (1926). Über das Unendliche. <em>Mathematische Annalen</em>, 95, 161–190. (Conferencia en Münster, 4 de junio de 1925.)</p>
-      <p class="libro-uso">"Nadie nos expulsará del paraíso que Cantor ha creado." El programa formalista de Hilbert y su defensa del infinito cantoriano.</p>
-      <span class="libro-eje">Eje 4 · Hilbert</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--slate)">
-    <span class="libro-icon">📜</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Euclides</strong> (c. 300 a.C.). <em>Elementos</em>. Versión digital interactiva: Clay Mathematics Institute.</p>
-      <p class="libro-uso">Definiciones, Postulados y Nociones Comunes. El quinto postulado y los límites del sistema euclidiano. Proposición I y su punto débil (la intersección no demostrada).</p>
-      <span class="libro-eje">Eje 1</span>
-    </div>
+  <div class="lista-simple">
+    <div class="lista-item"><strong>Berkeley, G.</strong> (1734). <em>The Analyst</em>, §35. · "los fantasmas de cantidades desvanecidas" · <em>Eje 3</em></div>
+    <div class="lista-item"><strong>Frege, G.</strong> (1903). <em>Grundgesetze der Arithmetik</em>, vol. II. Apéndice. · Respuesta a Russell · <em>Eje 4</em></div>
+    <div class="lista-item"><strong>Hilbert, D.</strong> (1926). Über das Unendliche. <em>Mathematische Annalen</em>, 95, 161–190. · "Nadie nos expulsará del paraíso..." · <em>Eje 4</em></div>
+    <div class="lista-item"><strong>Galilei, G.</strong> (1638). <em>Discorsi</em>, Primera Jornada. · Paradoja de los cuadrados · <em>Eje 4 / Cantor</em></div>
+    <div class="lista-item"><strong>Euclides</strong> (c. 300 a.C.). <em>Elementos</em>. <a href="https://www.claymath.org/library/historical/euclid/" target="_blank" style="color:var(--med);font-weight:700">↗ Clay Mathematics Institute</a> · <em>Eje 1</em></div>
   </div>
 </div>
 
-<!-- TFI -->
-<div class="sec">
-  <div class="sec-title"><h2>Fuentes adicionales — TFI</h2></div>
-
-  <div class="libro" style="border-left-color:var(--grn)">
-    <span class="libro-icon">📗</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Urton, G. y Brezine, C.</strong> (2005). Quipu Accounting in Ancient Peru. <em>Science</em>, 309, 1065–1067.</p>
-      <p class="libro-uso">La hipótesis de que algunos quipus codifican información narrativa además de numérica. Fuente para TFI Plan B, Opción 1 (quipus incas).</p>
-      <span class="libro-eje">TFI Plan B · Opción 1</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--grn)">
-    <span class="libro-icon">📗</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>León-Portilla, M.</strong> (1968). <em>Tiempo y realidad en el pensamiento maya</em>. México: UNAM.</p>
-      <p class="libro-uso">El significado cosmológico de los calendarios mesoamericanos. Fuente para TFI Plan B, Opción 2 (astronomía y calendarios mexicas).</p>
-      <span class="libro-eje">TFI Plan B · Opción 2</span>
-    </div>
-  </div>
-
-  <div class="libro" style="border-left-color:var(--grn)">
-    <span class="libro-icon">📗</span>
-    <div class="libro-body">
-      <p class="libro-ref"><strong>Grattan-Guinness, I.</strong> (ed.) (1994). <em>Companion Encyclopedia of the History and Philosophy of the Mathematical Sciences</em>. London: Routledge.</p>
-      <p class="libro-uso">Capítulo sobre matemáticas en las Américas. Fuente para TFI Plan B, Opción 3 (matemática colonial).</p>
-      <span class="libro-eje">TFI Plan B · Opción 3</span>
-    </div>
-  </div>
-</div>
-
-<!-- RECURSOS DIGITALES -->
+<!-- HERRAMIENTAS -->
 <div class="sec">
   <div class="sec-title"><h2>Herramientas y recursos digitales</h2></div>
-
   <div class="rec-grid">
-
-    <a href="https://www.geogebra.org" target="_blank" class="recurso">
-      <span class="recurso-icon">🔧</span>
-      <div class="recurso-body">
-        <h4>GeoGebra</h4>
-        <p>Geometría, álgebra y cálculo interactivo. Usado en todos los ejes.</p>
-        <span class="recurso-url">geogebra.org</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.desmos.com" target="_blank" class="recurso">
-      <span class="recurso-icon">📈</span>
-      <div class="recurso-body">
-        <h4>Desmos</h4>
-        <p>Graficadora interactiva. Límites, funciones, series de Zenón.</p>
-        <span class="recurso-url">desmos.com</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.wolframalpha.com" target="_blank" class="recurso">
-      <span class="recurso-icon">🧮</span>
-      <div class="recurso-body">
-        <h4>WolframAlpha</h4>
-        <p>Motor de cómputo matemático. Verificación y exploración.</p>
-        <span class="recurso-url">wolframalpha.com</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://notebooklm.google.com" target="_blank" class="recurso">
-      <span class="recurso-icon">🤖</span>
-      <div class="recurso-body">
-        <h4>NotebookLM</h4>
-        <p>IA para análisis de documentos. Actividad de la Clase 0 con el Diseño Curricular.</p>
-        <span class="recurso-url">notebooklm.google.com</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://mathshistory.st-andrews.ac.uk" target="_blank" class="recurso">
-      <span class="recurso-icon">🏛️</span>
-      <div class="recurso-body">
-        <h4>MacTutor History of Mathematics</h4>
-        <p>Biografías y cronologías de la historia de la matemática.</p>
-        <span class="recurso-url">mathshistory.st-andrews.ac.uk</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://khipukamayuq.fas.harvard.edu" target="_blank" class="recurso">
-      <span class="recurso-icon">🪢</span>
-      <div class="recurso-body">
-        <h4>Khipu Database Project — Harvard</h4>
-        <p>Base de datos de quipus con transcripciones. TFI Plan B, Opción 1.</p>
-        <span class="recurso-url">khipukamayuq.fas.harvard.edu</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://digital.slub-dresden.de/werkansicht/dlf/2967/1" target="_blank" class="recurso">
-      <span class="recurso-icon">📖</span>
-      <div class="recurso-body">
-        <h4>Códice de Dresde — Facsímil digital</h4>
-        <p>Manuscrito maya. Dominio público. TFI Plan A (maya) y Plan B (Opción 2).</p>
-        <span class="recurso-url">Sächsische Landesbibliothek — SLUB Dresden</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.claymath.org/library/historical/euclid/" target="_blank" class="recurso">
-      <span class="recurso-icon">📐</span>
-      <div class="recurso-body">
-        <h4>Elementos de Euclides — Versión digital</h4>
-        <p>Edición interactiva del Clay Mathematics Institute.</p>
-        <span class="recurso-url">claymath.org</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
+    <a href="https://www.geogebra.org" target="_blank" class="recurso"><span class="recurso-icon">🔧</span><div class="recurso-body"><h4>GeoGebra</h4><p>Geometría, álgebra y cálculo interactivo</p><span class="recurso-url">geogebra.org</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.desmos.com" target="_blank" class="recurso"><span class="recurso-icon">📈</span><div class="recurso-body"><h4>Desmos</h4><p>Graficadora interactiva. Límites, funciones, series</p><span class="recurso-url">desmos.com</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.wolframalpha.com" target="_blank" class="recurso"><span class="recurso-icon">🧮</span><div class="recurso-body"><h4>WolframAlpha</h4><p>Motor de cómputo matemático</p><span class="recurso-url">wolframalpha.com</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://notebooklm.google.com" target="_blank" class="recurso"><span class="recurso-icon">🤖</span><div class="recurso-body"><h4>NotebookLM</h4><p>IA para análisis de documentos. Actividad Clase 0</p><span class="recurso-url">notebooklm.google.com</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://mathshistory.st-andrews.ac.uk" target="_blank" class="recurso"><span class="recurso-icon">🏛️</span><div class="recurso-body"><h4>MacTutor History of Mathematics</h4><p>Biografías y cronologías de historia de la matemática</p><span class="recurso-url">mathshistory.st-andrews.ac.uk</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://khipukamayuq.fas.harvard.edu" target="_blank" class="recurso"><span class="recurso-icon">🪢</span><div class="recurso-body"><h4>Khipu Database — Harvard</h4><p>Transcripciones de quipus. TFI Plan B, Opción 1</p><span class="recurso-url">khipukamayuq.fas.harvard.edu</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://digital.slub-dresden.de/werkansicht/dlf/2967/1" target="_blank" class="recurso"><span class="recurso-icon">📖</span><div class="recurso-body"><h4>Códice de Dresde — Facsímil digital</h4><p>Manuscrito maya. Dominio público. TFI Plan A y Plan B</p><span class="recurso-url">SLUB Dresden</span></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.claymath.org/library/historical/euclid/" target="_blank" class="recurso"><span class="recurso-icon">📐</span><div class="recurso-body"><h4>Elementos de Euclides — Clay Math</h4><p>Versión digital interactiva</p><span class="recurso-url">claymath.org</span></div><span class="recurso-arrow">↗</span></a>
   </div>
 </div>
 
 <!-- VIDEOS -->
 <div class="sec">
   <div class="sec-title"><h2>Videos de referencia</h2></div>
-
   <div class="rec-grid">
-
-    <a href="https://www.youtube.com/watch?v=HeQX2HjkcNo" target="_blank" class="recurso" style="border-left-color:var(--vio)">
-      <span class="recurso-icon">▶️</span>
-      <div class="recurso-body">
-        <h4>Math's Fundamental Flaw — Veritasium</h4>
-        <p>Gödel, numeración y autorreferencia. Eje 4, Nodo C.</p>
-        <span class="recurso-url">youtube.com · ID: HeQX2HjkcNo</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.youtube.com/c/numberphile" target="_blank" class="recurso" style="border-left-color:var(--vio)">
-      <span class="recurso-icon">▶️</span>
-      <div class="recurso-body">
-        <h4>Numberphile</h4>
-        <p>Paradoja de Russell, teorema de Gödel, infinitos de Cantor.</p>
-        <span class="recurso-url">youtube.com/c/numberphile</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.youtube.com/c/3blue1brown" target="_blank" class="recurso" style="border-left-color:var(--vio)">
-      <span class="recurso-icon">▶️</span>
-      <div class="recurso-body">
-        <h4>3Blue1Brown — Essence of Calculus</h4>
-        <p>Visualización del cálculo y los límites. Eje 3.</p>
-        <span class="recurso-url">youtube.com/c/3blue1brown</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
-    <a href="https://www.youtube.com/c/Veritasium" target="_blank" class="recurso" style="border-left-color:var(--vio)">
-      <span class="recurso-icon">▶️</span>
-      <div class="recurso-body">
-        <h4>Veritasium — Canal general</h4>
-        <p>Números negativos, infinitos de Cantor, paradojas matemáticas.</p>
-        <span class="recurso-url">youtube.com/c/Veritasium</span>
-      </div>
-      <span class="recurso-arrow">↗</span>
-    </a>
-
+    <a href="https://www.youtube.com/watch?v=HeQX2HjkcNo" target="_blank" class="recurso" style="border-left-color:var(--vio)"><span class="recurso-icon">▶️</span><div class="recurso-body"><h4>Math's Fundamental Flaw — Veritasium</h4><p>Gödel, numeración y autorreferencia. Eje 4, Nodo C.</p></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.youtube.com/c/numberphile" target="_blank" class="recurso" style="border-left-color:var(--vio)"><span class="recurso-icon">▶️</span><div class="recurso-body"><h4>Numberphile</h4><p>Russell, Gödel, Cantor</p></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.youtube.com/c/3blue1brown" target="_blank" class="recurso" style="border-left-color:var(--vio)"><span class="recurso-icon">▶️</span><div class="recurso-body"><h4>3Blue1Brown — Essence of Calculus</h4><p>Visualización del cálculo y los límites. Eje 3.</p></div><span class="recurso-arrow">↗</span></a>
+    <a href="https://www.youtube.com/c/Veritasium" target="_blank" class="recurso" style="border-left-color:var(--vio)"><span class="recurso-icon">▶️</span><div class="recurso-body"><h4>Veritasium — Canal general</h4><p>Negativos, infinitos de Cantor, paradojas matemáticas</p></div><span class="recurso-arrow">↗</span></a>
   </div>
 </div>
 
