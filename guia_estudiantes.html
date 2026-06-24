@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guías TFI · Ana · Layni · Gonzalo · IPESfa 2026</title>
+<style>
+:root{
+  --nav:#1B3A6B;--med:#2E6DA4;--pale:#EDF4FB;
+  --grn:#1A6B3A;--gcl:#DFF0E9;
+  --amb:#C85C00;--acl:#FFF3E0;
+  --vio:#4A1A7B;--vcl:#EDE7F6;
+  --slate:#3A4F6A;
+  --ch:#006B6B;--chcl:#E0F5F5;
+  --qa:#8B0000;--qacl:#FFE8E8;
+  --az:#8B6914;--azcl:#FFF8DC;
+  --gris:#F3F6F9;--bd:#C5D2DC;--txt:#4A5E70;--neg:#1A2C3A;--bco:#FFFFFF;
+  --r:8px;--sh:0 2px 8px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:15px;color:var(--neg);background:#EEF3F7;line-height:1.65}
+.top{background:var(--nav);color:#fff;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:4px solid var(--amb)}
+.top strong{display:block;font-size:15px}.top small{font-size:12px;opacity:.78}
+.btn-back{background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:bold;font-size:13px;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.3)}
+.tab-bar{background:var(--bco);border-bottom:2px solid var(--bd);display:flex;padding:0 16px;overflow-x:auto}
+.tab-btn{background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(--txt);padding:13px 18px;white-space:nowrap;transition:all .15s;margin-bottom:-2px}
+.tab-btn.ana.active{color:var(--ch);border-bottom-color:var(--ch)}
+.tab-btn.layni.active{color:var(--qa);border-bottom-color:var(--qa)}
+.tab-btn.gonza.active{color:var(--az);border-bottom-color:var(--az)}
+.tab-btn:not(.active):hover{color:var(--amb)}
+.wrap{padding:22px 28px 60px;max-width:860px}
+.pane{display:none;animation:fadeIn .25s ease}
+.pane.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+
+.est-header{border-radius:var(--r);padding:18px 22px;color:#fff;margin-bottom:20px}
+.est-header h1{font-size:20px;font-weight:700;margin-bottom:4px}
+.est-header p{font-size:13px;opacity:.8;margin:2px 0 0}
+.est-plan{display:inline-block;background:rgba(255,255,255,.2);border-radius:10px;padding:2px 10px;font-size:11px;font-weight:700;margin-top:6px}
+
+.bloque{background:var(--bco);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+.bloque-head{padding:10px 16px;display:flex;align-items:center;gap:8px}
+.bloque-head h3{font-size:11.5px;font-weight:700;color:#fff;margin:0;letter-spacing:.5px;text-transform:uppercase}
+.bloque-body{padding:14px 18px}
+.bloque-body p{font-size:13.5px;line-height:1.7;color:var(--neg);margin-bottom:8px}
+.bloque-body p:last-child{margin-bottom:0}
+
+.step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bd)}
+.step:last-child{border-bottom:none;padding-bottom:0}
+.step-num{font-weight:900;font-size:13px;flex-shrink:0;width:20px;text-align:center;margin-top:2px}
+.step-text{font-size:13px;line-height:1.65;color:var(--neg)}
+.step-text strong{display:block;margin-bottom:2px;color:var(--nav)}
+
+.fuente-item{padding:8px 0;border-bottom:1px solid var(--bd);font-size:13px;color:var(--neg);line-height:1.5}
+.fuente-item:last-child{border-bottom:none;padding-bottom:0}
+.fuente-item a{color:var(--med);font-weight:700;text-decoration:none}
+
+.verif{background:var(--acl);border-left:3px solid var(--amb);border-radius:6px;padding:9px 13px;margin-bottom:7px;font-size:13px;color:var(--neg);line-height:1.6}
+.verif:last-child{margin-bottom:0}
+
+.sug{background:var(--gris);border-radius:6px;padding:11px 14px;margin-bottom:8px;font-size:13px;color:var(--neg);line-height:1.6;border-left:3px solid var(--bd)}
+.sug strong{display:block;font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px}
+.sug:last-child{margin-bottom:0}
+
+.inv-box{border-radius:6px;padding:14px 16px;margin-bottom:8px;border:2px dashed;font-size:13px;line-height:1.65}
+
+.expo-box{border-radius:6px;padding:14px 16px;font-size:13.5px;color:#fff;line-height:1.7;font-style:italic}
+
+.nota-plan{background:var(--vcl);border-left:4px solid var(--vio);border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:var(--neg);line-height:1.6}
+.nota-plan strong{color:var(--vio)}
+
+@media(max-width:600px){
+  .wrap{padding:14px 12px 50px}
+  .top{flex-direction:column;padding:10px 14px;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="index.html" class="btn-back">← Índice</a>
+    <div>
+      <strong>Historia y Fundamentos de la Matemática — TFI 2026</strong>
+      <small>Guías individuales de trabajo · Prof. Gustavo Iturriz</small>
+    </div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn ana active" onclick="showTab('ana')" id="btn-ana">Ana — Matemática China · Plan A</button>
+  <button class="tab-btn layni" onclick="showTab('layni')" id="btn-layni">Layni — Quipus incas · Plan B Op.1</button>
+  <button class="tab-btn gonza" onclick="showTab('gonza')" id="btn-gonza">Gonzalo — Calendarios mexicas · Plan B Op.2</button>
+</div>
+
+<div class="wrap">
+
+<!-- ══════ ANA ══════ -->
+<div id="pane-ana" class="pane on">
+
+  <div class="est-header" style="background:linear-gradient(135deg,var(--ch),#004A4A)">
+    <h1>Ana — Matemática China</h1>
+    <p>Los Nueve Capítulos · Yang Hui · Números negativos · π de Zu Chongzhi</p>
+    <span class="est-plan">Plan A · Tradición no europea</span>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--ch)"><h3>Pregunta que gobierna el trabajo</h3></div>
+    <div class="bloque-body">
+      <p>La matemática china del <em>Jiuzhang Suanshu</em> es sistemática, eficaz y produce resultados correctos — sin axiomas, sin demostraciones deductivas, sin el modelo griego de prueba formal. La tensión central es esta: <strong>¿puede existir matemática rigurosa sin el modelo argumentativo de validación que la tradición griega instituyó como canónico?</strong></p>
+      <p>Esa pregunta dialoga directamente con el Eje 1 del curso y es el hilo que debe recorrer todo el trabajo.</p>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--ch)"><h3>Esquema de trabajo — clase por clase</h3></div>
+    <div class="bloque-body">
+      <div class="step">
+        <div class="step-num" style="color:var(--ch)">1</div>
+        <div class="step-text">
+          <strong>Clase 1 (Mar 23/6) — Contexto histórico y problema</strong>
+          ¿Para qué necesitaban matemática en China? Administración estatal, medición de tierras, ingeniería hidráulica. Localizar los Nueve Capítulos en Boyer y Kline: ¿qué capítulo, qué páginas? ¿Cuál es la función del texto dentro del Estado chino?
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--ch)">2</div>
+        <div class="step-text">
+          <strong>Clase 2 (Mié 24/6) — Los aportes concretos</strong>
+          Seleccionar y describir con precisión cuatro aportes: (a) Fangcheng — eliminación en tablero equivalente a lo que Gauss sistematizará siglos después; (b) triángulo de Yang Hui (1261) — aparece en Europa con Pascal en 1654; (c) números negativos operativos con varillas rojas y negras; (d) π ≈ 355/113 de Zu Chongzhi (siglo V). Para cada uno: fecha, función, comparación temporal con Europa.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--ch)">3</div>
+        <div class="step-text">
+          <strong>Clase 3 (Lun 29/6) — Obstáculo epistemológico y propuesta para el aula</strong>
+          El obstáculo: la resistencia a reconocer como matemática legítima un saber que no usa demostración deductiva. Conectarlo con Brousseau (obstáculo de origen epistemológico) y con el Eje 1 (el escriba egipcio vs. el geómetra griego reaparece en China diez siglos después). Diseñar la situación problemática de apertura para la exposición.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--ch)">4</div>
+        <div class="step-text">
+          <strong>Clase 4 (Mar 30/6) — Integración y entrega</strong>
+          Conectar explícitamente con al menos dos ejes: Eje 1 (demostración y validación) y Eje 2 (los números negativos como obstáculo histórico que China superó antes que Europa). Responder la pregunta guía del TFI: ¿qué pierde un estudiante de secundaria argentino al aprender solo la tradición greco-europea?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--ch)"><h3>Dónde buscar</h3></div>
+    <div class="bloque-body">
+      <div class="fuente-item"><strong>Boyer</strong> — cap. sobre matemática china. Cubre los Nueve Capítulos, Yang Hui, Zu Chongzhi con precisión historiográfica. Punto de partida obligatorio. <a href="https://archive.org/details/boyer-carl-historia-de-la-matematica" target="_blank">↗ Archive.org</a></div>
+      <div class="fuente-item"><strong>Kline</strong> — para la comparación con el desarrollo europeo y el contexto de la falta de demostración formal. <a href="https://archive.org/details/morris-kline-el-pensamiento-matematico-d" target="_blank">↗ Archive.org</a></div>
+      <div class="fuente-item"><strong>MacTutor</strong> — entradas: "Nine Chapters on the Mathematical Art", "Yang Hui", "Zu Chongzhi". Tienen fechas precisas y referencias primarias. <a href="https://mathshistory.st-andrews.ac.uk" target="_blank">↗ mathshistory.st-andrews.ac.uk</a></div>
+      <div class="fuente-item"><strong>Mankiewicz</strong> — complemento accesible para contexto cultural. Biblioteca física.</div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--amb)"><h3>Cómo verificar la información</h3></div>
+    <div class="bloque-body">
+      <div class="verif"><strong>Regla general:</strong> si un dato aparece en Boyer Y en MacTutor con consistencia, es confiable. Si solo aparece en una fuente, señalarlo explícitamente en el TFI como "según [fuente]".</div>
+      <div class="verif"><strong>El triángulo de Yang Hui:</strong> Boyer dice 1261, MacTutor confirma. Pascal: 1654. La diferencia de 393 años es el dato más impactante — verificable en ambas fuentes.</div>
+      <div class="verif"><strong>Los negativos en los Nueve Capítulos:</strong> fecha del texto (compilado entre s. I a.C. y s. I d.C.) está en Boyer y Kline. No inventar detalles sobre cómo funcionaban las varillas que no estén en las fuentes.</div>
+      <div class="verif"><strong>π de Zu Chongzhi:</strong> 355/113 es verificable aritméticamante (≈ 3.14159292…). La afirmación de que Europa no lo igualó hasta mil años después está en Boyer — citarlo.</div>
+      <div class="verif"><strong>Fangcheng:</strong> no llamarlo "eliminación gaussiana" en el TFI sin aclarar que Gauss formalizó el método en el s. XIX; lo que hay en los Nueve Capítulos es el procedimiento equivalente, sin la nomenclatura ni la generalización algebraica.</div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--ch)"><h3>Propuesta para la exposición</h3></div>
+    <div class="bloque-body">
+      <div class="expo-box" style="background:var(--ch)">"Acá tienen un triángulo. ¿Qué ven? ¿Lo reconocen?"</div>
+      <p style="margin-top:12px;font-size:13.5px">Escribir el triángulo en el pizarrón sin nombre. Cuando el panel lo identifique como "el triángulo de Pascal" — sin reaccionar todavía. Preguntar: "¿en qué año nació Pascal?" (1623). Entonces: "Yang Hui publicó este triángulo en 1261." Pausa. Esa es la tensión que sostiene toda la exposición.</p>
+      <p style="font-size:13px;color:var(--txt)">La pregunta de cierre para el panel: "Si este triángulo existía en China cuatrocientos años antes, ¿por qué lo llamamos 'de Pascal'? ¿Quién cuenta la historia de la matemática y desde dónde?"</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════ LAYNI ══════ -->
+<div id="pane-layni" class="pane">
+
+  <div class="est-header" style="background:linear-gradient(135deg,var(--qa),#5C0000)">
+    <h1>Layni — Los quipus incas</h1>
+    <p>Sistema de nudos · Numeración posicional decimal · Destrucción colonial · Hipótesis narrativa</p>
+    <span class="est-plan">Plan B · Opción 1 · América Latina precolombina</span>
+  </div>
+
+  <div class="nota-plan">
+    <strong>Nota sobre este plan:</strong> Plan B tiene énfasis investigativo. La transposición didáctica explícita no es un requisito indispensable. Lo que se evalúa principalmente es la profundidad del trabajo con la fuente primaria (la base de datos de quipus) y el rigor histórico del análisis.
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--qa)"><h3>Pregunta que gobierna el trabajo</h3></div>
+    <div class="bloque-body">
+      <p>El Imperio Inca administró el territorio más extenso del mundo precolombino sin escritura alfabética — usando los quipus: sistemas de cuerdas con nudos que codifican información numérica en base 10 posicional. La pregunta central: <strong>¿puede existir matemática sin escritura? ¿Qué pasa con un sistema de conocimiento cuando el contexto que lo valida es destruido?</strong></p>
+      <p>La segunda pregunta conecta con Brousseau y es el puente hacia los Ejes 1 y 4 del curso.</p>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--qa)"><h3>Esquema de trabajo — clase por clase</h3></div>
+    <div class="bloque-body">
+      <div class="step">
+        <div class="step-num" style="color:var(--qa)">1</div>
+        <div class="step-text">
+          <strong>Clase 1 (Mar 23/6) — El sistema y su lógica</strong>
+          Entender cómo funciona un quipu: tres tipos de nudos (nudo largo = unidades, nudo anidado = decenas/centenas según posición, nudo figura 8 = unidad solitaria), sistema posicional en base 10, código de colores por categoría. Acceder a la Khipu Database y localizar un quipu simple. Primera lectura del material sin interpretación todavía.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--qa)">2</div>
+        <div class="step-text">
+          <strong>Clase 2 (Mié 24/6) — El componente de investigación</strong>
+          Trabajar con la transcripción de un quipu específico de la base de datos (el docente puede indicar cuál). Convertir los valores codificados a notación decimal. Verificar si los totales de las cuerdas secundarias suman al total de la cuerda principal. Documentar el procedimiento paso a paso.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--qa)">3</div>
+        <div class="step-text">
+          <strong>Clase 3 (Lun 29/6) — Destrucción, supervivencia e hipótesis narrativa</strong>
+          Dos hechos históricos: (a) el Tercer Concilio de Lima (1583) ordenó quemar los quipus por considerarlos "instrumentos del demonio" — menos de 900 sobreviven, dispersos en museos europeos; (b) la hipótesis de Urton y Brezine (2005): algunos quipus podrían codificar información narrativa además de numérica. Analizar qué implica cada hipótesis para la categorización del quipu como "sistema matemático".
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--qa)">4</div>
+        <div class="step-text">
+          <strong>Clase 4 (Mar 30/6) — Integración y entrega</strong>
+          Conectar con Eje 1 (¿qué cuenta como matemática?) y Eje 4 (¿la universalidad de la matemática es un hecho o una construcción cultural?). Usar la escasez de fuentes académicas como argumento explícito: ¿por qué Boyer y Kline dedican tan pocas páginas a los quipus?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--qa)"><h3>Dónde buscar</h3></div>
+    <div class="bloque-body">
+      <div class="fuente-item"><strong>Khipu Database Project — Harvard</strong> · Fuente primaria central. Transcripciones de quipus con descripción nudo por nudo. <a href="https://khipukamayuq.fas.harvard.edu" target="_blank">↗ khipukamayuq.fas.harvard.edu</a></div>
+      <div class="fuente-item"><strong>Urton, G. y Brezine, C.</strong> (2005). Quipu Accounting in Ancient Peru. <em>Science</em>, 309, 1065–1067. Autorizado para este TFI. Pedir acceso al docente o buscar en ResearchGate.</div>
+      <div class="fuente-item"><strong>Mankiewicz</strong> — sección sobre matemática precolombina. Punto de entrada histórico accesible. Biblioteca física.</div>
+      <div class="fuente-item"><strong>Rey Pastor y Babini</strong> — contexto latinoamericano. <a href="https://drive.google.com/file/d/1ZgOuEINlnR-GB_XvHq2qgtippLbDafp5/view" target="_blank">↗ Vol. 1</a> · <a href="https://drive.google.com/file/d/1NyoCDp7PmloGIqqKa411P6QhnbD9F-Rd/view" target="_blank">↗ Vol. 2</a></div>
+      <div class="fuente-item"><strong>MacTutor</strong> — buscar "Inca mathematics", "quipu". Cobertura limitada pero confiable. <a href="https://mathshistory.st-andrews.ac.uk" target="_blank">↗ mathshistory.st-andrews.ac.uk</a></div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--amb)"><h3>Cómo verificar la información</h3></div>
+    <div class="bloque-body">
+      <div class="verif"><strong>El sistema de nudos:</strong> describir solo lo que está documentado en las fuentes. No especular sobre colores o disposiciones que las fuentes no detallan. La Khipu Database es la fuente primaria más confiable para la descripción técnica.</div>
+      <div class="verif"><strong>El Tercer Concilio de Lima (1583):</strong> hecho histórico documentado. No inventar cifras sobre cuántos quipus se destruyeron — las fuentes no las tienen con precisión. "Menos de 900 sobreviven en el mundo" es el dato verificable.</div>
+      <div class="verif"><strong>La hipótesis narrativa de Urton-Brezine:</strong> presentarla como hipótesis, no como hecho establecido. El artículo de <em>Science</em> (2005) generó debate académico y no hay consenso aún. Es uno de los datos más interesantes precisamente porque está abierto.</div>
+      <div class="verif"><strong>Sobre la escasez de fuentes:</strong> Boyer y Kline casi no cubren los quipus. Eso es un dato histórico en sí mismo — la historia de la matemática "canónica" los ignoró. Usarlo como argumento, no como limitación del trabajo.</div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--qa)"><h3>Propuesta para la exposición</h3></div>
+    <div class="bloque-body">
+      <div class="expo-box" style="background:var(--qa)">"¿Pueden encontrar un número en esto?"</div>
+      <p style="margin-top:12px;font-size:13.5px">Mostrar la imagen de un quipu o su transcripción de la base de datos. Sin explicación previa. Dar un minuto para que el panel observe. Luego mostrar cómo se lee un valor numérico en él — y después revelar que ese quipu específico registra datos de administración del Imperio Inca.</p>
+      <p style="font-size:13px;color:var(--txt);margin-top:8px">La pregunta de cierre: "Esto fue quemado en 1583. ¿Qué perdimos?" No hay respuesta correcta. La pregunta es el argumento.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════ GONZALO ══════ -->
+<div id="pane-gonza" class="pane">
+
+  <div class="est-header" style="background:linear-gradient(135deg,#7B5A00,#B8860B)">
+    <h1>Gonzalo — Astronomía y calendarios mexicas</h1>
+    <p>Tonalpohualli · Xiuhpohualli · La Rueda del 52 · Matemática al servicio del cosmos</p>
+    <span class="est-plan">Plan B · Opción 2 · América Latina precolombina</span>
+  </div>
+
+  <div class="nota-plan">
+    <strong>Nota sobre este plan:</strong> Plan B tiene énfasis investigativo. La transposición didáctica explícita no es un requisito indispensable. Lo que se evalúa principalmente es el rigor del análisis histórico y la profundidad del componente de investigación (el cálculo del mcm y la fecha en el Tonalpohualli).
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--az)"><h3>Pregunta que gobierna el trabajo</h3></div>
+    <div class="bloque-body">
+      <p>El sistema calendárico mexica requería calcular el mínimo común múltiplo entre ciclos de 260 y 365 días — produciendo un ciclo de 52 años de precisión verificable. Esa matemática es inseparable del ritual y la cosmología. La pregunta central: <strong>¿puede la matemática existir sin separarse del contexto cultural que la produce? ¿La "pureza" de la matemática abstracta es una propiedad del conocimiento o una elección histórica?</strong></p>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--az)"><h3>Esquema de trabajo — clase por clase</h3></div>
+    <div class="bloque-body">
+      <div class="step">
+        <div class="step-num" style="color:var(--az)">1</div>
+        <div class="step-text">
+          <strong>Clase 1 (Mar 23/6) — Los dos calendarios y su lógica</strong>
+          Entender la estructura del Tonalpohualli (260 días = 20 signos × 13 números) y del Xiuhpohualli (365 días = 18 meses de 20 días + 5 días nefastos "nemontemi"). ¿Por qué 260? El origen exacto es debatido — no inventar una explicación que las fuentes no dan. ¿Por qué 365? Corresponde al año solar, con error conocido y manejado.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--az)">2</div>
+        <div class="step-text">
+          <strong>Clase 2 (Mié 24/6) — El componente de investigación</strong>
+          Calcular el mcm(260, 365). El procedimiento es aritmético y verificable. Resultado: 18.980 días = 52 años. Verificar: 18.980 ÷ 260 = 73 ciclos exactos. 18.980 ÷ 365 = 52 años exactos. Ese es el ciclo de la Rueda del Calendario y el centro de la ceremonia del Fuego Nuevo. Buscar la fecha de nacimiento propia en el Tonalpohualli usando el procedimiento de módulo.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--az)">3</div>
+        <div class="step-text">
+          <strong>Clase 3 (Lun 29/6) — Matemática y cosmología: la tensión epistemológica</strong>
+          Analizar la relación entre la precisión matemática del sistema y su función cosmológica. La Piedra del Sol: aclarar que no es un calendario sino un monumento cosmológico (verificar en fuentes antes de afirmar cualquier cosa sobre ella). La destrucción del conocimiento astronómico mexica por la conquista.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="color:var(--az)">4</div>
+        <div class="step-text">
+          <strong>Clase 4 (Mar 30/6) — Integración y entrega</strong>
+          Conectar con Eje 1 (matemática ligada al poder y la cosmología, no autónoma) y Eje 4 (la pregunta sobre universalidad de la matemática). Responder: ¿qué pierde un estudiante argentino al no conocer este sistema? ¿Es lo mismo el mcm en el manual escolar que el mcm en la Rueda del Calendario mexica?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--az)"><h3>Dónde buscar</h3></div>
+    <div class="bloque-body">
+      <div class="fuente-item"><strong>Mankiewicz</strong> — la referencia más completa del curso para la astronomía mexica. Biblioteca física.</div>
+      <div class="fuente-item"><strong>Boyer</strong> — sección sobre numeración mesoamericana. Breve pero preciso. <a href="https://archive.org/details/boyer-carl-historia-de-la-matematica" target="_blank">↗ Archive.org</a></div>
+      <div class="fuente-item"><strong>León-Portilla, M.</strong> (1968). <em>Tiempo y realidad en el pensamiento maya</em>. México: UNAM. Autorizado para este TFI — para el significado cosmológico de los calendarios. Consultar al docente para acceso.</div>
+      <div class="fuente-item"><strong>MacTutor</strong> — buscar "Aztec mathematics", "Mayan calendar" (comparten estructura de sistema de días). <a href="https://mathshistory.st-andrews.ac.uk" target="_blank">↗ mathshistory.st-andrews.ac.uk</a></div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--amb)"><h3>Cómo verificar la información</h3></div>
+    <div class="bloque-body">
+      <div class="verif"><strong>El mcm(260, 365) = 18.980:</strong> calculable y verificable con aritmética básica. Es el dato matemático más sólido del nodo — no depende de ninguna fuente para su validez. Hacé el cálculo explícito en el TFI.</div>
+      <div class="verif"><strong>La Piedra del Sol no es un calendario:</strong> este error está muy extendido en divulgación. Antes de hacer cualquier afirmación sobre ella, verificar en al menos dos fuentes académicas qué es exactamente lo que codifica. Si no encontrás certeza, no la uses como ejemplo central.</div>
+      <div class="verif"><strong>Los 260 días del Tonalpohualli:</strong> su origen exacto es debatido entre especialistas (equivalencia con período de gestación humana, período de visibilidad de Venus, ciclo agrícola en latitudes mesoamericanas). No adoptar ninguna explicación sin citar la fuente. Es honesto decir que el origen es incierto.</div>
+      <div class="verif"><strong>Afirmaciones sobre "precisión astronómica":</strong> toda afirmación cuantitativa (error de N segundos por año, etc.) necesita fuente. No generalizar sin respaldo.</div>
+    </div>
+  </div>
+
+  <div class="bloque">
+    <div class="bloque-head" style="background:var(--az)"><h3>Propuesta para la exposición</h3></div>
+    <div class="bloque-body">
+      <div class="expo-box" style="background:linear-gradient(135deg,#7B5A00,#B8860B)">"Tengo dos ciclos: uno de 260 días y otro de 365. ¿Cuánto tiempo tiene que pasar para que ambos vuelvan a comenzar al mismo tiempo?"</div>
+      <p style="margin-top:12px;font-size:13.5px">Plantear el problema sin contexto cultural. Dejar que el panel calcule. La respuesta (18.980 días = 52 años) era el centro de la vida ceremonial mexica. Luego revelar el contexto. La pregunta que sigue: "¿Cambia algo en la operación matemática saber que era sagrada?"</p>
+      <p style="font-size:13px;color:var(--txt);margin-top:8px">La pregunta de cierre para el panel: "¿El mcm que estudian en la escuela y el mcm que sostenía el calendario mexica son el mismo concepto matemático?" No hay respuesta correcta — eso es el argumento.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pane-'+id).classList.add('on');
+  document.getElementById('btn-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
