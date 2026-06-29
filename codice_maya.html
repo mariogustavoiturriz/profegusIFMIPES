@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Códice Maya Digital</title>
+<style>
+:root {
+  --amate: #C9A87B;
+  --amate-cl: #EDD9B0;
+  --amate-os: #9B7540;
+  --rojo: #B52828;
+  --negro: #1A0800;
+  --ocre: #8B6618;
+  --azul: #1A4E80;
+  --verde: #2A6535;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Georgia, serif; background: transparent; }
+
+.codice {
+  background: var(--amate);
+  border: 4px solid var(--negro);
+  position: relative;
+  overflow: hidden;
+}
+.codice::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 6px);
+  pointer-events:none;
+  z-index:0;
+}
+.c-inner { position:relative; z-index:1; }
+
+.franja {
+  height:10px;
+  background:repeating-linear-gradient(90deg,var(--rojo) 0,var(--rojo) 10px,var(--negro) 10px,var(--negro) 20px);
+}
+.cabecera {
+  background:var(--negro);
+  padding:18px 20px 14px;
+  text-align:center;
+  border-bottom:3px solid var(--rojo);
+}
+.titulo { color:var(--amate-cl); font-size:1.6em; letter-spacing:.12em; font-variant:small-caps; text-shadow:1px 1px 0 var(--rojo); }
+.subtitulo { color:var(--amate-os); font-size:.72em; letter-spacing:.25em; margin-top:4px; }
+
+.tabs { display:flex; background:var(--negro); border-bottom:3px solid var(--rojo); }
+.tab {
+  flex:1; padding:10px 4px; text-align:center; cursor:pointer;
+  color:var(--amate-os); font-size:.75em; letter-spacing:.08em;
+  border-right:1px solid #2A1500; font-variant:small-caps; transition:background .2s;
+}
+.tab:last-child { border-right:none; }
+.tab:hover { background:#2A1500; }
+.tab.on { background:var(--rojo); color:var(--amate-cl); font-weight:bold; }
+
+.sec { display:none; padding:20px; }
+.sec.on { display:block; }
+
+.panel {
+  border:2px solid var(--negro);
+  background:var(--amate-cl);
+  margin-bottom:18px;
+  position:relative;
+  padding:24px 16px 16px;
+}
+.panel-lbl {
+  position:absolute; top:-11px; left:16px;
+  background:var(--rojo); color:var(--amate-cl);
+  padding:1px 10px; font-size:.68em; letter-spacing:.18em; font-variant:small-caps;
+}
+
+/* SECCIÓN 1: FECHA */
+.fecha-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px; }
+.f-bloque { text-align:center; padding:12px 8px; border:1.5px solid var(--ocre); background:var(--amate); }
+.f-lbl { font-size:.62em; color:var(--rojo); letter-spacing:.18em; font-variant:small-caps; margin-bottom:6px; }
+.f-val { font-size:1.2em; font-weight:bold; color:var(--negro); line-height:1.3; }
+.f-sub { font-size:.62em; color:var(--ocre); margin-top:4px; font-style:italic; }
+
+.lc-visual { display:flex; justify-content:center; align-items:flex-start; gap:4px; flex-wrap:wrap; padding:10px 0; }
+.lc-u { text-align:center; }
+.lc-n { width:52px; height:52px; background:var(--negro); color:var(--amate-cl); display:flex; align-items:center; justify-content:center; font-size:1.4em; font-weight:bold; border:2px solid var(--ocre); }
+.lc-nm { font-size:.55em; color:var(--ocre); margin-top:3px; letter-spacing:.06em; }
+.lc-pt { font-size:1.8em; color:var(--rojo); margin-top:12px; }
+
+.infobox { background:var(--negro); color:var(--amate-cl); padding:14px 16px; border-left:4px solid var(--rojo); font-size:.8em; line-height:1.65; margin-bottom:0; }
+.infobox b { color:var(--amate-os); }
+
+/* SECCIÓN 2: NUMERACIÓN */
+.num-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+.num-inp {
+  flex:1; min-width:160px; padding:10px 14px; border:2.5px solid var(--negro);
+  background:var(--amate); font-size:1.3em; font-family:Georgia,serif; color:var(--negro);
+  text-align:center;
+}
+.btn-conv {
+  padding:10px 22px; background:var(--rojo); color:var(--amate-cl);
+  border:2px solid var(--negro); font-size:.9em; cursor:pointer; font-variant:small-caps;
+  letter-spacing:.1em;
+}
+.btn-conv:hover { background:#8B1C1C; }
+.num-res { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; padding:8px 0 4px; min-height:90px; align-items:flex-end; }
+.nivel-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.nivel-lbl { font-size:.6em; color:var(--ocre); font-variant:small-caps; text-align:center; max-width:70px; }
+.gn { width:66px; min-height:66px; border:1.5px solid var(--ocre); background:var(--amate); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 4px; gap:4px; }
+.fila-g { display:flex; gap:4px; align-items:center; justify-content:center; }
+.pto { width:11px; height:11px; border-radius:50%; background:var(--negro); }
+.bar { width:48px; height:7px; background:var(--negro); }
+.sep-n { font-size:1.4em; color:var(--ocre); align-self:center; margin-bottom:22px; }
+
+/* SECCIÓN 3: TZOLK'IN */
+.tz-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.tz-card {
+  border:1.5px solid var(--ocre); background:var(--amate);
+  text-align:center; cursor:pointer; transition:transform .15s,border-color .15s;
+  position:relative;
+}
+.tz-card:hover { transform:scale(1.04); border-color:var(--rojo); z-index:2; }
+.tz-card.hoy { border:2.5px solid var(--rojo); background:#F2E4C0; }
+.tz-card.hoy::after { content:'HOY'; position:absolute; top:4px; right:4px; font-size:.48em; color:var(--rojo); font-weight:bold; letter-spacing:.08em; }
+.tz-num { font-size:.6em; color:var(--rojo); padding:3px 0 0; font-weight:bold; min-height:16px; }
+.tz-svg { padding:3px; }
+.tz-svg svg { width:100%; max-width:58px; max-height:58px; display:block; margin:0 auto; }
+.tz-nom { font-size:.68em; color:var(--negro); font-weight:bold; font-variant:small-caps; padding:2px 0; }
+.tz-sig { font-size:.55em; color:var(--ocre); padding:0 4px 5px; font-style:italic; }
+
+/* SECCIÓN 4: NACIMIENTO */
+.birth-row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+.birth-inp {
+  flex:1; min-width:180px; padding:10px; border:2.5px solid var(--negro);
+  background:var(--amate); font-size:1em; font-family:Georgia,serif; color:var(--negro);
+}
+.birth-res { font-size:.88em; line-height:1.75; color:var(--negro); }
+.birth-res strong { color:var(--rojo); }
+.birth-grid { display:grid; grid-template-columns:70px 1fr; gap:16px; align-items:start; }
+.birth-grid svg { width:70px; height:70px; }
+
+.pie { background:var(--negro); padding:8px; text-align:center; color:var(--amate-os); font-size:.62em; letter-spacing:.22em; border-top:3px solid var(--rojo); }
+
+@media(max-width:520px){
+  .fecha-grid{grid-template-columns:1fr;}
+  .tz-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+<h2 class="sr-only" style="position:absolute;left:-9999px">Simulador del Códice Maya: fecha actual, numeración vigesimal y calendario Tzolk'in</h2>
+
+<div class="codice">
+<div class="franja"></div>
+<div class="c-inner">
+
+<div class="cabecera">
+  <div class="titulo">&#x1F4DC; Códice Maya Digital</div>
+  <div class="subtitulo">Sistema Calendárico · Numeración Vigesimal · Tzolk'in</div>
+</div>
+
+<div class="tabs">
+  <div class="tab on" onclick="tab(0)">Fecha Maya</div>
+  <div class="tab" onclick="tab(1)">Numeración</div>
+  <div class="tab" onclick="tab(2)">Tzolk'in</div>
+  <div class="tab" onclick="tab(3)">Tu Fecha</div>
+</div>
+
+<!-- SEC 0: FECHA -->
+<div class="sec on" id="s0">
+  <div class="panel">
+    <span class="panel-lbl">Hoy en el Calendario Maya</span>
+    <div class="fecha-grid">
+      <div class="f-bloque">
+        <div class="f-lbl">Long Count</div>
+        <div class="f-val" id="lc-txt">—</div>
+        <div class="f-sub">Cuenta Larga histórica</div>
+      </div>
+      <div class="f-bloque">
+        <div class="f-lbl">Tzolk'in</div>
+        <div class="f-val" id="tz-txt">—</div>
+        <div class="f-sub">Ciclo sagrado de 260 días</div>
+      </div>
+      <div class="f-bloque">
+        <div class="f-lbl">Haab</div>
+        <div class="f-val" id="hb-txt">—</div>
+        <div class="f-sub">Año solar de 365 días</div>
+      </div>
+    </div>
+    <div class="lc-visual" id="lc-vis"></div>
+  </div>
+  <div class="infobox">
+    <b>Sobre el sistema:</b> El calendario maya entrelaza tres ciclos: el <b>Long Count</b> (registro histórico desde el 11 ago 3114 a.C.), el <b>Tzolk'in</b> (260 días, sagrado y adivinatorio) y el <b>Haab</b> (365 días, solar). Juntos forman la "Rueda Calendárica" de 52 años. Correlación GMT utilizada.
+  </div>
+</div>
+
+<!-- SEC 1: NUMERACIÓN -->
+<div class="sec" id="s1">
+  <div class="panel">
+    <span class="panel-lbl">Sistema Vigesimal (Base 20)</span>
+    <div class="num-row">
+      <input type="number" class="num-inp" id="nd" placeholder="Número decimal" min="0" max="7999999" value="2026" onkeydown="if(event.key==='Enter')conv()">
+      <button class="btn-conv" onclick="conv()">Convertir &#x2192;</button>
+    </div>
+    <div class="num-res" id="nr"></div>
+  </div>
+  <div class="infobox">
+    <b>Clave:</b> Punto (&#x25CF;) = 1 &nbsp;|&nbsp; Barra (&#x2014;) = 5 &nbsp;|&nbsp; Concha = 0 &nbsp;&nbsp;Los números se leen de <b>arriba hacia abajo</b>, con posiciones crecientes. El cero maya fue uno de los primeros de la historia de la humanidad.
+  </div>
+</div>
+
+<!-- SEC 2: TZOLK'IN -->
+<div class="sec" id="s2">
+  <div class="panel">
+    <span class="panel-lbl">Los 20 Días Sagrados</span>
+    <div class="tz-grid" id="tzg"></div>
+  </div>
+  <div class="infobox">
+    <b>Tzolk'in:</b> Combina 20 signos con los números 1–13 (20×13=260 días únicos). Se usaba para adivinación, rituales y nombres ceremoniales. El glifo de hoy está resaltado en rojo.
+  </div>
+</div>
+
+<!-- SEC 3: NACIMIENTO -->
+<div class="sec" id="s3">
+  <div class="panel">
+    <span class="panel-lbl">Tu Signo Tzolk'in</span>
+    <div class="birth-row">
+      <input type="date" class="birth-inp" id="bn" value="1990-01-01">
+      <button class="btn-conv" onclick="calcNac()">Calcular &#x2192;</button>
+    </div>
+    <div class="birth-res" id="br">Ingresá tu fecha de nacimiento para descubrir tu signo maya.</div>
+  </div>
+  <div class="infobox">
+    <b>Signo maya:</b> En la tradición maya, el día de nacimiento en el Tzolk'in determina tu personalidad y destino. Los <em>ajk'ij</em> (sacerdotes del tiempo) interpretaban estos signos para decisiones importantes de la vida.
+  </div>
+</div>
+
+</div><!-- c-inner -->
+<div class="franja"></div>
+<div class="pie">CÓDICE DIGITAL · CORRELACIÓN GMT · SISTEMA CALENDÁRICO MAYA</div>
+</div>
+
+<script>
+var DIAS=[
+  {n:"Imix",    s:"Caimán / Agua",     c:"#1B4B8A"},
+  {n:"Ik'",     s:"Viento / Aliento",   c:"#357AAD"},
+  {n:"Ak'bal",  s:"Noche / Oscuridad",  c:"#2A1A5E"},
+  {n:"K'an",    s:"Maíz / Semilla",     c:"#B08010"},
+  {n:"Chikchan",s:"Serpiente Celeste",  c:"#2A7A3A"},
+  {n:"Kimi",    s:"Muerte / Renacimiento",c:"#666666"},
+  {n:"Manik'",  s:"Venado / Mano",      c:"#3A7228"},
+  {n:"Lamat",   s:"Venus / Conejo",     c:"#C09020"},
+  {n:"Muluk",   s:"Agua / Jade",        c:"#1876A8"},
+  {n:"Ok",      s:"Perro / Guía",       c:"#7A3A14"},
+  {n:"Chuwen",  s:"Mono / Artesano",    c:"#C06018"},
+  {n:"Eb'",     s:"Camino / Diente",    c:"#7A9030"},
+  {n:"Ben",     s:"Caña / Crecimiento", c:"#307020"},
+  {n:"Ix",      s:"Jaguar / Misterio",  c:"#5A2A80"},
+  {n:"Men",     s:"Águila / Sabiduría", c:"#1A5090"},
+  {n:"K'ib'",   s:"Buitre / Karma",     c:"#6A6848"},
+  {n:"Kab'an",  s:"Tierra / Pensamiento",c:"#7A5018"},
+  {n:"Etz'nab'",s:"Pedernal / Espejo",  c:"#8A8AA8"},
+  {n:"Kawak",   s:"Tormenta / Lluvia",  c:"#2A4A90"},
+  {n:"Ajaw",    s:"Sol / Señor",        c:"#B07018"}
+];
+
+var MESES=["Pop","Wo","Sip","Sotz'","Sek","Xul","Yaxk'in","Mol","Ch'en","Yax","Sak","Keh","Mak","K'ank'in","Muwan","Pax","K'ayab","Kumk'u","Wayeb"];
+
+var ATTR=[
+  "Creador de mundos, protector de lo primordial, muy intuitivo.",
+  "Comunicador nato, libre, mediador entre planos de existencia.",
+  "Visionario, misterioso, guardián de secretos y del saber antiguo.",
+  "Generoso, abundante, profundamente conectado a la tierra.",
+  "Poderoso y sagrado, mensajero entre el cielo y la humanidad.",
+  "Sabio transformador que comprende los ciclos de vida y muerte.",
+  "Sanador compasivo, en armonía con la naturaleza y sus ritmos.",
+  "Brillante y afortunado, guiado por Venus a través de los ciclos.",
+  "Adaptable y emocional, fluye con los cambios como el agua.",
+  "Leal y confiable, guía protector del hogar y la comunidad.",
+  "Artístico y juguetón, tejedor del destino y artesano de ideas.",
+  "Gran viajero y servidor que abre caminos para los demás.",
+  "Líder y soporte de la comunidad, orientado al crecimiento.",
+  "Místico e intuitivo, conectado a la magia y lo invisible.",
+  "Visionario e independiente, mente elevada que ve el conjunto.",
+  "Reflexivo y justo, comprende el karma y las consecuencias.",
+  "Inteligente e innovador, piensa con profundidad terrenal.",
+  "Guerrero de la verdad, decisivo, ve la realidad sin velos.",
+  "Renovador y perseverante, fuerza transformadora de la naturaleza.",
+  "Iluminado y maestro, conectado al sol, a la luz y al poder."
+];
+
+function jdn(y,m,d){
+  var a=Math.floor((14-m)/12), yr=y+4800-a, mo=m+12*a-3;
+  return d+Math.floor((153*mo+2)/5)+365*yr+Math.floor(yr/4)-Math.floor(yr/100)+Math.floor(yr/400)-32045;
+}
+function maya(jd){
+  var GMT=584283, N=jd-GMT;
+  var bk=Math.floor(N/144000), r=N%144000;
+  var kt=Math.floor(r/7200); r%=7200;
+  var tu=Math.floor(r/360); r%=360;
+  var ui=Math.floor(r/20), ki=r%20;
+  var tzN=((N+3)%13)+1, tzD=(N+19)%20;
+  var hp=(N+348)%365;
+  return {lc:[bk,kt,tu,ui,ki],tzN,tzD,hM:hp<360?Math.floor(hp/20):18,hD:hp<360?hp%20:hp-360,N};
+}
+function hoyMaya(){
+  var t=new Date(); return maya(jdn(t.getFullYear(),t.getMonth()+1,t.getDate()));
+}
+
+function glifo(i,c){
+  var s=[ /* 0 Imix */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="35" rx="21" ry="15" fill="none" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="35" rx="11" ry="7" fill="${c}44"/><circle cx="19" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="25" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="31" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="37" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="43" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="49" cy="27" r="3" fill="${c}" opacity=".7"/><circle cx="19" cy="43" r="3" fill="${c}" opacity=".7"/><circle cx="25" cy="43" r="3" fill="${c}" opacity=".7"/><circle cx="31" cy="43" r="3" fill="${c}" opacity=".7"/><circle cx="37" cy="43" r="3" fill="${c}" opacity=".7"/><circle cx="43" cy="43" r="3" fill="${c}" opacity=".7"/><circle cx="49" cy="43" r="3" fill="${c}" opacity=".7"/><path d="M13 35 Q24 25 35 35 Q46 45 57 35" fill="none" stroke="${c}" stroke-width="2"/></svg>`,
+/* 1 Ik' */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><rect x="18" y="13" width="34" height="9" rx="2" fill="${c}"/><rect x="29" y="13" width="12" height="38" rx="2" fill="${c}"/><path d="M35 51 Q18 44 13 57" fill="none" stroke="${c}" stroke-width="2.5"/><path d="M35 51 Q52 44 57 57" fill="none" stroke="${c}" stroke-width="2.5"/><circle cx="35" cy="32" r="5" fill="${c}" opacity=".35"/></svg>`,
+/* 2 Ak'bal */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}44" stroke="${c}" stroke-width="2"/><path d="M20 36 A17 17 0 0 0 50 36 A12 12 0 0 1 20 36" fill="${c}" opacity=".85"/><circle cx="22" cy="20" r="2.5" fill="${c}"/><circle cx="47" cy="18" r="2" fill="${c}"/><circle cx="53" cy="30" r="2" fill="${c}"/><circle cx="16" cy="48" r="2.5" fill="${c}"/><circle cx="44" cy="57" r="2" fill="${c}"/><line x1="11" y1="61" x2="59" y2="61" stroke="${c}" stroke-width="3"/><line x1="11" y1="56" x2="59" y2="56" stroke="${c}" stroke-width="1.5"/></svg>`,
+/* 3 K'an */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="38" rx="13" ry="22" fill="none" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="38" rx="8" ry="16" fill="${c}44"/><ellipse cx="35" cy="20" rx="8" ry="4" fill="none" stroke="${c}" stroke-width="1"/><ellipse cx="35" cy="28" rx="8" ry="4" fill="none" stroke="${c}" stroke-width="1"/><ellipse cx="35" cy="36" rx="8" ry="4" fill="none" stroke="${c}" stroke-width="1"/><ellipse cx="35" cy="44" rx="8" ry="4" fill="none" stroke="${c}" stroke-width="1"/><ellipse cx="35" cy="52" rx="8" ry="4" fill="none" stroke="${c}" stroke-width="1"/><path d="M35 15 C32 8 28 5 35 4 C42 5 38 8 35 15" fill="${c}" opacity=".85"/></svg>`,
+/* 4 Chikchan */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M14 22 Q24 13 34 22 Q44 32 54 22" fill="none" stroke="${c}" stroke-width="3"/><path d="M14 38 Q24 29 34 38 Q44 47 54 38" fill="none" stroke="${c}" stroke-width="3"/><path d="M14 54 Q24 45 34 54 Q44 63 54 54" fill="none" stroke="${c}" stroke-width="2"/><circle cx="14" cy="19" r="5" fill="${c}"/><circle cx="16" cy="17" r="2.5" fill="white"/><path d="M9 25 L14 19 L19 25" fill="${c}"/></svg>`,
+/* 5 Kimi */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="28" rx="17" ry="19" fill="${c}44" stroke="${c}" stroke-width="2"/><circle cx="27" cy="25" r="5" fill="${c}" opacity=".9"/><circle cx="43" cy="25" r="5" fill="${c}" opacity=".9"/><circle cx="27" cy="25" r="2.5" fill="white"/><circle cx="43" cy="25" r="2.5" fill="white"/><path d="M24 40 L27 47 L30 40 L33 47 L36 40 L39 47 L42 40 L45 47" fill="none" stroke="${c}" stroke-width="2.5"/><path d="M24 40 L45 40" stroke="${c}" stroke-width="2"/></svg>`,
+/* 6 Manik' */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M24 56 L24 30 Q24 21 32 21 Q40 21 40 30 L40 38" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M32 29 L32 21 Q32 14 40 14 Q48 14 48 21 L48 38" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M40 38 L40 24 Q40 17 47 17 Q54 17 54 24 L54 44" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 56 Q19 59 17 53 Q15 46 21 44 L24 46" stroke="${c}" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M24 56 L54 56 Q58 56 58 51 L58 44 L54 44" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+/* 7 Lamat */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><circle cx="35" cy="35" r="24" fill="none" stroke="${c}" stroke-width="1.5" opacity=".5"/><polygon points="35,11 39,31 59,35 39,39 35,59 31,39 11,35 31,31" fill="${c}" opacity=".72"/><circle cx="35" cy="35" r="6" fill="${c}"/><circle cx="35" cy="35" r="3" fill="white"/></svg>`,
+/* 8 Muluk */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M35 13 Q19 30 19 44 A16 16 0 0 0 51 44 Q51 30 35 13" fill="${c}" opacity=".62" stroke="${c}" stroke-width="2"/><path d="M35 21 Q22 35 22 44 A13 13 0 0 0 48 44 Q48 35 35 21" fill="none" stroke="${c}" stroke-width="1" opacity=".5"/><ellipse cx="35" cy="44" rx="8" ry="5" fill="${c}" opacity=".4"/><path d="M18 57 Q22 53 26 57" fill="none" stroke="${c}" stroke-width="2"/><path d="M30 57 Q34 53 38 57" fill="none" stroke="${c}" stroke-width="2"/><path d="M42 57 Q46 53 50 57" fill="none" stroke="${c}" stroke-width="2"/></svg>`,
+/* 9 Ok */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="33" rx="20" ry="16" fill="${c}44" stroke="${c}" stroke-width="2"/><ellipse cx="22" cy="22" rx="6" ry="10" fill="${c}" opacity=".7" transform="rotate(-15 22 22)"/><ellipse cx="48" cy="22" rx="6" ry="10" fill="${c}" opacity=".7" transform="rotate(15 48 22)"/><circle cx="29" cy="31" r="4" fill="${c}" opacity=".9"/><circle cx="41" cy="31" r="4" fill="${c}" opacity=".9"/><circle cx="29" cy="31" r="2" fill="white"/><circle cx="41" cy="31" r="2" fill="white"/><path d="M27 41 Q35 47 43 41" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+/* 10 Chuwen */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><circle cx="35" cy="28" r="14" fill="${c}44" stroke="${c}" stroke-width="2"/><ellipse cx="24" cy="22" rx="5" ry="6" fill="${c}" opacity=".7"/><ellipse cx="46" cy="22" rx="5" ry="6" fill="${c}" opacity=".7"/><circle cx="30" cy="26" r="3.5" fill="${c}"/><circle cx="40" cy="26" r="3.5" fill="${c}"/><circle cx="30" cy="26" r="1.5" fill="white"/><circle cx="40" cy="26" r="1.5" fill="white"/><path d="M28 35 Q35 40 42 35" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round"/><path d="M35 42 Q20 50 15 62" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><path d="M35 42 Q50 50 55 62" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+/* 11 Eb' */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M11 20 L11 50 L59 50 L59 20" fill="none" stroke="${c}" stroke-width="2.5"/><path d="M11 35 L21 35 L21 20 L31 20 L31 35 L41 35 L41 20 L51 20 L51 35 L59 35" fill="${c}55" stroke="${c}" stroke-width="2"/><path d="M11 50 L11 58 L59 58 L59 50" fill="${c}" opacity=".6"/><line x1="11" y1="20" x2="59" y2="20" stroke="${c}" stroke-width="2"/></svg>`,
+/* 12 Ben */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><line x1="13" y1="13" x2="13" y2="57" stroke="${c}" stroke-width="2" opacity=".55"/><line x1="22" y1="13" x2="22" y2="57" stroke="${c}" stroke-width="2" opacity=".55"/><line x1="35" y1="13" x2="35" y2="57" stroke="${c}" stroke-width="3.5"/><line x1="48" y1="13" x2="48" y2="57" stroke="${c}" stroke-width="2" opacity=".55"/><line x1="57" y1="13" x2="57" y2="57" stroke="${c}" stroke-width="2" opacity=".55"/><line x1="7" y1="23" x2="19" y2="23" stroke="${c}" stroke-width="1.5"/><line x1="7" y1="35" x2="19" y2="35" stroke="${c}" stroke-width="1.5"/><line x1="7" y1="47" x2="19" y2="47" stroke="${c}" stroke-width="1.5"/><line x1="29" y1="23" x2="41" y2="23" stroke="${c}" stroke-width="2"/><line x1="29" y1="35" x2="41" y2="35" stroke="${c}" stroke-width="2"/><line x1="29" y1="47" x2="41" y2="47" stroke="${c}" stroke-width="2"/><line x1="51" y1="23" x2="63" y2="23" stroke="${c}" stroke-width="1.5"/><line x1="51" y1="35" x2="63" y2="35" stroke="${c}" stroke-width="1.5"/><line x1="51" y1="47" x2="63" y2="47" stroke="${c}" stroke-width="1.5"/></svg>`,
+/* 13 Ix */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="${c}33" stroke="${c}" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="${c}" opacity=".7"/><circle cx="24" cy="24" r="2.5" fill="white" opacity=".6"/><circle cx="46" cy="24" r="5" fill="${c}" opacity=".7"/><circle cx="46" cy="24" r="2.5" fill="white" opacity=".6"/><circle cx="19" cy="42" r="4" fill="${c}" opacity=".7"/><circle cx="35" cy="51" r="5" fill="${c}" opacity=".7"/><circle cx="51" cy="42" r="4" fill="${c}" opacity=".7"/><circle cx="35" cy="27" r="4" fill="${c}" opacity=".5"/><circle cx="19" cy="42" r="2" fill="white" opacity=".5"/><circle cx="51" cy="42" r="2" fill="white" opacity=".5"/></svg>`,
+/* 14 Men */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M35 10 L52 35 L35 30 L18 35 Z" fill="${c}" opacity=".85"/><path d="M18 35 L8 53 L24 44 L35 58 L46 44 L62 53 L52 35 L35 30 Z" fill="${c}" opacity=".65"/><circle cx="35" cy="20" r="7" fill="${c}"/><path d="M33 24 L35 30 L37 24 L35 20 Z" fill="white" opacity=".8"/><circle cx="33" cy="18" r="2" fill="white"/><line x1="14" y1="63" x2="20" y2="53" stroke="${c}" stroke-width="2"/><line x1="25" y1="62" x2="29" y2="52" stroke="${c}" stroke-width="2"/><line x1="35" y1="63" x2="35" y2="53" stroke="${c}" stroke-width="2"/><line x1="45" y1="62" x2="41" y2="52" stroke="${c}" stroke-width="2"/><line x1="56" y1="63" x2="50" y2="53" stroke="${c}" stroke-width="2"/></svg>`,
+/* 15 K'ib' */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><ellipse cx="35" cy="28" rx="18" ry="16" fill="${c}55" stroke="${c}" stroke-width="2"/><circle cx="27" cy="25" r="5" fill="${c}"/><circle cx="43" cy="25" r="5" fill="${c}"/><circle cx="27" cy="25" r="2" fill="white"/><circle cx="43" cy="25" r="2" fill="white"/><path d="M29 36 Q35 40 41 36 Q38 32 35 34 Q32 32 29 36" fill="${c}"/><path d="M13 47 Q20 37 30 41 Q35 45 40 41 Q50 37 57 47" fill="${c}" opacity=".5" stroke="${c}" stroke-width="1.5"/><path d="M8 58 Q18 47 24 54 Q30 62 35 54 Q40 47 46 54 Q52 62 62 58" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5"/></svg>`,
+/* 16 Kab'an */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><path d="M35 35 Q35 20 20 20 Q10 20 10 32 Q10 50 32 52 Q55 54 57 36 Q59 18 42 14 Q26 12 22 27" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><circle cx="35" cy="35" r="5" fill="${c}"/><line x1="10" y1="63" x2="60" y2="63" stroke="${c}" stroke-width="3"/><path d="M10 63 Q20 57 30 61 Q40 65 50 61 Q55 59 60 63" fill="none" stroke="${c}" stroke-width="1.5"/></svg>`,
+/* 17 Etz'nab' */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><polygon points="35,10 55,30 55,50 35,62 15,50 15,30" fill="${c}44" stroke="${c}" stroke-width="2"/><polygon points="35,16 50,32 50,48 35,56 20,48 20,32" fill="none" stroke="${c}" stroke-width="1" opacity=".6"/><line x1="35" y1="10" x2="35" y2="62" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="15" y1="30" x2="55" y2="50" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="55" y1="30" x2="15" y2="50" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="35" cy="36" r="5" fill="${c}" opacity=".7"/></svg>`,
+/* 18 Kawak */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><circle cx="35" cy="30" r="18" fill="${c}33" stroke="${c}" stroke-width="2"/><circle cx="28" cy="26" r="5" fill="${c}" opacity=".7"/><circle cx="42" cy="26" r="5" fill="${c}" opacity=".7"/><circle cx="35" cy="38" r="5" fill="${c}" opacity=".7"/><circle cx="28" cy="26" r="2" fill="white" opacity=".8"/><circle cx="42" cy="26" r="2" fill="white" opacity=".8"/><circle cx="35" cy="38" r="2" fill="white" opacity=".8"/><line x1="13" y1="53" x2="10" y2="65" stroke="${c}" stroke-width="2" stroke-linecap="round"/><line x1="24" y1="53" x2="21" y2="65" stroke="${c}" stroke-width="2" stroke-linecap="round"/><line x1="35" y1="53" x2="32" y2="65" stroke="${c}" stroke-width="2" stroke-linecap="round"/><line x1="46" y1="53" x2="43" y2="65" stroke="${c}" stroke-width="2" stroke-linecap="round"/><line x1="57" y1="53" x2="54" y2="65" stroke="${c}" stroke-width="2" stroke-linecap="round"/></svg>`,
+/* 19 Ajaw */
+`<svg viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="62" height="62" rx="4" fill="${c}22" stroke="${c}" stroke-width="2"/><circle cx="35" cy="35" r="22" fill="${c}44" stroke="${c}" stroke-width="2.5"/><circle cx="35" cy="35" r="14" fill="${c}33" stroke="${c}" stroke-width="1.5"/><line x1="35" y1="13" x2="35" y2="6" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="35" y1="57" x2="35" y2="64" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="13" y1="35" x2="6" y2="35" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="57" y1="35" x2="64" y2="35" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="20" x2="15" y2="15" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="20" x2="55" y2="15" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="50" x2="15" y2="55" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="50" x2="55" y2="55" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/><circle cx="29" cy="31" r="4" fill="${c}" opacity=".9"/><circle cx="41" cy="31" r="4" fill="${c}" opacity=".9"/><circle cx="29" cy="31" r="2" fill="white" opacity=".7"/><circle cx="41" cy="31" r="2" fill="white" opacity=".7"/><path d="M27 42 Q35 48 43 42" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round"/></svg>`
+  ];
+  return s[i]||s[0];
+}
+
+function tab(n){
+  document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('on',i===n);});
+  document.querySelectorAll('.sec').forEach(function(s,i){s.classList.toggle('on',i===n);});
+}
+
+function renderGN(v){
+  var d=document.createElement('div'); d.className='gn';
+  if(v===0){
+    d.innerHTML='<svg viewBox="0 0 55 32" xmlns="http://www.w3.org/2000/svg" style="width:50px;height:28px"><ellipse cx="27" cy="16" rx="24" ry="13" fill="#1A0800" opacity=".75"/><ellipse cx="27" cy="16" rx="17" ry="9" fill="#C9A87B"/><path d="M9 11 Q27 5 45 11 Q48 16 45 21 Q27 27 9 21 Q6 16 9 11" fill="none" stroke="#1A0800" stroke-width="1.5"/><path d="M14 13 Q27 8 40 13" fill="none" stroke="#1A0800" stroke-width="1"/></svg>';
+    return d;
+  }
+  var b=Math.floor(v/5), p=v%5;
+  if(p>0){var f=document.createElement('div');f.className='fila-g';for(var i=0;i<p;i++){var pt=document.createElement('div');pt.className='pto';f.appendChild(pt);}d.appendChild(f);}
+  for(var j=0;j<b;j++){var br=document.createElement('div');br.className='bar';d.appendChild(br);}
+  return d;
+}
+
+function conv(){
+  var raw=parseInt(document.getElementById('nd').value);
+  var c=document.getElementById('nr');
+  c.innerHTML='';
+  if(isNaN(raw)||raw<0||raw>7999999){c.innerHTML='<span style="color:var(--rojo);padding:10px">Número entre 0 y 7.999.999</span>';return;}
+  var nms=['Kin','Uinal','Tun','Katún','Baktún','Pictún'];
+  var nivs=[];
+  if(raw===0){nivs.push({v:0,n:'Kin'});}
+  else{var x=raw,ni=0;while(x>0){nivs.unshift({v:x%20,n:nms[ni]||'Nivel '+ni});x=Math.floor(x/20);ni++;}}
+  nivs.forEach(function(nv,i){
+    var w=document.createElement('div');w.className='nivel-wrap';
+    w.appendChild(renderGN(nv.v));
+    var l=document.createElement('div');l.className='nivel-lbl';l.textContent=nv.v+' · '+nv.n;w.appendChild(l);
+    c.appendChild(w);
+    if(i<nivs.length-1){var sep=document.createElement('div');sep.className='sep-n';sep.textContent='·';c.appendChild(sep);}
+  });
+}
+
+function buildTzolkin(){
+  var g=document.getElementById('tzg'); g.innerHTML='';
+  var hoy=hoyMaya();
+  DIAS.forEach(function(d,i){
+    var cd=document.createElement('div');
+    cd.className='tz-card'+(i===hoy.tzD?' hoy':'');
+    var num=i===hoy.tzD?hoy.tzN:'';
+    cd.innerHTML='<div class="tz-num">'+(num||'&nbsp;')+'</div><div class="tz-svg">'+glifo(i,d.c)+'</div><div class="tz-nom">'+d.n+'</div><div class="tz-sig">'+d.s+'</div>';
+    g.appendChild(cd);
+  });
+}
+
+function calcNac(){
+  var v=document.getElementById('bn').value;
+  if(!v)return;
+  var p=v.split('-').map(Number);
+  var m=maya(jdn(p[0],p[1],p[2]));
+  var d=DIAS[m.tzD];
+  document.getElementById('br').innerHTML='<div class="birth-grid"><div>'+glifo(m.tzD,d.c)+'</div><div><div style="font-size:1.3em;font-weight:bold;color:var(--rojo);margin-bottom:6px">'+m.tzN+' '+d.n+'</div><div style="color:var(--ocre);font-style:italic;margin-bottom:6px">'+d.s+'</div><div style="font-size:.82em;margin-bottom:8px">'+ATTR[m.tzD]+'</div><div style="font-size:.75em;color:var(--ocre);line-height:1.7"><strong>Long Count:</strong> '+m.lc.join('.')+'<br><strong>Haab:</strong> '+m.hD+' '+MESES[m.hM]+'<br><strong>Días desde el inicio:</strong> '+m.N.toLocaleString('es-AR')+'</div></div></div>';
+}
+
+function init(){
+  var hoy=hoyMaya();
+  var lnms=['Baktún','Katún','Tún','Uinal','Kin'];
+  document.getElementById('lc-txt').textContent=hoy.lc.join('.');
+  document.getElementById('tz-txt').textContent=hoy.tzN+' '+DIAS[hoy.tzD].n;
+  document.getElementById('hb-txt').textContent=hoy.hD+' '+MESES[hoy.hM];
+  var vis=document.getElementById('lc-vis');
+  hoy.lc.forEach(function(n,i){
+    if(i>0){var pt=document.createElement('div');pt.className='lc-pt';pt.textContent='.';vis.appendChild(pt);}
+    var u=document.createElement('div');u.className='lc-u';
+    u.innerHTML='<div class="lc-n">'+n+'</div><div class="lc-nm">'+lnms[i]+'</div>';
+    vis.appendChild(u);
+  });
+  buildTzolkin();
+  conv();
+}
+window.addEventListener('load',init);
+</script>
+</body>
+</html>
