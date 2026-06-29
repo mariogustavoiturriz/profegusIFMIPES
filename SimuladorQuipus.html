@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Quipus Incas · IPESfa 2026</title>
+<style>
+/* ─── TOKENS ────────────────────────────────────── */
+:root {
+  --ink:     #1A0800;
+  --paper:   #EDE0C4;
+  --paper2:  #F5EDD5;
+  --rope:    #C8941A;
+  --rope-dk: #7A5208;
+  --qa:      #7B1C00;
+  --qa-lt:   #FFE8D8;
+  --gold:    #D4A017;
+  --gold-lt: #FFF3CC;
+  --sage:    #2C2A1E;
+  --sage-lt: #3A3828;
+  --zone0:   #1A6B3A;   /* Unidades — verde */
+  --zone1:   #C8A000;   /* Decenas  — dorado */
+  --zone2:   #C85C00;   /* Centenas — naranja */
+  --zone3:   #8B0000;   /* Millares — rojo */
+  --bd:      #C5AD8A;
+  --txt:     #3A2000;
+  --mono:    'Courier New', monospace;
+}
+
+/* ─── RESET ─────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--sage);color:var(--ink);min-height:100vh;overflow:hidden}
+
+/* ─── SHELL ─────────────────────────────────────── */
+.shell{display:grid;grid-template-rows:52px 1fr;height:100vh}
+
+/* ─── HEADER ─────────────────────────────────────── */
+.hdr{background:var(--qa);display:flex;align-items:center;gap:14px;padding:0 20px;border-bottom:3px solid var(--gold)}
+.hdr-back{background:rgba(255,255,255,.12);color:#fff;text-decoration:none;padding:4px 12px;border-radius:5px;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.25)}
+.hdr h1{font-size:16px;font-weight:700;color:#fff;flex:1}
+.hdr small{font-size:11px;color:rgba(255,255,255,.55)}
+
+/* ─── MAIN LAYOUT ───────────────────────────────── */
+.main{display:grid;grid-template-columns:230px 1fr 190px;height:calc(100vh - 52px);overflow:hidden}
+
+/* ─── PANELS ─────────────────────────────────────── */
+.panel{background:var(--paper2);overflow-y:auto;display:flex;flex-direction:column}
+.panel-l{border-right:2px solid var(--bd)}
+.panel-r{border-left:2px solid var(--bd)}
+.psec{padding:14px;border-bottom:1px solid var(--bd)}
+.psec h3{font-size:10px;font-weight:800;color:var(--qa);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px}
+
+/* ─── FORMS ──────────────────────────────────────── */
+.flabel{font-size:11px;font-weight:700;color:var(--txt);display:block;margin-bottom:3px}
+input[type="number"],input[type="text"],select{
+  width:100%;padding:7px 10px;border:1.5px solid var(--bd);border-radius:6px;
+  font-size:13px;background:#fff;color:var(--txt);margin-bottom:10px;outline:none}
+input:focus,select:focus{border-color:var(--qa)}
+.btn{width:100%;padding:8px;border:none;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:700;transition:all .15s}
+.btn-add{background:var(--qa);color:#fff;margin-bottom:6px}
+.btn-add:hover{background:#9B2200}
+.btn-sm{background:var(--paper);color:var(--txt);border:1.5px solid var(--bd);font-size:11px;padding:5px;margin-bottom:5px}
+.btn-sm:hover{background:var(--bd)}
+.btn-danger{background:none;border:none;color:#C0392B;font-size:14px;cursor:pointer;padding:0 4px;line-height:1}
+.btn-danger:hover{color:#E74C3C}
+
+/* ─── PALETA DE COLORES ─────────────────────────── */
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:8px}
+.swatch{width:100%;aspect-ratio:1;border-radius:5px;cursor:pointer;border:3px solid transparent;transition:all .12s}
+.swatch.sel{border-color:var(--qa);transform:scale(1.1)}
+.swatch:hover:not(.sel){border-color:var(--rope);transform:scale(1.05)}
+.sel-name{font-size:10px;color:var(--rope-dk);text-align:center;margin-bottom:8px;font-weight:600}
+
+/* ─── LISTA DE CUERDAS ──────────────────────────── */
+.cord-item{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid #E8D5B5;cursor:pointer;transition:background .1s}
+.cord-item:hover{background:rgba(200,148,26,.08)}
+.cord-item.sel-cord{background:var(--gold-lt)}
+.cord-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(0,0,0,.2)}
+.cord-info{flex:1;min-width:0}
+.cord-nm{font-size:12px;font-weight:700;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cord-vl{font-size:11px;color:var(--rope-dk)}
+.empty-msg{font-size:12px;color:#9A7A4A;text-align:center;padding:16px 12px;line-height:1.5}
+
+/* ─── ÁREA DEL QUIPU ─────────────────────────────── */
+.quipu-area{background:var(--paper);overflow:auto;position:relative;display:flex;align-items:flex-start;justify-content:flex-start;padding:16px}
+#qsvg{display:block}
+
+/* ─── LEYENDA DE NUDOS ─────────────────────────── */
+.knot-leg{display:flex;flex-direction:column;gap:10px}
+.kl-item{display:flex;align-items:center;gap:8px}
+.kl-item svg{flex-shrink:0}
+.kl-text{font-size:11px;color:var(--txt);line-height:1.4}
+.kl-text strong{display:block;font-size:12px;color:var(--qa)}
+
+/* ─── TOTAL ──────────────────────────────────────── */
+.total-n{font-size:30px;font-weight:900;color:var(--qa);text-align:center;padding:8px 0}
+.total-sub{font-size:10px;color:var(--rope-dk);text-align:center;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+
+/* ─── ZONA BADGES ───────────────────────────────── */
+.zone-key{display:flex;flex-direction:column;gap:5px;padding:10px 14px}
+.zk{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--txt)}
+.zk-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ─── TOOLTIP ────────────────────────────────────── */
+#tip{position:fixed;background:#1A0800;color:#FFF3CC;padding:6px 11px;border-radius:6px;font-size:12px;pointer-events:none;z-index:999;display:none;max-width:220px;line-height:1.45;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media(max-width:900px){
+  .main{grid-template-columns:200px 1fr}
+  .panel-r{display:none}
+}
+@media(max-width:600px){
+  .main{grid-template-columns:1fr}
+  .panel-l{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header class="hdr">
+    <a href="index.html" class="hdr-back">← Índice</a>
+    <h1>Simulador de Quipus Incas <small>· Sistema posicional decimal en cuerdas y nudos</small></h1>
+  </header>
+
+  <div class="main">
+
+    <!-- ─── PANEL IZQUIERDO ─── -->
+    <aside class="panel panel-l">
+
+      <div class="psec">
+        <h3>Agregar cuerda</h3>
+        <label class="flabel">Color (código Khipu DB)</label>
+        <div class="palette" id="palette"></div>
+        <div class="sel-name" id="sel-name"></div>
+        <label class="flabel">Valor (0 – 9 999)</label>
+        <input type="number" id="inp-val" min="0" max="9999" value="0">
+        <label class="flabel">Categoría / etiqueta</label>
+        <input type="text" id="inp-lbl" placeholder="ej. Maíz, Llamas...">
+        <button class="btn btn-add" onclick="addCord()">+ Agregar cuerda</button>
+      </div>
+
+      <div class="psec" style="flex:1">
+        <h3>Cuerdas del quipu</h3>
+        <div id="cord-list"></div>
+      </div>
+
+      <div class="psec">
+        <button class="btn btn-sm" onclick="loadExample()">Cargar ejemplo histórico</button>
+        <button class="btn btn-sm" onclick="clearAll()">Limpiar todo</button>
+      </div>
+
+    </aside>
+
+    <!-- ─── ÁREA CENTRAL: EL QUIPU ─── -->
+    <main class="quipu-area" id="qa">
+      <svg id="qsvg"></svg>
+    </main>
+
+    <!-- ─── PANEL DERECHO ─── -->
+    <aside class="panel panel-r">
+
+      <div class="psec">
+        <h3>Total</h3>
+        <div class="total-sub">Suma del quipu</div>
+        <div class="total-n" id="total">0</div>
+      </div>
+
+      <div class="psec">
+        <h3>Tipos de nudos</h3>
+        <div class="knot-leg">
+          <div class="kl-item">
+            <svg width="28" height="32">
+              <ellipse cx="14" cy="9" rx="8" ry="6.5" fill="none" stroke="#6B3A2A" stroke-width="3"/>
+              <ellipse cx="14" cy="23" rx="8" ry="6.5" fill="none" stroke="#6B3A2A" stroke-width="3"/>
+            </svg>
+            <div class="kl-text"><strong>Nudo en ocho</strong>Unidades = 1. Solo en la posición de unidades.</div>
+          </div>
+          <div class="kl-item">
+            <svg width="28" height="44">
+              <rect x="8" y="3" width="12" height="38" rx="6" fill="#8B4513"/>
+              <line x1="9" y1="13" x2="19" y2="13" stroke="#5C2A00" stroke-width="1.2" opacity="0.6"/>
+              <line x1="9" y1="21" x2="19" y2="21" stroke="#5C2A00" stroke-width="1.2" opacity="0.6"/>
+              <line x1="9" y1="29" x2="19" y2="29" stroke="#5C2A00" stroke-width="1.2" opacity="0.6"/>
+              <text x="14" y="25" text-anchor="middle" font-size="9" fill="white" font-weight="800">N</text>
+            </svg>
+            <div class="kl-text"><strong>Nudo largo</strong>Unidades 2–9. El número de vueltas indica el dígito.</div>
+          </div>
+          <div class="kl-item">
+            <svg width="28" height="20">
+              <circle cx="14" cy="10" r="7" fill="#8B4513" stroke="#5C2A00" stroke-width="1.5"/>
+            </svg>
+            <div class="kl-text"><strong>Nudo suelto</strong>Decenas / Centenas / Millares. Cada nudo = 1 en esa posición.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="psec">
+        <h3>Posiciones</h3>
+        <div class="zone-key">
+          <div class="zk"><div class="zk-dot" style="background:var(--zone3)"></div>Millares (arriba)</div>
+          <div class="zk"><div class="zk-dot" style="background:var(--zone2)"></div>Centenas</div>
+          <div class="zk"><div class="zk-dot" style="background:var(--zone1)"></div>Decenas</div>
+          <div class="zk"><div class="zk-dot" style="background:var(--zone0)"></div>Unidades (abajo)</div>
+        </div>
+        <div style="font-size:11px;color:#7A5A2A;margin-top:8px;line-height:1.5">El <strong>cero</strong> se representa por la <em>ausencia de nudos</em> en esa posición.</div>
+      </div>
+
+      <div class="psec">
+        <h3>Base de datos</h3>
+        <div style="font-size:11px;color:#7A5A2A;line-height:1.5">Los colores usan los códigos del <strong>Khipu Database Project</strong> de Harvard.<br><br><a href="https://khipukamayuq.fas.harvard.edu" target="_blank" style="color:var(--qa);font-weight:700">↗ khipukamayuq.fas.harvard.edu</a></div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   PALETA — colores basados en Khipu Database (Urton)
+   ════════════════════════════════════════════════ */
+const PALETTE = [
+  { name:'Natural blanco',  code:'W',   hex:'#D4C5A9', dk:'#96856A' },
+  { name:'Café oscuro',     code:'KB',  hex:'#5A2A10', dk:'#3A1A06' },
+  { name:'Café claro',      code:'AB',  hex:'#8B5E3C', dk:'#5A3A1A' },
+  { name:'Rojo',            code:'R',   hex:'#9B2200', dk:'#6B1200' },
+  { name:'Amarillo',        code:'YO',  hex:'#C8A200', dk:'#8B7000' },
+  { name:'Azul',            code:'B',   hex:'#2A4A8B', dk:'#1A2A5A' },
+  { name:'Verde',           code:'G',   hex:'#2A6B3A', dk:'#1A4A28' },
+  { name:'Negro',           code:'BK',  hex:'#1A1A1A', dk:'#000000' },
+];
+
+/* ═══════════════════════════════════════════════════
+   GEOMETRÍA SVG
+   ════════════════════════════════════════════════ */
+const MCY   = 100;   // Main cord Y
+const CEND  = 530;   // Cord end Y
+const CLEN  = CEND - MCY;
+const CSX   = 70;    // Cord start X (primera cuerda)
+const CSP   = 90;    // Cord spacing
+
+// Centro Y de cada zona posicional
+const ZY = { 0:488, 1:398, 2:295, 3:178 };
+
+// Color por zona
+const ZCOL = ['#1A6B3A','#C8A000','#C85C00','#8B0000'];
+
+// Etiquetas
+const ZLBL = ['Unidades','Decenas','Centenas','Millares'];
+
+/* ═══════════════════════════════════════════════════
+   ESTADO
+   ════════════════════════════════════════════════ */
+let cords = [];
+let nid   = 1;
+let selColor = PALETTE[0];
+let selCord  = null;
+
+/* ═══════════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════════ */
+function init() {
+  buildPalette();
+  render();
+}
+
+function buildPalette() {
+  const el = document.getElementById('palette');
+  el.innerHTML = PALETTE.map((c,i) =>
+    `<div class="swatch ${i===0?'sel':''}" style="background:${c.hex}"
+      title="${c.name} (${c.code})" onclick="pickColor(${i})"></div>`
+  ).join('');
+  document.getElementById('sel-name').textContent = `${PALETTE[0].name} · ${PALETTE[0].code}`;
+}
+
+function pickColor(i) {
+  selColor = PALETTE[i];
+  document.querySelectorAll('.swatch').forEach((s,j) => s.classList.toggle('sel',j===i));
+  document.getElementById('sel-name').textContent = `${selColor.name} · ${selColor.code}`;
+}
+
+/* ═══════════════════════════════════════════════════
+   OPERACIONES
+   ════════════════════════════════════════════════ */
+function addCord() {
+  const val = Math.min(9999, Math.max(0, parseInt(document.getElementById('inp-val').value)||0));
+  const lbl = document.getElementById('inp-lbl').value.trim() || `Cuerda ${nid}`;
+  cords.push({ id:nid++, color:selColor, value:val, label:lbl, knots:v2k(val) });
+  document.getElementById('inp-val').value = '0';
+  document.getElementById('inp-lbl').value = '';
+  render();
+}
+
+function removeCord(id, ev) {
+  ev && ev.stopPropagation();
+  cords = cords.filter(c => c.id !== id);
+  if (selCord === id) selCord = null;
+  render();
+}
+
+function clickCord(id) {
+  selCord = selCord === id ? null : id;
+  render();
+}
+
+function clearAll() {
+  if (!confirm('¿Eliminar todas las cuerdas?')) return;
+  cords = []; nid = 1; selCord = null; render();
+}
+
+function loadExample() {
+  cords = []; nid = 1; selCord = null;
+  [
+    [PALETTE[3], 2345, 'Maíz (saras)'],
+    [PALETTE[1], 780,  'Quinua'],
+    [PALETTE[7], 61,   'Llamas'],
+    [PALETTE[4], 13,   'Alpacas'],
+    [PALETTE[5], 4,    'Papas (ch.),'],
+    [PALETTE[0], 1,    'Vicuñas'],
+  ].forEach(([col,val,lbl]) => {
+    cords.push({ id:nid++, color:col, value:val, label:lbl, knots:v2k(val) });
+  });
+  render();
+}
+
+/* ═══════════════════════════════════════════════════
+   CONVERSIÓN VALOR → NUDOS
+   ════════════════════════════════════════════════ */
+function v2k(n) {
+  const out = [];
+  for (let pos = 0; pos <= 3; pos++) {
+    const d = Math.floor(n / 10**pos) % 10;
+    if (!d) continue;
+    if (pos === 0) {
+      out.push(d === 1
+        ? { pos:0, type:'f8' }
+        : { pos:0, type:'long', turns:d });
+    } else {
+      for (let i = 0; i < d; i++)
+        out.push({ pos, type:'single', idx:i, tot:d });
+    }
+  }
+  return out;
+}
+
+/* ═══════════════════════════════════════════════════
+   RENDER PRINCIPAL
+   ════════════════════════════════════════════════ */
+function render() {
+  renderList();
+  renderSVG();
+  document.getElementById('total').textContent =
+    cords.reduce((s,c) => s + c.value, 0).toLocaleString('es-AR');
+}
+
+function renderList() {
+  const el = document.getElementById('cord-list');
+  if (!cords.length) {
+    el.innerHTML = `<div class="empty-msg">Sin cuerdas.<br>Usá el formulario de arriba<br>para agregar la primera.</div>`;
+    return;
+  }
+  el.innerHTML = cords.map(c =>
+    `<div class="cord-item ${selCord===c.id?'sel-cord':''}" onclick="clickCord(${c.id})">
+      <div class="cord-dot" style="background:${c.color.hex}"></div>
+      <div class="cord-info">
+        <div class="cord-nm">${esc(c.label)}</div>
+        <div class="cord-vl">${c.value.toLocaleString('es-AR')} · ${c.color.code}</div>
+      </div>
+      <button class="btn-danger" onclick="removeCord(${c.id},event)" title="Eliminar">✕</button>
+    </div>`
+  ).join('');
+}
+
+/* ═══════════════════════════════════════════════════
+   RENDER SVG
+   ════════════════════════════════════════════════ */
+function renderSVG() {
+  const n   = Math.max(cords.length, 1);
+  const W   = CSX * 2 + n * CSP;
+  const H   = CEND + 75;
+  const svg = document.getElementById('qsvg');
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+
+  let h = '';
+
+  /* Fondo */
+  h += `<rect width="${W}" height="${H}" fill="#EDE0C4"/>`;
+
+  /* Guías de zona */
+  h += drawZoneGuides(W);
+
+  /* Etiquetas de zona (izquierda) */
+  h += drawZoneLabels();
+
+  /* Cuerda principal */
+  const mx1 = 20, mx2 = W - 10;
+  h += drawMainCord(mx1, mx2, MCY);
+
+  /* Cuerdas pendientes */
+  cords.forEach((c,i) => {
+    const x = CSX + (i + 0.5) * CSP;
+    h += drawPendantCord(c, x);
+  });
+
+  /* Mensaje vacío */
+  if (!cords.length) {
+    h += `<text x="${W/2}" y="${MCY+200}" text-anchor="middle"
+           font-family="'Segoe UI',sans-serif" font-size="13" fill="#9A7A4A">
+           Agregá una cuerda desde el panel izquierdo</text>`;
+  }
+
+  svg.innerHTML = h;
+}
+
+/* ─── Guías de zona ─────────────────────────────── */
+function drawZoneGuides(W) {
+  let h = '';
+  [0,1,2,3].forEach(pos => {
+    const cy  = ZY[pos];
+    const col = ZCOL[pos];
+    const zh  = pos === 0 ? 95 : 70;
+    h += `<rect x="0" y="${cy-zh/2}" width="${W}" height="${zh}" fill="${col}" opacity="0.035"/>`;
+    h += `<line x1="38" y1="${cy}" x2="${W-6}" y2="${cy}"
+           stroke="${col}" stroke-width="0.6" stroke-dasharray="5,7" opacity="0.35"/>`;
+  });
+  return h;
+}
+
+/* ─── Etiquetas de posición (izquierda) ─────────── */
+function drawZoneLabels() {
+  let h = '';
+  [0,1,2,3].forEach(pos => {
+    const cy  = ZY[pos];
+    const col = ZCOL[pos];
+    h += `<text x="20" y="${cy}" text-anchor="middle"
+           font-family="'Segoe UI',sans-serif" font-size="8" fill="${col}" font-weight="800"
+           letter-spacing="0.5"
+           transform="rotate(-90,20,${cy})">${ZLBL[pos].toUpperCase()}</text>`;
+  });
+  return h;
+}
+
+/* ─── Cuerda principal ──────────────────────────── */
+function drawMainCord(x1, x2, y) {
+  return `
+    <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#5A3A00" stroke-width="12" stroke-linecap="round" opacity="0.25"/>
+    <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#7A5008" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+    <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#C8941A" stroke-width="5.5" stroke-linecap="round"/>
+    <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#E8C060" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>`;
+}
+
+/* ─── Cuerda pendiente ──────────────────────────── */
+function drawPendantCord(cord, x) {
+  const {hex, dk} = cord.color;
+  const isSel = cord.id === selCord;
+  let h = '';
+
+  /* Resaltado selección */
+  if (isSel) {
+    h += `<rect x="${x-22}" y="${MCY-6}" width="44" height="${CLEN+80}"
+           rx="22" fill="#FFD180" opacity="0.25"/>`;
+  }
+
+  /* Trenza de la cuerda (3 capas para efecto volumétrico) */
+  h += `<line x1="${x}" y1="${MCY}" x2="${x}" y2="${CEND}"
+         stroke="${dk}" stroke-width="6" stroke-linecap="round" opacity="0.4"/>`;
+  h += `<line x1="${x}" y1="${MCY}" x2="${x}" y2="${CEND}"
+         stroke="${hex}" stroke-width="4" stroke-linecap="round"/>`;
+  h += `<line x1="${x}" y1="${MCY}" x2="${x}" y2="${CEND}"
+         stroke="rgba(255,255,255,0.2)" stroke-width="1.2"
+         stroke-dasharray="3,9" stroke-linecap="round"/>`;
+
+  /* Punto de unión */
+  h += `<circle cx="${x}" cy="${MCY}" r="5.5" fill="${dk}" opacity="0.8"/>`;
+  h += `<circle cx="${x}" cy="${MCY}" r="3"   fill="${hex}"/>`;
+
+  /* Punta de la cuerda */
+  h += `<line x1="${x}" y1="${CEND-6}" x2="${x}" y2="${CEND+4}"
+         stroke="${dk}" stroke-width="5" stroke-linecap="round"/>`;
+  h += `<circle cx="${x}" cy="${CEND+4}" r="3" fill="${dk}" opacity="0.6"/>`;
+
+  /* Nudos */
+  cord.knots.forEach(k => { h += renderKnot(k, x, hex, dk); });
+
+  /* Etiqueta */
+  h += cordLabel(cord, x);
+
+  return h;
+}
+
+/* ─── Despacho de nudos ─────────────────────────── */
+function renderKnot(k, x, hex, dk) {
+  const cy = ZY[k.pos];
+  if (k.type === 'f8')   return knotF8(x, cy, hex, dk);
+  if (k.type === 'long') return knotLong(x, cy, k.turns, hex, dk);
+  /* single */
+  const spacing = 11;
+  const offset  = -((k.tot-1)*spacing/2) + k.idx*spacing;
+  return knotSingle(x, cy + offset, hex, dk);
+}
+
+/* ─── Nudo en ocho ──────────────────────────────── */
+function knotF8(x, y, hex, dk) {
+  const ry = 7, rx = 6;
+  return `
+    <ellipse cx="${x}" cy="${y-ry}" rx="${rx}" ry="${ry*0.9}"
+             fill="none" stroke="${dk}" stroke-width="4" opacity="0.7"/>
+    <ellipse cx="${x}" cy="${y+ry}" rx="${rx}" ry="${ry*0.9}"
+             fill="none" stroke="${dk}" stroke-width="4" opacity="0.7"/>
+    <ellipse cx="${x}" cy="${y-ry}" rx="${rx}" ry="${ry*0.9}"
+             fill="none" stroke="${hex}" stroke-width="2.8"/>
+    <ellipse cx="${x}" cy="${y+ry}" rx="${rx}" ry="${ry*0.9}"
+             fill="none" stroke="${hex}" stroke-width="2.8"/>
+    <circle cx="${x}" cy="${y}" r="2.5" fill="${dk}" opacity="0.5"/>
+    <title>Nudo en ocho — Unidades = 1</title>`;
+}
+
+/* ─── Nudo largo ────────────────────────────────── */
+function knotLong(x, y, turns, hex, dk) {
+  const H  = Math.max(turns * 9, 18);
+  const W  = 15;
+  const t  = y - H/2;
+  let   h  = '';
+
+  /* Sombra volumétrica */
+  h += `<rect x="${x-W/2+1}" y="${t+2}" width="${W}" height="${H}"
+         rx="${W/2}" fill="${dk}" opacity="0.35"/>`;
+  /* Cuerpo */
+  h += `<rect x="${x-W/2}" y="${t}" width="${W}" height="${H}"
+         rx="${W/2}" fill="${dk}" opacity="0.7"/>`;
+  h += `<rect x="${x-W/2}" y="${t}" width="${W}" height="${H}"
+         rx="${W/2}" fill="${hex}" opacity="0.85"/>`;
+  /* Brillo */
+  h += `<rect x="${x-W/2+2}" y="${t+2}" width="${W/2-2}" height="${H-4}"
+         rx="${W/4}" fill="rgba(255,255,255,0.18)"/>`;
+  /* Líneas de vuelta */
+  for (let i=1; i<turns; i++) {
+    const ly = t + (i/turns)*H;
+    h += `<line x1="${x-W/2+2}" y1="${ly}" x2="${x+W/2-2}" y2="${ly}"
+           stroke="${dk}" stroke-width="1" opacity="0.45"/>`;
+  }
+  /* Número */
+  h += `<text x="${x}" y="${y+4}" text-anchor="middle"
+         font-size="10" font-weight="900" fill="white"
+         font-family="'Segoe UI',sans-serif">${turns}</text>`;
+
+  h += `<title>Nudo largo — ${turns} vueltas — Unidades = ${turns}</title>`;
+  return h;
+}
+
+/* ─── Nudo suelto ───────────────────────────────── */
+function knotSingle(x, y, hex, dk) {
+  return `
+    <circle cx="${x}" cy="${y}" r="7.5" fill="${dk}" opacity="0.5"/>
+    <circle cx="${x}" cy="${y}" r="6.5" fill="${hex}"/>
+    <circle cx="${x}" cy="${y-2}" r="2.5" fill="rgba(255,255,255,0.25)"/>
+    <title>Nudo suelto — valor 1 en esta posición</title>`;
+}
+
+/* ─── Etiqueta de cuerda ────────────────────────── */
+function cordLabel(cord, x) {
+  const y = CEND + 18;
+  const {hex, dk} = cord.color;
+  return `
+    <text x="${x}" y="${y}" text-anchor="middle"
+      font-family="'Segoe UI',sans-serif" font-size="11" fill="#3A2000" font-weight="700">
+      ${esc(cord.label)}</text>
+    <text x="${x}" y="${y+14}" text-anchor="middle"
+      font-family="'Courier New',monospace" font-size="12" fill="${dk}" font-weight="900">
+      ${cord.value.toLocaleString('es-AR')}</text>
+    <rect x="${x-18}" y="${y+19}" width="36" height="5" rx="2.5" fill="${hex}" opacity="0.75"/>`;
+}
+
+/* ─── Utilidades ────────────────────────────────── */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+/* ─── Tooltip ───────────────────────────────────── */
+document.getElementById('qa').addEventListener('mousemove', e => {
+  const tip   = document.getElementById('tip');
+  const title = e.target.closest('[title]')?.getAttribute('title');
+  if (title) {
+    tip.style.display = 'block';
+    tip.textContent   = title;
+    tip.style.left    = (e.clientX + 14) + 'px';
+    tip.style.top     = (e.clientY - 36) + 'px';
+  } else {
+    tip.style.display = 'none';
+  }
+});
+document.getElementById('qa').addEventListener('mouseleave', () => {
+  document.getElementById('tip').style.display = 'none';
+});
+
+/* ─── Arranque ──────────────────────────────────── */
+init();
+</script>
+</body>
+</html>
